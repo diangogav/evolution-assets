@@ -1,0 +1,14 @@
+{
+  "name": "evolution-assets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static game assets (card DBs, decks, ban lists) for the Evolution YGO server, plus the generators that produce them.",
+  "scripts": {
+    "genesys": "node scripts/generate-genesys-lflist.mjs",
+    "test": "node --test \"scripts/*.test.mjs\""
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

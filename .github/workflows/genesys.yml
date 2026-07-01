@@ -1,0 +1,41 @@
+name: Update Genesys ban list
+
+on:
+  schedule:
+    # Daily at 06:00 UTC — Konami updates Genesys point costs periodically.
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Generate Genesys ban list
+        run: npm run genesys
+
+      - name: Commit if the list changed
+        run: |
+          if [ -n "$(git status --porcelain lflist/genesys.lflist.conf)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add lflist/genesys.lflist.conf
+            git commit -m "chore(genesys): refresh point list"
+            git push
+          else
+            echo "No changes to the Genesys ban list."
+          fi
