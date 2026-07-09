@@ -1,0 +1,58 @@
+name: Mirror and compress card databases
+
+on:
+  schedule:
+    # Daily at 06:30 UTC — after the Genesys job; moecube updates cards.cdb sporadically.
+    - cron: "30 6 * * *"
+  push:
+    paths:
+      - "cdb/*.cdb"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mirror moecube base databases
+        run: |
+          set -euo pipefail
+          curl -sSL --fail --max-time 300 \
+            "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb" -o /tmp/base.en.cdb
+          curl -sSL --fail --max-time 300 \
+            "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb" -o /tmp/base.es.cdb
+
+      - name: Validate SQLite magic bytes
+        # Never commit an upstream error page or truncated file as a database.
+        run: |
+          set -euo pipefail
+          for f in /tmp/base.en.cdb /tmp/base.es.cdb; do
+            head -c 15 "$f" | grep -q "SQLite format 3" || { echo "Invalid SQLite file: $f"; exit 1; }
+          done
+
+      - name: Compress databases (deterministic gzip)
+        # -n omits the embedded mtime so identical inputs produce identical
+        # bytes — otherwise every run would create a spurious commit.
+        run: |
+          set -euo pipefail
+          gzip -9 -n -c /tmp/base.en.cdb > cdb/base.en.cdb.gz
+          gzip -9 -n -c /tmp/base.es.cdb > cdb/base.es.cdb.gz
+          for f in cdb/*.cdb; do
+            gzip -9 -n -c "$f" > "$f.gz"
+          done
+
+      - name: Commit if any database changed
+        run: |
+          if [ -n "$(git status --porcelain cdb)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add cdb
+            git commit -m "chore(cdb): refresh mirrored and compressed databases"
+            git push
+          else
+            echo "No database changes."
+          fi
