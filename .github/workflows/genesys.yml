@@ -31,10 +31,13 @@ jobs:
       - name: Commit if the list changed
         run: |
           if [ -n "$(git status --porcelain lflist/genesys.lflist.conf)" ]; then
+            node scripts/update-genesys-manifest.mjs
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add lflist/genesys.lflist.conf
-            git commit -m "chore(genesys): refresh point list"
+            git add lflist/genesys.lflist.conf version-manifest.json
+            git commit -m "chore(genesys): refresh point list and version manifest"
+            # The mirror workflow may have pushed the manifest meanwhile.
+            git pull --rebase --autostash origin main || true
             git push
           else
             echo "No changes to the Genesys ban list."

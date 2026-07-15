@@ -20,12 +20,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Mirror moecube base databases
+        # -D dumps the response headers (across redirects) so the manifest step can read
+        # the upstream Last-Modified without a second request.
         run: |
           set -euo pipefail
-          curl -sSL --fail --max-time 300 \
+          curl -sSL --fail --max-time 300 -D /tmp/base.en.headers \
             "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb" -o /tmp/base.en.cdb
-          curl -sSL --fail --max-time 300 \
+          curl -sSL --fail --max-time 300 -D /tmp/base.es.headers \
             "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb" -o /tmp/base.es.cdb
 
       - name: Validate SQLite magic bytes
@@ -47,14 +53,26 @@ jobs:
             gzip -9 -n -c "$f" > "$f.gz"
           done
 
-      - name: Commit if any database changed
+      - name: Build version manifest
+        # Records sha256 + freshness for each published asset so clients can check for
+        # updates cheaply. Skips rewriting the file when only timestamps would change.
         run: |
-          if [ -n "$(git status --porcelain cdb)" ]; then
+          set -euo pipefail
+          en_lm=$(grep -i '^last-modified:' /tmp/base.en.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r')
+          es_lm=$(grep -i '^last-modified:' /tmp/base.es.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r')
+          MOECUBE_EN_LAST_MODIFIED="$en_lm" MOECUBE_ES_LAST_MODIFIED="$es_lm" \
+            node scripts/build-version-manifest.mjs
+
+      - name: Commit if any database or the manifest changed
+        run: |
+          if [ -n "$(git status --porcelain cdb version-manifest.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add cdb
-            git commit -m "chore(cdb): refresh mirrored and compressed databases"
+            git add cdb version-manifest.json
+            git commit -m "chore(cdb): refresh mirrored databases and version manifest"
+            # Another workflow (genesys) may have pushed the manifest meanwhile.
+            git pull --rebase --autostash origin main || true
             git push
           else
-            echo "No database changes."
+            echo "No database or manifest changes."
           fi
