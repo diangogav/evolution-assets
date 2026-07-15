@@ -1,0 +1,28 @@
+name: Validate hand-maintained lflists
+
+on:
+  push:
+    paths:
+      - "lflist/*.conf"
+      - "scripts/validate-lflist.mjs"
+      - "scripts/validate-lflist.test.mjs"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run script tests
+        run: npm test
+
+      - name: Validate edison and jtp lflists
+        run: node scripts/validate-lflist.mjs
