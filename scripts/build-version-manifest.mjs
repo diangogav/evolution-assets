@@ -115,7 +115,8 @@ function resolveCdbAssets(mirroredAt, env) {
 			sha256: sha256File(def.raw),
 			bytes: statSync(def.raw).size,
 			upstreamUrl: def.upstreamUrl ?? null,
-			upstreamLastModified: def.lastModifiedEnv ? (env[def.lastModifiedEnv] ?? null) : null,
+			// `|| null` (not `??`) so an empty string from a missing header becomes null.
+			upstreamLastModified: def.lastModifiedEnv ? env[def.lastModifiedEnv] || null : null,
 			mirroredAt,
 			...commit,
 		});
