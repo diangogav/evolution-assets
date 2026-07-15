@@ -14,6 +14,12 @@ on:
 permissions:
   contents: write
 
+# Serialize with the genesys workflow: both commit version-manifest.json, so running
+# them concurrently would race on that file. A shared group makes the second one wait.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -58,8 +64,10 @@ jobs:
         # updates cheaply. Skips rewriting the file when only timestamps would change.
         run: |
           set -euo pipefail
-          en_lm=$(grep -i '^last-modified:' /tmp/base.en.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r')
-          es_lm=$(grep -i '^last-modified:' /tmp/base.es.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r')
+          # `|| true` so a missing Last-Modified header degrades to an empty value
+          # (the script maps empty → null) instead of aborting the whole mirror.
+          en_lm=$(grep -i '^last-modified:' /tmp/base.en.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r' || true)
+          es_lm=$(grep -i '^last-modified:' /tmp/base.es.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r' || true)
           MOECUBE_EN_LAST_MODIFIED="$en_lm" MOECUBE_ES_LAST_MODIFIED="$es_lm" \
             node scripts/build-version-manifest.mjs
 

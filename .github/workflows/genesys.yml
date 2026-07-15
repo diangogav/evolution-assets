@@ -9,6 +9,12 @@ on:
 permissions:
   contents: write
 
+# Serialize with the mirror workflow: both commit version-manifest.json. The 06:00 UTC
+# schedules overlap, so a shared concurrency group prevents them racing on that file.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
