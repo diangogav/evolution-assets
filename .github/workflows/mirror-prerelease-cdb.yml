@@ -1,0 +1,65 @@
+name: Mirror and merge pre-release card database
+
+on:
+  schedule:
+    # Daily at 07:30 UTC — after evolutionygo/pre-release-database-cdb syncs from
+    # mycard at 07:00. Only commits when the merged content actually changes.
+    - cron: "30 7 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Serialize with the other workflows that commit version-manifest.json.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # Full history so the manifest's commit date reflects the real last edit.
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Clone pre-release cdb source
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/prerelease-src
+          git clone --depth=1 --single-branch --branch master \
+            https://github.com/evolutionygo/pre-release-database-cdb.git /tmp/prerelease-src
+
+      - name: Merge per-set cdbs into one prerelease.cdb
+        run: |
+          set -euo pipefail
+          node scripts/build-prerelease-cdb.mjs /tmp/prerelease-src /tmp/prerelease.cdb
+          # Fail loudly if the merge produced a non-SQLite file.
+          head -c 15 /tmp/prerelease.cdb | grep -q "SQLite format 3" || { echo "merged file is not a SQLite db"; exit 1; }
+
+      - name: Compress (deterministic gzip)
+        # -n omits the mtime so identical content produces identical bytes.
+        run: |
+          set -euo pipefail
+          gzip -9 -n -c /tmp/prerelease.cdb > cdb/prerelease.cdb.gz
+
+      - name: Update version manifest
+        run: PRERELEASE_RAW_CDB=/tmp/prerelease.cdb node scripts/update-prerelease-manifest.mjs
+
+      - name: Commit if the pre-release database changed
+        run: |
+          if [ -n "$(git status --porcelain cdb/prerelease.cdb.gz version-manifest.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add cdb/prerelease.cdb.gz version-manifest.json
+            git commit -m "chore(cdb): refresh merged pre-release database"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No pre-release changes."
+          fi
