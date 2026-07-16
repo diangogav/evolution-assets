@@ -56,6 +56,29 @@ test("buildPrereleaseCdb merges every real set and excludes test- fixtures", () 
 	}
 });
 
+test("buildPrereleaseCdb stamps the pre-release scope bit while preserving OCG/TCG bits", () => {
+	const dir = mkdtempSync(join(tmpdir(), "pre-scope-"));
+	try {
+		makeCdb(join(dir, "SET1.cdb"), [
+			{ id: 1001, ot: 1, name: "OcgCard" },
+			{ id: 1002, ot: 2, name: "TcgCard" },
+		]);
+
+		const out = join(dir, "prerelease.cdb");
+		buildPrereleaseCdb(dir, out);
+
+		const rows = execFileSync("sqlite3", [out, "SELECT id, ot FROM datas ORDER BY id;"], {
+			encoding: "utf8",
+		})
+			.trim()
+			.split("\n");
+		// 0x100 | 1 = 257 (OCG bit kept), 0x100 | 2 = 258 (TCG bit kept).
+		assert.deepEqual(rows, ["1001|257", "1002|258"]);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
 test("buildPrereleaseCdb throws when no source cdbs are present", () => {
 	const dir = mkdtempSync(join(tmpdir(), "pre-empty-"));
 	try {

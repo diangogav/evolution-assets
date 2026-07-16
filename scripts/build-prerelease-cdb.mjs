@@ -49,6 +49,12 @@ export function buildPrereleaseCdb(srcDir, outPath) {
 		);
 	}
 
+	// Upstream (mycard) publishes these cards with plain ot=1/2 and no pre-release
+	// marker. Stamp the EDOPro SCOPE_PRERELEASE bit (0x100) so clients can filter
+	// "pre-release only" by the established ot convention. The OCG/TCG bits are
+	// preserved (0x101 is still OCG), and the server never reads this merged file.
+	sqlite(outPath, "UPDATE datas SET ot = ot | 256;");
+
 	const count = execFileSync("sqlite3", [outPath, "SELECT count(*) FROM datas;"], {
 		encoding: "utf8",
 	}).trim();
