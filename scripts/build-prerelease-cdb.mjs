@@ -61,6 +61,36 @@ export function buildPrereleaseCdb(srcDir, outPath) {
 	return { sources, cards: Number(count) };
 }
 
+/**
+ * Overwrites the texts of `cdbPath` with the rows from `translationCdbPath`
+ * (TransSuperpre per-language bundle) for every card id present in BOTH files.
+ *
+ * Guarantees:
+ *   - datas are never touched — mycard stays the authority for ids/stats.
+ *   - cards without a translation keep their zh-CN text (per-card fallback).
+ *   - translation rows for cards we don't ship are NOT added.
+ *
+ * Returns the number of translated rows.
+ */
+export function applyTranslations(cdbPath, translationCdbPath) {
+	const overlap = execFileSync(
+		"sqlite3",
+		[
+			cdbPath,
+			`ATTACH '${translationCdbPath}' AS tr; SELECT count(*) FROM texts WHERE id IN (SELECT id FROM tr.texts);`,
+		],
+		{ encoding: "utf8" },
+	).trim();
+
+	sqlite(
+		cdbPath,
+		`ATTACH '${translationCdbPath}' AS tr;` +
+			"INSERT OR REPLACE INTO texts SELECT * FROM tr.texts WHERE id IN (SELECT id FROM texts);" +
+			"DETACH tr;",
+	);
+	return Number(overlap);
+}
+
 function main() {
 	const [srcDir, outPath] = process.argv.slice(2);
 	if (!srcDir || !outPath) {
