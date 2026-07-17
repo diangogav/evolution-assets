@@ -42,21 +42,45 @@ jobs:
           # Fail loudly if the merge produced a non-SQLite file.
           head -c 15 /tmp/prerelease.cdb | grep -q "SQLite format 3" || { echo "merged file is not a SQLite db"; exit 1; }
 
+      - name: Build per-language overlays from TransSuperpre translations
+        # datas stay mycard-authoritative; only texts are replaced, per card,
+        # with zh-CN as the fallback for anything not yet translated. A missing
+        # or invalid translation bundle skips that language (never fails the run).
+        run: |
+          set -euo pipefail
+          for lang in en es; do
+            upper=$(echo "$lang" | tr '[:lower:]' '[:upper:]')
+            if curl -sSL --fail --max-time 120 \
+                 "https://raw.githubusercontent.com/ElderLich/TransSuperpre/main/${upper}/Workspace/test-release.cdb" \
+                 -o "/tmp/trans-${lang}.cdb" \
+               && head -c 15 "/tmp/trans-${lang}.cdb" | grep -q "SQLite format 3"; then
+              cp /tmp/prerelease.cdb "/tmp/prerelease.${lang}.cdb"
+              node scripts/apply-prerelease-translations.mjs "/tmp/prerelease.${lang}.cdb" "/tmp/trans-${lang}.cdb"
+            else
+              echo "TransSuperpre ${upper} bundle unavailable — skipping ${lang} overlay this run"
+            fi
+          done
+
       - name: Compress (deterministic gzip)
         # -n omits the mtime so identical content produces identical bytes.
         run: |
           set -euo pipefail
           gzip -9 -n -c /tmp/prerelease.cdb > cdb/prerelease.cdb.gz
+          for lang in en es; do
+            if [ -f "/tmp/prerelease.${lang}.cdb" ]; then
+              gzip -9 -n -c "/tmp/prerelease.${lang}.cdb" > "cdb/prerelease.${lang}.cdb.gz"
+            fi
+          done
 
       - name: Update version manifest
         run: PRERELEASE_RAW_CDB=/tmp/prerelease.cdb node scripts/update-prerelease-manifest.mjs
 
       - name: Commit if the pre-release database changed
         run: |
-          if [ -n "$(git status --porcelain cdb/prerelease.cdb.gz version-manifest.json)" ]; then
+          if [ -n "$(git status --porcelain cdb version-manifest.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add cdb/prerelease.cdb.gz version-manifest.json
+            git add cdb version-manifest.json
             git commit -m "chore(cdb): refresh merged pre-release database"
             git pull --rebase --autostash origin main || true
             git push
