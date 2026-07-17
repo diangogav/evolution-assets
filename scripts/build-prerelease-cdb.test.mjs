@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { buildPrereleaseCdb, selectSourceCdbs } from "./build-prerelease-cdb.mjs";
+import { applyTranslations, buildPrereleaseCdb, selectSourceCdbs } from "./build-prerelease-cdb.mjs";
 
 const SCHEMA =
 	"CREATE TABLE datas(id integer primary key,ot integer,alias integer,setcode integer," +
@@ -83,6 +83,47 @@ test("buildPrereleaseCdb throws when no source cdbs are present", () => {
 	const dir = mkdtempSync(join(tmpdir(), "pre-empty-"));
 	try {
 		assert.throws(() => buildPrereleaseCdb(dir, join(dir, "out.cdb")), /no source \.cdb/);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("applyTranslations replaces matched texts, keeps unmatched, never adds extra cards", () => {
+	const dir = mkdtempSync(join(tmpdir(), "pre-tr-"));
+	try {
+		// Merged overlay: two cards, Chinese text.
+		makeCdb(join(dir, "SET1.cdb"), [
+			{ id: 1001, ot: 1, name: "中文一" },
+			{ id: 1002, ot: 1, name: "中文二" },
+		]);
+		const out = join(dir, "prerelease.cdb");
+		buildPrereleaseCdb(dir, out);
+
+		// Translation bundle: covers 1001, plus a card we do NOT ship (9999).
+		const trans = join(dir, "trans-en.cdb");
+		makeCdb(trans, [
+			{ id: 1001, ot: 1, name: "English One" },
+			{ id: 9999, ot: 1, name: "NotOurs" },
+		]);
+
+		const translated = applyTranslations(out, trans);
+
+		assert.equal(translated, 1); // only the overlapping card counts
+		const rows = execFileSync("sqlite3", [out, "SELECT id, name FROM texts ORDER BY id;"], {
+			encoding: "utf8",
+		})
+			.trim()
+			.split("\n");
+		// 1001 translated, 1002 keeps zh-CN fallback, 9999 NOT added.
+		assert.deepEqual(rows, ["1001|English One", "1002|中文二"]);
+
+		// datas untouched: still two cards with the stamped scope bit.
+		const datas = execFileSync("sqlite3", [out, "SELECT id, ot FROM datas ORDER BY id;"], {
+			encoding: "utf8",
+		})
+			.trim()
+			.split("\n");
+		assert.deepEqual(datas, ["1001|257", "1002|257"]);
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
