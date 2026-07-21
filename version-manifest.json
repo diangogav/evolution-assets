@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T10:23:00.767Z",
+  "generatedAt": "2026-07-21T09:57:07.052Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -54,33 +54,33 @@
     },
     "cdb:prerelease": {
       "path": "cdb/prerelease.cdb.gz",
-      "sha256": "5774917dfb8a5ba04e17861d66cc123a0b96463b15f6d6c1bd983737a715bc9f",
+      "sha256": "df532e65af8a4df376cd80b1350ac802aff2de51d738149b76b256efc2279823",
       "bytes": 126976,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-20T10:23:00.767Z",
-      "commitSha": "89716320df12f54710548e5b5fc4f308b43b2640",
-      "commitDate": "2026-07-19T09:24:09Z"
+      "mirroredAt": "2026-07-21T09:57:07.052Z",
+      "commitSha": "4ed7a67c255d576790f84205caec33ec5825b552",
+      "commitDate": "2026-07-20T10:23:00Z"
     },
     "cdb:prerelease:en": {
       "path": "cdb/prerelease.en.cdb.gz",
-      "sha256": "43c0d9ab74da82c269b4ada187f7a3d389e24214c096f6a29c03132da1b6a557",
+      "sha256": "f010a8aab11414480c14fccde1d1346bac50bff5bf756210d5c00e7c4e571f46",
       "bytes": 131072,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-20T10:23:00.767Z",
-      "commitSha": "89716320df12f54710548e5b5fc4f308b43b2640",
-      "commitDate": "2026-07-19T09:24:09Z"
+      "mirroredAt": "2026-07-21T09:57:07.052Z",
+      "commitSha": "4ed7a67c255d576790f84205caec33ec5825b552",
+      "commitDate": "2026-07-20T10:23:00Z"
     },
     "cdb:prerelease:es": {
       "path": "cdb/prerelease.es.cdb.gz",
-      "sha256": "84830259c51c93ad4b4ddd78dd334eb0919b4578e58369a50772332e55ae8497",
+      "sha256": "51f74ed5079e0f895d519a0aaeba4b95fbb22ebf7cca63c4788bcd0548232dc5",
       "bytes": 139264,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-20T10:23:00.767Z",
-      "commitSha": "89716320df12f54710548e5b5fc4f308b43b2640",
-      "commitDate": "2026-07-19T09:24:09Z"
+      "mirroredAt": "2026-07-21T09:57:07.052Z",
+      "commitSha": "4ed7a67c255d576790f84205caec33ec5825b552",
+      "commitDate": "2026-07-20T10:23:00Z"
     }
   }
 }
