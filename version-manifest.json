@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-24T09:41:28.074Z",
+  "generatedAt": "2026-07-24T11:37:02.066Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
       "sha256": "c54901ab8dc1b2edec17b7ea65e309ab050b8fd05e0d314ebaab7f02db2ed70f",
       "bytes": 7908352,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb",
-      "upstreamLastModified": "Fri, 24 Jul 2026 00:45:36 GMT",
-      "mirroredAt": "2026-07-24T01:52:34.709Z",
+      "upstreamLastModified": "Fri, 24 Jul 2026 08:28:05 GMT",
+      "mirroredAt": "2026-07-24T11:37:02.066Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -17,8 +17,8 @@
       "sha256": "64350b9ad036df32c5079e5943f173883dcd017d53cb734be19aae13abbf324c",
       "bytes": 8335360,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb",
-      "upstreamLastModified": "Fri, 24 Jul 2026 00:45:37 GMT",
-      "mirroredAt": "2026-07-24T01:52:34.709Z",
+      "upstreamLastModified": "Fri, 24 Jul 2026 08:28:05 GMT",
+      "mirroredAt": "2026-07-24T11:37:02.066Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -28,7 +28,7 @@
       "bytes": 6896640,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-24T01:52:34.709Z",
+      "mirroredAt": "2026-07-24T11:37:02.066Z",
       "commitSha": "8f605ffe135cf1e1676f04302c782953fd81b095",
       "commitDate": "2026-04-20T15:14:23-04:00"
     },
@@ -38,7 +38,7 @@
       "bytes": 200704,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-24T01:52:34.709Z",
+      "mirroredAt": "2026-07-24T11:37:02.066Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
@@ -48,7 +48,7 @@
       "bytes": 229376,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-24T01:52:34.709Z",
+      "mirroredAt": "2026-07-24T11:37:02.066Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
