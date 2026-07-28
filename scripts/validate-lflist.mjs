@@ -16,7 +16,11 @@
 
 import { readFileSync } from "node:fs";
 
-const LFLISTS = ["lflist/edison.lflist.conf", "lflist/jtp.lflist.conf"];
+const LFLISTS = [
+	"lflist/edison.lflist.conf",
+	"lflist/jtp.lflist.conf",
+	"lflist/jtp-advanced-marzo-2007.lflist.conf",
+];
 
 // Pure: returns a list of human-readable error strings (empty = valid).
 export function validateLflist(text, label) {
