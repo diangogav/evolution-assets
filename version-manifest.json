@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T01:47:35.574Z",
+  "generatedAt": "2026-07-29T10:02:40.405Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -58,27 +58,27 @@
       "bytes": 131072,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-26T09:29:18.489Z",
+      "mirroredAt": "2026-07-29T10:02:40.405Z",
       "commitSha": "74cb57ce5a55ab89cef521ad993c7b1426f2b8f2",
       "commitDate": "2026-07-25T09:15:51Z"
     },
     "cdb:prerelease:en": {
       "path": "cdb/prerelease.en.cdb.gz",
-      "sha256": "934a06f1aa238db92c36bfa6e9f23b6d4a7661bf23a459ec04d2ba4bc6d3b794",
+      "sha256": "badaf1a97c0cfed91ea3a89b4dd59f238e4ddc2645ef6c06390d5c64b78bd0f3",
       "bytes": 135168,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-26T09:29:18.489Z",
+      "mirroredAt": "2026-07-29T10:02:40.405Z",
       "commitSha": "74cb57ce5a55ab89cef521ad993c7b1426f2b8f2",
       "commitDate": "2026-07-25T09:15:51Z"
     },
     "cdb:prerelease:es": {
       "path": "cdb/prerelease.es.cdb.gz",
-      "sha256": "bb66adbaa7de7ca655b8d912a3a3bf2e3f2da40e8aadafa16683faea5ba57d91",
+      "sha256": "4260d868f0fd4b341c8c0ab1146146cf5b389b383cc4edbdb5e53799dbbfc674",
       "bytes": 143360,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-26T09:29:18.489Z",
+      "mirroredAt": "2026-07-29T10:02:40.405Z",
       "commitSha": "74cb57ce5a55ab89cef521ad993c7b1426f2b8f2",
       "commitDate": "2026-07-25T09:15:51Z"
     }
