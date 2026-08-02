@@ -7,6 +7,12 @@ on:
     # genesys.yml stays daily on purpose: its source updates on an editorial schedule.
     - cron: "0 */2 * * *"
   push:
+    # main only: the gzip mirrors and version-manifest.json are GENERATED
+    # artifacts that belong to main. Dev branches (e.g. edison-pre-errata)
+    # carry only source changes and are consumed raw by the client; running
+    # this job there rebases branch history onto main and conflicts on the
+    # generated manifest (seen 2026-08-01).
+    branches: [main]
     paths:
       - "cdb/*.cdb"
   workflow_dispatch: {}
@@ -83,8 +89,15 @@ jobs:
             git add cdb version-manifest.json
             git commit -m "chore(cdb): refresh mirrored databases and version manifest"
             # Another workflow (genesys) may have pushed the manifest meanwhile.
-            git pull --rebase --autostash origin main || true
-            git push
+            # Rebase against the branch that triggered us (defense in depth for
+            # any future non-main trigger) and fail LOUDLY on conflict — a
+            # swallowed rebase failure leaves a detached HEAD and a broken push.
+            if ! git pull --rebase --autostash origin "$GITHUB_REF_NAME"; then
+              git rebase --abort || true
+              echo "::error::Rebase against origin/$GITHUB_REF_NAME failed — manifest conflict needs manual resolution."
+              exit 1
+            fi
+            git push origin HEAD:"$GITHUB_REF_NAME"
           else
             echo "No database or manifest changes."
           fi
