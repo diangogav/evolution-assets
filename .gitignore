@@ -1,5 +1,5 @@
 node_modules/
 package-lock.json
 
-# Pre-errata Lua scripts live in the PRIVATE repo evolution-pre-errata-scripts (competitive moat)
+# Card scripts are not tracked here (assets convention: cdb + lflist only)
 card-scripts/
