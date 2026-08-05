@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-04T08:46:36.539Z",
+  "generatedAt": "2026-08-05T21:04:42.259Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -8,7 +8,7 @@
       "bytes": 8018944,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb",
       "upstreamLastModified": "Wed, 29 Jul 2026 01:42:28 GMT",
-      "mirroredAt": "2026-07-29T01:47:35.574Z",
+      "mirroredAt": "2026-08-05T21:04:42.259Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -18,19 +18,19 @@
       "bytes": 8421376,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb",
       "upstreamLastModified": "Wed, 29 Jul 2026 01:42:28 GMT",
-      "mirroredAt": "2026-07-29T01:47:35.574Z",
+      "mirroredAt": "2026-08-05T21:04:42.259Z",
       "commitSha": null,
       "commitDate": null
     },
     "cdb:classic": {
       "path": "cdb/classic.cdb.gz",
-      "sha256": "79c26f0f9332ebce01f543221dccc3e3b639d36372f88e6813a91e274e9aeff4",
+      "sha256": "da880a8d0e7737717b34a8d1c4f16caeebbcc97352d79dd7cb699d889cb9bd70",
       "bytes": 6896640,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-29T01:47:35.574Z",
-      "commitSha": "8f605ffe135cf1e1676f04302c782953fd81b095",
-      "commitDate": "2026-04-20T15:14:23-04:00"
+      "mirroredAt": "2026-08-05T21:04:42.259Z",
+      "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
+      "commitDate": "2026-08-05T17:04:17-04:00"
     },
     "cdb:jtp:en": {
       "path": "cdb/jtp.en.cdb.gz",
@@ -38,7 +38,7 @@
       "bytes": 200704,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-29T01:47:35.574Z",
+      "mirroredAt": "2026-08-05T21:04:42.259Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
@@ -48,7 +48,7 @@
       "bytes": 229376,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-07-29T01:47:35.574Z",
+      "mirroredAt": "2026-08-05T21:04:42.259Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
