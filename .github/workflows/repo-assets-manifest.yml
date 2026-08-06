@@ -1,0 +1,70 @@
+name: Update repo assets in version manifest
+
+on:
+  push:
+    # main only: version-manifest.json is a generated artifact that belongs to
+    # main, like the cdb mirrors. The workflow's own commit only touches the
+    # manifest, which is not in this list, so it cannot retrigger itself.
+    branches:
+      - main
+    paths:
+      - "lflist/edison.lflist.conf"
+      - "lflist/jtp.lflist.conf"
+      - "lflist/jtp-advanced-marzo-2007.lflist.conf"
+      - "cdb/pre-errata.en.cdb"
+      - "cdb/pre-errata.es.cdb"
+      - "scripts/update-repo-assets-manifest.mjs"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Serialize with the mirror, prerelease and genesys workflows: they all commit
+# version-manifest.json, so a shared concurrency group prevents racing on it.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # Full history so each asset's commit date reflects the real last edit,
+        # not the shallow-clone boundary.
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script tests
+        run: npm test
+
+      - name: Update version manifest
+        run: node scripts/update-repo-assets-manifest.mjs
+
+      - name: Commit if the manifest changed
+        run: |
+          if [ -n "$(git status --porcelain version-manifest.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add version-manifest.json
+            git commit -m "chore(manifest): refresh repo asset entries"
+            # Another workflow may have pushed the manifest meanwhile.
+            # Rebase against the branch that triggered us and fail LOUDLY on
+            # conflict — a swallowed rebase failure leaves a detached HEAD and
+            # a broken push.
+            if ! git pull --rebase --autostash origin "$GITHUB_REF_NAME"; then
+              git rebase --abort || true
+              echo "::error::Rebase against origin/$GITHUB_REF_NAME failed — manifest conflict needs manual resolution."
+              exit 1
+            fi
+            git push origin HEAD:"$GITHUB_REF_NAME"
+          else
+            echo "No manifest changes."
+          fi
