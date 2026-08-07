@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T12:51:00.718Z",
+  "generatedAt": "2026-08-07T08:32:52.743Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -54,33 +54,33 @@
     },
     "cdb:prerelease": {
       "path": "cdb/prerelease.cdb.gz",
-      "sha256": "47bac4a14f5412ae89a7592f3f08d14983ca37f1dadfc6c68391571d038168b4",
-      "bytes": 32768,
-      "upstreamUrl": null,
-      "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T10:05:04.620Z",
-      "commitSha": "4410b2260f12b920aa7cdb6fa6f0b47e88f89ab8",
-      "commitDate": "2026-07-31T10:02:41Z"
-    },
-    "cdb:prerelease:en": {
-      "path": "cdb/prerelease.en.cdb.gz",
-      "sha256": "623b7f0442bbb2fd2335ab7dc551a08ddcca0cbd8f2b24bb64d65901b6887eca",
-      "bytes": 32768,
-      "upstreamUrl": null,
-      "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T10:05:04.620Z",
-      "commitSha": "4410b2260f12b920aa7cdb6fa6f0b47e88f89ab8",
-      "commitDate": "2026-07-31T10:02:41Z"
-    },
-    "cdb:prerelease:es": {
-      "path": "cdb/prerelease.es.cdb.gz",
-      "sha256": "8c11a89170a0850e3c30c8b5fbd1d1e3ba86d6417bb0a4463a5ee3ef4cc5d1dc",
+      "sha256": "e40c57ebb3a2632687d1287860af3972e92318dcecd02710cd25abea114215b1",
       "bytes": 36864,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T10:05:04.620Z",
-      "commitSha": "4410b2260f12b920aa7cdb6fa6f0b47e88f89ab8",
-      "commitDate": "2026-07-31T10:02:41Z"
+      "mirroredAt": "2026-08-07T08:32:52.743Z",
+      "commitSha": "2f3d79d1d78ba1ae21cf6d5e9b12b3f022761d39",
+      "commitDate": "2026-08-06T10:05:04Z"
+    },
+    "cdb:prerelease:en": {
+      "path": "cdb/prerelease.en.cdb.gz",
+      "sha256": "5fb869ef2510f17825e4f84210dd20794963b582b0aacef5da1ec8cde015a6b4",
+      "bytes": 36864,
+      "upstreamUrl": null,
+      "upstreamLastModified": null,
+      "mirroredAt": "2026-08-07T08:32:52.743Z",
+      "commitSha": "2f3d79d1d78ba1ae21cf6d5e9b12b3f022761d39",
+      "commitDate": "2026-08-06T10:05:04Z"
+    },
+    "cdb:prerelease:es": {
+      "path": "cdb/prerelease.es.cdb.gz",
+      "sha256": "cce91220c920bfb0e25d0bdc1b8450fcf5be9c76762d63e0f8b9c57efb9f6189",
+      "bytes": 36864,
+      "upstreamUrl": null,
+      "upstreamLastModified": null,
+      "mirroredAt": "2026-08-07T08:32:52.743Z",
+      "commitSha": "2f3d79d1d78ba1ae21cf6d5e9b12b3f022761d39",
+      "commitDate": "2026-08-06T10:05:04Z"
     },
     "lflist:evolution:genesys": {
       "path": "lflist/genesys.lflist.conf",
