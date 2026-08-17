@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-17T08:04:55.660Z",
+  "generatedAt": "2026-08-17T08:33:01.654Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
-      "sha256": "f81958a2e0c238ddf5060482e1a2fc2c0d4a7f75917e76c388cab1a28fa43d4c",
-      "bytes": 8018944,
+      "sha256": "799f748b2280af459fa917f6b305345ae74814cba83594f592407eb1a3932ecf",
+      "bytes": 8037376,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb",
-      "upstreamLastModified": "Fri, 14 Aug 2026 01:14:52 GMT",
-      "mirroredAt": "2026-08-14T03:57:24.403Z",
+      "upstreamLastModified": "Mon, 17 Aug 2026 07:20:49 GMT",
+      "mirroredAt": "2026-08-17T08:33:01.654Z",
       "commitSha": null,
       "commitDate": null
     },
     "cdb:base:es": {
       "path": "cdb/base.es.cdb.gz",
-      "sha256": "8479fd1fad0eeae97fe11884c6a7e16bc5e2b5092d3f79b78247bfe98ca336fb",
-      "bytes": 8421376,
+      "sha256": "9d18a3ab5ce7dc568cf51c2676fe926d582415c62c6c0152537d55f220ef6488",
+      "bytes": 8437760,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb",
-      "upstreamLastModified": "Fri, 14 Aug 2026 01:14:53 GMT",
-      "mirroredAt": "2026-08-14T03:57:24.403Z",
+      "upstreamLastModified": "Mon, 17 Aug 2026 07:20:49 GMT",
+      "mirroredAt": "2026-08-17T08:33:01.654Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -28,7 +28,7 @@
       "bytes": 6896640,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-14T03:57:24.403Z",
+      "mirroredAt": "2026-08-17T08:33:01.654Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -38,7 +38,7 @@
       "bytes": 200704,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-14T03:57:24.403Z",
+      "mirroredAt": "2026-08-17T08:33:01.654Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
@@ -48,7 +48,7 @@
       "bytes": 229376,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-14T03:57:24.403Z",
+      "mirroredAt": "2026-08-17T08:33:01.654Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
