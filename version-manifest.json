@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-18T07:58:54.569Z",
+  "generatedAt": "2026-08-18T13:19:41.248Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -98,7 +98,7 @@
       "bytes": 113019,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T12:51:00.718Z",
+      "mirroredAt": "2026-08-18T13:19:41.248Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -108,7 +108,7 @@
       "bytes": 12121,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T12:51:00.718Z",
+      "mirroredAt": "2026-08-18T13:19:41.248Z",
       "commitSha": "f41474d92df913e54a198a8526b4d8756f14ad6e",
       "commitDate": "2026-05-25T18:33:30-04:00"
     },
@@ -118,29 +118,29 @@
       "bytes": 12458,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T12:51:00.718Z",
+      "mirroredAt": "2026-08-18T13:19:41.248Z",
       "commitSha": "2eb86ebcde58624ab408d74e6e484c404df4bd46",
       "commitDate": "2026-07-28T14:25:06-04:00"
     },
     "cdb:pre-errata:en": {
       "path": "cdb/pre-errata.en.cdb",
-      "sha256": "edd1fc67626d8d1dea43f5306f23bd91ee5154a932981b09b1a2e6dfb542b22d",
+      "sha256": "3055dab7297dca3ff561d48a74671aa12c3183d9adb003bab04bc35b54dd3c7b",
       "bytes": 24576,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T12:51:00.718Z",
-      "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
-      "commitDate": "2026-08-05T17:04:17-04:00"
+      "mirroredAt": "2026-08-18T13:19:41.248Z",
+      "commitSha": "845e63366b1de33d908061882b8545cae7554553",
+      "commitDate": "2026-08-18T09:16:46-04:00"
     },
     "cdb:pre-errata:es": {
       "path": "cdb/pre-errata.es.cdb",
-      "sha256": "6b9ee692b0af56fe609a5f5694a65af81484eabe35810e56187e570c5a1a512c",
+      "sha256": "7998a99658b7b98ca85d543ac3807e97c985dbc2f6c16a29f9a4eb77d2fc72ff",
       "bytes": 24576,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-06T12:51:00.718Z",
-      "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
-      "commitDate": "2026-08-05T17:04:17-04:00"
+      "mirroredAt": "2026-08-18T13:19:41.248Z",
+      "commitSha": "845e63366b1de33d908061882b8545cae7554553",
+      "commitDate": "2026-08-18T09:16:46-04:00"
     }
   }
 }
