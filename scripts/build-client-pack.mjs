@@ -116,6 +116,41 @@ export function buildPackCdb(srcCdb, outCdb) {
 			"INSERT OR REPLACE INTO texts SELECT * FROM src.texts;" +
 			"DETACH src;",
 	);
+	// Alias is an INHERITANCE mechanism: an alternate artwork points at the
+	// original so it takes the original's ban list entry, which is why no list
+	// ever enumerates the thirty printings of Dark Magician. Our pool needs the
+	// opposite. The Edison list carries the pre-errata codes and deliberately
+	// omits the official ones, and the client resolves a card's entry through its
+	// alias whenever one is set — never through the card's own code. An alias
+	// pointing at the official printing therefore resolves to "not listed", which
+	// under a whitelist means forbidden, and every card in the pack shows as
+	// banned in the deck editor.
+	//
+	// So the alias is cleared HERE and only here. It stays in
+	// cdb/pre-errata.*.cdb, which feeds the server, where it must keep making the
+	// pre-errata card the same card for effects and copy limits. The two layers
+	// want opposite things from one field and each reads its own database.
+	//
+	// Nothing is lost client-side: art is served per own code from pics/, and the
+	// unified copy count the alias would provide guards a case that cannot occur,
+	// because no official printing is on the Edison list to begin with.
+	sqliteQuery(outCdb, "UPDATE datas SET alias = 0;");
+
+	// The client reads every column with GetInt64/GetString, with ONE try/catch
+	// around the whole read loop: a single NULL throws and silently discards the
+	// entire database, so all 28 cards vanish with no error message anywhere.
+	// The pre-errata source leaves str1..str16 NULL on cards that have no
+	// counter/setname strings, which is valid SQLite and fatal here.
+	for (const table of ["datas", "texts"]) {
+		const columns = sqliteQuery(outCdb, `PRAGMA table_info(${table});`)
+			.split("\n")
+			.map((row) => row.split("|")[1])
+			.filter((name) => name && name !== "id");
+		const fallback = table === "datas" ? "0" : "''";
+		const assignments = columns.map((c) => `"${c}" = COALESCE("${c}", ${fallback})`).join(", ");
+		if (assignments) sqliteQuery(outCdb, `UPDATE ${table} SET ${assignments};`);
+	}
+
 	const cards = Number(sqliteQuery(outCdb, "SELECT count(*) FROM datas;"));
 	if (cards === 0) {
 		throw new Error(`refusing to publish a pack with no cards (source: ${srcCdb})`);
