@@ -6,6 +6,7 @@
   "description": "Static game assets (card DBs, decks, ban lists) for the Evolution YGO server, plus the generators that produce them.",
   "scripts": {
     "genesys": "node scripts/generate-genesys-lflist.mjs",
+    "pack": "node scripts/build-client-pack.mjs",
     "test": "node --test \"scripts/*.test.mjs\""
   },
   "dependencies": {
