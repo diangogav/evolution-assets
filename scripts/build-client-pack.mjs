@@ -28,7 +28,7 @@
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 const DEFAULT_CDN = "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics";
 
@@ -217,8 +217,10 @@ export async function buildClientPack(lang, outDir, options = {}) {
 
 	const zipPath = join(outDir, `evolution-edison-${lang}${layout.archiveExtension}`);
 	rmSync(zipPath, { force: true });
-	// -j would flatten pics/ into the root, so zip from inside staging instead.
-	execFileSync("zip", ["-qr", zipPath, "."], { cwd: staging });
+	// -j would flatten pics/ into the root, so zip runs from inside staging — which
+	// makes the output path resolve against staging too. Absolute, or a relative
+	// outDir silently points somewhere that does not exist.
+	execFileSync("zip", ["-qr", resolve(zipPath), "."], { cwd: staging });
 	rmSync(staging, { recursive: true, force: true });
 
 	return { lang, cards, pics, zipPath, bytes: statSync(zipPath).size, sha256: sha256File(zipPath) };

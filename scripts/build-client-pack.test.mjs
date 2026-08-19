@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
 import {
+	buildClientPack,
 	buildPackCdb,
 	downloadPics,
 	packLayout,
@@ -221,4 +222,35 @@ test("packLayout is one archive the client mounts, nothing loose", () => {
 		lflistName: "edison.lflist.conf",
 		readmeName: "README.txt",
 	});
+});
+
+test("buildClientPack works when outDir is a relative path", async () => {
+	// `zip` runs with cwd set to the staging dir, so a relative output path would
+	// resolve against staging instead of the caller's cwd and fail. Regression:
+	// every earlier manual build happened to use an absolute outDir.
+	const dir = mkdtempSync(join(tmpdir(), "pack-rel-"));
+	const cwd = process.cwd();
+	try {
+		makeCdb(join(dir, "pool.cdb"), [{ id: 910003001, alias: 37742478, name: "Honest" }]);
+		writeFileSync(join(dir, "lf.conf"), "!Test\n");
+		process.chdir(dir);
+
+		const fetchImpl = async () => ({
+			ok: true,
+			status: 200,
+			arrayBuffer: async () => new TextEncoder().encode("img").buffer,
+		});
+		const result = await buildClientPack("en", "out", {
+			srcCdb: "pool.cdb",
+			lflist: "lf.conf",
+			fetchImpl,
+			packUrl: null,
+		});
+
+		assert.equal(result.cards, 1);
+		assert.ok(existsSync(result.zipPath), `expected ${result.zipPath} to exist`);
+	} finally {
+		process.chdir(cwd);
+		rmSync(dir, { recursive: true, force: true });
+	}
 });

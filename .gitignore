@@ -3,3 +3,4 @@ package-lock.json
 
 # Card scripts are not tracked here (assets convention: cdb + lflist only)
 card-scripts/
+dist/
