@@ -32,6 +32,101 @@ import { join, resolve } from "node:path";
 
 const DEFAULT_CDN = "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics";
 
+// The pool's art is the official art — an errata rewrites text, never the
+// illustration — so in a deck laid out as ~60px thumbnails a pre-errata copy is
+// indistinguishable from the modern printing it replaces. The "(Pre-Errata)"
+// suffix only shows once a card is selected, which is too late to notice you
+// built with the wrong one.
+//
+// A border is the marker that survives that size: it covers no name, art, text
+// or ATK/DEF, and carries no words, so the same treatment serves every language
+// pack.
+// The client renders a card from its ILLUSTRATION, not from the full card
+// image. With no art/ entry it falls back to pics/ and crops to the art window
+// itself, so a bar at the foot of the card or a border around it is discarded
+// before anything reaches the screen — which is exactly what happened to the
+// first two attempts. Shipping the crop ourselves under art/ skips that step and
+// keeps whatever we drew on it.
+//
+// Geometry transcribed from CardImageLoader.GetArtFromCard. Its width/height
+// arguments are END coordinates, not sizes, and Unity textures put the origin at
+// the bottom left — so x runs 13%..87%, and y 30%..81% from the bottom is
+// 19%..70% from the top.
+const ART_CROP = { left: 0.13, top: 0.19, width: 0.74, height: 0.51 };
+
+export function artCropBox(imageWidth, imageHeight) {
+	return {
+		x: Math.round(imageWidth * ART_CROP.left),
+		y: Math.round(imageHeight * ART_CROP.top),
+		width: Math.round(imageWidth * ART_CROP.width),
+		height: Math.round(imageHeight * ART_CROP.height),
+	};
+}
+
+// A gold frame around the illustration. Everything else tried was worse for a
+// reason worth keeping written down:
+//
+//   - a bar at the foot of the card, or a border around it, never rendered at
+//     all — the client crops to the art window before drawing, so both fell
+//     outside the picture (see ART_CROP);
+//   - a stripe across the art reads well but hides a slice of the subject;
+//   - tinting the whole illustration hides nothing, and costs more: the pool
+//     stops being distinguishable BY COLOUR from itself. Necrovalley is no
+//     longer the orange one and Honest no longer the blue one.
+//
+// The frame touches only the perimeter, so palette, subject and silhouette all
+// survive — a player still recognises the card at a glance and still sees that
+// it is not the modern printing.
+const MARK_COLOR = "#d4af37";
+
+// Proportional to the crop: the mirrors return a mix of resolutions, and fixed
+// pixels would put a hairline on one card and a slab on the next.
+export function markFrameWidth(artWidth) {
+	return Math.max(6, Math.round(artWidth * 0.054));
+}
+
+/** Crops one card image to its illustration and frames it. */
+function renderMarkedArt(picFile, artFile) {
+	const [width, height] = execFileSync("magick", ["identify", "-format", "%w %h", picFile], {
+		encoding: "utf8",
+	})
+		.trim()
+		.split(" ")
+		.map(Number);
+
+	const box = artCropBox(width, height);
+	const frame = markFrameWidth(box.width);
+
+	// Shaved before the border is drawn, so the art keeps the dimensions the
+	// client expects from a crop of this card rather than growing by the frame.
+	execFileSync("magick", [
+		picFile,
+		"-crop",
+		`${box.width}x${box.height}+${box.x}+${box.y}`,
+		"+repage",
+		"-shave",
+		`${frame}x${frame}`,
+		"-bordercolor",
+		MARK_COLOR,
+		"-border",
+		String(frame),
+		artFile,
+	]);
+}
+
+/**
+ * Writes the marked illustration for every card already downloaded to picsDir.
+ * Kept separate from the download so the network step stays retry-safe and the
+ * tests can stub the renderer.
+ */
+export async function renderPackArt(codes, picsDir, artDir, { renderImpl = renderMarkedArt } = {}) {
+	mkdirSync(artDir, { recursive: true });
+	for (const code of codes) {
+		renderImpl(join(picsDir, `${code}.jpg`), join(artDir, `${code}.jpg`));
+	}
+	return codes.length;
+}
+
 // The address a player pastes into the client's download box. It must be
 // PERMANENT: it ends up in Discord posts, pinned messages, and the README of
 // every copy already downloaded, so any URL that can change strands all of them.
@@ -71,6 +166,9 @@ export function packLayout() {
 		archiveExtension: ".ypk",
 		cdbName: "evolution-edison.cdb",
 		picsDir: "pics",
+		// The illustration the client actually renders. pics/ stays as the raw
+		// card image; art/ is the crop carrying the mark.
+		artDir: "art",
 		lflistName: "edison.lflist.conf",
 		readmeName: "README.txt",
 	};
@@ -246,7 +344,14 @@ export async function buildClientPack(lang, outDir, options = {}) {
 	mkdirSync(staging, { recursive: true });
 
 	const cards = buildPackCdb(srcCdb, join(staging, layout.cdbName));
-	const pics = await downloadPics(picJobs(readPoolRows(srcCdb)), join(staging, layout.picsDir), options);
+	const jobs = picJobs(readPoolRows(srcCdb));
+	const pics = await downloadPics(jobs, join(staging, layout.picsDir), options);
+	await renderPackArt(
+		jobs.map((job) => job.code),
+		join(staging, layout.picsDir),
+		join(staging, layout.artDir),
+		options,
+	);
 	writeFileSync(join(staging, layout.lflistName), readFileSync(options.lflist ?? LFLIST_SRC));
 	// MDPro3 only matches the extensions in FileGroupConfig, so a README riding
 	// along in the archive is inert — and it is the only place a player who
