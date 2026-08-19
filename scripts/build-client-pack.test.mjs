@@ -160,14 +160,23 @@ test("downloadPics fails loudly instead of shipping a card with no art", async (
 	}
 });
 
-test("packUrlFor points at the permanent latest-release address", () => {
-	// /releases/latest/download/ never changes across releases, so a link pasted
-	// in Discord today still installs the pool after it grows to 50 cards.
+test("packUrlFor points at the fixed-tag address, not /latest/", () => {
+	// A fixed tag is a permanent slot: assets are replaced in place with
+	// `gh release upload edison-pack <file> --clobber`, so a link pasted in
+	// Discord today still installs the pool after it grows to 50 cards.
+	// `/latest/` would resolve to whatever release in the repo is newest, so any
+	// unrelated release would break every published link.
 	assert.equal(
 		packUrlFor("en"),
-		"https://github.com/diangogav/evolution-assets/releases/latest/download/evolution-edison-en.ypk",
+		"https://github.com/diangogav/evolution-assets/releases/download/edison-pack/evolution-edison-en.ypk",
 	);
 	assert.match(packUrlFor("es"), /evolution-edison-es\.ypk$/);
+});
+
+test("packUrlFor carries no version in the tag", () => {
+	// A `-v1` tag invites a `-v2`, and cutting one would strand every link
+	// already published. The tag names a slot, never a version.
+	assert.doesNotMatch(packUrlFor("en"), /-v\d/);
 });
 
 test("packUrlFor stays free of a query string", () => {
