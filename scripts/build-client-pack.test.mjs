@@ -9,11 +9,14 @@ import {
 	buildClientPack,
 	buildPackCdb,
 	downloadPics,
+	artCropBox,
+	markFrameWidth,
 	packLayout,
 	packUrlFor,
 	picJobs,
 	readPoolRows,
 	renderInstallReadme,
+	renderPackArt,
 } from "./build-client-pack.mjs";
 
 const SCHEMA =
@@ -211,6 +214,62 @@ test("downloadPics writes one jpg per job, named by the pre-errata code", async 
 	}
 });
 
+test("artCropBox reproduces the window the client would have cropped itself", () => {
+	// MDPro3 renders a card from its illustration, not from the full card image:
+	// with no art/ entry it takes pics/ and crops to x 13%-87%, y 19%-70% from
+	// the top (CardImageLoader.GetArtFromCard, whose width/height arguments are
+	// end coordinates, over a bottom-left origin). Anything drawn outside that
+	// window — a bottom bar, a border — is discarded before it ever renders.
+	// Shipping the crop ourselves under art/ skips it and keeps the mark.
+	assert.deepEqual(artCropBox(400, 580), { x: 52, y: 110, width: 296, height: 296 });
+});
+
+test("artCropBox scales to whatever resolution the mirror returned", () => {
+	const box = artCropBox(813, 1185);
+	assert.equal(box.width, Math.round(813 * 0.74));
+	assert.equal(box.height, Math.round(1185 * 0.51));
+});
+
+test("markFrameWidth scales so mixed resolutions look alike", () => {
+	// 296px is the crop of the 400x580 art the mirrors mostly return; 602px is
+	// the crop of the occasional 813x1185. A fixed width would read as a hairline
+	// on one and a slab on the other.
+	assert.equal(markFrameWidth(296), 16);
+	assert.equal(markFrameWidth(602), 33);
+});
+
+test("markFrameWidth never goes below a visible minimum", () => {
+	assert.equal(markFrameWidth(40), 6);
+});
+
+test("renderPackArt writes one marked illustration per card", async () => {
+	const dir = mkdtempSync(join(tmpdir(), "pack-art-"));
+	try {
+		const rendered = [];
+		const written = await renderPackArt(
+			[910003001, 511002997],
+			join(dir, "pics"),
+			join(dir, "art"),
+			{ renderImpl: (from, to) => rendered.push([from, to]) },
+		);
+
+		assert.equal(written, 2);
+		assert.deepEqual(
+			rendered.map(([from, to]) => [from.split("/").pop(), to.split("/").pop()]),
+			[
+				["910003001.jpg", "910003001.jpg"],
+				["511002997.jpg", "511002997.jpg"],
+			],
+		);
+		// Source and destination are different folders: pics/ keeps the untouched
+		// card, art/ carries the crop the client renders.
+		assert.ok(rendered.every(([from, to]) => from !== to));
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+
 test("downloadPics fails loudly instead of shipping a card with no art", async () => {
 	const dir = mkdtempSync(join(tmpdir(), "pack-pics-fail-"));
 	try {
@@ -292,6 +351,7 @@ test("packLayout is one archive the client mounts, nothing loose", () => {
 		archiveExtension: ".ypk",
 		cdbName: "evolution-edison.cdb",
 		picsDir: "pics",
+		artDir: "art",
 		lflistName: "edison.lflist.conf",
 		readmeName: "README.txt",
 	});
@@ -317,6 +377,7 @@ test("buildClientPack works when outDir is a relative path", async () => {
 			srcCdb: "pool.cdb",
 			lflist: "lf.conf",
 			fetchImpl,
+			renderImpl: () => {},
 			packUrl: null,
 		});
 
