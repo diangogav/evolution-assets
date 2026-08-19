@@ -71,12 +71,13 @@ test("buildPackCdb copies every pool row into a fresh cdb", () => {
 		const out = join(dir, "evolution-edison.cdb");
 		assert.equal(buildPackCdb(src, out), 2);
 
-		const rows = execFileSync("sqlite3", [out, "SELECT id,alias FROM datas ORDER BY id;"], {
+		// Alias handling has its own test — here we only care that every row travels.
+		const rows = execFileSync("sqlite3", [out, "SELECT id FROM datas ORDER BY id;"], {
 			encoding: "utf8",
 		})
 			.trim()
 			.split("\n");
-		assert.deepEqual(rows, ["511002997|77565204", "910003001|37742478"]);
+		assert.deepEqual(rows, ["511002997", "910003001"]);
 
 		const names = execFileSync("sqlite3", [out, "SELECT name FROM texts ORDER BY id;"], {
 			encoding: "utf8",
@@ -121,6 +122,32 @@ test("buildPackCdb leaves no NULL column the client can choke on", () => {
 			`SELECT count(*) FROM datas WHERE ${dataCols.map((c) => `"${c}" IS NULL`).join(" OR ")};`,
 		], { encoding: "utf8" }).trim();
 		assert.equal(dataNulls, "0", "datas must not contain NULLs");
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("buildPackCdb clears alias so the client reads OUR ban list entry", () => {
+	// The client resolves a card's ban list entry through its alias when one is
+	// set, never through the card's own code. Our pool lists the pre-errata
+	// codes and deliberately does NOT list the official printings, so an alias
+	// pointing at the official code resolves to "not listed" — which under a
+	// whitelist means forbidden. Every card in the pack shows as banned.
+	//
+	// Alias is an INHERITANCE mechanism ("same card, take its legality"), which
+	// is right for alternate artworks and exactly wrong here: the whole premise
+	// of the pool is that the pre-errata card is NOT legally the official one.
+	// The alias stays in cdb/pre-errata.*.cdb, which feeds the server, where it
+	// must keep making the card the same one for effects and limits.
+	const dir = mkdtempSync(join(tmpdir(), "pack-alias-"));
+	try {
+		const src = join(dir, "pool.cdb");
+		makeCdb(src, [{ id: 910003011, alias: 47355498, name: "Necrovalley (Pre-Errata)" }]);
+		const out = join(dir, "pack.cdb");
+		buildPackCdb(src, out);
+
+		const rows = execFileSync("sqlite3", [out, "SELECT id, alias FROM datas;"], { encoding: "utf8" }).trim();
+		assert.equal(rows, "910003011|0");
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
