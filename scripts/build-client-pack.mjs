@@ -116,6 +116,21 @@ export function buildPackCdb(srcCdb, outCdb) {
 			"INSERT OR REPLACE INTO texts SELECT * FROM src.texts;" +
 			"DETACH src;",
 	);
+	// The client reads every column with GetInt64/GetString, with ONE try/catch
+	// around the whole read loop: a single NULL throws and silently discards the
+	// entire database, so all 28 cards vanish with no error message anywhere.
+	// The pre-errata source leaves str1..str16 NULL on cards that have no
+	// counter/setname strings, which is valid SQLite and fatal here.
+	for (const table of ["datas", "texts"]) {
+		const columns = sqliteQuery(outCdb, `PRAGMA table_info(${table});`)
+			.split("\n")
+			.map((row) => row.split("|")[1])
+			.filter((name) => name && name !== "id");
+		const fallback = table === "datas" ? "0" : "''";
+		const assignments = columns.map((c) => `"${c}" = COALESCE("${c}", ${fallback})`).join(", ");
+		if (assignments) sqliteQuery(outCdb, `UPDATE ${table} SET ${assignments};`);
+	}
+
 	const cards = Number(sqliteQuery(outCdb, "SELECT count(*) FROM datas;"));
 	if (cards === 0) {
 		throw new Error(`refusing to publish a pack with no cards (source: ${srcCdb})`);

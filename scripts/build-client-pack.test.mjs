@@ -89,6 +89,43 @@ test("buildPackCdb copies every pool row into a fresh cdb", () => {
 	}
 });
 
+test("buildPackCdb leaves no NULL column the client can choke on", () => {
+	// The client reads every column with GetInt64/GetString inside one try/catch
+	// around the whole read loop, so a single NULL throws and silently discards
+	// the ENTIRE database — every card in the pack vanishes with no error.
+	const dir = mkdtempSync(join(tmpdir(), "pack-null-"));
+	try {
+		const src = join(dir, "pool.cdb");
+		makeCdb(src, [{ id: 910003001, alias: 37742478, name: "Honest" }]);
+		// makeCdb only sets id/ot/alias/name, so every other column is NULL —
+		// exactly the shape the real pre-errata source produced.
+		const out = join(dir, "pack.cdb");
+		buildPackCdb(src, out);
+
+		const cols = execFileSync("sqlite3", [out, "PRAGMA table_info(texts);"], { encoding: "utf8" })
+			.trim()
+			.split("\n")
+			.map((row) => row.split("|")[1]);
+		const nulls = execFileSync("sqlite3", [
+			out,
+			`SELECT count(*) FROM texts WHERE ${cols.map((c) => `"${c}" IS NULL`).join(" OR ")};`,
+		], { encoding: "utf8" }).trim();
+		assert.equal(nulls, "0", "texts must not contain NULLs");
+
+		const dataCols = execFileSync("sqlite3", [out, "PRAGMA table_info(datas);"], { encoding: "utf8" })
+			.trim()
+			.split("\n")
+			.map((row) => row.split("|")[1]);
+		const dataNulls = execFileSync("sqlite3", [
+			out,
+			`SELECT count(*) FROM datas WHERE ${dataCols.map((c) => `"${c}" IS NULL`).join(" OR ")};`,
+		], { encoding: "utf8" }).trim();
+		assert.equal(dataNulls, "0", "datas must not contain NULLs");
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
 test("buildPackCdb refuses to publish an empty pool", () => {
 	const dir = mkdtempSync(join(tmpdir(), "pack-empty-"));
 	try {
