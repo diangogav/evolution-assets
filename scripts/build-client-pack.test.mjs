@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
 import {
+	buildClientPack,
 	buildPackCdb,
 	downloadPics,
 	packLayout,
@@ -159,14 +160,23 @@ test("downloadPics fails loudly instead of shipping a card with no art", async (
 	}
 });
 
-test("packUrlFor points at the permanent latest-release address", () => {
-	// /releases/latest/download/ never changes across releases, so a link pasted
-	// in Discord today still installs the pool after it grows to 50 cards.
+test("packUrlFor points at the fixed-tag address, not /latest/", () => {
+	// A fixed tag is a permanent slot: assets are replaced in place with
+	// `gh release upload edison-pack <file> --clobber`, so a link pasted in
+	// Discord today still installs the pool after it grows to 50 cards.
+	// `/latest/` would resolve to whatever release in the repo is newest, so any
+	// unrelated release would break every published link.
 	assert.equal(
 		packUrlFor("en"),
-		"https://github.com/diangogav/evolution-assets/releases/latest/download/evolution-edison-en.ypk",
+		"https://github.com/diangogav/evolution-assets/releases/download/edison-pack/evolution-edison-en.ypk",
 	);
 	assert.match(packUrlFor("es"), /evolution-edison-es\.ypk$/);
+});
+
+test("packUrlFor carries no version in the tag", () => {
+	// A `-v1` tag invites a `-v2`, and cutting one would strand every link
+	// already published. The tag names a slot, never a version.
+	assert.doesNotMatch(packUrlFor("en"), /-v\d/);
 });
 
 test("packUrlFor stays free of a query string", () => {
@@ -221,4 +231,35 @@ test("packLayout is one archive the client mounts, nothing loose", () => {
 		lflistName: "edison.lflist.conf",
 		readmeName: "README.txt",
 	});
+});
+
+test("buildClientPack works when outDir is a relative path", async () => {
+	// `zip` runs with cwd set to the staging dir, so a relative output path would
+	// resolve against staging instead of the caller's cwd and fail. Regression:
+	// every earlier manual build happened to use an absolute outDir.
+	const dir = mkdtempSync(join(tmpdir(), "pack-rel-"));
+	const cwd = process.cwd();
+	try {
+		makeCdb(join(dir, "pool.cdb"), [{ id: 910003001, alias: 37742478, name: "Honest" }]);
+		writeFileSync(join(dir, "lf.conf"), "!Test\n");
+		process.chdir(dir);
+
+		const fetchImpl = async () => ({
+			ok: true,
+			status: 200,
+			arrayBuffer: async () => new TextEncoder().encode("img").buffer,
+		});
+		const result = await buildClientPack("en", "out", {
+			srcCdb: "pool.cdb",
+			lflist: "lf.conf",
+			fetchImpl,
+			packUrl: null,
+		});
+
+		assert.equal(result.cards, 1);
+		assert.ok(existsSync(result.zipPath), `expected ${result.zipPath} to exist`);
+	} finally {
+		process.chdir(cwd);
+		rmSync(dir, { recursive: true, force: true });
+	}
 });

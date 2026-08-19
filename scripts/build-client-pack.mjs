@@ -28,18 +28,24 @@
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 const DEFAULT_CDN = "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics";
 
-// The address a player pastes into MDPro3's "Download Card Pack" box. It must be
+// The address a player pastes into the client's download box. It must be
 // PERMANENT: it ends up in Discord posts, pinned messages, and the README of
-// every copy already downloaded, so a per-tag release URL would rot every old
-// link on the next publish. GitHub's `/releases/latest/download/` never changes
-// and always resolves to the newest release, and it ends clean in `.ypk` — no
-// query string, which `Path.GetFileName(url)` would otherwise bake into the
-// file name saved under Expansions/.
-const PACK_URL_BASE = "https://github.com/diangogav/evolution-assets/releases/latest/download";
+// every copy already downloaded, so any URL that can change strands all of them.
+//
+// The tag is a SLOT, not a version — publish an update by replacing the asset in
+// place (`gh release upload edison-pack <file> --clobber`), never by cutting a
+// new tag. `/releases/latest/download/` would have been the obvious choice and is
+// wrong: it resolves to whatever release in the repo is newest, so an unrelated
+// release would break every link already published.
+//
+// It also ends clean in `.ypk` with no query string, which the client requires
+// twice over: its installer validates the extension, and it names the saved file
+// after the URL.
+const PACK_URL_BASE = "https://github.com/diangogav/evolution-assets/releases/download/edison-pack";
 
 export function packUrlFor(lang) {
 	return `${PACK_URL_BASE}/evolution-edison-${lang}${packLayout().archiveExtension}`;
@@ -217,8 +223,10 @@ export async function buildClientPack(lang, outDir, options = {}) {
 
 	const zipPath = join(outDir, `evolution-edison-${lang}${layout.archiveExtension}`);
 	rmSync(zipPath, { force: true });
-	// -j would flatten pics/ into the root, so zip from inside staging instead.
-	execFileSync("zip", ["-qr", zipPath, "."], { cwd: staging });
+	// -j would flatten pics/ into the root, so zip runs from inside staging — which
+	// makes the output path resolve against staging too. Absolute, or a relative
+	// outDir silently points somewhere that does not exist.
+	execFileSync("zip", ["-qr", resolve(zipPath), "."], { cwd: staging });
 	rmSync(staging, { recursive: true, force: true });
 
 	return { lang, cards, pics, zipPath, bytes: statSync(zipPath).size, sha256: sha256File(zipPath) };
