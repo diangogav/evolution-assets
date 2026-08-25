@@ -22,6 +22,28 @@ test("skips cards with zero or negative points", () => {
 	assert.ok(conf.includes("222 3 50"));
 });
 
+test("appends the source-post link when a card carries one", () => {
+	const conf = formatGenesysLflist([
+		{
+			code: 21044178,
+			points: 100,
+			name: "Abyss Dweller",
+			sourceUrl: "https://yugiohblog.konami.com/2026/genesys/some-points-update/",
+		},
+	]);
+	assert.ok(
+		conf.includes(
+			"21044178 3 100 --Abyss Dweller | https://yugiohblog.konami.com/2026/genesys/some-points-update/",
+		),
+	);
+});
+
+test("emits the plain line when a card has no source link", () => {
+	const conf = formatGenesysLflist([{ code: 21044178, points: 100, name: "Abyss Dweller" }]);
+	assert.ok(conf.includes("21044178 3 100 --Abyss Dweller\n"));
+	assert.ok(!conf.includes("|"));
+});
+
 test("sorts entries by code for deterministic diffs", () => {
 	const conf = formatGenesysLflist([
 		{ code: 300, points: 10, name: "C" },

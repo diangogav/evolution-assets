@@ -98,6 +98,12 @@ const FRESH_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
  * (`publishedAt` within 30 days of `now`); for older or undated posts,
  * absence means the points were since removed and counts as convergence.
  *
+ * Newer posts supersede older ones per card: Konami republishes a card's cost
+ * in later updates (including removals to 0), so only the most recently
+ * published delta for each card may act — earlier ones count as converged,
+ * even when the newer post is already spent. A card whose value was applied
+ * from a post carries that post's URL as `sourceUrl`.
+ *
  * Neither input is mutated.
  *
  * @param {Array<{ name: string, points: number, code: number }>} baseCards
@@ -111,22 +117,57 @@ export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 	const conflicts = [];
 	const applied = [];
 
-	const state = stateEntries.map((entry) => {
-		const copy = { ...entry, deltas: (entry.deltas ?? []).map((delta) => ({ ...delta })) };
+	const state = stateEntries.map((entry) => ({
+		...entry,
+		deltas: (entry.deltas ?? []).map((delta) => ({ ...delta })),
+	}));
 
-		if (copy.status !== "pending") {
-			return copy;
+	// The latest published delta wins each card (missing dates rank lowest,
+	// ties break toward later array position). Built over every entry with
+	// deltas, whatever its status: a spent newer post still supersedes.
+	const winners = new Map(); // code → { rank, index, delta }
+
+	state.forEach((entry, index) => {
+		const publishedMs = entry.publishedAt == null ? NaN : Date.parse(entry.publishedAt);
+		const rank = Number.isNaN(publishedMs) ? -Infinity : publishedMs;
+
+		for (const delta of entry.deltas) {
+			if (delta.code == null) {
+				continue;
+			}
+
+			const current = winners.get(delta.code);
+
+			if (
+				current === undefined ||
+				rank > current.rank ||
+				(rank === current.rank && index > current.index)
+			) {
+				winners.set(delta.code, { rank, index, delta });
+			}
+		}
+	});
+
+	for (const entry of state) {
+		if (entry.status !== "pending") {
+			continue;
 		}
 
-		const publishedMs = copy.publishedAt == null ? NaN : Date.parse(copy.publishedAt);
+		const publishedMs = entry.publishedAt == null ? NaN : Date.parse(entry.publishedAt);
 		const fresh =
 			Number.isFinite(now) && !Number.isNaN(publishedMs) && now - publishedMs <= FRESH_WINDOW_MS;
 
 		let allConverged = true;
 
-		for (const delta of copy.deltas) {
+		for (const delta of entry.deltas) {
 			// Unresolved names can never be applied nor converge; they are inert.
 			if (delta.code == null) {
+				continue;
+			}
+
+			// A newer post republished this card's cost; this older delta is
+			// superseded and counts as converged.
+			if (winners.get(delta.code).delta !== delta) {
 				continue;
 			}
 
@@ -145,10 +186,15 @@ export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 					continue;
 				}
 
-				const card = { name: delta.name, points: delta.newPoints, code: delta.code };
+				const card = {
+					name: delta.name,
+					points: delta.newPoints,
+					code: delta.code,
+					sourceUrl: entry.url,
+				};
 				cards.push(card);
 				byCode.set(delta.code, card);
-				applied.push({ url: copy.url, ...delta });
+				applied.push({ url: entry.url, ...delta });
 				allConverged = false;
 				continue;
 			}
@@ -159,13 +205,14 @@ export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 
 			if (delta.oldPoints != null && base.points === delta.oldPoints) {
 				base.points = delta.newPoints;
-				applied.push({ url: copy.url, ...delta });
+				base.sourceUrl = entry.url;
+				applied.push({ url: entry.url, ...delta });
 				allConverged = false;
 				continue;
 			}
 
 			conflicts.push({
-				url: copy.url,
+				url: entry.url,
 				name: delta.name,
 				code: delta.code,
 				basePoints: base.points,
@@ -174,8 +221,8 @@ export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 			});
 		}
 
-		return { ...copy, status: allConverged ? "spent" : "pending" };
-	});
+		entry.status = allConverged ? "spent" : "pending";
+	}
 
 	return { cards, state, conflicts, applied };
 }

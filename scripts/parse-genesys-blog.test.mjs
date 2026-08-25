@@ -119,7 +119,12 @@ test("adds cards missing from the base list while the post is fresh", () => {
 		},
 	]);
 	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
-	assert.deepEqual(cards.find((c) => c.code === 99), { name: "New", points: 7, code: 99 });
+	assert.deepEqual(cards.find((c) => c.code === 99), {
+		name: "New",
+		points: 7,
+		code: 99,
+		sourceUrl: "u",
+	});
 	assert.equal(state[0].status, "pending");
 });
 
@@ -217,6 +222,141 @@ test("ignores entries that are not pending", () => {
 	const { cards, state } = applyBlogDeltas(base, entries);
 	assert.equal(cards.find((c) => c.code === 1).points, 5);
 	assert.deepEqual(state.map((e) => e.status), ["spent", "no-deltas"]);
+});
+
+test("stamps the applying post's URL on updates, never on converged or conflict cards", () => {
+	const base = freeze([
+		{ name: "A", points: 5, code: 1 },
+		{ name: "B", points: 3, code: 2 },
+		{ name: "C", points: 9, code: 3 },
+	]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			deltas: [
+				{ name: "A", code: 1, oldPoints: 5, newPoints: 8 },
+				{ name: "B", code: 2, oldPoints: null, newPoints: 3 },
+				{ name: "C", code: 3, oldPoints: 4, newPoints: 6 },
+			],
+		},
+	]);
+	const { cards } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).sourceUrl, "u");
+	assert.equal(cards.find((c) => c.code === 2).sourceUrl, undefined);
+	assert.equal(cards.find((c) => c.code === 3).sourceUrl, undefined);
+});
+
+// -- supersession between posts ------------------------------------------------
+
+test("a newer removal supersedes an older fresh addition of the same card", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "old",
+			status: "pending",
+			publishedAt: "2026-08-01",
+			deltas: [{ name: "X", code: 99, oldPoints: null, newPoints: 10 }],
+		},
+		{
+			url: "new",
+			status: "pending",
+			publishedAt: "2026-08-20",
+			deltas: [{ name: "X", code: 99, oldPoints: 10, newPoints: 0 }],
+		},
+	]);
+	const { cards, state, conflicts } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99), undefined);
+	assert.deepEqual(state.map((e) => e.status), ["spent", "spent"]);
+	assert.deepEqual(conflicts, []);
+});
+
+test("a spent newer post still supersedes a pending older one", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "old",
+			status: "pending",
+			publishedAt: "2026-08-01",
+			deltas: [{ name: "X", code: 99, oldPoints: null, newPoints: 10 }],
+		},
+		{
+			url: "new",
+			status: "spent",
+			publishedAt: "2026-08-20",
+			deltas: [{ name: "X", code: 99, oldPoints: 10, newPoints: 0 }],
+		},
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99), undefined);
+	assert.deepEqual(state.map((e) => e.status), ["spent", "spent"]);
+});
+
+test("an undated entry loses to a dated one", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "undated",
+			status: "pending",
+			deltas: [{ name: "X", code: 99, oldPoints: null, newPoints: 7 }],
+		},
+		{
+			url: "dated",
+			status: "pending",
+			publishedAt: "2026-08-24",
+			deltas: [{ name: "X", code: 99, oldPoints: null, newPoints: 9 }],
+		},
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99).points, 9);
+	assert.equal(cards.find((c) => c.code === 99).sourceUrl, "dated");
+	assert.deepEqual(state.map((e) => e.status), ["spent", "pending"]);
+});
+
+test("a publication-date tie is broken by later array position", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "first",
+			status: "pending",
+			publishedAt: "2026-08-24",
+			deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 8 }],
+		},
+		{
+			url: "second",
+			status: "pending",
+			publishedAt: "2026-08-24",
+			deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 9 }],
+		},
+	]);
+	const { cards, conflicts } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 1).points, 9);
+	assert.deepEqual(conflicts, []);
+});
+
+test("supersession is per-card: unrelated cards in the older post still apply", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "old",
+			status: "pending",
+			publishedAt: "2026-08-01",
+			deltas: [
+				{ name: "X", code: 99, oldPoints: null, newPoints: 10 },
+				{ name: "A", code: 1, oldPoints: 5, newPoints: 6 },
+			],
+		},
+		{
+			url: "new",
+			status: "pending",
+			publishedAt: "2026-08-20",
+			deltas: [{ name: "X", code: 99, oldPoints: 10, newPoints: 0 }],
+		},
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99), undefined);
+	assert.equal(cards.find((c) => c.code === 1).points, 6);
+	assert.deepEqual(state.map((e) => e.status), ["pending", "spent"]);
 });
 
 test("does not mutate its inputs", () => {
