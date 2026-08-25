@@ -1,0 +1,207 @@
+import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
+import { test } from "node:test";
+
+import {
+	applyBlogDeltas,
+	extractGenesysPostUrls,
+	parseGenesysBlogPost,
+} from "./parse-genesys-blog.mjs";
+
+// -- extractGenesysPostUrls ---------------------------------------------------
+
+test("extracts genesys post URLs in document order, deduplicated", () => {
+	const html = `
+		<a href="https://yugiohblog.konami.com/2026/genesys/magnificent-monsters-points-update/">A</a>
+		<a href="https://yugiohblog.konami.com/2026/genesys/genesys-june-points-update/">B</a>
+		<a href="https://yugiohblog.konami.com/2026/genesys/magnificent-monsters-points-update/">A again</a>
+	`;
+	assert.deepEqual(extractGenesysPostUrls(html), [
+		"https://yugiohblog.konami.com/2026/genesys/magnificent-monsters-points-update/",
+		"https://yugiohblog.konami.com/2026/genesys/genesys-june-points-update/",
+	]);
+});
+
+test("ignores non-genesys and category URLs", () => {
+	const html = `
+		<a href="https://yugiohblog.konami.com/2026/event-information/latin-america-genesys-remote-duel-ycs-2026-main-event-information/">event</a>
+		<a href="https://yugiohblog.konami.com/category/genesys/">category</a>
+		<a href="https://yugiohblog.konami.com/tag/genesys/">tag</a>
+		<a href="https://yugiohblog.konami.com/2026/ycs/2026-08-quebec/genesys-format-1st-place-after-swiss-duelist/">ycs</a>
+	`;
+	assert.deepEqual(extractGenesysPostUrls(html), []);
+});
+
+// -- parseGenesysBlogPost -----------------------------------------------------
+
+test("parses new-card lines (`Name -> N`) with null oldPoints", () => {
+	const html = `<p class="wp-block-paragraph">Kuriboh &#8211; Multiply! -> 10<br>Dark Magical Curtain -> 30</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Kuriboh – Multiply!", oldPoints: null, newPoints: 10 },
+		{ name: "Dark Magical Curtain", oldPoints: null, newPoints: 30 },
+	]);
+});
+
+test("keeps trailing digits attached to the name (LV10 case)", () => {
+	const html = `<p>Winged Kuriboh Sabatiel LV10 -> 7</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Winged Kuriboh Sabatiel LV10", oldPoints: null, newPoints: 7 },
+	]);
+});
+
+test("parses adjustment lines (`Name OLD->NEW`) with numeric oldPoints", () => {
+	const html = `<p>Number 86: Heroic Champion &#8211; Rhongomyniad 68-&gt;100</p><p>D.D. Crow 1-&gt;2<br>Whisker Blitzclique 0-&gt;6</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Number 86: Heroic Champion – Rhongomyniad", oldPoints: 68, newPoints: 100 },
+		{ name: "D.D. Crow", oldPoints: 1, newPoints: 2 },
+		{ name: "Whisker Blitzclique", oldPoints: 0, newPoints: 6 },
+	]);
+});
+
+test("ignores prose lines, even when mixed into the same paragraph", () => {
+	const html = `<p>These point changes will take effect on Monday.</p>
+		<p>Elfnote Lucina 0-&gt;1<br><br>The Clown Crew's antics have steadily increased.<br><br>Clown Crew Flair 0-&gt;5</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Elfnote Lucina", oldPoints: 0, newPoints: 1 },
+		{ name: "Clown Crew Flair", oldPoints: 0, newPoints: 5 },
+	]);
+});
+
+test("returns an empty list for posts without point lines", () => {
+	const html = `<p>Standings after day 1 of the Genesys Championship.</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), []);
+});
+
+// -- applyBlogDeltas ----------------------------------------------------------
+
+const freeze = (value) => {
+	if (value !== null && typeof value === "object") {
+		Object.values(value).forEach(freeze);
+		Object.freeze(value);
+	}
+	return value;
+};
+
+test("leaves converged deltas alone and marks the post spent", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: null, newPoints: 5 }] },
+	]);
+	const { cards, state, conflicts } = applyBlogDeltas(base, entries);
+	assert.deepEqual(cards, [{ name: "A", points: 5, code: 1 }]);
+	assert.equal(state[0].status, "spent");
+	assert.deepEqual(conflicts, []);
+});
+
+test("adds cards missing from the base list", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "New", code: 99, oldPoints: null, newPoints: 7 }] },
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries);
+	assert.deepEqual(cards.find((c) => c.code === 99), { name: "New", points: 7, code: 99 });
+	assert.equal(state[0].status, "pending");
+});
+
+test("applies old->new when the base still holds the old value", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 8 }] },
+	]);
+	const { cards, state, conflicts } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).points, 8);
+	assert.equal(state[0].status, "pending");
+	assert.deepEqual(conflicts, []);
+});
+
+test("keeps the base value and records a conflict when the table is newer", () => {
+	const base = freeze([{ name: "A", points: 7, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 8 }] },
+	]);
+	const { cards, state, conflicts } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).points, 7);
+	assert.equal(conflicts.length, 1);
+	assert.equal(conflicts[0].code, 1);
+	assert.equal(state[0].status, "spent");
+});
+
+test("treats a new-card delta as a conflict when the base holds a different value", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: null, newPoints: 9 }] },
+	]);
+	const { cards, conflicts } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).points, 5);
+	assert.equal(conflicts.length, 1);
+});
+
+test("skips unresolved (null code) deltas without blocking spent transition", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			deltas: [
+				{ name: "A", code: 1, oldPoints: null, newPoints: 5 },
+				{ name: "Unknown", code: null, oldPoints: null, newPoints: 3 },
+			],
+		},
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries);
+	assert.deepEqual(cards, [{ name: "A", points: 5, code: 1 }]);
+	assert.equal(state[0].status, "spent");
+});
+
+test("applies deltas down to zero points", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 0 }] },
+	]);
+	const { cards } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).points, 0);
+});
+
+test("ignores entries that are not pending", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{ url: "spent", status: "spent", deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 9 }] },
+		{ url: "none", status: "no-deltas", deltas: [] },
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries);
+	assert.equal(cards.find((c) => c.code === 1).points, 5);
+	assert.deepEqual(state.map((e) => e.status), ["spent", "no-deltas"]);
+});
+
+test("does not mutate its inputs", () => {
+	const base = [{ name: "A", points: 5, code: 1 }];
+	const entries = [
+		{ url: "u", status: "pending", deltas: [{ name: "A", code: 1, oldPoints: 5, newPoints: 8 }] },
+	];
+	applyBlogDeltas(freeze(base), freeze(entries));
+	assert.equal(base[0].points, 5);
+	assert.equal(entries[0].status, "pending");
+});
+
+// -- validation against saved real pages (skipped when absent) ----------------
+
+const SCRATCHPAD =
+	"/tmp/claude-1000/-home-diango-code-evolution-evolution-assets/4b1de6c8-43f0-45df-9067-315fb0557a17/scratchpad";
+const REAL_POST = `${SCRATCHPAD}/konami-post.html`;
+const REAL_CATEGORY = `${SCRATCHPAD}/genesys-cat.html`;
+
+test("parses the real Magnificent Monsters post", { skip: !existsSync(REAL_POST) }, () => {
+	const deltas = parseGenesysBlogPost(readFileSync(REAL_POST, "utf-8"));
+	assert.equal(deltas.length, 10);
+	assert.deepEqual(
+		deltas.find((d) => d.name === "Starjunk Synchron"),
+		{ name: "Starjunk Synchron", oldPoints: null, newPoints: 1 },
+	);
+	assert.ok(deltas.every((d) => d.oldPoints === null));
+});
+
+test("extracts post URLs from the real category page", { skip: !existsSync(REAL_CATEGORY) }, () => {
+	const urls = extractGenesysPostUrls(readFileSync(REAL_CATEGORY, "utf-8"));
+	assert.ok(urls.length >= 10, `expected >= 10 urls, got ${urls.length}`);
+	assert.ok(urls.every((u) => /^https:\/\/yugiohblog\.konami\.com\/\d{4}\/genesys\/[^/]+\/$/.test(u)));
+});

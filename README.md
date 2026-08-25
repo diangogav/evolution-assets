@@ -34,6 +34,17 @@ npm run genesys   # scrapes the official point list and rewrites the file
 npm test          # unit tests for the formatter
 ```
 
-The `Update Genesys ban list` GitHub Action runs the generator daily and commits
-the file when the point costs change, so the list stays in sync with Konami
-without manual work.
+The `Update Genesys ban list` GitHub Action runs the generator every 6 hours and
+commits the file when the point costs change, so the list stays in sync with
+Konami without manual work.
+
+### Blog overlay
+
+Konami announces point changes on [the official blog](https://yugiohblog.konami.com/category/genesys/)
+days before the table page catches up. The generator scrapes new blog posts and
+applies their point deltas on top of the table-scraped list, tracking them in
+`lflist/genesys-blog-state.json`. The table stays the source of truth: a delta
+only applies while the table still holds the pre-change value (or lacks the
+card), conflicts resolve in the table's favor, and a post whose deltas have all
+converged with the table is marked spent. Any blog failure falls back to the
+table-only list.

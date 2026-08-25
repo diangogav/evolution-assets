@@ -2,8 +2,9 @@ name: Update Genesys ban list
 
 on:
   schedule:
-    # Daily at 06:00 UTC — Konami updates Genesys point costs periodically.
-    - cron: "0 6 * * *"
+    # Every 6 hours — blog point updates should reach players fast, and the run
+    # only commits when something actually changed.
+    - cron: "0 */6 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -40,11 +41,11 @@ jobs:
 
       - name: Commit if the list changed
         run: |
-          if [ -n "$(git status --porcelain lflist/genesys.lflist.conf)" ]; then
+          if [ -n "$(git status --porcelain lflist/genesys.lflist.conf lflist/genesys-blog-state.json)" ]; then
             node scripts/update-genesys-manifest.mjs
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add lflist/genesys.lflist.conf version-manifest.json
+            git add lflist/genesys.lflist.conf lflist/genesys-blog-state.json version-manifest.json
             git commit -m "chore(genesys): refresh point list and version manifest"
             # The mirror workflow may have pushed the manifest meanwhile.
             git pull --rebase --autostash origin main || true
