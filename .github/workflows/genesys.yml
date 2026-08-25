@@ -38,6 +38,11 @@ jobs:
 
       - name: Generate Genesys ban list
         run: npm run genesys
+        env:
+          # yugiohblog.konami.com serves its leaf cert without the intermediate;
+          # extend Node's trust store with the public GeoTrust intermediate so
+          # the blog overlay can verify TLS. See scripts/certs/ for provenance.
+          NODE_EXTRA_CA_CERTS: ${{ github.workspace }}/scripts/certs/geotrust-tls-rsa-ca-g1.pem
 
       - name: Commit if the list changed
         run: |
