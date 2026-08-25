@@ -5,6 +5,7 @@ import { test } from "node:test";
 import {
 	applyBlogDeltas,
 	extractGenesysPostUrls,
+	extractPostDate,
 	parseGenesysBlogPost,
 } from "./parse-genesys-blog.mjs";
 
@@ -72,7 +73,21 @@ test("returns an empty list for posts without point lines", () => {
 	assert.deepEqual(parseGenesysBlogPost(html), []);
 });
 
+// -- extractPostDate ----------------------------------------------------------
+
+test("extracts the publication date from the entry-date time tag", () => {
+	const html = `<time itemprop="August 24, 2026" class="entry-date"></time>`;
+	assert.equal(extractPostDate(html), "2026-08-24");
+});
+
+test("returns null when the date tag is missing or unparseable", () => {
+	assert.equal(extractPostDate("<p>no date</p>"), null);
+	assert.equal(extractPostDate(`<time itemprop="not a date" class="entry-date"></time>`), null);
+});
+
 // -- applyBlogDeltas ----------------------------------------------------------
+
+const NOW = Date.parse("2026-08-25T12:00:00Z");
 
 const freeze = (value) => {
 	if (value !== null && typeof value === "object") {
@@ -93,14 +108,45 @@ test("leaves converged deltas alone and marks the post spent", () => {
 	assert.deepEqual(conflicts, []);
 });
 
-test("adds cards missing from the base list", () => {
+test("adds cards missing from the base list while the post is fresh", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			publishedAt: "2026-08-24",
+			deltas: [{ name: "New", code: 99, oldPoints: null, newPoints: 7 }],
+		},
+	]);
+	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.deepEqual(cards.find((c) => c.code === 99), { name: "New", points: 7, code: 99 });
+	assert.equal(state[0].status, "pending");
+});
+
+test("treats an absent card from a stale post as converged (points were removed)", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			publishedAt: "2026-06-01",
+			deltas: [{ name: "Removed", code: 99, oldPoints: null, newPoints: 10 }],
+		},
+	]);
+	const { cards, state, conflicts } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99), undefined);
+	assert.equal(state[0].status, "spent");
+	assert.deepEqual(conflicts, []);
+});
+
+test("treats an absent card as converged when the post date is unknown", () => {
 	const base = freeze([{ name: "A", points: 5, code: 1 }]);
 	const entries = freeze([
 		{ url: "u", status: "pending", deltas: [{ name: "New", code: 99, oldPoints: null, newPoints: 7 }] },
 	]);
-	const { cards, state } = applyBlogDeltas(base, entries);
-	assert.deepEqual(cards.find((c) => c.code === 99), { name: "New", points: 7, code: 99 });
-	assert.equal(state[0].status, "pending");
+	const { cards, state } = applyBlogDeltas(base, entries, { now: NOW });
+	assert.equal(cards.find((c) => c.code === 99), undefined);
+	assert.equal(state[0].status, "spent");
 });
 
 test("applies old->new when the base still holds the old value", () => {
@@ -198,6 +244,10 @@ test("parses the real Magnificent Monsters post", { skip: !existsSync(REAL_POST)
 		{ name: "Starjunk Synchron", oldPoints: null, newPoints: 1 },
 	);
 	assert.ok(deltas.every((d) => d.oldPoints === null));
+});
+
+test("extracts the date from the real Magnificent Monsters post", { skip: !existsSync(REAL_POST) }, () => {
+	assert.equal(extractPostDate(readFileSync(REAL_POST, "utf-8")), "2026-08-24");
 });
 
 test("extracts post URLs from the real category page", { skip: !existsSync(REAL_CATEGORY) }, () => {

@@ -8,13 +8,19 @@
 
 /**
  * Normalizes a scraped card name: trims, collapses whitespace, and replaces
- * en/em dashes with the plain hyphen the card database uses.
+ * en/em dashes and curly quotes with the plain ASCII forms the card database
+ * uses.
  *
  * @param {string} name
  * @returns {string}
  */
 export function normalizeCardName(name) {
-	return name.replace(/[–—]/g, "-").replace(/\s+/g, " ").trim();
+	return name
+		.replace(/[’‘]/g, "'")
+		.replace(/[“”]/g, '"')
+		.replace(/[–—]/g, "-")
+		.replace(/\s+/g, " ")
+		.trim();
 }
 
 // Keys are normalized names as the Genesys table/blog renders them; values are
@@ -32,6 +38,22 @@ const CARD_NAME_OVERRIDES = new Map([
 	["Stellarnova Binding", 69678646],
 	// The Three Brave Swordsouls
 	["The Three Champions of Swordsoul", 74405783],
+	// Nibiru, the Primal Being (the blog drops the comma)
+	["Nibiru the Primal Being", 27204311],
+	// Union Hangar (blog typo)
+	["Union Hanger", 66399653],
+	// Sky Striker Mobilize - Engage! (the blog drops the exclamation mark)
+	["Sky Striker Mobilize - Engage", 63166095],
+	// Blitzclique - Breakaway (the blog drops the dash)
+	["Blitzclique Breakaway", 64049762],
+	// Clown Crew Matinee Operatics (blog typo)
+	["Clown Crew Matinee Operactics", 57847269],
+	// Magicians' Souls (apostrophe placement)
+	["Magician's Souls", 97631303],
+	// Artmage Vandalism -Assault- (the blog spaces the inner dashes)
+	["Artmage Vandalism - Assault -", 1122030],
+	// Artmage Varnish -Alteration- (the blog spaces the inner dashes)
+	["Artmage Varnish - Alteration -", 74011784],
 ]);
 
 /**

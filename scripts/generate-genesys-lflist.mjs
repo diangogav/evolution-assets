@@ -8,6 +8,7 @@ import { formatGenesysLflist } from "./format-genesys-lflist.mjs";
 import {
 	applyBlogDeltas,
 	extractGenesysPostUrls,
+	extractPostDate,
 	parseGenesysBlogPost,
 } from "./parse-genesys-blog.mjs";
 import { normalizeCardName, overrideCardCode } from "./resolve-card-name.mjs";
@@ -66,7 +67,8 @@ async function readBlogState() {
 }
 
 // Discovers new posts on the blog's genesys category page and parses their
-// point deltas into the state. Already-seen URLs are never refetched.
+// point deltas into the state. Already-seen URLs are never refetched, except
+// to backfill a missing publication date on a still-pending entry.
 async function syncBlogState(state) {
 	const html = await fetch(BLOG_CATEGORY_URL).then((response) => response.text());
 	const known = new Set(state.posts.map((post) => post.url));
@@ -78,10 +80,11 @@ async function syncBlogState(state) {
 
 		console.log(`New blog post: ${url}`);
 		const postHtml = await fetch(url).then((response) => response.text());
+		const publishedAt = extractPostDate(postHtml);
 		const parsed = parseGenesysBlogPost(postHtml);
 
 		if (parsed.length === 0) {
-			state.posts.push({ url, status: "no-deltas", deltas: [] });
+			state.posts.push({ url, status: "no-deltas", publishedAt, deltas: [] });
 			continue;
 		}
 
@@ -97,10 +100,45 @@ async function syncBlogState(state) {
 			deltas.push({ ...delta, code });
 		}
 
-		state.posts.push({ url, status: "pending", deltas });
+		state.posts.push({ url, status: "pending", publishedAt, deltas });
 	}
 
+	await healPendingPosts(state);
+
 	return state;
+}
+
+// Self-heals pending entries persisted by earlier runs: backfills publication
+// dates recorded before the freshness rule existed, and retries card names
+// that failed to resolve (typos fixed by new overrides, or cards the database
+// has added since).
+async function healPendingPosts(state) {
+	for (const post of state.posts) {
+		if (post.status !== "pending") {
+			continue;
+		}
+
+		// A key that is absent was never extracted; a stored null means the
+		// page was already checked and carries no usable date.
+		if (!("publishedAt" in post)) {
+			const postHtml = await fetch(post.url).then((response) => response.text());
+			post.publishedAt = extractPostDate(postHtml);
+			console.log(`Backfilled publication date for ${post.url}: ${post.publishedAt}`);
+		}
+
+		for (const delta of post.deltas) {
+			if (delta.code !== null) {
+				continue;
+			}
+
+			const code = await resolveCardCode(delta.name);
+
+			if (code !== null) {
+				delta.code = code;
+				console.log(`Recovered card id for ${delta.name}: ${code}`);
+			}
+		}
+	}
 }
 
 // Overlays pending blog deltas on the table-scraped list. The table stays the
@@ -109,7 +147,9 @@ async function syncBlogState(state) {
 async function applyBlogOverlay(cards) {
 	try {
 		const state = await syncBlogState(await readBlogState());
-		const { cards: merged, state: posts, conflicts, applied } = applyBlogDeltas(cards, state.posts);
+		const { cards: merged, state: posts, conflicts, applied } = applyBlogDeltas(cards, state.posts, {
+			now: Date.now(),
+		});
 
 		for (const delta of applied) {
 			console.log(`Blog delta applied: ${delta.name} -> ${delta.newPoints} (${delta.url})`);

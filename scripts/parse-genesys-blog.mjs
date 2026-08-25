@@ -14,6 +14,31 @@ export function extractGenesysPostUrls(html) {
 	return [...new Set(html.match(POST_URL_PATTERN) ?? [])];
 }
 
+/**
+ * Extracts a post's publication date. The blog's theme stores the human date
+ * in the `itemprop` attribute of the entry-date tag
+ * (`<time itemprop="August 24, 2026" class="entry-date">`).
+ *
+ * @param {string} html
+ * @returns {string | null} `YYYY-MM-DD`, or null when missing/unparseable
+ */
+export function extractPostDate(html) {
+	const $ = cheerio.load(html);
+	const raw = $("time.entry-date").attr("itemprop");
+	const parsed = raw === undefined ? NaN : Date.parse(raw);
+
+	if (Number.isNaN(parsed)) {
+		return null;
+	}
+
+	// Format from local date components: the source carries a plain calendar
+	// date, so a UTC round-trip could shift it by a day.
+	const date = new Date(parsed);
+	const pad = (part) => String(part).padStart(2, "0");
+
+	return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
 // Adjustment lines carry the previous cost: `Name OLD->NEW` (no space between
 // the old cost and the arrow, e.g. `D.D. Crow 1->2`). The old cost must be a
 // standalone number, so trailing digits inside a name (`... LV10 -> 7`) never
@@ -58,6 +83,10 @@ export function parseGenesysBlogPost(html) {
 	return deltas;
 }
 
+// How long a post may add table-absent cards. Past this window, absence means
+// Konami removed the points, not that the table is lagging.
+const FRESH_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
+
 /**
  * Applies pending blog deltas on top of the table-scraped base list. The table
  * stays the source of truth: a delta only applies while the table has not
@@ -65,13 +94,18 @@ export function parseGenesysBlogPost(html) {
  * expect) always resolve in the table's favor. A post whose deltas have all
  * converged is marked `spent` in the returned state.
  *
+ * Cards absent from the table are only added while the post is fresh
+ * (`publishedAt` within 30 days of `now`); for older or undated posts,
+ * absence means the points were since removed and counts as convergence.
+ *
  * Neither input is mutated.
  *
  * @param {Array<{ name: string, points: number, code: number }>} baseCards
- * @param {Array<{ url: string, status: string, deltas: Array<{ name: string, code: number | null, oldPoints: number | null, newPoints: number }> }>} stateEntries
+ * @param {Array<{ url: string, status: string, publishedAt?: string | null, deltas: Array<{ name: string, code: number | null, oldPoints: number | null, newPoints: number }> }>} stateEntries
+ * @param {{ now?: number }} [options] epoch ms used for the freshness rule
  * @returns {{ cards: typeof baseCards, state: typeof stateEntries, conflicts: object[], applied: object[] }}
  */
-export function applyBlogDeltas(baseCards, stateEntries) {
+export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 	const cards = baseCards.map((card) => ({ ...card }));
 	const byCode = new Map(cards.map((card) => [card.code, card]));
 	const conflicts = [];
@@ -83,6 +117,10 @@ export function applyBlogDeltas(baseCards, stateEntries) {
 		if (copy.status !== "pending") {
 			return copy;
 		}
+
+		const publishedMs = copy.publishedAt == null ? NaN : Date.parse(copy.publishedAt);
+		const fresh =
+			Number.isFinite(now) && !Number.isNaN(publishedMs) && now - publishedMs <= FRESH_WINDOW_MS;
 
 		let allConverged = true;
 
@@ -98,6 +136,12 @@ export function applyBlogDeltas(baseCards, stateEntries) {
 				// Zero-cost cards are unlisted by design, so absence already is
 				// convergence for a zero-point delta.
 				if (delta.newPoints === 0) {
+					continue;
+				}
+
+				// A stale (or undated) post can no longer explain absence as table
+				// lag: the points were removed since. Converged.
+				if (!fresh) {
 					continue;
 				}
 

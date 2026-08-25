@@ -46,5 +46,7 @@ applies their point deltas on top of the table-scraped list, tracking them in
 `lflist/genesys-blog-state.json`. The table stays the source of truth: a delta
 only applies while the table still holds the pre-change value (or lacks the
 card), conflicts resolve in the table's favor, and a post whose deltas have all
-converged with the table is marked spent. Any blog failure falls back to the
+converged with the table is marked spent. A post may only add cards the table
+lacks within 30 days of publication — past that, absence means the points were
+removed, not that the table is lagging. Any blog failure falls back to the
 table-only list.
