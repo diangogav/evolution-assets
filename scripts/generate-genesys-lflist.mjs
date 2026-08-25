@@ -10,6 +10,7 @@ import {
 	extractGenesysPostUrls,
 	parseGenesysBlogPost,
 } from "./parse-genesys-blog.mjs";
+import { normalizeCardName, overrideCardCode } from "./resolve-card-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "lflist", "genesys.lflist.conf");
@@ -33,16 +34,23 @@ async function fetchCardId(name) {
 	}
 }
 
-// Blog posts typeset card names with an en dash; the card database uses a
-// plain hyphen. Retry with the hyphen form before giving up.
+// Konami's sources typeset some names differently from the card database
+// (en dashes, preliminary translations, mangled characters). Check the
+// override table first, then the database, then the hyphen-normalized form.
 async function resolveCardCode(name) {
+	const override = overrideCardCode(name);
+
+	if (override !== null) {
+		return override;
+	}
+
 	const code = await fetchCardId(name);
 
 	if (code !== null) {
 		return code;
 	}
 
-	const normalized = name.replaceAll("–", "-");
+	const normalized = normalizeCardName(name);
 
 	return normalized === name ? null : fetchCardId(normalized);
 }
@@ -145,7 +153,7 @@ async function generate() {
 			continue;
 		}
 
-		const code = await fetchCardId(name);
+		const code = await resolveCardCode(name);
 
 		if (code === null) {
 			console.error(`Card not found in API: ${name}`);
