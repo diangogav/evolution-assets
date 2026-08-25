@@ -1,3 +1,1968 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/magnificent-monsters-points-update/",
+      "status": "pending",
+      "deltas": [
+        {
+          "name": "Kuriboh – Multiply!",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 14965712
+        },
+        {
+          "name": "Dark Magical Curtain",
+          "oldPoints": null,
+          "newPoints": 30,
+          "code": 41350417
+        },
+        {
+          "name": "Winged Kuriboh Sabatiel LV10",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 40237839
+        },
+        {
+          "name": "Stardust Dragon – Victim Sanctuary",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 76636978
+        },
+        {
+          "name": "Starjunk Synchron",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": 13021682
+        },
+        {
+          "name": "Synchro Emergency",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 49415281
+        },
+        {
+          "name": "Number 39: Utopia, Emissary of Light",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 76504386
+        },
+        {
+          "name": "Gagaga Magician – Gagaga Magic",
+          "oldPoints": null,
+          "newPoints": 6,
+          "code": 12908094
+        },
+        {
+          "name": "Rainbow Bridge Bifrost",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 32236916
+        },
+        {
+          "name": "Malefic Paradigm Shift",
+          "oldPoints": null,
+          "newPoints": 8,
+          "code": 5125629
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/post-genesys-championships-august-points-update/",
+      "status": "spent",
+      "deltas": [
+        {
+          "name": "Number 86: Heroic Champion – Rhongomyniad",
+          "oldPoints": 68,
+          "newPoints": 100,
+          "code": 63504681
+        },
+        {
+          "name": "Whisker Blitzclique",
+          "oldPoints": 0,
+          "newPoints": 6,
+          "code": 85523502
+        },
+        {
+          "name": "Blitzclique Breakaway",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": null
+        },
+        {
+          "name": "Thunderclap Monk",
+          "oldPoints": 0,
+          "newPoints": 9,
+          "code": 66722103
+        },
+        {
+          "name": "Lightning Rod Lord",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 40672993
+        },
+        {
+          "name": "Fairy Tail – Snow",
+          "oldPoints": 85,
+          "newPoints": 10,
+          "code": 55623480
+        },
+        {
+          "name": "Fairy Tail – Matchgiru",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 19144622
+        },
+        {
+          "name": "Fairy Tail – Wiccat",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 27632520
+        },
+        {
+          "name": "Fairy Tail Ball",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 56725612
+        },
+        {
+          "name": "Therion “King” Regulus",
+          "oldPoints": 20,
+          "newPoints": 33,
+          "code": null
+        },
+        {
+          "name": "Tellarknight Lyran",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 79210531
+        },
+        {
+          "name": "Darktellarknight Batlamyus",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 64414267
+        },
+        {
+          "name": "Exstellarknight Constellar Ptolemy Ω7",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 6195332
+        },
+        {
+          "name": "Stellarnova Binding",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 69678646
+        },
+        {
+          "name": "Constellar Tellarknights",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 10125011
+        },
+        {
+          "name": "Chronomaly Vimana",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 2609443
+        },
+        {
+          "name": "Melffy Godmommy",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 5833929
+        },
+        {
+          "name": "Melffy Footsteps",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 25687946
+        },
+        {
+          "name": "Melffy Staring Contest",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 76981308
+        },
+        {
+          "name": "Calamity of the Sacred Beasts – Hamon, Lord of Striking Thunder",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 50251045
+        },
+        {
+          "name": "Infinity of the Sacred Beasts – Raviel, Lord of Phantasms",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 96345184
+        },
+        {
+          "name": "Martyr of the Sacred Beasts",
+          "oldPoints": 2,
+          "newPoints": 3,
+          "code": 59138498
+        },
+        {
+          "name": "Sacred Beasts Thunderclap",
+          "oldPoints": 2,
+          "newPoints": 3,
+          "code": 1259915
+        },
+        {
+          "name": "Nerva the Power Patron of Creation",
+          "oldPoints": 5,
+          "newPoints": 6,
+          "code": 53589300
+        },
+        {
+          "name": "Superdreadnought Rail Cannon Gustav Max",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 56910167
+        },
+        {
+          "name": "Crystron Sulfefnir",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 3422200
+        },
+        {
+          "name": "Crystron Tristaros",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 99471856
+        },
+        {
+          "name": "Elfnote Tinia",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 59581480
+        },
+        {
+          "name": "Elfnote Lucina",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 13597785
+        },
+        {
+          "name": "Clown Crew Flair",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 42759961
+        },
+        {
+          "name": "D.D. Crow",
+          "oldPoints": 1,
+          "newPoints": 2,
+          "code": 24508238
+        },
+        {
+          "name": "Seventh Tachyon",
+          "oldPoints": 0,
+          "newPoints": 11,
+          "code": 7477101
+        },
+        {
+          "name": "A Hero Lives",
+          "oldPoints": 0,
+          "newPoints": 8,
+          "code": 8949584
+        },
+        {
+          "name": "Royal Archfiend",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 58769832
+        },
+        {
+          "name": "Archfiend’s Usurpation",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Bonfire",
+          "oldPoints": 33,
+          "newPoints": 15,
+          "code": 85106525
+        },
+        {
+          "name": "Chaos Space",
+          "oldPoints": 40,
+          "newPoints": 13,
+          "code": 99266988
+        },
+        {
+          "name": "Deep Sea Aria",
+          "oldPoints": 40,
+          "newPoints": 12,
+          "code": 72060415
+        },
+        {
+          "name": "Emergency Teleport",
+          "oldPoints": 35,
+          "newPoints": 25,
+          "code": 67723438
+        },
+        {
+          "name": "Fire Formation – Tenki",
+          "oldPoints": 35,
+          "newPoints": 11,
+          "code": 57103969
+        },
+        {
+          "name": "Fossil Dig",
+          "oldPoints": 33,
+          "newPoints": 18,
+          "code": 47325505
+        },
+        {
+          "name": "Lonefire Blossom",
+          "oldPoints": 33,
+          "newPoints": 10,
+          "code": 48686504
+        },
+        {
+          "name": "One for One",
+          "oldPoints": 91,
+          "newPoints": 19,
+          "code": 2295440
+        },
+        {
+          "name": "Original Sinful Spoils – Snake-Eye",
+          "oldPoints": 100,
+          "newPoints": 17,
+          "code": 89023486
+        },
+        {
+          "name": "Quick Launch",
+          "oldPoints": 33,
+          "newPoints": 25,
+          "code": 31443476
+        },
+        {
+          "name": "Reinforcement of the Army",
+          "oldPoints": 33,
+          "newPoints": 18,
+          "code": 32807846
+        },
+        {
+          "name": "Terraforming",
+          "oldPoints": 33,
+          "newPoints": 20,
+          "code": 73628505
+        },
+        {
+          "name": "The Phantom Knights of Decayed Cloak",
+          "oldPoints": 4,
+          "newPoints": 2,
+          "code": 46072770
+        },
+        {
+          "name": "The Phantom Knights of Doomed Soleret",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 83566725
+        },
+        {
+          "name": "The Phantom Knights of Malevolent Scythe",
+          "oldPoints": 12,
+          "newPoints": 10,
+          "code": 78449284
+        },
+        {
+          "name": "The Phantom Knights of Break Sword",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 62709239
+        },
+        {
+          "name": "Blackwing – Boreastorm the Wicked Wind",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 10602628
+        },
+        {
+          "name": "Swordsoul Emergence",
+          "oldPoints": 7,
+          "newPoints": 2,
+          "code": 56465981
+        },
+        {
+          "name": "Dragonic Diagram",
+          "oldPoints": 10,
+          "newPoints": 5,
+          "code": 13035077
+        },
+        {
+          "name": "Tour Guide from the Underworld",
+          "oldPoints": 3,
+          "newPoints": 0,
+          "code": 10802915
+        },
+        {
+          "name": "Garunix Eternity, Hyang of the Fire Kings",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 64182380
+        },
+        {
+          "name": "Legendary Fire King Ponix",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 90681088
+        },
+        {
+          "name": "Fire King High Avatar Kirin",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 2526224
+        },
+        {
+          "name": "Goblin Biker Big Gabonga",
+          "oldPoints": 12,
+          "newPoints": 10,
+          "code": 34001672
+        },
+        {
+          "name": "Goblin Biker Grand Entrance",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 90711610
+        },
+        {
+          "name": "Officiator of Doom Samuel",
+          "oldPoints": 10,
+          "newPoints": 0,
+          "code": 76213610
+        },
+        {
+          "name": "Thundercrash Snarecrow",
+          "oldPoints": 10,
+          "newPoints": 0,
+          "code": 53754391
+        },
+        {
+          "name": "Purrely Happy Memory",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 82105704
+        },
+        {
+          "name": "Purrelyly",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 79933029
+        },
+        {
+          "name": "El Shaddoll Winda",
+          "oldPoints": 60,
+          "newPoints": 100,
+          "code": 94977269
+        },
+        {
+          "name": "El Shaddoll Apkallone",
+          "oldPoints": 10,
+          "newPoints": 1,
+          "code": 50907446
+        },
+        {
+          "name": "Lev Shaddoll Fusion",
+          "oldPoints": 10,
+          "newPoints": 3,
+          "code": 34950192
+        },
+        {
+          "name": "Shaddoll Fusion",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 44394295
+        },
+        {
+          "name": "Shaddoll Schism",
+          "oldPoints": 10,
+          "newPoints": 1,
+          "code": 21011044
+        },
+        {
+          "name": "Pot of Desires",
+          "oldPoints": 15,
+          "newPoints": 10,
+          "code": 35261759
+        },
+        {
+          "name": "Raigeki",
+          "oldPoints": 4,
+          "newPoints": 2,
+          "code": 12580477
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/genesys-championship-top-128-day-2-duelists/",
+      "status": "no-deltas",
+      "deltas": []
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/2026-north-america-genesys-championships-standings-after-day-1/",
+      "status": "no-deltas",
+      "deltas": []
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/chaos-origins-glorious-gallery-points-update/",
+      "status": "pending",
+      "deltas": [
+        {
+          "name": "Constellar Castor",
+          "oldPoints": null,
+          "newPoints": 6,
+          "code": 33302589
+        },
+        {
+          "name": "Tellarknight Cygnian",
+          "oldPoints": null,
+          "newPoints": 6,
+          "code": 60700283
+        },
+        {
+          "name": "Tellarknight Constellar Delteros",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 32289031
+        },
+        {
+          "name": "Lev Shaddoll Fusion",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 34950192
+        },
+        {
+          "name": "Void Unleashing",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 61345801
+        },
+        {
+          "name": "Masked HERO Fountain",
+          "oldPoints": null,
+          "newPoints": 6,
+          "code": 66206748
+        },
+        {
+          "name": "Junk Meister",
+          "oldPoints": null,
+          "newPoints": 6,
+          "code": 73218792
+        },
+        {
+          "name": "Over Tuning",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 613496
+        },
+        {
+          "name": "Black Chaos",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 98684220
+        },
+        {
+          "name": "Griffoh",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 97462632
+        },
+        {
+          "name": "Celtic Mystic",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 50073633
+        },
+        {
+          "name": "Light and Darkness Ritual",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 33599853
+        },
+        {
+          "name": "Mind Shuffle",
+          "oldPoints": null,
+          "newPoints": 40,
+          "code": 24749710
+        },
+        {
+          "name": "Aleister the Reminiscent",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": 57294268
+        },
+        {
+          "name": "Aiwass, Divine Spirit of the Law",
+          "oldPoints": null,
+          "newPoints": 2,
+          "code": 84288367
+        },
+        {
+          "name": "Virakam, the Divine Spirit of Artifice",
+          "oldPoints": null,
+          "newPoints": 2,
+          "code": 10673071
+        },
+        {
+          "name": "Hyperinvoked Aeon",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 33166263
+        },
+        {
+          "name": "The Phantom Knights of Decayed Cloak",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": 46072770
+        },
+        {
+          "name": "The Phantom Knights of Doomed Sorelet",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": null
+        },
+        {
+          "name": "The Phantom Knights of Malevolent Scythe",
+          "oldPoints": null,
+          "newPoints": 12,
+          "code": 78449284
+        },
+        {
+          "name": "The Phantom Knights’ Rank-Up-Magic Requiem",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": null
+        },
+        {
+          "name": "Summoner of the Sacred Beasts",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 22734799
+        },
+        {
+          "name": "Martyr of the Sacred Beasts",
+          "oldPoints": null,
+          "newPoints": 2,
+          "code": 59138498
+        },
+        {
+          "name": "Sacred Beasts Thunderclap",
+          "oldPoints": null,
+          "newPoints": 2,
+          "code": 1259915
+        },
+        {
+          "name": "Abyss of the Sacred Beasts",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": 86132414
+        },
+        {
+          "name": "Surge Blitzclique",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": 22912101
+        },
+        {
+          "name": "Crackle Blitzclique",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": 58916810
+        },
+        {
+          "name": "Hideout in the Sky, Columb",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": null
+        },
+        {
+          "name": "Elfnote June Pride",
+          "oldPoints": null,
+          "newPoints": 25,
+          "code": 5559570
+        },
+        {
+          "name": "Theorealize Past Lull",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 36709484
+        },
+        {
+          "name": "Angelechy Destrier",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": 55393975
+        },
+        {
+          "name": "Phara the Primordial Goddess",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 82344137
+        },
+        {
+          "name": "Glitch Clutch Nullgainer",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 32044675
+        },
+        {
+          "name": "Pot of Sloth",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 98476659
+        },
+        {
+          "name": "Ragged Records of Rites",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 24461358
+        },
+        {
+          "name": "Superconductive Plasma Blast",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 51869363
+        },
+        {
+          "name": "Witness of the Ancient",
+          "oldPoints": null,
+          "newPoints": 33,
+          "code": 54577949
+        },
+        {
+          "name": "Thundercrash Snarecrow",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 53754391
+        },
+        {
+          "name": "Mortilux Heruvur",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 15415552
+        },
+        {
+          "name": "The Three Champions of Swordsoul",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 74405783
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/genesys-june-points-update/",
+      "status": "spent",
+      "deltas": [
+        {
+          "name": "Crimson Blade Dragon",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 3294539
+        },
+        {
+          "name": "Power Vice Dragon",
+          "oldPoints": 5,
+          "newPoints": 6,
+          "code": 19434243
+        },
+        {
+          "name": "Darklord Djehuty",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 10426067
+        },
+        {
+          "name": "Eidos the Underworld Monarch",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 31596518
+        },
+        {
+          "name": "Mimighoul Dungeon",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 86809440
+        },
+        {
+          "name": "Radiant Typhoon Krosea",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 16922142
+        },
+        {
+          "name": "Book of Eclipse",
+          "oldPoints": 3,
+          "newPoints": 4,
+          "code": 35480699
+        },
+        {
+          "name": "Book of Moon",
+          "oldPoints": 4,
+          "newPoints": 3,
+          "code": 14087893
+        },
+        {
+          "name": "Dimensional Fissure",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 81674782
+        },
+        {
+          "name": "Gameciel, the Sea Turtle Kaiju",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 55063751
+        },
+        {
+          "name": "Illusion Gate",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 33017964
+        },
+        {
+          "name": "Shared Ride",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 1372887
+        },
+        {
+          "name": "Artifact Lancea",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 34267821
+        },
+        {
+          "name": "Herald of Orange Light",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 17266660
+        },
+        {
+          "name": "Herald of Green Light",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 21074344
+        },
+        {
+          "name": "Herald of Purple Light",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 94689635
+        },
+        {
+          "name": "Mulcharmy Fuwalos",
+          "oldPoints": 7,
+          "newPoints": 8,
+          "code": 42141493
+        },
+        {
+          "name": "Nibiru the Primal Being",
+          "oldPoints": 6,
+          "newPoints": 8,
+          "code": null
+        },
+        {
+          "name": "Conduction Warrior Linear Magnum Plus Minus",
+          "oldPoints": 0,
+          "newPoints": 6,
+          "code": 44839512
+        },
+        {
+          "name": "Magnet Bonding",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 65514302
+        },
+        {
+          "name": "Miracle Ejector",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 30875635
+        },
+        {
+          "name": "Earthbound Prisoner Stone Sweeper",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 72323266
+        },
+        {
+          "name": "Keldo the Sacred Protector",
+          "oldPoints": 1,
+          "newPoints": 2,
+          "code": 63542003
+        },
+        {
+          "name": "Kewl Tune Clip",
+          "oldPoints": 6,
+          "newPoints": 7,
+          "code": 43904702
+        },
+        {
+          "name": "Kewl Tune Cue",
+          "oldPoints": 6,
+          "newPoints": 7,
+          "code": 16387555
+        },
+        {
+          "name": "Kewl Tune Mix",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 16509007
+        },
+        {
+          "name": "Kewl Tune Reco",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 89392810
+        },
+        {
+          "name": "Heavy Polymerization",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 58570206
+        },
+        {
+          "name": "Mudora the Sword Oracle",
+          "oldPoints": 1,
+          "newPoints": 2,
+          "code": 99937011
+        },
+        {
+          "name": "Spell Card “Soul Exchange”",
+          "oldPoints": 3,
+          "newPoints": 13,
+          "code": null
+        },
+        {
+          "name": "Swordsoul Supreme Sovereign – Chengying",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 96633955
+        },
+        {
+          "name": "Zalen the Shackled Dragon",
+          "oldPoints": 10,
+          "newPoints": 12,
+          "code": 4891376
+        },
+        {
+          "name": "Number F0: Utopic Draco Future",
+          "oldPoints": 20,
+          "newPoints": 25,
+          "code": 26973555
+        },
+        {
+          "name": "Number F0: Utopic Future Zexal",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 41522092
+        },
+        {
+          "name": "Elemental HERO Cosmo Neos",
+          "oldPoints": 0,
+          "newPoints": 21,
+          "code": 90050480
+        },
+        {
+          "name": "Galaxy-Eyes Tachyon Primal",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 45710945
+        },
+        {
+          "name": "Darklord Ixchel",
+          "oldPoints": 5,
+          "newPoints": 7,
+          "code": 52840267
+        },
+        {
+          "name": "Infernoid Evil",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 97051536
+        },
+        {
+          "name": "Magical Mallet",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 85852291
+        },
+        {
+          "name": "Subspace Battle",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 89693655
+        },
+        {
+          "name": "Chicken Game",
+          "oldPoints": 7,
+          "newPoints": 10,
+          "code": 67616300
+        },
+        {
+          "name": "Upstart Goblin",
+          "oldPoints": 7,
+          "newPoints": 10,
+          "code": 70368879
+        },
+        {
+          "name": "Into the Void",
+          "oldPoints": 7,
+          "newPoints": 10,
+          "code": 93946239
+        },
+        {
+          "name": "Big Welcome Labrynth",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 92714517
+        },
+        {
+          "name": "Change of Heart",
+          "oldPoints": 6,
+          "newPoints": 3,
+          "code": 4031928
+        },
+        {
+          "name": "Crystron Inclusion",
+          "oldPoints": 25,
+          "newPoints": 20,
+          "code": 31552317
+        },
+        {
+          "name": "Crystron Sulfador",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 25865565
+        },
+        {
+          "name": "Dark End Evaporation Dragon",
+          "oldPoints": 1,
+          "newPoints": 0,
+          "code": 62002838
+        },
+        {
+          "name": "Denglong, First of the Yang Zing",
+          "oldPoints": 20,
+          "newPoints": 10,
+          "code": 65536818
+        },
+        {
+          "name": "Dragonic Diagram",
+          "oldPoints": 15,
+          "newPoints": 10,
+          "code": 13035077
+        },
+        {
+          "name": "Dragonmaid Tidying",
+          "oldPoints": 5,
+          "newPoints": 1,
+          "code": 57416183
+        },
+        {
+          "name": "Dragon’s Light and Darkness",
+          "oldPoints": 3,
+          "newPoints": 1,
+          "code": null
+        },
+        {
+          "name": "Duality",
+          "oldPoints": 3,
+          "newPoints": 1,
+          "code": 39973386
+        },
+        {
+          "name": "Filia Regis",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 70538272
+        },
+        {
+          "name": "Fire King Courtier Ulcanix",
+          "oldPoints": 18,
+          "newPoints": 15,
+          "code": 44455560
+        },
+        {
+          "name": "Foolish Burial",
+          "oldPoints": 33,
+          "newPoints": 25,
+          "code": 81439173
+        },
+        {
+          "name": "Forbidden Chalice",
+          "oldPoints": 5,
+          "newPoints": 1,
+          "code": 25789292
+        },
+        {
+          "name": "Forbidden Lance",
+          "oldPoints": 3,
+          "newPoints": 1,
+          "code": 27243130
+        },
+        {
+          "name": "Gigantic Spright",
+          "oldPoints": 15,
+          "newPoints": 7,
+          "code": 54498517
+        },
+        {
+          "name": "Glow-Up Bulb",
+          "oldPoints": 21,
+          "newPoints": 15,
+          "code": 67441435
+        },
+        {
+          "name": "Goblin Biker Big Gabonga",
+          "oldPoints": 15,
+          "newPoints": 12,
+          "code": 34001672
+        },
+        {
+          "name": "Guardian Chimera",
+          "oldPoints": 33,
+          "newPoints": 20,
+          "code": 11321089
+        },
+        {
+          "name": "Infinite Impermanence",
+          "oldPoints": 12,
+          "newPoints": 11,
+          "code": 10045474
+        },
+        {
+          "name": "Interrupted Kaiju Slumber",
+          "oldPoints": 10,
+          "newPoints": 0,
+          "code": 99330325
+        },
+        {
+          "name": "Iron Thunder",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 12682213
+        },
+        {
+          "name": "Lyrilusc – Bird Call",
+          "oldPoints": 20,
+          "newPoints": 5,
+          "code": 45354718
+        },
+        {
+          "name": "Lyrilusc – Sapphire Swallow",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 60954556
+        },
+        {
+          "name": "Lyrilusc – Turquoise Warbler",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 97949165
+        },
+        {
+          "name": "Magician’s Souls",
+          "oldPoints": 15,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "Mathmech Sigma",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 27182739
+        },
+        {
+          "name": "Metamorphosis",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 46411259
+        },
+        {
+          "name": "Monster Reborn",
+          "oldPoints": 4,
+          "newPoints": 3,
+          "code": 83764719
+        },
+        {
+          "name": "N.As.H. Knight",
+          "oldPoints": 15,
+          "newPoints": 13,
+          "code": 34876719
+        },
+        {
+          "name": "Necrovalley",
+          "oldPoints": 40,
+          "newPoints": 25,
+          "code": 47355498
+        },
+        {
+          "name": "Nightmare Throne",
+          "oldPoints": 25,
+          "newPoints": 13,
+          "code": 93729896
+        },
+        {
+          "name": "Phantom of Yubel",
+          "oldPoints": 76,
+          "newPoints": 88,
+          "code": 80453041
+        },
+        {
+          "name": "Pot of Desires",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 35261759
+        },
+        {
+          "name": "Premature Burial",
+          "oldPoints": 3,
+          "newPoints": 2,
+          "code": 70828912
+        },
+        {
+          "name": "Rescue-ACE Air Lifter",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 65734501
+        },
+        {
+          "name": "Rescue-ACE Preventer",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 41443249
+        },
+        {
+          "name": "Return from the Different Dimension",
+          "oldPoints": 40,
+          "newPoints": 20,
+          "code": 27174286
+        },
+        {
+          "name": "Return of the Dragon Lords",
+          "oldPoints": 7,
+          "newPoints": 3,
+          "code": 6853254
+        },
+        {
+          "name": "Ritual Beast Tamer Elder",
+          "oldPoints": 10,
+          "newPoints": 3,
+          "code": 14513016
+        },
+        {
+          "name": "Shien’s Smoke Signal",
+          "oldPoints": 33,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "Snatch Steal",
+          "oldPoints": 4,
+          "newPoints": 2,
+          "code": 45986603
+        },
+        {
+          "name": "Swordsoul Emergence",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 56465981
+        },
+        {
+          "name": "Swordsoul Grandmaster – Chixiao",
+          "oldPoints": 20,
+          "newPoints": 10,
+          "code": 69248256
+        },
+        {
+          "name": "Swordsoul Strategist Longyuan",
+          "oldPoints": 5,
+          "newPoints": 1,
+          "code": 93490856
+        },
+        {
+          "name": "T.G. Hyper Librarian",
+          "oldPoints": 33,
+          "newPoints": 20,
+          "code": 90953320
+        },
+        {
+          "name": "Tenyi Spirit – Ashuna",
+          "oldPoints": 3,
+          "newPoints": 0,
+          "code": 87052196
+        },
+        {
+          "name": "Union Hangar",
+          "oldPoints": 15,
+          "newPoints": 5,
+          "code": 66399653
+        },
+        {
+          "name": "Virtual World Mai-Hime – Lulu",
+          "oldPoints": 3,
+          "newPoints": 0,
+          "code": 49088914
+        },
+        {
+          "name": "Welcome Labrynth",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 5380979
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/cool-stuff-from-ycs-columbus/",
+      "status": "no-deltas",
+      "deltas": []
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/blazing-dominion-genesys-points-update/",
+      "status": "pending",
+      "deltas": [
+        {
+          "name": "Kewl Tune Rotary",
+          "oldPoints": null,
+          "newPoints": 40,
+          "code": 17209452
+        },
+        {
+          "name": "Kewl Tune B2B",
+          "oldPoints": null,
+          "newPoints": 40,
+          "code": 65961304
+        },
+        {
+          "name": "Kewl Tune Crackle",
+          "oldPoints": null,
+          "newPoints": 70,
+          "code": 39576656
+        },
+        {
+          "name": "Clown Crew Matinee Operactics",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "Clown Crew Malabarisme",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 83232904
+        },
+        {
+          "name": "Clown Crew Biancaviso",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": 82159583
+        },
+        {
+          "name": "Power Vice Dragon",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 19434243
+        },
+        {
+          "name": "The Crimson King",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 67809530
+        },
+        {
+          "name": "Artmage Impasto -Recapture-",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 44654994
+        },
+        {
+          "name": "Elfnote Regina",
+          "oldPoints": null,
+          "newPoints": 40,
+          "code": 56651978
+        },
+        {
+          "name": "DoomZ XIII Over – Graflareio",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 65848113
+        },
+        {
+          "name": "Officiator of Doom Samuel",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 76213610
+        },
+        {
+          "name": "Exceptional Schedule",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 52782439
+        },
+        {
+          "name": "Fydraulis Harmonia",
+          "oldPoints": null,
+          "newPoints": 50,
+          "code": 70088809
+        },
+        {
+          "name": "Dominus Spark",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 6325660
+        },
+        {
+          "name": "Solemn Accusation",
+          "oldPoints": null,
+          "newPoints": 12,
+          "code": 78114463
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/genesys-march-points-update/",
+      "status": "pending",
+      "deltas": [
+        {
+          "name": "Kewl Tune Clip",
+          "oldPoints": 5,
+          "newPoints": 6,
+          "code": 43904702
+        },
+        {
+          "name": "Kewl Tune Cue",
+          "oldPoints": 5,
+          "newPoints": 6,
+          "code": 16387555
+        },
+        {
+          "name": "Kewl Tune Synchro",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 78058681
+        },
+        {
+          "name": "Exosister Betrayal",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 52335937
+        },
+        {
+          "name": "Exosister Pax",
+          "oldPoints": 10,
+          "newPoints": 5,
+          "code": 77913594
+        },
+        {
+          "name": "Zaborg the Mega Monarch",
+          "oldPoints": 80,
+          "newPoints": 100,
+          "code": 87602890
+        },
+        {
+          "name": "Spell Card “Soul Exchange”",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Steel-Stringed Sacrifice",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 7166709
+        },
+        {
+          "name": "Radiant Typhoon Vision",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 20508881
+        },
+        {
+          "name": "Artmage Vandalism – Assault –",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Artmage Varnish – Alteration –",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Medius the Pure",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 97556336
+        },
+        {
+          "name": "Theorealize",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 48739627
+        },
+        {
+          "name": "Dracotail Mululu",
+          "oldPoints": 5,
+          "newPoints": 7,
+          "code": 7375867
+        },
+        {
+          "name": "Rahu Dracotail",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 32548318
+        },
+        {
+          "name": "Silvy of the White Forest",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 98385955
+        },
+        {
+          "name": "Noh-P.U.N.K. Foxy Tune",
+          "oldPoints": 5,
+          "newPoints": 7,
+          "code": 55920742
+        },
+        {
+          "name": "Noh-P.U.N.K. Rising Scale",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 75046994
+        },
+        {
+          "name": "Regenesis",
+          "oldPoints": 33,
+          "newPoints": 10,
+          "code": 31786838
+        },
+        {
+          "name": "Regenesis Archfiend",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 95718355
+        },
+        {
+          "name": "Regenesis Code",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 67171933
+        },
+        {
+          "name": "Regenesis Warrior",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 96540807
+        },
+        {
+          "name": "Regenesis Sage",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 22938501
+        },
+        {
+          "name": "Ghost Mourner & Moonlit Chill",
+          "oldPoints": 3,
+          "newPoints": 5,
+          "code": 52038441
+        },
+        {
+          "name": "Ghost Ogre & Snow Rabbit",
+          "oldPoints": 3,
+          "newPoints": 4,
+          "code": 59438930
+        },
+        {
+          "name": "Ghost Belle & Haunted Mansion",
+          "oldPoints": 5,
+          "newPoints": 6,
+          "code": 73642296
+        },
+        {
+          "name": "Effect Veiler",
+          "oldPoints": 7,
+          "newPoints": 8,
+          "code": 97268402
+        },
+        {
+          "name": "Ash Blossom & Joyous Spring",
+          "oldPoints": 15,
+          "newPoints": 20,
+          "code": 14558127
+        },
+        {
+          "name": "Droll & Lock Bird",
+          "oldPoints": 25,
+          "newPoints": 20,
+          "code": 94145021
+        },
+        {
+          "name": "D.D. Crow",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 24508238
+        },
+        {
+          "name": "Cosmic Cyclone",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 8267140
+        },
+        {
+          "name": "Dark Ruler No More",
+          "oldPoints": 0,
+          "newPoints": 2,
+          "code": 54693926
+        },
+        {
+          "name": "Ultimate Slayer",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 2263869
+        },
+        {
+          "name": "Mistaken Arrest",
+          "oldPoints": 0,
+          "newPoints": 10,
+          "code": 4227096
+        },
+        {
+          "name": "Golden Cloud Beast – Malong",
+          "oldPoints": 0,
+          "newPoints": 4,
+          "code": 93125329
+        },
+        {
+          "name": "Garura, Wings of Resonant Life",
+          "oldPoints": 0,
+          "newPoints": 4,
+          "code": 11765832
+        },
+        {
+          "name": "Mereologic Aggregator",
+          "oldPoints": 0,
+          "newPoints": 4,
+          "code": 9940036
+        },
+        {
+          "name": "Book of Eclipse",
+          "oldPoints": 5,
+          "newPoints": 3,
+          "code": 35480699
+        },
+        {
+          "name": "Book of Moon",
+          "oldPoints": 7,
+          "newPoints": 4,
+          "code": 14087893
+        },
+        {
+          "name": "Dark Hole",
+          "oldPoints": 3,
+          "newPoints": 1,
+          "code": 53129443
+        },
+        {
+          "name": "Raigeki",
+          "oldPoints": 7,
+          "newPoints": 4,
+          "code": 12580477
+        },
+        {
+          "name": "Destructive Daruma Karma Cannon",
+          "oldPoints": 3,
+          "newPoints": 1,
+          "code": 30748475
+        },
+        {
+          "name": "Evenly Matched",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 15693423
+        },
+        {
+          "name": "Infinite Impermanence",
+          "oldPoints": 13,
+          "newPoints": 12,
+          "code": 10045474
+        },
+        {
+          "name": "Dinowrestler Pankratops",
+          "oldPoints": 10,
+          "newPoints": 5,
+          "code": 82385847
+        },
+        {
+          "name": "Interrupted Kaiju Slumber",
+          "oldPoints": 33,
+          "newPoints": 10,
+          "code": 99330325
+        },
+        {
+          "name": "Mulcharmy Meowls",
+          "oldPoints": 3,
+          "newPoints": 2,
+          "code": 87126721
+        },
+        {
+          "name": "Mulcharmy Purulia",
+          "oldPoints": 10,
+          "newPoints": 9,
+          "code": 84192580
+        },
+        {
+          "name": "Heavy Storm",
+          "oldPoints": 10,
+          "newPoints": 6,
+          "code": 19613556
+        },
+        {
+          "name": "Harpie’s Feather Duster",
+          "oldPoints": 15,
+          "newPoints": 9,
+          "code": null
+        },
+        {
+          "name": "Lightning Storm",
+          "oldPoints": 20,
+          "newPoints": 12,
+          "code": 14532163
+        },
+        {
+          "name": "Change of Heart",
+          "oldPoints": 7,
+          "newPoints": 6,
+          "code": 4031928
+        },
+        {
+          "name": "Snatch Steal",
+          "oldPoints": 5,
+          "newPoints": 4,
+          "code": 45986603
+        },
+        {
+          "name": "Monster Reborn",
+          "oldPoints": 5,
+          "newPoints": 4,
+          "code": 83764719
+        },
+        {
+          "name": "Dragonic Diagram",
+          "oldPoints": 33,
+          "newPoints": 15,
+          "code": 13035077
+        },
+        {
+          "name": "Union Hanger",
+          "oldPoints": 25,
+          "newPoints": 15,
+          "code": null
+        },
+        {
+          "name": "Hecahands Gaigas",
+          "oldPoints": 5,
+          "newPoints": 0,
+          "code": 95132593
+        },
+        {
+          "name": "Hecahands Xeno",
+          "oldPoints": 10,
+          "newPoints": 0,
+          "code": 94410955
+        },
+        {
+          "name": "Elemental HERO Stratos",
+          "oldPoints": 3,
+          "newPoints": 0,
+          "code": 40044918
+        },
+        {
+          "name": "Fire King Courtier Ulcanix",
+          "oldPoints": 20,
+          "newPoints": 18,
+          "code": 44455560
+        },
+        {
+          "name": "Fire King High Avatar Kirin",
+          "oldPoints": 10,
+          "newPoints": 7,
+          "code": 2526224
+        },
+        {
+          "name": "Gigantic Spright",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 54498517
+        },
+        {
+          "name": "Swordsoul Grandmaster – Chixiao",
+          "oldPoints": 33,
+          "newPoints": 20,
+          "code": 69248256
+        },
+        {
+          "name": "Barrier of the Voiceless Voice",
+          "oldPoints": 20,
+          "newPoints": 15,
+          "code": 98477480
+        },
+        {
+          "name": "Reinforcement of the Army",
+          "oldPoints": 35,
+          "newPoints": 33,
+          "code": 32807846
+        },
+        {
+          "name": "Fossil Dig",
+          "oldPoints": 35,
+          "newPoints": 33,
+          "code": 47325505
+        },
+        {
+          "name": "Miscellaneousaurus",
+          "oldPoints": 75,
+          "newPoints": 67,
+          "code": 38572779
+        },
+        {
+          "name": "Blaster, Dragon Ruler of Infernos",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 53804307
+        },
+        {
+          "name": "Redox, Dragon Ruler of Boulders",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 90411554
+        },
+        {
+          "name": "Tempest, Dragon Ruler of Storms",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 89399912
+        },
+        {
+          "name": "Tidal, Dragon Ruler of Waterfalls",
+          "oldPoints": 7,
+          "newPoints": 5,
+          "code": 26400609
+        },
+        {
+          "name": "The Melody of Awakening Dragon",
+          "oldPoints": 33,
+          "newPoints": 25,
+          "code": 48800175
+        },
+        {
+          "name": "Dark Magician of Destruction",
+          "oldPoints": 0,
+          "newPoints": 15,
+          "code": 59400890
+        },
+        {
+          "name": "The Gaze of Timaeus",
+          "oldPoints": 0,
+          "newPoints": 1,
+          "code": 22283204
+        },
+        {
+          "name": "Uzuhime the Manifested Mikanko",
+          "oldPoints": 0,
+          "newPoints": 18,
+          "code": 57566760
+        },
+        {
+          "name": "Mikanko Shinbu – Noble Twins",
+          "oldPoints": 0,
+          "newPoints": 18,
+          "code": 84550369
+        },
+        {
+          "name": "Sandwich Day",
+          "oldPoints": 0,
+          "newPoints": 3,
+          "code": 83838727
+        },
+        {
+          "name": "Trade-In",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 38120068
+        },
+        {
+          "name": "Celestial Observatory",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 67378104
+        },
+        {
+          "name": "Darklord Ixchel",
+          "oldPoints": 0,
+          "newPoints": 5,
+          "code": 52840267
+        },
+        {
+          "name": "Sky Striker Mobilize – Engage",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": null
+        },
+        {
+          "name": "Into the Void",
+          "oldPoints": 3,
+          "newPoints": 7,
+          "code": 93946239
+        },
+        {
+          "name": "Toon Table of Contents",
+          "oldPoints": 0,
+          "newPoints": 7,
+          "code": 89997728
+        },
+        {
+          "name": "Upstart Goblin",
+          "oldPoints": 3,
+          "newPoints": 7,
+          "code": 70368879
+        },
+        {
+          "name": "Raider’s Knight",
+          "oldPoints": 0,
+          "newPoints": 80,
+          "code": null
+        },
+        {
+          "name": "Number 39: Utopia Double",
+          "oldPoints": 0,
+          "newPoints": 80,
+          "code": 62517849
+        },
+        {
+          "name": "CXyz Gimmick Puppet Fanatix Machinix",
+          "oldPoints": 0,
+          "newPoints": 100,
+          "code": 3685372
+        },
+        {
+          "name": "Dark Eradicator Warlock",
+          "oldPoints": 0,
+          "newPoints": 100,
+          "code": 29436665
+        }
+      ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/what-to-expect-in-the-march-points-update/",
+      "status": "no-deltas",
+      "deltas": []
+    }
+  ]
 }
