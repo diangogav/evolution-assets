@@ -64,7 +64,8 @@
           "newPoints": 8,
           "code": 5125629
         }
-      ]
+      ],
+      "publishedAt": "2026-08-24"
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/post-genesys-championships-august-points-update/",
@@ -510,7 +511,7 @@
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/chaos-origins-glorious-gallery-points-update/",
-      "status": "pending",
+      "status": "spent",
       "deltas": [
         {
           "name": "Constellar Castor",
@@ -636,7 +637,7 @@
           "name": "The Phantom Knights’ Rank-Up-Magic Requiem",
           "oldPoints": null,
           "newPoints": 1,
-          "code": null
+          "code": 62104532
         },
         {
           "name": "Summoner of the Sacred Beasts",
@@ -752,7 +753,8 @@
           "newPoints": 10,
           "code": 74405783
         }
-      ]
+      ],
+      "publishedAt": "2026-06-22"
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/genesys-june-points-update/",
@@ -1325,7 +1327,7 @@
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/blazing-dominion-genesys-points-update/",
-      "status": "pending",
+      "status": "spent",
       "deltas": [
         {
           "name": "Kewl Tune Rotary",
@@ -1349,7 +1351,7 @@
           "name": "Clown Crew Matinee Operactics",
           "oldPoints": null,
           "newPoints": 20,
-          "code": null
+          "code": 57847269
         },
         {
           "name": "Clown Crew Malabarisme",
@@ -1423,11 +1425,12 @@
           "newPoints": 12,
           "code": 78114463
         }
-      ]
+      ],
+      "publishedAt": "2026-04-30"
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/genesys-march-points-update/",
-      "status": "pending",
+      "status": "spent",
       "deltas": [
         {
           "name": "Kewl Tune Clip",
@@ -1469,7 +1472,7 @@
           "name": "Spell Card “Soul Exchange”",
           "oldPoints": 0,
           "newPoints": 3,
-          "code": null
+          "code": 15735108
         },
         {
           "name": "Steel-Stringed Sacrifice",
@@ -1487,13 +1490,13 @@
           "name": "Artmage Vandalism – Assault –",
           "oldPoints": 0,
           "newPoints": 3,
-          "code": null
+          "code": 1122030
         },
         {
           "name": "Artmage Varnish – Alteration –",
           "oldPoints": 0,
           "newPoints": 3,
-          "code": null
+          "code": 74011784
         },
         {
           "name": "Medius the Pure",
@@ -1727,7 +1730,7 @@
           "name": "Harpie’s Feather Duster",
           "oldPoints": 15,
           "newPoints": 9,
-          "code": null
+          "code": 18144507
         },
         {
           "name": "Lightning Storm",
@@ -1763,7 +1766,7 @@
           "name": "Union Hanger",
           "oldPoints": 25,
           "newPoints": 15,
-          "code": null
+          "code": 66399653
         },
         {
           "name": "Hecahands Gaigas",
@@ -1913,7 +1916,7 @@
           "name": "Sky Striker Mobilize – Engage",
           "oldPoints": 0,
           "newPoints": 7,
-          "code": null
+          "code": 63166095
         },
         {
           "name": "Into the Void",
@@ -1937,7 +1940,7 @@
           "name": "Raider’s Knight",
           "oldPoints": 0,
           "newPoints": 80,
-          "code": null
+          "code": 28781003
         },
         {
           "name": "Number 39: Utopia Double",
@@ -1957,7 +1960,8 @@
           "newPoints": 100,
           "code": 29436665
         }
-      ]
+      ],
+      "publishedAt": "2026-03-05"
     },
     {
       "url": "https://yugiohblog.konami.com/2026/genesys/what-to-expect-in-the-march-points-update/",
