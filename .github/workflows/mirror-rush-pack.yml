@@ -1,4 +1,4 @@
-name: Mirror Rush Duel script pack
+name: Mirror and translate Rush Duel pack
 
 # The Rush pack lives on code.moenext.com, a third-party GitLab that has
 # rate-limited us before. The duel server's Docker build runs
