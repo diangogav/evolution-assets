@@ -7,7 +7,12 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { gunzipSync } from "node:zlib";
 
-import { buildRushCdbs, findDuplicateIds, resolveVariantTexts } from "./build-rush-cdb.mjs";
+import {
+	buildCdbFragment,
+	buildRushCdbs,
+	findDuplicateIds,
+	resolveVariantTexts,
+} from "./build-rush-cdb.mjs";
 
 const SCHEMA =
 	"CREATE TABLE datas(id integer primary key,ot integer,alias integer,setcode integer," +
@@ -228,4 +233,24 @@ test("buildRushCdbs is deterministic: two runs produce byte-identical gz files",
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
+});
+
+// --- buildCdbFragment: the run-report fragment for this step ---
+
+test("carries the merge and variant stats with the changed verdict", () => {
+	const stats = {
+		merged: { perSource: [{ name: "RD Standard.cdb", rows: 2 }], total: 2 },
+		variants: {
+			en: { name: { en: 1 }, desc: { en: 0 } },
+			es: { name: { es: 0, en: 1 }, desc: { es: 0, en: 0 } },
+		},
+	};
+
+	assert.deepEqual(buildCdbFragment(stats, true), {
+		step: "build-cdb",
+		status: "changed",
+		merged: stats.merged,
+		variants: stats.variants,
+	});
+	assert.equal(buildCdbFragment(stats, false).status, "unchanged");
 });

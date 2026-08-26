@@ -17,6 +17,7 @@ import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 
 import { renderPagesJson } from "./derive-rush-pages.mjs";
+import { reportFragment, sampled } from "./run-report.mjs";
 import { parseSetBlocks, printCodeCandidates } from "./rush-sets.mjs";
 
 const RUSH_CDBS = ["rush/RD Standard.cdb", "rush/RD Patch.cdb", "rush/RD Alternate.cdb"];
@@ -158,6 +159,27 @@ export async function runDaily({ ids, pages, blocks, fetchImpl, sleep, writePage
 	return { workList, mapped, noBlock, unresolved, ambiguous };
 }
 
+/**
+ * The run-report fragment for this step. `changed` mirrors the write rule of
+ * runDaily: pages.json was rewritten iff at least one id newly mapped. Gap
+ * lists ship sampled; ambiguities ship whole, with the cdb zh name as the
+ * card's only human-readable identity on our side.
+ */
+export function resolvePagesFragment({ mapped, unresolved, noBlock, ambiguous }, names) {
+	return {
+		step: "resolve-pages",
+		status: Object.keys(mapped).length > 0 ? "changed" : "unchanged",
+		mapped: Object.entries(mapped).map(([id, title]) => ({ id, title })),
+		unresolved: sampled(unresolved),
+		noBlock: sampled(noBlock),
+		ambiguous: ambiguous.map(({ id, matches }) => ({
+			id,
+			zh: names[id] ?? null,
+			candidates: matches,
+		})),
+	};
+}
+
 // Ids are disjoint across the three cdbs, so a plain concat is the union.
 function rushCardIds() {
 	const ids = [];
@@ -222,6 +244,8 @@ async function main() {
 		console.error(`  ${id} (${names[id] ?? "?"})`);
 		for (const { code, title } of matches) console.error(`    ${code} → ${title}`);
 	}
+
+	reportFragment(process.env, resolvePagesFragment(stats, names));
 }
 
 if (process.argv[1]?.endsWith("fetch-rush-code-pages.mjs")) {

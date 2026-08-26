@@ -21,6 +21,7 @@ import {
 	gitCommitInfo,
 	upsertAsset,
 } from "./build-version-manifest.mjs";
+import { reportFragment } from "./run-report.mjs";
 
 const MANIFEST_PATH = "version-manifest.json";
 
@@ -74,6 +75,18 @@ export function applyRushEntries(manifest, variants, now, resolver = FS_RESOLVER
 	return { manifest: updated, applied };
 }
 
+/**
+ * The run-report fragment for this step: which variant ids landed, and
+ * whether the manifest file was actually rewritten.
+ */
+export function updateManifestFragment(applied, changed) {
+	return {
+		step: "update-manifest",
+		status: changed ? "changed" : "unchanged",
+		applied,
+	};
+}
+
 function main() {
 	const now = new Date().toISOString();
 	const existing = existsSync(MANIFEST_PATH)
@@ -84,11 +97,13 @@ function main() {
 
 	if (existsSync(MANIFEST_PATH) && contentSignature(existing) === contentSignature(manifest)) {
 		console.log("Rush entries unchanged — not rewriting version-manifest.json");
+		reportFragment(process.env, updateManifestFragment(applied, false));
 		return;
 	}
 
 	writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`);
 	console.log(`Updated ${applied.join(", ")} in ${MANIFEST_PATH}`);
+	reportFragment(process.env, updateManifestFragment(applied, true));
 }
 
 if (process.argv[1]?.endsWith("update-rush-manifest.mjs")) {

@@ -3,7 +3,12 @@ import { createHash } from "node:crypto";
 import test from "node:test";
 import { gzipSync } from "node:zlib";
 
-import { RUSH_VARIANTS, applyRushEntries, rawContentStats } from "./update-rush-manifest.mjs";
+import {
+	RUSH_VARIANTS,
+	applyRushEntries,
+	rawContentStats,
+	updateManifestFragment,
+} from "./update-rush-manifest.mjs";
 
 const NOW = "2026-08-26T00:00:00.000Z";
 
@@ -92,4 +97,15 @@ test("skips a variant whose gz is absent instead of failing the run", () => {
 	for (const variant of rest) {
 		assert.ok(manifest.assets[variant.id]);
 	}
+});
+
+// --- updateManifestFragment: the run-report fragment for this step ---
+
+test("reports the applied variant ids with the rewrite verdict", () => {
+	assert.deepEqual(updateManifestFragment(["cdb:rush", "cdb:rush:en"], true), {
+		step: "update-manifest",
+		status: "changed",
+		applied: ["cdb:rush", "cdb:rush:en"],
+	});
+	assert.equal(updateManifestFragment([], false).status, "unchanged");
 });

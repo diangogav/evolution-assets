@@ -6,6 +6,7 @@ import {
 	batchTitles,
 	cachedTitleEntries,
 	fetchTranslations,
+	fetchTranslationsFragment,
 	neededTitles,
 	resultsByTitle,
 	run,
@@ -430,4 +431,79 @@ test("aborts without writing when the fetch fails", async () => {
 		/500/,
 	);
 	assert.deepEqual(written, []);
+});
+
+// --- gained ids + fetchTranslationsFragment: the run-report fragment ---
+
+test("records which ids the network fetch covered, apart from seed and cache", async () => {
+	const pages = {
+		120100001: "Sevens Road Magician",
+		120100002: "Sevens Road Magician",
+		120100003: "Blue-Eyes White Dragon (Rush Duel)",
+	};
+	const translations = { 120100001: { en: "Sevens Road Magician", en_lore: "", es: "", es_lore: "" } };
+	const seed = {};
+	const fetchImpl = async () => ({
+		status: 200,
+		json: async () => ({
+			query: {
+				results: {
+					"Blue-Eyes White Dragon (Rush Duel)": {
+						printouts: { "English name": ["Blue-Eyes White Dragon"] },
+					},
+				},
+			},
+		}),
+	});
+
+	const stats = await run({
+		pages,
+		translations,
+		seed,
+		fetchImpl,
+		sleep: async () => {},
+		writeTranslations: () => {},
+	});
+
+	// 120100002 reuses its sibling's cache entry; only 120100003 was fetched.
+	assert.equal(stats.reusedIds, 1);
+	assert.deepEqual(stats.gainedIds, ["120100003"]);
+});
+
+test("builds a changed fragment when the run added entries", () => {
+	const fragment = fetchTranslationsFragment({
+		idsTotal: 10,
+		workList: ["120100002", "120100003"],
+		reusedIds: 1,
+		seededIds: 0,
+		fetchedIds: 1,
+		gainedIds: ["120100003"],
+		missing: ["Some Uncharted Card"],
+		entries: 9,
+		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+	});
+
+	assert.deepEqual(fragment, {
+		step: "fetch-translations",
+		status: "changed",
+		gained: ["120100003"],
+		missing: ["Some Uncharted Card"],
+		entries: 9,
+		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+	});
+});
+
+test("reports unchanged when no id gained an entry from any source", () => {
+	const fragment = fetchTranslationsFragment({
+		idsTotal: 10,
+		workList: ["120100002"],
+		reusedIds: 0,
+		seededIds: 0,
+		fetchedIds: 0,
+		gainedIds: [],
+		missing: ["Some Uncharted Card"],
+		entries: 8,
+		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+	});
+	assert.equal(fragment.status, "unchanged");
 });

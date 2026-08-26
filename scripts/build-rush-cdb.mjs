@@ -21,10 +21,13 @@
 // same inputs are byte-identical.
 
 import { execFileSync } from "node:child_process";
-import { copyFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import { gzipSync } from "node:zlib";
+
+import { reportFragment } from "./run-report.mjs";
 
 const RUSH_CDBS = ["rush/RD Standard.cdb", "rush/RD Patch.cdb", "rush/RD Alternate.cdb"];
 const TRANSLATIONS_PATH = "rush/translations.json";
@@ -167,9 +170,37 @@ export function buildRushCdbs({ sources, translations, outDir, workDir }) {
 	};
 }
 
+/**
+ * The run-report fragment for this step. The builder always rewrites the
+ * gzips, so `changed` is decided by the caller from their bytes: a digest
+ * taken before against one taken after the build.
+ */
+export function buildCdbFragment(stats, changed) {
+	return {
+		step: "build-cdb",
+		status: changed ? "changed" : "unchanged",
+		merged: stats.merged,
+		variants: stats.variants,
+	};
+}
+
+// sha256 per published gz, null before the first build — the before/after
+// pair decides the fragment's changed/unchanged verdict.
+function gzDigests() {
+	const digests = {};
+	for (const name of ["rush.cdb.gz", "rush.en.cdb.gz", "rush.es.cdb.gz"]) {
+		const path = join(OUT_DIR, name);
+		digests[path] = existsSync(path)
+			? createHash("sha256").update(readFileSync(path)).digest("hex")
+			: null;
+	}
+	return digests;
+}
+
 function main() {
 	const translations = JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8"));
 	const workDir = mkdtempSync(join(tmpdir(), "rush-cdb-"));
+	const before = gzDigests();
 
 	let stats;
 	try {
@@ -189,6 +220,9 @@ function main() {
 		`es: ${es.name.es} names (+${es.name.en} en fallback), ` +
 			`${es.desc.es} descs (+${es.desc.en} en fallback)`,
 	);
+
+	const changed = JSON.stringify(gzDigests()) !== JSON.stringify(before);
+	reportFragment(process.env, buildCdbFragment(stats, changed));
 }
 
 if (process.argv[1]?.endsWith("build-rush-cdb.mjs")) {
