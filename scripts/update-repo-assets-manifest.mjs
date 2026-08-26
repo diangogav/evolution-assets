@@ -27,6 +27,9 @@ export const REPO_ASSETS = [
 	{ id: "lflist:evolution:edison", path: "lflist/edison.lflist.conf" },
 	{ id: "lflist:evolution:jtp", path: "lflist/jtp.lflist.conf" },
 	{ id: "lflist:evolution:jtp-adv-2007-03", path: "lflist/jtp-advanced-marzo-2007.lflist.conf" },
+	// Unlike the others this one is refreshed by the daily Rush mirror, not by
+	// hand — the mirror's push retriggers this workflow through the paths filter.
+	{ id: "lflist:evolution:rush", path: "rush/lflist.conf" },
 	{ id: "cdb:pre-errata:en", path: "cdb/pre-errata.en.cdb" },
 	{ id: "cdb:pre-errata:es", path: "cdb/pre-errata.es.cdb" },
 ];
