@@ -101,7 +101,16 @@ test("renderInstallReadme points at upstream's art pack instead of bundling art"
 	// MDPro3 applies its OWN Rush art crop, and upstream already publishes the
 	// full 624 MB art .ypk — shipping our own crop would be both wrong and huge.
 	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
-	assert.match(readme, /Download Card Pack/);
+	assert.match(readme, /ygopro-rush-duel-master\.ypk/);
+});
+
+test("renderInstallReadme does not promise MDPro3 downloads the art itself", () => {
+	// Its card-pack downloader only carries ygopro-super-pre URLs (Settings.cs
+	// PrereleasePackUrl*), and card images are read off disk rather than fetched
+	// per card — a player who waits for an automatic download waits forever.
+	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
+	assert.doesNotMatch(readme, /Download Card Pack/);
+	assert.match(readme, /will not fetch it for you/);
 });
 
 test("renderInstallReadme warns that the deck editor does not enforce Legend limits", () => {
