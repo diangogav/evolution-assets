@@ -9,8 +9,12 @@ import { gunzipSync } from "node:zlib";
 
 import {
 	buildCdbFragment,
+	buildMaximumAtkUpdates,
 	buildRushCdbs,
+	classifyMaximumRows,
 	findDuplicateIds,
+	isMaximumSidePiece,
+	parseMaximumAtk,
 	resolveVariantTexts,
 } from "./build-rush-cdb.mjs";
 
@@ -23,10 +27,10 @@ const SCHEMA =
 
 function makeCdb(path, cards) {
 	execFileSync("sqlite3", [path], { input: SCHEMA, encoding: "utf8" });
-	for (const { id, ot, name, desc, str1 } of cards) {
+	for (const { id, ot, type, name, desc, str1 } of cards) {
 		execFileSync("sqlite3", [
 			path,
-			`INSERT INTO datas(id,ot) VALUES(${id},${ot ?? 1});` +
+			`INSERT INTO datas(id,ot,type) VALUES(${id},${ot ?? 1},${type ?? 1});` +
 				`INSERT INTO texts(id,name,desc,str1) VALUES(${id},'${name}','${desc ?? ""}','${str1 ?? ""}');`,
 		]);
 	}
@@ -244,6 +248,7 @@ test("carries the merge and variant stats with the changed verdict", () => {
 			en: { name: { en: 1 }, desc: { en: 0 } },
 			es: { name: { es: 0, en: 1 }, desc: { es: 0, en: 0 } },
 		},
+		maximumAtk: { withValue: 1, sidePieces: 0, centreWithoutValue: [] },
 	};
 
 	assert.deepEqual(buildCdbFragment(stats, true), {
@@ -251,6 +256,125 @@ test("carries the merge and variant stats with the changed verdict", () => {
 		status: "changed",
 		merged: stats.merged,
 		variants: stats.variants,
+		maximumAtk: stats.maximumAtk,
 	});
 	assert.equal(buildCdbFragment(stats, false).status, "unchanged");
+});
+
+// --- Maximum ATK: the line MDPro3 needs to draw the Maximum ATK box ---
+
+test("parseMaximumAtk reads the value out of a CRLF Chinese desc", () => {
+	const desc = "RD/MAX1-JP002\r\n极大攻击 3500\r\n可以和「…」集齐作极大召唤。\r\n";
+	assert.equal(parseMaximumAtk(desc), 3500);
+});
+
+test("parseMaximumAtk accepts LF and a fullwidth space, and ignores later digits", () => {
+	assert.equal(parseMaximumAtk("RD/MAX1-JP001\n极大攻击　3000\n攻击力 1900 的怪兽。"), 3000);
+});
+
+test("parseMaximumAtk is null when no line declares one", () => {
+	assert.equal(parseMaximumAtk("RD/SD0P-JP001\r\n攻击力 3500 以上的怪兽。\r\n"), null);
+	assert.equal(parseMaximumAtk(""), null);
+	assert.equal(parseMaximumAtk(null), null);
+});
+
+test("parseMaximumAtk ignores a 极大攻击 mention that is not its own line", () => {
+	assert.equal(parseMaximumAtk("RD/X\r\n这张卡的极大攻击 3500 不会变化。\r\n"), null);
+});
+
+test("isMaximumSidePiece keys on the FULLWIDTH brackets upstream uses", () => {
+	assert.equal(isMaximumSidePiece("超魔机神 大螺旋道王［L］"), true);
+	assert.equal(isMaximumSidePiece("超魔机神 大螺旋道王［R］"), true);
+	assert.equal(isMaximumSidePiece("超魔机神 大螺旋道王"), false);
+	// Halfwidth brackets are a different string and never appear in the source.
+	assert.equal(isMaximumSidePiece("超魔机神 大螺旋道王[L]"), false);
+});
+
+test("classifyMaximumRows splits side pieces, valued centres and valueless centres", () => {
+	const result = classifyMaximumRows([
+		{ id: 3, name: "中央二", desc: "RD/B\r\n极大攻击 4000\r\n" },
+		{ id: 1, name: "中央一", desc: "RD/A\r\n极大攻击 3500\r\n" },
+		{ id: 2, name: "中央一［L］", desc: "RD/A\r\n效果。\r\n" },
+		{ id: 4, name: "自称侧翼", desc: "RD/C\r\n这张卡在手卡时名字当作「…［L］」。\r\n" },
+	]);
+
+	assert.deepEqual(result, {
+		withValue: [
+			{ id: 1, atk: 3500 },
+			{ id: 3, atk: 4000 },
+		],
+		sidePieces: [2],
+		centreWithoutValue: [4],
+	});
+});
+
+test("buildMaximumAtkUpdates prepends the English line, one statement per id", () => {
+	assert.equal(
+		buildMaximumAtkUpdates([
+			{ id: 1, atk: 3500 },
+			{ id: 3, atk: 4000 },
+		]),
+		[
+			`UPDATE texts SET "desc"='Maximum ATK 3500' || char(10) || "desc" WHERE id=1;`,
+			`UPDATE texts SET "desc"='Maximum ATK 4000' || char(10) || "desc" WHERE id=3;`,
+		].join("\n"),
+	);
+	assert.equal(buildMaximumAtkUpdates([]), "");
+});
+
+// Maximum cards, mixed: a valued centre, its [L] half, and a centre with no
+// declared value. Kept apart from `fixture` so the translation assertions above
+// stay about translation.
+function maximumFixture(dir) {
+	const srcDir = join(dir, "max-src");
+	mkdirSync(srcDir);
+	const source = join(srcDir, "M.cdb");
+	makeCdb(source, [
+		{ id: 2001, type: 0x8000 | 1, name: "极大一", desc: "RD/A-JP001\r\n极大攻击 3500\r\n中说明一\r\n" },
+		{ id: 2002, type: 0x8000 | 1, name: "极大一［L］", desc: "RD/A-JP002\r\n中说明二\r\n" },
+		{ id: 2003, type: 0x8000 | 1, name: "极大二", desc: "RD/A-JP003\r\n中说明三\r\n" },
+		{ id: 2004, type: 1, name: "普通", desc: "RD/A-JP004\r\n中说明四\r\n" },
+	]);
+
+	const translations = {
+		2001: { en: "Maximum One", en_lore: "English lore one.", es: "", es_lore: "Texto uno." },
+		2003: { en: "Maximum Two", en_lore: "English lore three.", es: "", es_lore: "" },
+	};
+	return { sources: [source], translations };
+}
+
+test("buildRushCdbs prepends Maximum ATK to en/es and leaves the base untouched", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-max-"));
+	try {
+		const { sources, translations } = maximumFixture(dir);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({ sources, translations, outDir, workDir });
+		const desc = (gz, id) => queryGz(dir, join(outDir, gz), `SELECT "desc" FROM texts WHERE id=${id};`);
+
+		// The valued centre piece leads with the line MDPro3 parses, and the body
+		// follows on the next line — no print code, which only zh-CN/zh-TW strip.
+		assert.equal(desc("rush.en.cdb.gz", 2001), "Maximum ATK 3500\nEnglish lore one.");
+		assert.equal(desc("rush.es.cdb.gz", 2001), "Maximum ATK 3500\nTexto uno.");
+
+		// The base variant keeps its own 极大攻击 line and gains nothing.
+		assert.equal(desc("rush.cdb.gz", 2001), "RD/A-JP001\r\n极大攻击 3500\r\n中说明一\r\n");
+
+		// A side piece and a centre piece with no declared value are both left alone.
+		assert.equal(desc("rush.en.cdb.gz", 2002), "RD/A-JP002\r\n中说明二\r\n");
+		assert.equal(desc("rush.en.cdb.gz", 2003), "English lore three.");
+		// A non-Maximum card is never touched either.
+		assert.equal(desc("rush.en.cdb.gz", 2004), "RD/A-JP004\r\n中说明四\r\n");
+
+		assert.deepEqual(stats.maximumAtk, {
+			withValue: 1,
+			sidePieces: 1,
+			centreWithoutValue: [2003],
+		});
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
 });
