@@ -76,6 +76,19 @@ jobs:
           # it the pack loads and every Rush duel plays by OCG rules instead.
           test -f /tmp/rush-src/script/RDRule.lua || { echo "RDRule.lua missing"; exit 1; }
 
+      - name: Snapshot the card ids before the mirror refresh
+        # The run report diffs new cards against this dump: by the time the
+        # composer runs, the refresh below has already replaced the cdbs.
+        run: |
+          set -euo pipefail
+          : > "$RUNNER_TEMP/old-ids.txt"
+          for cdb in "rush/RD Standard.cdb" "rush/RD Patch.cdb" "rush/RD Alternate.cdb"; do
+            if [ -f "$cdb" ]; then
+              sqlite3 "$cdb" "SELECT id FROM datas;" >> "$RUNNER_TEMP/old-ids.txt"
+            fi
+          done
+          sort -u -o "$RUNNER_TEMP/old-ids.txt" "$RUNNER_TEMP/old-ids.txt"
+
       - name: Replace the mirrored copy
         run: |
           set -euo pipefail
@@ -111,19 +124,39 @@ jobs:
       # fail the run loudly without undoing the mirror refresh above.
       - name: Resolve wiki pages for new card ids
         run: node scripts/fetch-rush-code-pages.mjs
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/resolve-pages.json
 
       - name: Fetch translations for new pages
         run: node scripts/fetch-rush-translations.mjs
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/fetch-translations.json
 
       - name: Build unified Rush databases
         run: node scripts/build-rush-cdb.mjs
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/build-cdb.json
 
       - name: Update version manifest
         run: node scripts/update-rush-manifest.mjs
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/update-manifest.json
+
+      - name: Compose the run report
+        # Even a failed pipeline gets its Actions summary — the composer treats
+        # absent fragments as missing steps, and the failed step above already
+        # preserves the run's failure state.
+        if: always()
+        run: node scripts/report-rush.mjs "$RUNNER_TEMP/report"
+        env:
+          OLD_IDS_FILE: ${{ runner.temp }}/old-ids.txt
 
       - name: Commit if the translated databases changed
         run: |
           paths="rush/pages.json rush/translations.json cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json"
+          # The report only exists once a run produced notable events, and
+          # `git add` aborts on a pathspec with nothing behind it.
+          if [ -f reports/rush.json ]; then paths="$paths reports/rush.json"; fi
           if [ -n "$(git status --porcelain $paths)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

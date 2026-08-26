@@ -24,6 +24,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 import { renderPagesJson } from "./derive-rush-pages.mjs";
+import { reportFragment } from "./run-report.mjs";
 
 const API_URL = "https://yugipedia.com/api.php";
 const USER_AGENT =
@@ -219,7 +220,9 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 	const next = { ...translations };
 	let reusedIds = 0;
 	let seededIds = 0;
-	let fetchedIds = 0;
+	// The network-fetched ids by identity, not just count: they are the run's
+	// genuinely new translations, which the run report announces.
+	const gainedIds = [];
 	for (const id of workList) {
 		const title = pages[id];
 		if (title in cached) {
@@ -230,7 +233,7 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 			seededIds++;
 		} else if (title in fetched) {
 			next[id] = fetched[title];
-			fetchedIds++;
+			gainedIds.push(id);
 		}
 	}
 
@@ -246,10 +249,27 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 		workList,
 		reusedIds,
 		seededIds,
-		fetchedIds,
+		fetchedIds: gainedIds.length,
+		gainedIds,
 		missing,
 		entries: Object.keys(next).length,
 		coverage,
+	};
+}
+
+/**
+ * The run-report fragment for this step. The cache file is rewritten on every
+ * run, but its content only moves when some id gained an entry — from cache,
+ * seed, or network — so that is the changed/unchanged line.
+ */
+export function fetchTranslationsFragment(stats) {
+	return {
+		step: "fetch-translations",
+		status: stats.reusedIds + stats.seededIds + stats.fetchedIds > 0 ? "changed" : "unchanged",
+		gained: stats.gainedIds,
+		missing: stats.missing,
+		entries: stats.entries,
+		coverage: stats.coverage,
 	};
 }
 
@@ -289,6 +309,8 @@ async function main() {
 		`coverage: en ${stats.coverage.en}, en_lore ${stats.coverage.en_lore}, ` +
 			`es ${stats.coverage.es}, es_lore ${stats.coverage.es_lore}`,
 	);
+
+	reportFragment(process.env, fetchTranslationsFragment(stats));
 }
 
 if (process.argv[1]?.endsWith("fetch-rush-translations.mjs")) {

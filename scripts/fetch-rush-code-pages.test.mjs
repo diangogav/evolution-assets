@@ -8,6 +8,7 @@ import {
 	redirectTargets,
 	resolveIds,
 	runDaily,
+	resolvePagesFragment,
 	unmappedIds,
 } from "./fetch-rush-code-pages.mjs";
 
@@ -317,4 +318,50 @@ test("skips the network entirely when only no-block ids remain", async () => {
 	assert.deepEqual(stats.noBlock, ["120999001"]);
 	assert.deepEqual(calls, []);
 	assert.deepEqual(writes, []);
+});
+
+// --- resolvePagesFragment: the run-report fragment for this step ---
+
+test("builds a changed fragment with named ambiguities and sampled gaps", () => {
+	const stats = {
+		mapped: { 120100001: "Road Magic - Explosion" },
+		unresolved: Array.from({ length: 25 }, (_, i) => String(120200001 + i)),
+		noBlock: ["120300001"],
+		ambiguous: [
+			{
+				id: "120310001",
+				matches: [
+					{ code: "RD/B221-JP006", title: "CAN:D" },
+					{ code: "RD/B222-JP006", title: "CAN-Re:D" },
+				],
+			},
+		],
+	};
+	const fragment = resolvePagesFragment(stats, { 120310001: "罐头D" });
+
+	assert.equal(fragment.step, "resolve-pages");
+	assert.equal(fragment.status, "changed");
+	assert.deepEqual(fragment.mapped, [{ id: "120100001", title: "Road Magic - Explosion" }]);
+	assert.equal(fragment.unresolved.count, 25);
+	assert.equal(fragment.unresolved.sample.length, 20);
+	assert.deepEqual(fragment.noBlock, { count: 1, sample: ["120300001"] });
+	assert.deepEqual(fragment.ambiguous, [
+		{
+			id: "120310001",
+			zh: "罐头D",
+			candidates: [
+				{ code: "RD/B221-JP006", title: "CAN:D" },
+				{ code: "RD/B222-JP006", title: "CAN-Re:D" },
+			],
+		},
+	]);
+});
+
+test("reports unchanged when the run mapped nothing", () => {
+	const fragment = resolvePagesFragment(
+		{ mapped: {}, unresolved: ["120200001"], noBlock: [], ambiguous: [] },
+		{},
+	);
+	assert.equal(fragment.status, "unchanged");
+	assert.deepEqual(fragment.mapped, []);
 });
