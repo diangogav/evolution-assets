@@ -30,6 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        # Full history so the manifest's commit date reflects the real last edit.
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
 
       - name: Clone the upstream pack
         run: |
@@ -72,7 +79,11 @@ jobs:
       - name: Replace the mirrored copy
         run: |
           set -euo pipefail
-          rm -rf rush
+          # Remove only the mirrored entries: script/, the cdbs, lflist.conf and
+          # sets.md are upstream's to replace, but rush/pages.json and
+          # rush/translations.json are our incremental caches and must survive
+          # the refresh.
+          rm -rf rush/script rush/*.cdb rush/lflist.conf rush/sets.md
           mkdir -p rush
           cp -r /tmp/rush-src/script rush/script
           cp /tmp/rush-src/*.cdb rush/
@@ -92,4 +103,34 @@ jobs:
             git push
           else
             echo "No Rush pack changes."
+          fi
+
+      # The translation pipeline runs on every daily pass, after the mirror
+      # commit has already landed: each script is incremental and idempotent
+      # (a no-op when nothing changed), and a wiki/network failure here must
+      # fail the run loudly without undoing the mirror refresh above.
+      - name: Resolve wiki pages for new card ids
+        run: node scripts/fetch-rush-code-pages.mjs
+
+      - name: Fetch translations for new pages
+        run: node scripts/fetch-rush-translations.mjs
+
+      - name: Build unified Rush databases
+        run: node scripts/build-rush-cdb.mjs
+
+      - name: Update version manifest
+        run: node scripts/update-rush-manifest.mjs
+
+      - name: Commit if the translated databases changed
+        run: |
+          paths="rush/pages.json rush/translations.json cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json"
+          if [ -n "$(git status --porcelain $paths)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add $paths
+            git commit -m "chore(rush): refresh translated databases"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No translated database changes."
           fi
