@@ -1,0 +1,86 @@
+name: Mirror Rush Duel script pack
+
+# The Rush pack lives on code.moenext.com, a third-party GitLab that has
+# rate-limited us before. The duel server's Docker build runs
+# clone_repositories.sh under `set -e`, so sourcing Rush from there directly
+# means one unreachable upstream fails the whole image build — for a format
+# most rooms never use.
+#
+# Mirroring turns that build-time dependency into a background sync: if moenext
+# is down, this workflow fails and nobody notices until the next card set. The
+# build only ever talks to GitHub, which it already depends on.
+
+on:
+  schedule:
+    # Daily at 06:00 UTC. Upstream commits card fixes most days, so the mirror
+    # is usually a no-op; only real changes produce a commit.
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Serialize with the other workflows that commit to this repo.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone the upstream pack
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/rush-src
+          git clone --depth=1 --single-branch --branch master \
+            https://code.moenext.com/mycard/ygopro-rush-duel.git /tmp/rush-src
+
+      - name: Check the pack is intact before replacing ours
+        # A partial or reorganised upstream must not silently empty the mirror:
+        # the duel server reads these cdbs as its whole Rush card pool, and an
+        # empty pool boots rooms with no cards at all.
+        run: |
+          set -euo pipefail
+          test -f "/tmp/rush-src/RD Standard.cdb" || { echo "RD Standard.cdb missing upstream"; exit 1; }
+          test -f /tmp/rush-src/lflist.conf       || { echo "lflist.conf missing upstream"; exit 1; }
+          test -d /tmp/rush-src/script            || { echo "script/ missing upstream"; exit 1; }
+
+          head -c 15 "/tmp/rush-src/RD Standard.cdb" | grep -q "SQLite format 3" \
+            || { echo "RD Standard.cdb is not a SQLite database"; exit 1; }
+
+          # The pack carries a few thousand card scripts; a couple of dozen means
+          # the clone truncated or upstream moved things.
+          scripts=$(find /tmp/rush-src/script -name '*.lua' | wc -l)
+          echo "upstream card scripts: $scripts"
+          [ "$scripts" -ge 2000 ] || { echo "only $scripts scripts — refusing to mirror"; exit 1; }
+
+          # RDRule.lua carries the field mask, draw rule and phase skips. Without
+          # it the pack loads and every Rush duel plays by OCG rules instead.
+          test -f /tmp/rush-src/script/RDRule.lua || { echo "RDRule.lua missing"; exit 1; }
+
+      - name: Replace the mirrored copy
+        run: |
+          set -euo pipefail
+          rm -rf rush
+          mkdir -p rush
+          cp -r /tmp/rush-src/script rush/script
+          cp /tmp/rush-src/*.cdb rush/
+          cp /tmp/rush-src/lflist.conf rush/
+          # Everything else upstream ships (CI config, packaging scripts, its own
+          # README) is theirs, not ours to carry.
+
+      - name: Commit if the pack changed
+        run: |
+          if [ -n "$(git status --porcelain rush)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add rush
+            git commit -m "chore(rush): refresh mirrored Rush Duel script pack"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No Rush pack changes."
+          fi
