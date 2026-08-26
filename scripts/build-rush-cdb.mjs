@@ -14,6 +14,10 @@
 // str1..str16 stay untouched in every variant, and `datas` is byte-identical
 // across variants (translation only ever UPDATEs texts rows in a file copy).
 //
+// The en/es variants additionally gain a leading `Maximum ATK <n>` line on the
+// Maximum monsters that declare one, sourced from the Chinese original — see
+// TYPE_MAXIMUM below.
+//
 // A card id present in more than one source cdb aborts the run before anything
 // is written: precedence between origins is a human decision, not a merge
 // default. Output is deterministic — rows are inserted in global id order and
@@ -68,6 +72,86 @@ export function resolveVariantTexts(entry, variant) {
 	};
 }
 
+// --- Maximum ATK ---
+//
+// A Maximum monster is played as three cards: a centre piece and an [L]/[R]
+// pair. MDPro3 draws the centre piece's Maximum ATK box from the DESCRIPTION,
+// not from a column: Card.GetRushDescriptionBodyStartIndex looks at the first
+// non-empty line of a TYPE_MAXIMUM card and, for a non-Chinese client language,
+// accepts it only when it starts with "Maximum ATK" and splits into 2..4
+// space-separated parts. It then reads the trailing digits and drops the line
+// from the body it renders.
+//
+// Upstream ships that value only in Chinese, as a `极大攻击 <n>` line, and only
+// on the centre pieces. It is NOT the `atk` column — 120150002 has atk 1900 and
+// Maximum ATK 3500 — so the Chinese text is the only source there is.
+//
+// The literal is English in BOTH the en and es variants on purpose: MDPro3
+// matches the Spanish client against the same "Maximum ATK" prefix and only
+// accepts `极大攻击`/`極大攻擊` when the client language is zh-CN or zh-TW.
+const TYPE_MAXIMUM = 0x8000;
+
+// Anchored to the whole line, mirroring the client's own "the line IS the
+// declaration" reading: a `极大攻击` mentioned inside a sentence is not one.
+const MAXIMUM_ATK_LINE = /^极大攻击\s*(\d+)$/;
+
+/** The Maximum ATK a Chinese desc declares on a line of its own, or null. */
+export function parseMaximumAtk(desc) {
+	// Chinese descs are CRLF-terminated; translated lore is LF.
+	for (const line of (desc ?? "").split(/\r?\n/)) {
+		const match = MAXIMUM_ATK_LINE.exec(line.trim());
+		if (match) return Number(match[1]);
+	}
+	return null;
+}
+
+/**
+ * Whether a Maximum card is an [L]/[R] half. Upstream names them with FULLWIDTH
+ * brackets (U+FF3B/U+FF3D), never the ASCII pair.
+ */
+export function isMaximumSidePiece(name) {
+	return (name ?? "").includes("［L］") || (name ?? "").includes("［R］");
+}
+
+/**
+ * Sorts the TYPE_MAXIMUM rows into the centre pieces that declare a value, the
+ * [L]/[R] halves, and the centre pieces that declare none. The last bucket is
+ * reported rather than guessed at: a centre piece that renames itself to a half
+ * in hand legitimately has no box to draw, and inventing a value would draw one.
+ */
+export function classifyMaximumRows(rows) {
+	const withValue = [];
+	const sidePieces = [];
+	const centreWithoutValue = [];
+
+	for (const { id, name, desc } of [...rows].sort((a, b) => a.id - b.id)) {
+		if (isMaximumSidePiece(name)) {
+			sidePieces.push(id);
+			continue;
+		}
+		const atk = parseMaximumAtk(desc);
+		if (atk === null) centreWithoutValue.push(id);
+		else withValue.push({ id, atk });
+	}
+
+	return { withValue, sidePieces, centreWithoutValue };
+}
+
+/**
+ * UPDATEs that put the English line first in `desc`. Prepended, never inserted
+ * after a print code: MDPro3 skips the first line only for zh-CN/zh-TW, so a
+ * print code carried into en/es would show up as visible body text.
+ */
+export function buildMaximumAtkUpdates(withValue) {
+	return withValue
+		.map(
+			({ id, atk }) =>
+				`UPDATE texts SET "desc"=${sqlQuote(`Maximum ATK ${atk}`)} || char(10) || "desc" ` +
+				`WHERE id=${id};`,
+		)
+		.join("\n");
+}
+
 // SQL single-quote escaping — the sqlite3 CLI has no parameter binding.
 function sqlQuote(text) {
 	return `'${text.replaceAll("'", "''")}'`;
@@ -101,6 +185,18 @@ export function buildVariantUpdates(translations, variant, presentIds) {
 	}
 
 	return { sql: statements.join("\n"), stats };
+}
+
+// The TYPE_MAXIMUM texts rows, as JSON — descs are multi-line, which the CLI's
+// default row format cannot round-trip.
+function readMaximumRows(cdbPath) {
+	const out = sqlite(
+		cdbPath,
+		"SELECT json_group_array(json_object('id',id,'name',name,'desc',\"desc\")) FROM " +
+			`(SELECT t.id, t.name, t."desc" FROM datas d JOIN texts t ON t.id=d.id ` +
+			`WHERE d.type & ${TYPE_MAXIMUM});`,
+	).trim();
+	return JSON.parse(out);
 }
 
 function readIds(cdbPath) {
@@ -146,13 +242,24 @@ export function buildRushCdbs({ sources, translations, outDir, workDir }) {
 	);
 
 	const presentIds = new Set(idLists.flat());
+	// Read off the merged Chinese db: the value only ever exists there, and both
+	// translated variants take the same 30-odd ids from it.
+	const maximumAtk = classifyMaximumRows(readMaximumRows(rawPath));
+	const maximumSql = buildMaximumAtkUpdates(maximumAtk.withValue);
+
 	const variants = {};
 	for (const variant of ["en", "es"]) {
 		const variantPath = join(workDir, `rush.${variant}.cdb`);
 		copyFileSync(rawPath, variantPath);
 		const { sql, stats } = buildVariantUpdates(translations, variant, presentIds);
-		if (sql !== "") {
-			execFileSync("sqlite3", [variantPath], { input: `BEGIN;\n${sql}\nCOMMIT;\n`, encoding: "utf8" });
+		// Translation first: it REPLACES `desc`, so a line prepended before it would
+		// be overwritten on every card the wiki documents.
+		const script = [sql, maximumSql].filter((part) => part !== "").join("\n");
+		if (script !== "") {
+			execFileSync("sqlite3", [variantPath], {
+				input: `BEGIN;\n${script}\nCOMMIT;\n`,
+				encoding: "utf8",
+			});
 		}
 		variants[variant] = stats;
 	}
@@ -167,6 +274,11 @@ export function buildRushCdbs({ sources, translations, outDir, workDir }) {
 			total: presentIds.size,
 		},
 		variants,
+		maximumAtk: {
+			withValue: maximumAtk.withValue.length,
+			sidePieces: maximumAtk.sidePieces.length,
+			centreWithoutValue: maximumAtk.centreWithoutValue,
+		},
 	};
 }
 
@@ -181,6 +293,7 @@ export function buildCdbFragment(stats, changed) {
 		status: changed ? "changed" : "unchanged",
 		merged: stats.merged,
 		variants: stats.variants,
+		maximumAtk: stats.maximumAtk,
 	};
 }
 
@@ -219,6 +332,12 @@ function main() {
 	console.error(
 		`es: ${es.name.es} names (+${es.name.en} en fallback), ` +
 			`${es.desc.es} descs (+${es.desc.en} en fallback)`,
+	);
+
+	const { withValue, sidePieces, centreWithoutValue } = stats.maximumAtk;
+	console.error(
+		`Maximum ATK: ${withValue} lines added to en/es ` +
+			`(${sidePieces} [L]/[R] halves, ${centreWithoutValue.length} centre pieces declare none)`,
 	);
 
 	const changed = JSON.stringify(gzDigests()) !== JSON.stringify(before);
