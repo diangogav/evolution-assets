@@ -1,0 +1,31 @@
+local cm,m=GetID()
+cm.name="传说的种火"
+function cm.initial_effect(c)
+	--Discard Deck
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(m,0))
+	e1:SetCategory(CATEGORY_DECKDES+CATEGORY_DESTROY)
+	e1:SetType(EFFECT_TYPE_IGNITION)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCondition(RD.ConditionSummonTurn)
+	e1:SetTarget(cm.target)
+	e1:SetOperation(cm.operation)
+	c:RegisterEffect(e1)
+end
+--Discard Deck
+function cm.exfilter(c)
+	return RD.IsLegendCard(c) and c:IsAttribute(ATTRIBUTE_FIRE) and c:IsRace(RACE_PYRO)
+end
+function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsPlayerCanDiscardDeck(tp,2) end
+	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,2)
+end
+function cm.operation(e,tp,eg,ep,ev,re,r,rp)
+	if RD.SendDeckTopToGraveAndExists(tp,2)
+		and Duel.IsExistingMatchingCard(cm.exfilter,tp,LOCATION_GRAVE,0,1,nil) then
+		RD.CanSelectAndDoAction(aux.Stringid(m,1),HINTMSG_DESTROY,Card.IsFaceup,tp,0,LOCATION_MZONE,1,2,nil,function(g)
+			Duel.BreakEffect()
+			Duel.Destroy(g,REASON_EFFECT)
+		end)
+	end
+end

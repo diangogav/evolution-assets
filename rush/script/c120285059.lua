@@ -1,0 +1,21 @@
+local cm,m=GetID()
+local list={120285049}
+cm.name="英魂的降临"
+function cm.initial_effect(c)
+	RD.AddCodeList(c,list)
+	--Fake Legend
+	RD.EnableFakeLegend(c,LOCATION_HAND+LOCATION_GRAVE)
+	--Activate
+	local e1=RD.CreateRitualEffect(c,RITUAL_ORIGINAL_LEVEL_GREATER,cm.matfilter,cm.spfilter)
+	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+	c:RegisterEffect(e1)
+end
+--Activate
+function cm.matfilter(c)
+	return c:IsFaceup() and c:IsOnField()
+end
+function cm.spfilter(c)
+	return c:IsCode(list[1])
+end

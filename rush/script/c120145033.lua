@@ -1,0 +1,29 @@
+local cm,m=GetID()
+cm.name="火面上忍 加面音爆极粗面"
+function cm.initial_effect(c)
+	--Damage & Draw
+	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(m,0))
+	e1:SetCategory(CATEGORY_DAMAGE+CATEGORY_DRAW)
+	e1:SetType(EFFECT_TYPE_IGNITION)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e1:SetRange(LOCATION_MZONE)
+	e1:SetCost(cm.cost)
+	e1:SetTarget(cm.target)
+	e1:SetOperation(cm.operation)
+	c:RegisterEffect(e1)
+end
+--Damage & Draw
+function cm.costfilter(c)
+	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsRace(RACE_PYRO) and c:IsAbleToGraveAsCost()
+end
+cm.cost=RD.CostSendMZoneToGrave(cm.costfilter,1,1,false)
+function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
+	RD.TargetDamage(1-tp,1000)
+	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,1)
+end
+function cm.operation(e,tp,eg,ep,ev,re,r,rp)
+	RD.Damage()
+	Duel.Draw(tp,1,REASON_EFFECT)
+end

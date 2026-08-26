@@ -1,0 +1,24 @@
+local cm,m=GetID()
+cm.name="死灵的束缚"
+function cm.initial_effect(c)
+	--Activate
+	local e1=Effect.CreateEffect(c)
+	e1:SetCategory(CATEGORY_ATKCHANGE)
+	e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e1:SetCondition(cm.condition)
+	e1:SetOperation(cm.activate)
+	c:RegisterEffect(e1)
+end
+--Activate
+function cm.condition(e,tp,eg,ep,ev,re,r,rp)
+	local tc=Duel.GetAttacker()
+	return tc:IsControler(1-tp) and Duel.IsExistingMatchingCard(Card.IsRace,tp,0,LOCATION_GRAVE,1,nil,tc:GetRace())
+end
+function cm.activate(e,tp,eg,ep,ev,re,r,rp)
+	local tc=Duel.GetAttacker()
+	if tc and tc:IsRelateToBattle() and tc:IsFaceup() then
+		local atk=Duel.GetMatchingGroupCount(Card.IsRace,tp,0,LOCATION_GRAVE,nil,tc:GetRace())*-100
+		RD.AttachAtkDef(e,tc,atk,0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+	end
+end
