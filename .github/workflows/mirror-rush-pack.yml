@@ -46,7 +46,15 @@ jobs:
           set -euo pipefail
           test -f "/tmp/rush-src/RD Standard.cdb" || { echo "RD Standard.cdb missing upstream"; exit 1; }
           test -f /tmp/rush-src/lflist.conf       || { echo "lflist.conf missing upstream"; exit 1; }
+          test -f /tmp/rush-src/sets.md           || { echo "sets.md missing upstream"; exit 1; }
           test -d /tmp/rush-src/script            || { echo "script/ missing upstream"; exit 1; }
+
+          # sets.md maps each card-id block to its printed set (120281XXX -> RD/JF25).
+          # It is the only route from a ygopro id to a card's identity outside this
+          # pack, and moenext rate-limits us, so it has to come down with the clone
+          # rather than be fetched when something needs it.
+          grep -qE '`120[0-9]{3}XXX`' /tmp/rush-src/sets.md \
+            || { echo "sets.md carries no id-block mappings"; exit 1; }
 
           head -c 15 "/tmp/rush-src/RD Standard.cdb" | grep -q "SQLite format 3" \
             || { echo "RD Standard.cdb is not a SQLite database"; exit 1; }
@@ -69,6 +77,7 @@ jobs:
           cp -r /tmp/rush-src/script rush/script
           cp /tmp/rush-src/*.cdb rush/
           cp /tmp/rush-src/lflist.conf rush/
+          cp /tmp/rush-src/sets.md rush/
           # Everything else upstream ships (CI config, packaging scripts, its own
           # README) is theirs, not ours to carry.
 
