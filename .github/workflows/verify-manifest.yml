@@ -1,0 +1,45 @@
+name: Verify the version manifest
+
+# The manifest is what every client compares against to decide whether its copy
+# of an asset is current, and it records the sha256 of the DECOMPRESSED bytes.
+# A pull request that rebuilds an artifact without regenerating the manifest
+# leaves it describing bytes nobody has: clients download, fail to match, and
+# are offered the same update forever. That has reached production twice —
+# the mirror workflows only regenerate the manifest on their own schedules, and
+# none of them watches every published path.
+#
+# So this runs on the pull request, where a mismatch is still a review comment
+# rather than a bug report. It reports only; regenerating the manifest here
+# would hide the very mismatch the reviewer needs to see.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+# Independent of the workflows that COMMIT the manifest — this one only reads,
+# so it needs no place in their queue.
+concurrency:
+  group: verify-manifest-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run script tests
+        run: npm test
+
+      - name: Check every manifest entry against its file
+        run: node scripts/verify-manifest.mjs
