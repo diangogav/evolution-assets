@@ -1,0 +1,470 @@
+{
+  "下降1星": {
+    "en": "Reduce Level by 1"
+  },
+  "不会被效果破坏": {
+    "en": "Cannot be destroyed by card effects"
+  },
+  "不支付代价发动": {
+    "en": "Activate without paying the cost"
+  },
+  "不用解放作召唤": {
+    "en": "Summon without Tributing"
+  },
+  "不能攻击": {
+    "en": "Cannot attack"
+  },
+  "不适用效果": {
+    "en": "Effect does not apply"
+  },
+  "丢弃手卡来发动": {
+    "en": "Activate by discarding"
+  },
+  "伤害防御": {
+    "en": "Damage protection"
+  },
+  "免疫战斗伤害": {
+    "en": "Take no battle damage"
+  },
+  "卡名改变": {
+    "en": "Change card name"
+  },
+  "原本攻击变化": {
+    "en": "Original ATK change"
+  },
+  "双重解放": {
+    "en": "Double Tribute"
+  },
+  "发动封印": {
+    "en": "Seal activation"
+  },
+  "变成恶魔族": {
+    "en": "Becomes Fiend Type"
+  },
+  "召唤封印": {
+    "en": "Seal Summon"
+  },
+  "召唤封锁": {
+    "en": "Lock Summon"
+  },
+  "可以直接攻击": {
+    "en": "Can attack directly"
+  },
+  "同盟融合术": {
+    "en": "Union Fusion"
+  },
+  "同盟装备": {
+    "en": "Equip as a Union monster"
+  },
+  "吸收攻守": {
+    "en": "Absorb ATK/DEF"
+  },
+  "回到手卡": {
+    "en": "Return to the hand"
+  },
+  "回收「机器栗子」": {
+    "en": "Recycle \"Machine Kuri\""
+  },
+  "回收「落单使魔」": {
+    "en": "Recycle \"Familiar-Possessed\""
+  },
+  "回收极大": {
+    "en": "Recycle Maximum"
+  },
+  "回收装备": {
+    "en": "Recycle Equip Card"
+  },
+  "在结束阶段破坏": {
+    "en": "Destroy during the End Phase"
+  },
+  "在这个回合反转": {
+    "en": "Flipped this turn"
+  },
+  "在这个回合召唤": {
+    "en": "Summoned this turn"
+  },
+  "场地破坏": {
+    "en": "Destroy Field"
+  },
+  "堆墓": {
+    "en": "Mill"
+  },
+  "复制卡名": {
+    "en": "Copy card name"
+  },
+  "多重攻击": {
+    "en": "Multiple attacks"
+  },
+  "夺取控制权": {
+    "en": "Take control"
+  },
+  "守备下降": {
+    "en": "Decrease DEF"
+  },
+  "守备表示": {
+    "en": "Defense Position"
+  },
+  "宣言传说怪兽": {
+    "en": "Declare a Legend Monster"
+  },
+  "宣言常规怪兽": {
+    "en": "Declare a Normal Monster"
+  },
+  "封印": {
+    "en": "Seal"
+  },
+  "属性变更": {
+    "en": "Change Attribute"
+  },
+  "已使用过效果": {
+    "en": "Effect already used"
+  },
+  "恶魔召唤": {
+    "en": "Summoned Skull"
+  },
+  "手卡送墓": {
+    "en": "Discard"
+  },
+  "投币": {
+    "en": "Coin toss"
+  },
+  "抛硬币": {
+    "en": "Coin toss"
+  },
+  "接触融合": {
+    "en": "Contact Fusion"
+  },
+  "接触融合术": {
+    "en": "Contact Fusion"
+  },
+  "控制权": {
+    "en": "Control"
+  },
+  "改变卡名": {
+    "en": "Change card name"
+  },
+  "攻击2次": {
+    "en": "Attack twice"
+  },
+  "攻击封印": {
+    "en": "Seal attack"
+  },
+  "攻击带有贯通": {
+    "en": "Attack with piercing"
+  },
+  "攻击表示": {
+    "en": "Attack Position"
+  },
+  "放到卡组上面": {
+    "en": "Place on top of the Deck"
+  },
+  "放到卡组下面": {
+    "en": "Place on the bottom of the Deck"
+  },
+  "放回卡组上面": {
+    "en": "Return to the top of the Deck"
+  },
+  "放回卡组下面": {
+    "en": "Return to the bottom of the Deck"
+  },
+  "效果封印": {
+    "en": "Seal effect"
+  },
+  "效果赋予": {
+    "en": "Grant effect"
+  },
+  "无需代价来发动": {
+    "en": "Activate without cost"
+  },
+  "时间魔术师": {
+    "en": "Time Wizard"
+  },
+  "是否再抽1张？": {
+    "en": "Draw 1 more card?"
+  },
+  "是否把那张卡破坏": {
+    "en": "Destroy that card?"
+  },
+  "是否抽1张？": {
+    "en": "Draw 1 card?"
+  },
+  "是否抽2张？": {
+    "en": "Draw 2 cards?"
+  },
+  "是否抽3张？": {
+    "en": "Draw 3 cards?"
+  },
+  "极大召唤": {
+    "en": "Maximum Summon"
+  },
+  "洗牌": {
+    "en": "Shuffle"
+  },
+  "滤抽": {
+    "en": "Filtered draw"
+  },
+  "盲堆": {
+    "en": "Mill"
+  },
+  "直接攻击": {
+    "en": "Direct attack"
+  },
+  "真红眼黑龙": {
+    "en": "Red-Eyes Black Dragon"
+  },
+  "破坏剑士": {
+    "en": "Buster Blader"
+  },
+  "种族变更": {
+    "en": "Change Type"
+  },
+  "结束阶段时破坏": {
+    "en": "Destroy during the End Phase"
+  },
+  "翻开": {
+    "en": "Reveal"
+  },
+  "自己抽1张": {
+    "en": "Draw 1 card"
+  },
+  "获得贯通": {
+    "en": "Gains piercing"
+  },
+  "融合卡名": {
+    "en": "Fusion card name"
+  },
+  "融合术召唤": {
+    "en": "Fusion Summon"
+  },
+  "表侧表示": {
+    "en": "Face-up"
+  },
+  "解放代替": {
+    "en": "Tribute substitute"
+  },
+  "请选择1只怪兽": {
+    "en": "Select 1 monster"
+  },
+  "请选择「蛋球机器人」和对方的怪兽": {
+    "en": "Select \"Tamabot\" and your opponent's monster"
+  },
+  "请选择不能被上级解放的怪兽": {
+    "en": "Select the monster that cannot be Tributed"
+  },
+  "请选择作为等级参考的怪兽": {
+    "en": "Select the monster whose Level to reference"
+  },
+  "请选择融合怪兽和素材怪兽": {
+    "en": "Select the Fusion Monster and its Materials"
+  },
+  "请选择表侧的魔法卡或者里侧的魔法·陷阱卡": {
+    "en": "Select a face-up Spell Card or a face-down Spell/Trap Card"
+  },
+  "请选择表侧表示的怪兽": {
+    "en": "Select a face-up monster"
+  },
+  "请选择表侧表示的通常怪兽": {
+    "en": "Select a face-up Normal Monster"
+  },
+  "请选择装备魔法卡": {
+    "en": "Select the Equip Spell Card"
+  },
+  "请选择要上升的攻击力": {
+    "en": "Select the ATK to gain"
+  },
+  "请选择要代替解放的怪兽": {
+    "en": "Select the monster to Tribute instead"
+  },
+  "请选择要作为仪式术召唤的素材的卡": {
+    "en": "Select the cards to use as Ritual Material"
+  },
+  "请选择要作为参考的怪兽": {
+    "en": "Select the monster to reference"
+  },
+  "请选择要作为融合术召唤的素材的卡": {
+    "en": "Select the cards to use as Fusion Material"
+  },
+  "请选择要保留的魔法·陷阱卡": {
+    "en": "Select the Spell/Trap Card to keep"
+  },
+  "请选择要加入对方手牌的卡": {
+    "en": "Select the card to add to your opponent's hand"
+  },
+  "请选择要加入手卡或特殊召唤的怪兽": {
+    "en": "Select the monster to add to your hand or Special Summon"
+  },
+  "请选择要加入手卡或者特殊召唤的怪兽": {
+    "en": "Select the monster to add to your hand or Special Summon"
+  },
+  "请选择要参照的怪兽": {
+    "en": "Select the monster to reference"
+  },
+  "请选择要参照的怪兽以及要回到手卡的怪兽": {
+    "en": "Select the monster to reference and the monster to return to the hand"
+  },
+  "请选择要参照的怪兽以及要改变表示形式的怪兽": {
+    "en": "Select the monster to reference and the monster to change position"
+  },
+  "请选择要参考等级的怪兽": {
+    "en": "Select the monster whose Level to reference"
+  },
+  "请选择要变成攻击表示的怪兽": {
+    "en": "Select the monster to change to Attack Position"
+  },
+  "请选择要变更原本攻击力的怪兽": {
+    "en": "Select the monster whose original ATK changes"
+  },
+  "请选择要吸收攻击力的怪兽": {
+    "en": "Select the monster to absorb ATK from"
+  },
+  "请选择要吸收攻守的怪兽": {
+    "en": "Select the monster to absorb ATK/DEF from"
+  },
+  "请选择要回复基本分的怪兽": {
+    "en": "Select the monster to restore LP"
+  },
+  "请选择要坐的椅子(^_^)": {
+    "en": "Pick a chair to sit on (^_^)"
+  },
+  "请选择要增加攻击力的怪兽": {
+    "en": "Select the monster to gain ATK"
+  },
+  "请选择要增加攻守的怪兽": {
+    "en": "Select the monster to gain ATK/DEF"
+  },
+  "请选择要增加等级的怪兽": {
+    "en": "Select the monster to gain a Level"
+  },
+  "请选择要复制卡名的卡": {
+    "en": "Select the card whose name to copy"
+  },
+  "请选择要复制卡名的怪兽": {
+    "en": "Select the monster whose name to copy"
+  },
+  "请选择要封印攻击的怪兽": {
+    "en": "Select the monster whose attack to seal"
+  },
+  "请选择要封印的怪兽": {
+    "en": "Select the monster to seal"
+  },
+  "请选择要封锁攻击的怪兽": {
+    "en": "Select the monster whose attack to block"
+  },
+  "请选择要操作的数量": {
+    "en": "Select the amount"
+  },
+  "请选择要改变卡名的怪兽": {
+    "en": "Select the monster whose name changes"
+  },
+  "请选择要改变属性的怪兽": {
+    "en": "Select the monster whose Attribute changes"
+  },
+  "请选择要改变种族的怪兽": {
+    "en": "Select the monster whose Type changes"
+  },
+  "请选择要放回卡组顶的卡": {
+    "en": "Select the card to place on top of the Deck"
+  },
+  "请选择要极大召唤的怪兽(3只)": {
+    "en": "Select the monsters to Maximum Summon (3)"
+  },
+  "请选择要沉默的怪兽": {
+    "en": "Select the monster to silence"
+  },
+  "请选择要装备的怪兽": {
+    "en": "Select the monster to equip"
+  },
+  "请选择要装备的装备魔法卡": {
+    "en": "Select the Equip Spell Card to equip"
+  },
+  "请选择要计算攻击力的怪兽": {
+    "en": "Select the monster to calculate ATK"
+  },
+  "请选择要赋予效果的卡": {
+    "en": "Select the card to gain the effect"
+  },
+  "请选择要赋予效果的怪兽": {
+    "en": "Select the monster to gain the effect"
+  },
+  "请选择要送去墓地的手卡数量": {
+    "en": "Select how many cards to send to the Graveyard"
+  },
+  "请选择要防止破坏的卡": {
+    "en": "Select the card to protect from destruction"
+  },
+  "请选择要附加效果的卡": {
+    "en": "Select the card to gain the effect"
+  },
+  "请选择要附加效果的怪兽": {
+    "en": "Select the monster to gain the effect"
+  },
+  "请选择要降低守备力的怪兽": {
+    "en": "Select the monster to lose DEF"
+  },
+  "请选择要降低攻击力的怪兽": {
+    "en": "Select the monster to lose ATK"
+  },
+  "请选择要降低攻守的怪兽": {
+    "en": "Select the monster to lose ATK/DEF"
+  },
+  "请选择要降低等级的怪兽": {
+    "en": "Select the monster to lose a Level"
+  },
+  "请选择让对方选择的卡": {
+    "en": "Select the card for your opponent to choose from"
+  },
+  "请选择通常怪兽": {
+    "en": "Select a Normal Monster"
+  },
+  "贯通": {
+    "en": "Piercing"
+  },
+  "赋予自身效果": {
+    "en": "Grant its own effect"
+  },
+  "赋予贯通": {
+    "en": "Grant piercing"
+  },
+  "返回卡组顶": {
+    "en": "Return to the top of the Deck"
+  },
+  "这个回合不能发动": {
+    "en": "Cannot be activated this turn"
+  },
+  "这个回合不能攻击": {
+    "en": "Cannot attack this turn"
+  },
+  "这个回合攻击带有贯通": {
+    "en": "Gains piercing this turn"
+  },
+  "这张卡不能攻击": {
+    "en": "This card cannot attack"
+  },
+  "追加攻击": {
+    "en": "Additional attack"
+  },
+  "里侧守备表示": {
+    "en": "Face-down Defense Position"
+  },
+  "里侧表示": {
+    "en": "Face-down"
+  },
+  "陷阱封印": {
+    "en": "Seal Trap"
+  },
+  "陷阱抗性": {
+    "en": "Trap immunity"
+  },
+  "青眼白龙": {
+    "en": "Blue-Eyes White Dragon"
+  },
+  "骰子": {
+    "en": "Dice roll"
+  },
+  "黑魔术少女": {
+    "en": "Dark Magician Girl"
+  },
+  "黑魔术师": {
+    "en": "Dark Magician"
+  }
+}

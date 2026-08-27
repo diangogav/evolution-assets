@@ -41,6 +41,23 @@ import { reportFragment } from "./run-report.mjs";
 const RUSH_CDBS = ["rush/RD Standard.cdb", "rush/RD Patch.cdb", "rush/RD Alternate.cdb"];
 const TRANSLATIONS_PATH = "rush/translations.json";
 const EFFECT_STRINGS_PATH = "rush/effect-strings.json";
+const EFFECT_STRINGS_MANUAL_PATH = "rush/effect-strings.manual.json";
+
+/**
+ * The mined dictionary, filled in by the hand-written one.
+ *
+ * Mined entries win: they carry the wording mycard's own translators used for
+ * the same term in the base databases, so a card reads the way its OCG
+ * counterpart already does. The manual file only covers prompts Rush uses that
+ * no base card does, which is why it can never overrule one.
+ */
+export function mergeEffectStrings(mined, manual) {
+	const merged = { ...manual };
+	for (const [chinese, entry] of Object.entries(mined)) {
+		merged[chinese] = { ...manual[chinese], ...entry };
+	}
+	return merged;
+}
 const OUT_DIR = "cdb";
 
 function sqlite(dbPath, sql) {
@@ -415,7 +432,10 @@ function gzDigests() {
 
 function main() {
 	const translations = JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8"));
-	const effectStrings = JSON.parse(readFileSync(EFFECT_STRINGS_PATH, "utf8"));
+	const effectStrings = mergeEffectStrings(
+		JSON.parse(readFileSync(EFFECT_STRINGS_PATH, "utf8")),
+		JSON.parse(readFileSync(EFFECT_STRINGS_MANUAL_PATH, "utf8")),
+	);
 	const workDir = mkdtempSync(join(tmpdir(), "rush-cdb-"));
 	const before = gzDigests();
 

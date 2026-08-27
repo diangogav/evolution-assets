@@ -16,6 +16,7 @@ import {
 	countStrCoverage,
 	findDuplicateIds,
 	isMaximumSidePiece,
+	mergeEffectStrings,
 	parseMaximumAtk,
 	resolveVariantTexts,
 	termsForLanguage,
@@ -521,4 +522,24 @@ test("buildRushCdbs translates str columns in en/es and leaves the base variant 
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
+});
+
+test("mergeEffectStrings lets a mined term overrule the hand-written one", () => {
+	// The mined wording comes from mycard's own translators, so a Rush card reads
+	// the way its OCG counterpart already does.
+	const merged = mergeEffectStrings(
+		{ 破坏: { en: "Destroy" } },
+		{ 破坏: { en: "Destroy it" }, 盲堆: { en: "Mill" } },
+	);
+
+	assert.deepEqual(merged, {
+		破坏: { en: "Destroy" },
+		盲堆: { en: "Mill" },
+	});
+});
+
+test("mergeEffectStrings keeps a hand-written language the mined entry lacks", () => {
+	const merged = mergeEffectStrings({ 破坏: { en: "Destroy" } }, { 破坏: { es: "Destruir" } });
+
+	assert.deepEqual(merged, { 破坏: { en: "Destroy", es: "Destruir" } });
 });
