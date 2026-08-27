@@ -17,6 +17,7 @@ import {
 	findDuplicateIds,
 	isMaximumSidePiece,
 	mergeEffectStrings,
+	mergeTranslations,
 	parseMaximumAtk,
 	resolveVariantTexts,
 	termsForLanguage,
@@ -542,4 +543,65 @@ test("mergeEffectStrings keeps a hand-written language the mined entry lacks", (
 	const merged = mergeEffectStrings({ 破坏: { en: "Destroy" } }, { 破坏: { es: "Destruir" } });
 
 	assert.deepEqual(merged, { 破坏: { en: "Destroy", es: "Destruir" } });
+});
+
+// --- mergeTranslations: the wiki's own Spanish outranks the mined Spanish ---
+
+test("mergeTranslations lets the fetched entry overrule the mined one", () => {
+	// The fetched Spanish is off the Rush card's own wiki page; the mined
+	// Spanish comes from a different card that merely shares an English name.
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, { 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } });
+});
+
+test("mergeTranslations fills a field the fetched entry lacks", () => {
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card." } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, {
+		1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card.", es: "Mago del Tiempo" },
+	});
+});
+
+test("mergeTranslations treats an empty fetched field as the gap it is", () => {
+	// fetch-rush-translations.mjs writes "" for a field the wiki page did not
+	// carry, so an empty override must not blank a mined value.
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", es: "", es_lore: "" } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, {
+		1201: { en: "Time Wizard", es: "Mago del Tiempo", es_lore: "" },
+	});
+});
+
+test("mergeTranslations keeps cards only one of the two files knows", () => {
+	const merged = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1202: { es: "Dragón Milenario" } });
+
+	assert.deepEqual(merged, { 1201: { en: "Time Wizard" }, 1202: { es: "Dragón Milenario" } });
+});
+
+test("mergeTranslations does not mutate either input", () => {
+	const fetched = { 1201: { en: "Time Wizard" } };
+	const base = { 1201: { es: "Mago del Tiempo" } };
+	mergeTranslations(fetched, base);
+
+	assert.deepEqual(fetched, { 1201: { en: "Time Wizard" } });
+	assert.deepEqual(base, { 1201: { es: "Mago del Tiempo" } });
+});
+
+test("a mined Spanish name reaches the es variant through the merge", () => {
+	const entry = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1201: { es: "Mago del Tiempo" } })[1201];
+
+	assert.deepEqual(resolveVariantTexts(entry, "es").name, {
+		text: "Mago del Tiempo",
+		source: "es",
+	});
 });

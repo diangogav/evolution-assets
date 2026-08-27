@@ -10,7 +10,10 @@
 //                    (`en`/`en_lore`) where non-empty; zh otherwise. Cards the
 //                    wiki does not document yet ship in Chinese by design and
 //                    pick up English on a later daily run.
-//   rush.es.cdb.gz — per-field fallback chain es → en → zh.
+//   rush.es.cdb.gz — per-field fallback chain es → en → zh. Its Spanish comes
+//                    from rush/translations.json first and rush/
+//                    translations.base.json — official names mined off the base
+//                    databases, see mine-spanish-names.mjs — only in the gaps.
 // In the en/es variants texts.str1..str16 — the duel-time UI prompts a card
 // shows when it asks the player to choose — are additionally run through
 // rush/effect-strings.json (see build-effect-strings.mjs). A prompt is
@@ -40,6 +43,7 @@ import { reportFragment } from "./run-report.mjs";
 
 const RUSH_CDBS = ["rush/RD Standard.cdb", "rush/RD Patch.cdb", "rush/RD Alternate.cdb"];
 const TRANSLATIONS_PATH = "rush/translations.json";
+const TRANSLATIONS_BASE_PATH = "rush/translations.base.json";
 const EFFECT_STRINGS_PATH = "rush/effect-strings.json";
 const EFFECT_STRINGS_MANUAL_PATH = "rush/effect-strings.manual.json";
 
@@ -58,6 +62,29 @@ export function mergeEffectStrings(mined, manual) {
 	}
 	return merged;
 }
+
+/**
+ * The scraped translations, with the mined ones filling their gaps.
+ *
+ * Fetched entries win: their Spanish is off that Rush card's own wiki page,
+ * about the card in hand. A mined value comes from a DIFFERENT base card that
+ * merely shares an English name (see mine-spanish-names.mjs), so it is only
+ * ever evidence where the wiki says nothing.
+ */
+export function mergeTranslations(fetched, base) {
+	const merged = {};
+	for (const id of new Set([...Object.keys(base), ...Object.keys(fetched)])) {
+		const entry = { ...base[id], ...fetched[id] };
+		// fetch-rush-translations.mjs writes "" for a field its wiki page did not
+		// carry; that empty is a gap, not a value, and must not blank a mined one.
+		for (const [field, text] of Object.entries(base[id] ?? {})) {
+			if (!entry[field]) entry[field] = text;
+		}
+		merged[id] = entry;
+	}
+	return merged;
+}
+
 const OUT_DIR = "cdb";
 
 function sqlite(dbPath, sql) {
@@ -431,7 +458,12 @@ function gzDigests() {
 }
 
 function main() {
-	const translations = JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8"));
+	const translations = mergeTranslations(
+		JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8")),
+		existsSync(TRANSLATIONS_BASE_PATH)
+			? JSON.parse(readFileSync(TRANSLATIONS_BASE_PATH, "utf8"))
+			: {},
+	);
 	const effectStrings = mergeEffectStrings(
 		JSON.parse(readFileSync(EFFECT_STRINGS_PATH, "utf8")),
 		JSON.parse(readFileSync(EFFECT_STRINGS_MANUAL_PATH, "utf8")),
@@ -459,9 +491,13 @@ function main() {
 	console.error(`total: ${stats.merged.total} rows`);
 	const { en, es } = stats.variants;
 	console.error(`en: ${en.name.en} names, ${en.desc.en} descs translated`);
+	// Spanish coverage is counted against every card shipped, not against the
+	// cards a translation entry exists for: an untranslated card is the gap.
+	const cards = stats.merged.total;
+	const coverage = (count) => (cards === 0 ? "0%" : `${((100 * count) / cards).toFixed(1)}%`);
 	console.error(
-		`es: ${es.name.es} names (+${es.name.en} en fallback), ` +
-			`${es.desc.es} descs (+${es.desc.en} en fallback)`,
+		`es: ${es.name.es}/${cards} names (${coverage(es.name.es)}, +${es.name.en} en fallback), ` +
+			`${es.desc.es}/${cards} descs (${coverage(es.desc.es)}, +${es.desc.en} en fallback)`,
 	);
 
 	const { withValue, sidePieces, centreWithoutValue } = stats.maximumAtk;
