@@ -71,6 +71,9 @@
   "双方不能把怪兽（7星以上）上级盖放": {
     "en": "Neither player can Set monsters of Level 7 or higher"
   },
+  "双方不能把怪兽（9星以下）表侧攻击表示特殊召唤": {
+    "en": "Neither player can Special Summon monsters (Level 9 or lower) in face-up Attack Position"
+  },
   "双重解放": {
     "en": "Double Tribute"
   },
@@ -154,6 +157,15 @@
   },
   "对方不能把表侧表示怪兽（10星以下）的效果发动": {
     "en": "Your opponent cannot activate the effects of face-up monsters of Level 10 or lower"
+  },
+  "对方场上的全部表侧表示怪兽（恐龙族）的攻击力·守备力直到回合结束时下降2000": {
+    "en": "Decrease the ATK and DEF of all face-up Dinosaur Type monsters on your opponent's field by 2000 until the end of the turn"
+  },
+  "对方场上的表侧表示怪兽（龙族）选最多有［自己场上的表侧表示怪兽（电子人族）数量］破坏": {
+    "en": "Destroy up to as many face-up Dragon Type monsters on your opponent's field as you control face-up Cyborg Type monsters"
+  },
+  "对方场上的里侧表示的魔法·陷阱卡全部确认，从那之中选1张破坏": {
+    "en": "Look at all face-down Spell/Trap Cards on your opponent's field, then destroy 1 of them"
   },
   "封印": {
     "en": "Seal"
@@ -266,20 +278,53 @@
   "是否从翻开的卡之中选1张「融合术」加入手卡？": {
     "en": "Add 1 \"Fusion\" from the revealed cards to your hand?"
   },
+  "是否从自己卡组上面把1张卡送去墓地？": {
+    "en": "Send the top card of your Deck to the Graveyard?"
+  },
   "是否从自己卡组上面把2张卡送去墓地？": {
     "en": "Send the top 2 cards of your Deck to the Graveyard?"
   },
   "是否从自己卡组上面把3张卡送去墓地？": {
     "en": "Send the top 3 cards of your Deck to the Graveyard?"
   },
+  "是否从自己墓地的通常怪兽（5星以下）、「融合术」、「融合」之中选1张加入手卡？": {
+    "en": "Add 1 Normal Monster (Level 5 or lower), \"Fusion\" or \"Polymerization\" from your Graveyard to your hand?"
+  },
+  "是否从自己手卡·墓地把1只融合术怪兽以外的怪兽（9星/银河族）特殊召唤？": {
+    "en": "Special Summon 1 non-Fusion monster (Level 9, Galaxy Type) from your hand or Graveyard?"
+  },
+  "是否从这个效果送去墓地的卡之中选「名蔷薇魔术师」「名蔷薇魔女」「融合术」的其中1张加入手": {
+    "en": "Add 1 of \"Celeb Rose Magician\", \"Celeb Rose Witch\" or \"Fusion\" from the cards sent to the Graveyard by this effect to your hand?"
+  },
+  "是否从这个效果送去墓地的卡之中选「名蔷薇魔术师」「名蔷薇魔女」「融合术」的其中1张加入手卡？": {
+    "en": "Add 1 of \"Celeb Rose Magician\", \"Celeb Rose Witch\" or \"Fusion\" from the cards sent to the Graveyard by this effect to your hand?"
+  },
+  "是否从这个效果送去墓地的卡之中选「名蔷薇魔术师」「名蔷薇魔女」各最多1张加入手卡？": {
+    "en": "Add up to 1 \"Celeb Rose Magician\" and up to 1 \"Celeb Rose Witch\" from the cards sent to the Graveyard by this effect to your hand?"
+  },
   "是否从送去墓地的卡之中选1张「融合术」加入手卡？": {
     "en": "Add 1 \"Fusion\" from the cards sent to the Graveyard to your hand?"
+  },
+  "是否从那之中选1只「虚空噬骸兵·镇魂鹰巨人」或者通常怪兽（暗属性/银河族）加入手卡？": {
+    "en": "Add 1 \"Voidvelg Requiem\" or 1 Normal Monster (DARK, Galaxy Type) from among them to your hand?"
+  },
+  "是否从那之中选1只怪兽（4星以下/幻龙族/守备力900）加入手卡？": {
+    "en": "Add 1 monster (Level 4 or lower, Wyrm Type, 900 DEF) from among them to your hand?"
   },
   "是否从那之中选1只怪兽（6星以下）特殊召唤？": {
     "en": "Special Summon 1 monster (Level 6 or lower) from among them?"
   },
   "是否从那之中选1只怪兽（7星以上）加入手卡？": {
     "en": "Add 1 monster (Level 7 or higher) from among them to your hand?"
+  },
+  "是否从那之中选1只怪兽（9星/地属性/魔法师族）加入手卡？": {
+    "en": "Add 1 monster (Level 9, EARTH, Spellcaster Type) from among them to your hand?"
+  },
+  "是否从那之中选1只怪兽（9星/恶魔族/守备力2000）加入手卡?": {
+    "en": "Add 1 monster (Level 9, Fiend Type, 2000 DEF) from among them to your hand?"
+  },
+  "是否从那之中选1只怪兽（9星/恶魔族/守备力2000）加入手卡？": {
+    "en": "Add 1 monster (Level 9, Fiend Type, 2000 DEF) from among them to your hand?"
   },
   "是否从那之中选1张仪式术魔法卡加入手卡？": {
     "en": "Add 1 Ritual Spell Card from among them to your hand?"
@@ -293,11 +338,17 @@
   "是否从那之中选传说怪兽和传说陷阱卡各最多1张加入手卡？": {
     "en": "Add up to 1 Legend Monster and up to 1 Legend Trap Card from among them to your hand?"
   },
+  "是否从那之中选怪兽（7星/植物族）和「融合术」各最多1张加入手卡？": {
+    "en": "Add up to 1 monster (Level 7, Plant Type) and up to 1 \"Fusion\" from among them to your hand?"
+  },
   "是否再抽1张？": {
     "en": "Draw 1 more card?"
   },
   "是否对方场上最多3只表侧表示怪兽攻击力下降2000？": {
     "en": "Decrease the ATK of up to 3 face-up monsters on your opponent's field by 2000?"
+  },
+  "是否把对方场上的场地魔法卡破坏？": {
+    "en": "Destroy the Field Spell Card on your opponent's field?"
   },
   "是否把对方场上的怪兽全部破坏？": {
     "en": "Destroy all monsters on your opponent's field?"
@@ -326,6 +377,9 @@
   "是否把自己场上的这张卡送去墓地？": {
     "en": "Send this card on your field to the Graveyard?"
   },
+  "是否把自己墓地的「红色药剂」加入手卡？": {
+    "en": "Add 1 \"Red Medicine\" from your Graveyard to your hand?"
+  },
   "是否把自己墓地的「蓝色药剂」加入手卡？": {
     "en": "Add 1 \"Blue Medicine\" from your Graveyard to your hand?"
   },
@@ -343,6 +397,9 @@
   },
   "是否把选的怪兽破坏？": {
     "en": "Destroy the selected monster?"
+  },
+  "是否把那只怪兽的表示形式变更？": {
+    "en": "Change the battle position of that monster?"
   },
   "是否把那张卡在自己场上盖放？": {
     "en": "Set that card on your field?"
@@ -374,6 +431,9 @@
   "是否给与对方700伤害？": {
     "en": "Inflict 700 damage to your opponent?"
   },
+  "是否给与对方为［对方场上的表侧表示怪兽的攻击力合计］的伤害？": {
+    "en": "Inflict damage equal to the combined ATK of all face-up monsters on your opponent's field?"
+  },
   "是否让墓地的「明冰龙」和「燃烧烈焰龙」回到卡组？": {
     "en": "Return \"Clear Ice Dragon\" and \"Burning Blaze Dragon\" from your Graveyard to the Deck?"
   },
@@ -383,14 +443,38 @@
   "是否让对方场上的全部表侧表示怪兽的攻击力下降3000？": {
     "en": "Decrease the ATK of all face-up monsters on your opponent's field by 3000?"
   },
+  "是否让对方场上的全部表侧表示怪兽的攻击力下降500？": {
+    "en": "Decrease the ATK of all face-up monsters on your opponent's field by 500?"
+  },
   "是否让对方场上的全部表侧表示怪兽的攻击力下降？": {
     "en": "Decrease the ATK of all face-up monsters on your opponent's field?"
+  },
+  "是否让对方场上的全部表侧表示怪兽（攻击力3000以上）的攻击力下降1200？": {
+    "en": "Decrease the ATK of all face-up monsters (3000 or more ATK) on your opponent's field by 1200?"
+  },
+  "是否让对方场上的全部表侧表示怪兽（攻击力3000以上）的攻击力下降？": {
+    "en": "Decrease the ATK of all face-up monsters (3000 or more ATK) on your opponent's field?"
   },
   "是否让对方手卡随机选1张回到卡组下面？": {
     "en": "Return 1 random card from your opponent's hand to the bottom of the Deck?"
   },
+  "是否让手卡1只怪兽（电子界族）特殊召唤？": {
+    "en": "Special Summon 1 Cyberse Type monster from your hand?"
+  },
+  "是否让自己回复500基本分？": {
+    "en": "Gain 500 LP?"
+  },
+  "是否让自己回复800基本分？": {
+    "en": "Gain 800 LP?"
+  },
+  "是否让自己回复900基本分？": {
+    "en": "Gain 900 LP?"
+  },
   "是否让自己场上全部怪兽的攻击力上升？": {
     "en": "Increase the ATK of all monsters on your field?"
+  },
+  "是否让自己墓地1张「攻击减俸」或者「战斗左迁」回到卡组下面？": {
+    "en": "Return 1 \"Salary Slash\" or \"Battle Demotion\" from your Graveyard to the bottom of the Deck?"
   },
   "是否让这张卡的攻击力上升？": {
     "en": "Increase this card's ATK?"
@@ -401,6 +485,15 @@
   "是否进行融合术召唤？": {
     "en": "Fusion Summon?"
   },
+  "是否选原本攻击力是800的自己场上最多3只表侧表示怪兽（光属性/海龙族）攻击力上升160": {
+    "en": "Increase the ATK of up to 3 face-up monsters (LIGHT, Sea Serpent Type) with 800 original ATK on your field by 1600?"
+  },
+  "是否选原本攻击力是800的自己场上最多3只表侧表示怪兽（光属性/海龙族）攻击力上升1600？": {
+    "en": "Increase the ATK of up to 3 face-up monsters (LIGHT, Sea Serpent Type) with 800 original ATK on your field by 1600?"
+  },
+  "是否选原本攻击力是800的自己场上最多3只表侧表示怪兽（光属性）攻击力上升？": {
+    "en": "Increase the ATK of up to 3 face-up LIGHT monsters with 800 original ATK on your field?"
+  },
   "是否选对方场上1只怪兽变成表侧攻击表示或者里侧守备表示？": {
     "en": "Change 1 monster on your opponent's field to face-up Attack Position or face-down Defense Position?"
   },
@@ -409,6 +502,9 @@
   },
   "是否选对方场上1只攻击表示怪兽变成表侧守备表示？": {
     "en": "Change 1 Attack Position monster on your opponent's field to face-up Defense Position?"
+  },
+  "是否选对方场上1只攻击表示怪兽（8星以下）回到持有者手卡？": {
+    "en": "Return 1 Attack Position monster (Level 8 or lower) on your opponent's field to its owner's hand?"
   },
   "是否选对方场上1只效果怪兽（8星以下）破坏？": {
     "en": "Destroy 1 Effect Monster (Level 8 or lower) on your opponent's field?"
@@ -421,6 +517,9 @@
   },
   "是否选对方场上1只表侧表示怪兽变成里侧守备表示？": {
     "en": "Change 1 face-up monster on your opponent's field to face-down Defense Position?"
+  },
+  "是否选对方场上1只表侧表示怪兽回到持有者手卡？": {
+    "en": "Return 1 face-up monster on your opponent's field to its owner's hand?"
   },
   "是否选对方场上1只表侧表示怪兽把表示形式变更？": {
     "en": "Change the battle position of 1 face-up monster on your opponent's field?"
@@ -440,8 +539,14 @@
   "是否选对方场上1只表侧表示怪兽攻击力下降？": {
     "en": "Decrease the ATK of 1 face-up monster on your opponent's field?"
   },
+  "是否选对方场上1只表侧表示怪兽（3～8星）等级下降2星？": {
+    "en": "Decrease the Level of 1 face-up monster (Level 3 to 8) on your opponent's field by 2?"
+  },
   "是否选对方场上1只表侧表示怪兽（8星以下）破坏？": {
     "en": "Destroy 1 face-up monster (Level 8 or lower) on your opponent's field?"
+  },
+  "是否选对方场上1只表侧表示怪兽（守备力1500以下）破坏？": {
+    "en": "Destroy 1 face-up monster (1500 or less DEF) on your opponent's field?"
   },
   "是否选对方场上1只表侧表示的效果怪兽（6星）破坏？": {
     "en": "Destroy 1 face-up Effect Monster (Level 6) on your opponent's field?"
@@ -461,14 +566,23 @@
   "是否选对方场上最多2只怪兽攻击力下降800？": {
     "en": "Decrease the ATK of up to 2 monsters on your opponent's field by 800?"
   },
+  "是否选对方场上的1张卡破坏？": {
+    "en": "Destroy 1 card on your opponent's field?"
+  },
   "是否选对方场上的魔法·陷阱卡破坏": {
     "en": "Destroy a Spell/Trap Card on your opponent's field?"
   },
   "是否选对方墓地1只怪兽在自己场上守备表示特殊召唤？": {
     "en": "Special Summon 1 monster from your opponent's Graveyard to your field in Defense Position?"
   },
+  "是否选对方墓地1只怪兽（7星以下）在自己场上表侧表示特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 7 or lower) from your opponent's Graveyard to your field face-up?"
+  },
   "是否选对方墓地1只效果怪兽？": {
     "en": "Select 1 Effect Monster from your opponent's Graveyard?"
+  },
+  "是否选对方墓地最多2只怪兽回到卡组？": {
+    "en": "Return up to 2 monsters from your opponent's Graveyard to the Deck?"
   },
   "是否选对方墓地最多2张卡回到卡组？": {
     "en": "Return up to 2 cards from your opponent's Graveyard to the Deck?"
@@ -481,6 +595,9 @@
   },
   "是否选对方的魔法与陷阱区域1张里侧表示的卡破坏？": {
     "en": "Destroy 1 face-down card in your opponent's Spell & Trap Zone?"
+  },
+  "是否选持有和自己墓地的通常怪兽相同种族的对方场上1只表侧表示怪兽破坏？": {
+    "en": "Destroy 1 face-up monster on your opponent's field with the same Type as a Normal Monster in your Graveyard?"
   },
   "是否选持有和那只怪兽相同等级和种族的自己场上1只怪兽？": {
     "en": "Select 1 monster on your field with the same Level and Type as that monster?"
@@ -500,6 +617,12 @@
   "是否选自己场上1只表侧表示怪兽攻击力上升500？": {
     "en": "Increase the ATK of 1 face-up monster on your field by 500?"
   },
+  "是否选自己场上1只表侧表示怪兽攻击力上升？": {
+    "en": "Increase the ATK of 1 face-up monster on your field?"
+  },
+  "是否选自己场上1只表侧表示怪兽种族变成魔法师族？": {
+    "en": "Change the Type of 1 face-up monster on your field to Spellcaster?"
+  },
   "是否选自己场上1只表侧表示怪兽（水属性）把表示形式变更？": {
     "en": "Change the battle position of 1 face-up WATER monster on your field?"
   },
@@ -509,11 +632,23 @@
   "是否选自己场上1张表侧表示的卡？": {
     "en": "Select 1 face-up card on your field?"
   },
+  "是否选自己场上2只表侧表示的效果怪兽（4星/银河族）？": {
+    "en": "Select 2 face-up Effect Monsters (Level 4, Galaxy Type) on your field?"
+  },
   "是否选自己场上最多3只表侧表示怪兽？": {
     "en": "Select up to 3 face-up monsters on your field?"
   },
   "是否选自己墓地1只「叛骨之盖加斯特」加入手卡？": {
     "en": "Add 1 \"Gaigust the Defiant Soul\" from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只「名蔷薇魔女」特殊召唤？": {
+    "en": "Special Summon 1 \"Celeb Rose Witch\" from your Graveyard?"
+  },
+  "是否选自己墓地1只「暗黑之龙骑士」或者怪兽（9星/龙族/攻击力2500）加入手卡？": {
+    "en": "Add 1 \"Dragon Knight of Darkness\" or 1 monster (Level 9, Dragon Type, 2500 ATK) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只「暗黑之龙骑士」或者怪兽（9星/龙族/攻击力3000）加入手卡？": {
+    "en": "Add 1 \"Dragon Knight of Darkness\" or 1 monster (Level 9, Dragon Type, 3000 ATK) from your Graveyard to your hand?"
   },
   "是否选自己墓地1只「梦中之丝绸蚕」加入手卡？": {
     "en": "Add 1 \"Delirium Silbyx\" from your Graveyard to your hand?"
@@ -524,8 +659,14 @@
   "是否选自己墓地1只「配达机器·送报车」或者1张「报道魂」加入手卡？": {
     "en": "Add 1 \"Delivery Machine - Newspaper Truck\" or 1 \"Soul of a Reporter\" from your Graveyard to your hand?"
   },
+  "是否选自己墓地1只「饶有情趣的菓子假名姬」或者1张「饶有情趣的菓子袴着」加入手卡？": {
+    "en": "Add 1 \"Grace Princess Kana\" or 1 \"Grace Hakama Fitting Ceremony\" from your Graveyard to your hand?"
+  },
   "是否选自己墓地1只「饶有情趣的菓子假名姬」特殊召唤？": {
     "en": "Special Summon 1 \"Grace Princess Kana\" from your Graveyard?"
+  },
+  "是否选自己墓地1只「龙队射手」或者「龙队后卫」加入手卡？": {
+    "en": "Add 1 \"Dragon Squad Shooter\" or \"Dragon Squad Guard\" from your Graveyard to your hand?"
   },
   "是否选自己墓地1只「龙魔杀戮者」守备表示特殊召唤？": {
     "en": "Special Summon 1 \"Dragonic Slayer\" from your Graveyard in Defense Position?"
@@ -539,11 +680,29 @@
   "是否选自己墓地1只怪兽（3·4星）特殊召唤？": {
     "en": "Special Summon 1 monster (Level 3 or 4) from your Graveyard?"
   },
+  "是否选自己墓地1只怪兽（4星以下/龙族）守备表示特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 4 or lower, Dragon Type) from your Graveyard in Defense Position?"
+  },
+  "是否选自己墓地1只怪兽（5星以上/光属性/魔法师族）特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 5 or higher, LIGHT, Spellcaster Type) from your Graveyard?"
+  },
   "是否选自己墓地1只怪兽（5星以上/守备力1000）加入手卡？": {
     "en": "Add 1 monster (Level 5 or higher, 1000 DEF) from your Graveyard to your hand?"
   },
+  "是否选自己墓地1只怪兽（5星以下/机械族）特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 5 or lower, Machine Type) from your Graveyard?"
+  },
+  "是否选自己墓地1只怪兽（6星以上/炎族）加入手卡？": {
+    "en": "Add 1 monster (Level 6 or higher, Pyro Type) from your Graveyard to your hand?"
+  },
   "是否选自己墓地1只怪兽（6星以上/魔法师族）加入手卡？": {
     "en": "Add 1 monster (Level 6 or higher, Spellcaster Type) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只怪兽（7·8星/光属性/兽族/守备力1500以上）加入手卡？": {
+    "en": "Add 1 monster (Level 7 or 8, LIGHT, Beast Type, 1500 or more DEF) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只怪兽（7·8星/光属性/兽族/守备力1500）加入手卡？": {
+    "en": "Add 1 monster (Level 7 or 8, LIGHT, Beast Type, 1500 DEF) from your Graveyard to your hand?"
   },
   "是否选自己墓地1只怪兽（7星以上/念动力族）特殊召唤？": {
     "en": "Special Summon 1 monster (Level 7 or higher, Psychic Type) from your Graveyard?"
@@ -551,11 +710,20 @@
   "是否选自己墓地1只怪兽（7星以上/风属性/战士族）特殊召": {
     "en": "Special Summon 1 monster (Level 7 or higher, WIND, Warrior Type) from your Graveyard?"
   },
+  "是否选自己墓地1只怪兽（7星以上/风属性/战士族）特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 7 or higher, WIND, Warrior Type) from your Graveyard?"
+  },
   "是否选自己墓地1只怪兽（7星）特殊召唤？": {
     "en": "Special Summon 1 Level 7 monster from your Graveyard?"
   },
   "是否选自己墓地1只怪兽（8星/银河族）加入手卡？": {
     "en": "Add 1 monster (Level 8, Galaxy Type) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只怪兽（8星以下/战士族或者鸟兽族）回到卡组上面？": {
+    "en": "Return 1 monster (Level 8 or lower, Warrior or Winged Beast Type) from your Graveyard to the top of the Deck?"
+  },
+  "是否选自己墓地1只怪兽（8星以下/战士族或者鸟兽族）回到卡组？": {
+    "en": "Return 1 monster (Level 8 or lower, Warrior or Winged Beast Type) from your Graveyard to the Deck?"
   },
   "是否选自己墓地1只怪兽（8星以下）特殊召唤？": {
     "en": "Special Summon 1 monster (Level 8 or lower) from your Graveyard?"
@@ -566,11 +734,20 @@
   "是否选自己墓地1只怪兽（地属性/机械族）加入手卡？": {
     "en": "Add 1 monster (EARTH, Machine Type) from your Graveyard to your hand?"
   },
+  "是否选自己墓地1只怪兽（植物族）攻击表示特殊召唤？": {
+    "en": "Special Summon 1 Plant Type monster from your Graveyard in Attack Position?"
+  },
   "是否选自己墓地1只融合术怪兽（多头龙族）特殊召唤？": {
     "en": "Special Summon 1 Fusion Monster (Hydragon Type) from your Graveyard?"
   },
   "是否选自己墓地1只通常怪兽（1星/念动力族）加入手卡？": {
     "en": "Add 1 Normal Monster (Level 1, Psychic Type) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只通常怪兽（6星以下/风属性）特殊召唤？": {
+    "en": "Special Summon 1 Normal Monster (Level 6 or lower, WIND) from your Graveyard?"
+  },
+  "是否选自己墓地1只通常怪兽（6星以下）加入手卡？": {
+    "en": "Add 1 Normal Monster (Level 6 or lower) from your Graveyard to your hand?"
   },
   "是否选自己墓地1只通常怪兽（地属性）特殊召唤？": {
     "en": "Special Summon 1 Normal Monster (EARTH) from your Graveyard?"
@@ -581,6 +758,9 @@
   "是否选自己墓地1只通常怪兽（攻击力0）特殊召唤？": {
     "en": "Special Summon 1 Normal Monster (0 ATK) from your Graveyard?"
   },
+  "是否选自己墓地1只通常怪兽（机械族）加入手卡？": {
+    "en": "Add 1 Normal Monster (Machine Type) from your Graveyard to your hand?"
+  },
   "是否选自己墓地1只通常怪兽（银河族）特殊召唤？": {
     "en": "Special Summon 1 Normal Monster (Galaxy Type) from your Graveyard?"
   },
@@ -590,11 +770,26 @@
   "是否选自己墓地1张「克里斯马魔杖 死亡魔杖」盖放？": {
     "en": "Set 1 \"Charismystic Wand\" from your Graveyard?"
   },
+  "是否选自己墓地1张「冥迹祭-伊西利亚的降灵-」加入手卡？": {
+    "en": "Add 1 \"Monumenthes Festival -The Isyria Seance-\" from your Graveyard to your hand?"
+  },
   "是否选自己墓地1张「化学化结构力」加入手卡？": {
     "en": "Add 1 \"Chemicalize Structure Force\" from your Graveyard to your hand?"
   },
+  "是否选自己墓地1张「右手持盾左手持剑」加入手卡？": {
+    "en": "Add 1 \"Shield & Sword\" from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1张「山」加入手卡？": {
+    "en": "Add 1 \"Mountain\" from your Graveyard to your hand?"
+  },
   "是否选自己墓地1张「成金哥布林」盖放？": {
     "en": "Set 1 \"Upstart Goblin\" from your Graveyard?"
+  },
+  "是否选自己墓地1张「斗牛士午睡锁」加入手卡？": {
+    "en": "Add 1 \"Siesta Hold\" from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1张「等离子塑料模型竞玩」在自己的魔法与陷阱区域盖放？": {
+    "en": "Set 1 \"Plasmatic Model Play\" from your Graveyard in your Spell & Trap Zone?"
   },
   "是否选自己墓地1张「苍救的照览」或者「融合术」盖放？": {
     "en": "Set 1 \"Skysavior Watch\" or \"Fusion\" from your Graveyard?"
@@ -617,11 +812,17 @@
   "是否选自己墓地1张「鹰身女妖的羽毛风暴」加入手卡？": {
     "en": "Add 1 \"Harpie's Feather Tempest\" from your Graveyard to your hand?"
   },
+  "是否选自己墓地1张「龙之执念」盖放？": {
+    "en": "Set 1 \"Dragon's Fortitude\" from your Graveyard?"
+  },
   "是否选自己墓地1张「龙爆速融合」或者「龙击速融合」加入手卡？": {
     "en": "Add 1 \"Dragons Burst Fusion\" or \"Dragons Boost Fusion\" from your Graveyard to your hand?"
   },
   "是否选自己墓地1张仪式术魔法卡在自己的魔法与陷阱区域盖放？": {
     "en": "Set 1 Ritual Spell Card from your Graveyard in your Spell & Trap Zone?"
+  },
+  "是否选自己墓地1张场地魔法卡回到卡组？": {
+    "en": "Return 1 Field Spell Card from your Graveyard to the Deck?"
   },
   "是否选自己墓地1张装备魔法卡加入手卡？": {
     "en": "Add 1 Equip Spell Card from your Graveyard to your hand?"
@@ -629,11 +830,35 @@
   "是否选自己墓地1张魔法卡加入手卡？": {
     "en": "Add 1 Spell Card from your Graveyard to your hand?"
   },
+  "是否选自己墓地最多2只通常怪兽（1星/植物族）特殊召唤？": {
+    "en": "Special Summon up to 2 Normal Monsters (Level 1, Plant Type) from your Graveyard?"
+  },
+  "是否选自己墓地最多2张场地魔法卡加入手卡？": {
+    "en": "Add up to 2 Field Spell Cards from your Graveyard to your hand?"
+  },
+  "是否选自己墓地的1只怪兽（7星以下）特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 7 or lower) from your Graveyard?"
+  },
+  "是否选自己墓地的1只通常怪兽（1星/兽族）特殊召唤？": {
+    "en": "Special Summon 1 Normal Monster (Level 1, Beast Type) from your Graveyard?"
+  },
+  "是否选自己墓地的「侏罗纪世界」「荒野」各最多1张加入手卡？": {
+    "en": "Add up to 1 \"Jurassic World\" and up to 1 \"Wasteland\" from your Graveyard to your hand?"
+  },
   "是否选自己墓地的「火星」「火星幕帘」各最多1张盖放？": {
     "en": "Set up to 1 \"Sparks\" and up to 1 \"Curtain of Sparks\" from your Graveyard?"
   },
+  "是否选自己墓地的「火面烧心背脂之术」「火面浓抽浓厚返之术」各最多1张盖放？": {
+    "en": "Set up to 1 \"The Noodle Art of Savory\" and up to 1 \"The Noodle Art of Saucery\" from your Graveyard?"
+  },
+  "是否选自己墓地的「高潮终场」「念动力前奏」合计最多2张盖放？": {
+    "en": "Set up to 2 cards total from \"Climax Finale\" and \"Psychic Introduction\" in your Graveyard?"
+  },
   "是否选自己或者对方场上1只怪兽把表示形式变更？": {
     "en": "Change the battle position of 1 monster on either field?"
+  },
+  "是否选自己或者对方墓地的1只怪兽（光属性）在自己场上表侧表示特殊召唤？": {
+    "en": "Special Summon 1 LIGHT monster from either Graveyard to your field face-up?"
   },
   "是否选自己或者对方的墓地1只怪兽在自己场上特殊召唤？": {
     "en": "Special Summon 1 monster from either Graveyard to your field?"
@@ -668,6 +893,9 @@
   "直到下次的对方回合结束时，不能把通常魔法卡发动": {
     "en": "Normal Spell Cards cannot be activated until the end of your opponent's next turn"
   },
+  "直到下次的对方回合结束时，这张卡是表侧表示的期间，这张卡的攻击力上升500，双方不能把怪": {
+    "en": "While this card is face-up until the end of your opponent's next turn, it gains 500 ATK and neither player can Summon monsters"
+  },
   "直接攻击": {
     "en": "Direct attack"
   },
@@ -689,8 +917,23 @@
   "翻开": {
     "en": "Reveal"
   },
+  "自己不能把怪兽（守备力1500以上）攻击表示上级召唤": {
+    "en": "You cannot Tribute Summon monsters with 1500 or more DEF in Attack Position"
+  },
   "自己受到2000伤害。那之后，可以让对方场上的全部表侧表示怪兽的攻击力下降": {
     "en": "Take 2000 damage. Then, you can decrease the ATK of all face-up monsters on your opponent's field"
+  },
+  "自己受到2000伤害。那之后，可以让对方场上的全部表侧表示怪兽的攻击力直到回合结束时下降": {
+    "en": "Take 2000 damage. Then, you can decrease the ATK of all face-up monsters on your opponent's field until the end of the turn"
+  },
+  "自己受到2000伤害。那之后，可以让对方场上的全部表侧表示怪兽的攻击力直到回合结束时下降3000": {
+    "en": "Take 2000 damage. Then, you can decrease the ATK of all face-up monsters on your opponent's field by 3000 until the end of the turn"
+  },
+  "自己回复1000基本分。那之后，可以选自己墓地1只怪兽（7星以上/念动力族）在自己场上表": {
+    "en": "Gain 1000 LP. Then, you can Special Summon 1 monster (Level 7 or higher, Psychic Type) from your Graveyard to your field"
+  },
+  "自己回复1000基本分。那之后，可以选自己墓地1只怪兽（7星以上/念动力族）在自己场上表侧表示特殊召唤": {
+    "en": "Gain 1000 LP. Then, you can Special Summon 1 monster (Level 7 or higher, Psychic Type) from your Graveyard to your field face-up"
   },
   "自己回复1000基本分。那之后，可以选自己墓地1只怪兽（7星以上/念动力族）特殊召唤": {
     "en": "Gain 1000 LP. Then, you can Special Summon 1 monster (Level 7 or higher, Psychic Type) from your Graveyard"
@@ -980,6 +1223,9 @@
   "这个回合，不用原本守备力1200的怪兽（风属性）不能攻击": {
     "en": "This turn, you can only attack with WIND monsters whose original DEF is 1200"
   },
+  "这个回合，不用原本守备力800的怪兽（机械族）不能攻击": {
+    "en": "This turn, you can only attack with Machine Type monsters whose original DEF is 800"
+  },
   "这个回合，不用怪兽（地属性/兽战士族）不能攻击": {
     "en": "This turn, you can only attack with EARTH Beast-Warrior Type monsters"
   },
@@ -1037,6 +1283,12 @@
   "这个回合，不能把怪兽（光属性/魔法师族）以外的怪兽的效果": {
     "en": "This turn, you can only activate the effects of LIGHT Spellcaster Type monsters"
   },
+  "这个回合，不能把怪兽（光属性/魔法师族）以外的怪兽的效果发动": {
+    "en": "This turn, you can only activate the effects of LIGHT Spellcaster Type monsters"
+  },
+  "这个回合，不能把怪兽（地属性/银河族）以外的怪兽的效果发动": {
+    "en": "This turn, you can only activate the effects of EARTH Galaxy Type monsters"
+  },
   "这个回合，不能把怪兽（战士族以外）的效果发动": {
     "en": "This turn, you can only activate the effects of Warrior Type monsters"
   },
@@ -1074,6 +1326,9 @@
     "en": "This turn, you cannot attack with monsters"
   },
   "这个回合，不能用怪兽（6星以下）攻击": {
+    "en": "This turn, you cannot attack with Level 6 or lower monsters"
+  },
+  "这个回合，不能用怪兽（6星以下）攻击。": {
     "en": "This turn, you cannot attack with Level 6 or lower monsters"
   },
   "这个回合，不能用怪兽（7星以上）攻击": {
@@ -1118,6 +1373,9 @@
   "这个回合，不能用怪兽（水属性以外）攻击": {
     "en": "This turn, you can only attack with WATER monsters"
   },
+  "这个回合，不能用怪兽（炎属性以外）攻击": {
+    "en": "This turn, you can only attack with FIRE monsters"
+  },
   "这个回合，不能用怪兽（炎族以外）攻击": {
     "en": "This turn, you can only attack with Pyro Type monsters"
   },
@@ -1160,11 +1418,35 @@
   "这个回合，怪兽攻击表示上级召唤的场合，这张卡可以作为2只的数量解放": {
     "en": "This turn, when Tribute Summoning a monster in Attack Position, this card counts as 2 Tributes"
   },
+  "这个回合，怪兽（7·8星/恶魔族）攻击表示上级召唤的场合，可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a monster (Level 7 or 8, Fiend Type) in Attack Position, it counts as 2 Tributes"
+  },
+  "这个回合，怪兽（光属性/昆虫族）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a LIGHT Insect Type monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
+  "这个回合，怪兽（光属性/机械族）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a LIGHT Machine Type monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
+  "这个回合，怪兽（天使族）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a Fairy Type monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
+  "这个回合，怪兽（炎属性）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a FIRE monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
+  "这个回合，怪兽（鸟兽族）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a Winged Beast Type monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
+  "这个回合，怪兽（龙族）攻击表示上级召唤的场合，表侧表示的这张卡可以作为2只的数量解放": {
+    "en": "This turn, when Tribute Summoning a Dragon Type monster in Attack Position, this face-up card counts as 2 Tributes"
+  },
   "这个回合，战斗阶段中不能把陷阱卡发动": {
     "en": "This turn, Trap Cards cannot be activated during the Battle Phase"
   },
   "这个回合，攻击宣言时对方不能把陷阱卡发动": {
     "en": "This turn, your opponent cannot activate Trap Cards when an attack is declared"
+  },
+  "这个回合，某种族怪兽不能攻击": {
+    "en": "This turn, monsters of that Type cannot attack"
   },
   "这个回合，自己不会受到对方怪兽（8星以下）攻击的战斗伤害": {
     "en": "This turn, you take no battle damage from attacks by your opponent's Level 8 or lower monsters"
@@ -1175,11 +1457,29 @@
   "这个回合，自己怪兽（风属性/战士族）的攻击宣言时对方不能把陷阱卡发动": {
     "en": "This turn, your opponent cannot activate Trap Cards when your WIND Warrior Type monster declares an attack"
   },
+  "这个回合，这张卡可以作2次攻击，那攻击带有贯通": {
+    "en": "This turn, this card can attack twice and those attacks inflict piercing damage"
+  },
   "这个回合，这张卡可以作3次攻击": {
     "en": "This turn, this card can attack 3 times"
   },
   "这个回合，这张卡可以直接攻击": {
     "en": "This turn, this card can attack directly"
+  },
+  "这个回合，这张卡向怪兽攻击过的战斗阶段中，这张卡只再1次可以向怪兽攻击": {
+    "en": "This turn, during the Battle Phase in which this card attacked a monster, this card can attack a monster once more"
+  },
+  "这个回合，这张卡向怪兽攻击过的战斗阶段中，这张卡只再1次可以攻击": {
+    "en": "This turn, during the Battle Phase in which this card attacked a monster, this card can attack once more"
+  },
+  "这个回合，这张卡战斗破坏怪兽的战斗阶段中，这张卡只再1次可以向怪兽攻击": {
+    "en": "This turn, during the Battle Phase in which this card destroys a monster by battle, this card can attack a monster once more"
+  },
+  "这个回合，这张卡战斗破坏怪兽的战斗阶段中，这张卡只再1次可以攻击": {
+    "en": "This turn, during the Battle Phase in which this card destroys a monster by battle, this card can attack once more"
+  },
+  "这个回合，这张卡的攻击力上升900，可以向怪兽作2次攻击": {
+    "en": "This turn, this card gains 900 ATK and can attack monsters twice"
   },
   "这个回合，这张卡的攻击带有贯通": {
     "en": "This turn, this card's attacks inflict piercing damage"
@@ -1190,14 +1490,56 @@
   "这张卡不能攻击": {
     "en": "This card cannot attack"
   },
+  "这张卡的攻击力直到回合结束时上升［双方场上的怪兽数量］×300": {
+    "en": "This card gains 300 ATK until the end of the turn for each monster on the field"
+  },
+  "这张卡的攻击力直到回合结束时上升［双方墓地的怪兽的属性种类］×400": {
+    "en": "This card gains 400 ATK until the end of the turn for each different Attribute among monsters in both Graveyards"
+  },
   "这张卡的攻击带有贯通": {
     "en": "This card's attacks inflict piercing damage"
   },
   "追加攻击": {
     "en": "Additional attack"
   },
+  "选对方场上1只怪兽变成表侧攻击表示或者里侧守备表示": {
+    "en": "Change 1 monster on your opponent's field to face-up Attack Position or face-down Defense Position"
+  },
+  "选对方场上1只表侧表示怪兽，那个攻击力·守备力直到回合结束时下降1500": {
+    "en": "Decrease the ATK and DEF of 1 face-up monster on your opponent's field by 1500 until the end of the turn"
+  },
+  "选对方场上1张里侧表示的卡破坏": {
+    "en": "Destroy 1 face-down card on your opponent's field"
+  },
   "选对方场上1张魔法·陷阱卡破坏": {
     "en": "Destroy 1 Spell/Trap Card on your opponent's field"
+  },
+  "选对方场上最多2只表侧表示怪兽（魔法师族）回到持有者卡组": {
+    "en": "Return up to 2 face-up Spellcaster Type monsters on your opponent's field to their owner's Deck"
+  },
+  "选对方墓地最多3只怪兽回到卡组": {
+    "en": "Return up to 3 monsters from your opponent's Graveyard to the Deck"
+  },
+  "选自己场上1只表侧表示怪兽（电子人族），那个攻击力直到回合结束时上升［对方场上的表侧表示": {
+    "en": "Select 1 face-up Cyborg Type monster on your field; it gains ATK until the end of the turn based on your opponent's face-up monsters"
+  },
+  "选自己墓地1只怪兽回到卡组。那之后，自己可以抽1张": {
+    "en": "Return 1 monster from your Graveyard to the Deck. Then, you can draw 1 card"
+  },
+  "选自己墓地1只怪兽（9星/电子人族）在自己场上表侧守备表示特殊召唤": {
+    "en": "Special Summon 1 monster (Level 9, Cyborg Type) from your Graveyard to your field in face-up Defense Position"
+  },
+  "选自己墓地1只怪兽（多头龙族）在自己场上表侧表示特殊召唤": {
+    "en": "Special Summon 1 Hydragon Type monster from your Graveyard to your field face-up"
+  },
+  "选自己墓地1张「融合术」加入手卡": {
+    "en": "Add 1 \"Fusion\" from your Graveyard to your hand"
+  },
+  "选自己墓地最多3只通常怪兽回到卡组。那之后，可以把对方场上的卡破坏": {
+    "en": "Return up to 3 Normal Monsters from your Graveyard to the Deck. Then, you can destroy a card on your opponent's field"
+  },
+  "选自己或者对方场上1只怪兽把表示形式变更": {
+    "en": "Change the battle position of 1 monster on either field"
   },
   "里侧守备表示": {
     "en": "Face-down Defense Position"
