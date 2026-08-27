@@ -1,4 +1,7 @@
 {
+  "下次对方回合，不能攻击": {
+    "en": "Cannot attack during your opponent's next turn"
+  },
   "下降1星": {
     "en": "Reduce Level by 1"
   },
@@ -10,6 +13,9 @@
   },
   "不用解放作召唤": {
     "en": "Summon without Tributing"
+  },
+  "不用解放作召唤（攻击力变为1000）": {
+    "en": "Summon without Tributing (ATK becomes 1000)"
   },
   "不能攻击": {
     "en": "Cannot attack"
@@ -31,6 +37,12 @@
   },
   "原本攻击变化": {
     "en": "Original ATK change"
+  },
+  "双方不能把怪兽（7星以上）上级召唤": {
+    "en": "Neither player can Tribute Summon monsters of Level 7 or higher"
+  },
+  "双方不能把怪兽（7星以上）上级盖放": {
+    "en": "Neither player can Set monsters of Level 7 or higher"
   },
   "双重解放": {
     "en": "Double Tribute"
@@ -110,6 +122,9 @@
   "宣言常规怪兽": {
     "en": "Declare a Normal Monster"
   },
+  "对方不能把表侧表示怪兽（10星以下）的效果发动": {
+    "en": "Your opponent cannot activate the effects of face-up monsters of Level 10 or lower"
+  },
   "封印": {
     "en": "Seal"
   },
@@ -124,6 +139,18 @@
   },
   "手卡送墓": {
     "en": "Discard"
+  },
+  "把1只怪兽解放攻击表示上级召唤": {
+    "en": "Tribute 1 monster to Tribute Summon in Attack Position"
+  },
+  "把3只怪兽解放作上级召唤": {
+    "en": "Tribute 3 monsters to Tribute Summon"
+  },
+  "把卡组最上面的卡送去墓地来发动": {
+    "en": "Activate by sending the top card of your Deck to the Graveyard"
+  },
+  "把这张卡送去墓地来发动": {
+    "en": "Activate by sending this card to the Graveyard"
   },
   "投币": {
     "en": "Coin toss"
@@ -179,8 +206,35 @@
   "时间魔术师": {
     "en": "Time Wizard"
   },
+  "是否从翻开的卡之中选1只怪兽送去墓地？": {
+    "en": "Send 1 monster from the revealed cards to the Graveyard?"
+  },
+  "是否从自己卡组上面把2张卡送去墓地？": {
+    "en": "Send the top 2 cards of your Deck to the Graveyard?"
+  },
+  "是否从自己卡组上面把3张卡送去墓地？": {
+    "en": "Send the top 3 cards of your Deck to the Graveyard?"
+  },
+  "是否从那之中选1张卡加入手卡？": {
+    "en": "Add 1 of those cards to your hand?"
+  },
   "是否再抽1张？": {
     "en": "Draw 1 more card?"
+  },
+  "是否把对方场上的怪兽全部破坏？": {
+    "en": "Destroy all monsters on your opponent's field?"
+  },
+  "是否把对方手卡随机选1张送去墓地？": {
+    "en": "Send 1 random card from your opponent's hand to the Graveyard?"
+  },
+  "是否把攻击的怪兽破坏？": {
+    "en": "Destroy the attacking monster?"
+  },
+  "是否把选的卡破坏？": {
+    "en": "Destroy the selected card?"
+  },
+  "是否把选的怪兽加入手卡？": {
+    "en": "Add the selected monster to your hand?"
   },
   "是否把那张卡破坏": {
     "en": "Destroy that card?"
@@ -194,6 +248,102 @@
   "是否抽3张？": {
     "en": "Draw 3 cards?"
   },
+  "是否给与对方700伤害？": {
+    "en": "Inflict 700 damage to your opponent?"
+  },
+  "是否让对方场上的全部表侧表示怪兽的攻击力下降3000？": {
+    "en": "Decrease the ATK of all face-up monsters on your opponent's field by 3000?"
+  },
+  "是否让对方场上的全部表侧表示怪兽的攻击力下降？": {
+    "en": "Decrease the ATK of all face-up monsters on your opponent's field?"
+  },
+  "是否让这张卡的攻击力上升？": {
+    "en": "Increase this card's ATK?"
+  },
+  "是否进行融合术召唤？": {
+    "en": "Fusion Summon?"
+  },
+  "是否选对方场上1只怪兽把表示形式变更？": {
+    "en": "Change the battle position of 1 monster on your opponent's field?"
+  },
+  "是否选对方场上1只攻击表示怪兽变成表侧守备表示？": {
+    "en": "Change 1 Attack Position monster on your opponent's field to face-up Defense Position?"
+  },
+  "是否选对方场上1只表侧表示怪兽变成昆虫族？": {
+    "en": "Make 1 face-up monster on your opponent's field become Insect Type?"
+  },
+  "是否选对方场上1只表侧表示怪兽攻击力·守备力下降600？": {
+    "en": "Decrease the ATK and DEF of 1 face-up monster on your opponent's field by 600?"
+  },
+  "是否选对方场上1只表侧表示怪兽攻击力下降1000？": {
+    "en": "Decrease the ATK of 1 face-up monster on your opponent's field by 1000?"
+  },
+  "是否选对方场上1只表侧表示怪兽攻击力下降1500？": {
+    "en": "Decrease the ATK of 1 face-up monster on your opponent's field by 1500?"
+  },
+  "是否选对方场上1只表侧表示怪兽攻击力下降？": {
+    "en": "Decrease the ATK of 1 face-up monster on your opponent's field?"
+  },
+  "是否选对方场上1只表侧表示怪兽（8星以下）破坏？": {
+    "en": "Destroy 1 face-up monster (Level 8 or lower) on your opponent's field?"
+  },
+  "是否选对方场上1只表侧表示的通常怪兽破坏？": {
+    "en": "Destroy 1 face-up Normal Monster on your opponent's field?"
+  },
+  "是否选对方场上1张里侧表示的卡破坏？": {
+    "en": "Destroy 1 face-down card on your opponent's field?"
+  },
+  "是否选对方墓地最多2张卡回到卡组？": {
+    "en": "Return up to 2 cards from your opponent's Graveyard to the Deck?"
+  },
+  "是否选对方墓地最多5只怪兽回到卡组？": {
+    "en": "Return up to 5 monsters from your opponent's Graveyard to the Deck?"
+  },
+  "是否选对方的魔法与陷阱区域1张卡破坏？": {
+    "en": "Destroy 1 card in your opponent's Spell & Trap Zone?"
+  },
+  "是否选自己1张手卡送去墓地？": {
+    "en": "Send 1 card from your hand to the Graveyard?"
+  },
+  "是否选自己场上1只表侧表示怪兽把表示形式变更？": {
+    "en": "Change the battle position of 1 face-up monster on your field?"
+  },
+  "是否选自己场上1只表侧表示怪兽？": {
+    "en": "Select 1 face-up monster on your field?"
+  },
+  "是否选自己墓地1只怪兽特殊召唤？": {
+    "en": "Special Summon 1 monster from your Graveyard?"
+  },
+  "是否选自己墓地1只怪兽（5星以上/守备力1000）加入手卡？": {
+    "en": "Add 1 monster (Level 5 or higher, 1000 DEF) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只怪兽（6星以上/魔法师族）加入手卡？": {
+    "en": "Add 1 monster (Level 6 or higher, Spellcaster Type) from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1只怪兽（7星以上/念动力族）特殊召唤？": {
+    "en": "Special Summon 1 monster (Level 7 or higher, Psychic Type) from your Graveyard?"
+  },
+  "是否选自己墓地1只怪兽（7星）特殊召唤？": {
+    "en": "Special Summon 1 Level 7 monster from your Graveyard?"
+  },
+  "是否选自己墓地1只通常怪兽（攻击力0）特殊召唤？": {
+    "en": "Special Summon 1 Normal Monster (0 ATK) from your Graveyard?"
+  },
+  "是否选自己墓地1只通常怪兽（银河族）特殊召唤？": {
+    "en": "Special Summon 1 Normal Monster (Galaxy Type) from your Graveyard?"
+  },
+  "是否选自己墓地1张「融合术」加入手卡？": {
+    "en": "Add 1 \"Fusion\" from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1张「融合术」盖放？": {
+    "en": "Set 1 \"Fusion\" from your Graveyard?"
+  },
+  "是否选自己墓地1张装备魔法卡加入手卡？": {
+    "en": "Add 1 Equip Spell Card from your Graveyard to your hand?"
+  },
+  "是否选自己墓地1张魔法卡加入手卡？": {
+    "en": "Add 1 Spell Card from your Graveyard to your hand?"
+  },
   "极大召唤": {
     "en": "Maximum Summon"
   },
@@ -205,6 +355,15 @@
   },
   "盲堆": {
     "en": "Mill"
+  },
+  "直到下次的对方回合结束时不会被效果破坏": {
+    "en": "Cannot be destroyed by card effects until the end of your opponent's next turn"
+  },
+  "直到下次的对方回合结束时不能发动": {
+    "en": "Cannot be activated until the end of your opponent's next turn"
+  },
+  "直到下次的对方回合结束时，不会被对方的效果破坏": {
+    "en": "Cannot be destroyed by your opponent's effects until the end of their next turn"
   },
   "直接攻击": {
     "en": "Direct attack"
@@ -220,6 +379,9 @@
   },
   "结束阶段时破坏": {
     "en": "Destroy during the End Phase"
+  },
+  "结束阶段时，回到持有者卡组下面": {
+    "en": "Return to the bottom of its owner's Deck during the End Phase"
   },
   "翻开": {
     "en": "Reveal"
@@ -428,20 +590,176 @@
   "返回卡组顶": {
     "en": "Return to the top of the Deck"
   },
+  "这个回合不会效果破坏": {
+    "en": "Cannot be destroyed by card effects this turn"
+  },
+  "这个回合不会被对方的效果破坏": {
+    "en": "Cannot be destroyed by your opponent's effects this turn"
+  },
+  "这个回合不会被对方的陷阱卡的效果破坏": {
+    "en": "Cannot be destroyed by your opponent's Trap effects this turn"
+  },
+  "这个回合不会被战斗破坏": {
+    "en": "Cannot be destroyed by battle this turn"
+  },
+  "这个回合不会被效果破坏": {
+    "en": "Cannot be destroyed by card effects this turn"
+  },
+  "这个回合不能为上级召唤而解放": {
+    "en": "Cannot be Tributed for a Tribute Summon this turn"
+  },
   "这个回合不能发动": {
     "en": "Cannot be activated this turn"
+  },
+  "这个回合不能把效果发动": {
+    "en": "This turn, effects cannot be activated"
   },
   "这个回合不能攻击": {
     "en": "Cannot attack this turn"
   },
+  "这个回合不能直接攻击": {
+    "en": "Cannot attack directly this turn"
+  },
+  "这个回合只能向攻击表示的怪兽攻击": {
+    "en": "This turn, can only attack Attack Position monsters"
+  },
+  "这个回合可以作2次攻击": {
+    "en": "Can attack twice this turn"
+  },
+  "这个回合可以作3次攻击": {
+    "en": "Can attack 3 times this turn"
+  },
+  "这个回合可以向怪兽作2次攻击": {
+    "en": "Can attack monsters twice this turn"
+  },
+  "这个回合可以向怪兽作3次攻击": {
+    "en": "Can attack monsters 3 times this turn"
+  },
+  "这个回合可以向怪兽攻击2次": {
+    "en": "Can attack monsters twice this turn"
+  },
+  "这个回合可以向怪兽攻击3次": {
+    "en": "Can attack monsters 3 times this turn"
+  },
+  "这个回合可以直接攻击": {
+    "en": "Can attack directly this turn"
+  },
   "这个回合攻击带有贯通": {
     "en": "Gains piercing this turn"
+  },
+  "这个回合，不会受到战斗伤害": {
+    "en": "This turn, you take no battle damage"
+  },
+  "这个回合，不用怪兽（地属性/兽战士族）不能攻击": {
+    "en": "This turn, you can only attack with EARTH Beast-Warrior Type monsters"
+  },
+  "这个回合，不用怪兽（地属性/银河族）不能攻击": {
+    "en": "This turn, you can only attack with EARTH Galaxy Type monsters"
+  },
+  "这个回合，不用怪兽（炎属性/魔法师族）不能攻击": {
+    "en": "This turn, you can only attack with FIRE Spellcaster Type monsters"
+  },
+  "这个回合，不用怪兽（风属性/战士族）不能攻击": {
+    "en": "This turn, you can only attack with WIND Warrior Type monsters"
+  },
+  "这个回合，不用极大怪兽不能攻击": {
+    "en": "This turn, you can only attack with Maximum Monsters"
+  },
+  "这个回合，不用融合术怪兽不能攻击": {
+    "en": "This turn, you can only attack with Fusion Monsters"
+  },
+  "这个回合，不能把怪兽特殊召唤": {
+    "en": "This turn, you cannot Special Summon monsters"
+  },
+  "这个回合，不能把手卡的怪兽召唤": {
+    "en": "This turn, you cannot Normal Summon a monster from your hand"
+  },
+  "这个回合，不能把手卡的怪兽盖放": {
+    "en": "This turn, you cannot Set a monster from your hand"
+  },
+  "这个回合，不能把效果发动": {
+    "en": "This turn, effects cannot be activated"
+  },
+  "这个回合，不能攻击宣言": {
+    "en": "This turn, cannot declare an attack"
+  },
+  "这个回合，不能用怪兽攻击": {
+    "en": "This turn, you cannot attack with monsters"
+  },
+  "这个回合，不能用怪兽（6星以下）攻击": {
+    "en": "This turn, you cannot attack with Level 6 or lower monsters"
+  },
+  "这个回合，不能用怪兽（7星以上）攻击": {
+    "en": "This turn, you cannot attack with Level 7 or higher monsters"
+  },
+  "这个回合，不能用怪兽（7星以下）攻击": {
+    "en": "This turn, you cannot attack with Level 7 or lower monsters"
+  },
+  "这个回合，不能用怪兽（不死族以外）攻击": {
+    "en": "This turn, you can only attack with Zombie Type monsters"
+  },
+  "这个回合，不能用怪兽（守备力1900以下）攻击": {
+    "en": "This turn, you cannot attack with monsters with 1900 or less DEF"
+  },
+  "这个回合，不能用怪兽（幻龙族以外）攻击": {
+    "en": "This turn, you can only attack with Wyrm Type monsters"
+  },
+  "这个回合，不能用怪兽（恶魔族以外）攻击": {
+    "en": "This turn, you can only attack with Fiend Type monsters"
+  },
+  "这个回合，不能用怪兽（战士族以外）攻击": {
+    "en": "This turn, you can only attack with Warrior Type monsters"
+  },
+  "这个回合，不能用怪兽（昆虫族以外）攻击": {
+    "en": "This turn, you can only attack with Insect Type monsters"
+  },
+  "这个回合，不能用怪兽（机械族以外）攻击": {
+    "en": "This turn, you can only attack with Machine Type monsters"
+  },
+  "这个回合，不能用怪兽（水属性以外）攻击": {
+    "en": "This turn, you can only attack with WATER monsters"
+  },
+  "这个回合，不能用怪兽（炎族以外）攻击": {
+    "en": "This turn, you can only attack with Pyro Type monsters"
+  },
+  "这个回合，不能用怪兽（银河族以外）攻击": {
+    "en": "This turn, you can only attack with Galaxy Type monsters"
+  },
+  "这个回合，不能用怪兽（雷族以外）攻击": {
+    "en": "This turn, you can only attack with Thunder Type monsters"
+  },
+  "这个回合，不能用怪兽（魔法师族以外）攻击": {
+    "en": "This turn, you can only attack with Spellcaster Type monsters"
+  },
+  "这个回合，不能用效果怪兽攻击": {
+    "en": "This turn, you cannot attack with Effect Monsters"
+  },
+  "这个回合，不能直接攻击": {
+    "en": "This turn, cannot attack directly"
+  },
+  "这个回合，只能用1只怪兽攻击": {
+    "en": "This turn, only 1 monster can attack"
+  },
+  "这个回合，只能用某只怪兽攻击": {
+    "en": "This turn, only that monster can attack"
+  },
+  "这个回合，攻击宣言时对方不能把陷阱卡发动": {
+    "en": "This turn, your opponent cannot activate Trap Cards when an attack is declared"
+  },
+  "这个回合，这张卡可以直接攻击": {
+    "en": "This turn, this card can attack directly"
   },
   "这张卡不能攻击": {
     "en": "This card cannot attack"
   },
+  "这张卡的攻击带有贯通": {
+    "en": "This card's attacks inflict piercing damage"
+  },
   "追加攻击": {
     "en": "Additional attack"
+  },
+  "选对方场上1张魔法·陷阱卡破坏": {
+    "en": "Destroy 1 Spell/Trap Card on your opponent's field"
   },
   "里侧守备表示": {
     "en": "Face-down Defense Position"
