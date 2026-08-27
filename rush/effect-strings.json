@@ -1,0 +1,2595 @@
+{
+  "1000伤害": {
+    "en": "Take 1000 damage"
+  },
+  "1只「灵兽使」怪兽和1只「精灵兽」怪兽特殊召唤": {
+    "en": "Special Summon 1 \"Ritual Beast Tamer\" monster and 1 \"Spiritual Beast\" monster"
+  },
+  "2只以上怪兽为素材": {
+    "en": "2+ monsters as material"
+  },
+  "2只怪兽特殊召唤": {
+    "en": "Special Summon 2 monsters"
+  },
+  "2次攻击": {
+    "en": "Attack twice"
+  },
+  "3次攻击": {
+    "en": "3 attacks"
+  },
+  "500伤害": {
+    "en": "Take 500 damage"
+  },
+  "800伤害": {
+    "en": "Take 800 damage"
+  },
+  "LP伤害": {
+    "en": "Inflict LP damage"
+  },
+  "LP减半": {
+    "en": "Halve LP"
+  },
+  "LP回复": {
+    "en": "Gain LP"
+  },
+  "上升攻击力": {
+    "en": "Increase ATK"
+  },
+  "上升等级": {
+    "en": "Increase Level"
+  },
+  "上级召唤": {
+    "en": "Tribute Summon"
+  },
+  "下降2星": {
+    "en": "Decrease by 2 Levels"
+  },
+  "下降攻击力": {
+    "en": "Decrease ATK"
+  },
+  "下降等级": {
+    "en": "Decrease Level"
+  },
+  "不会被战斗·效果破坏": {
+    "en": "Cannot be destroyed by battle or card effects"
+  },
+  "不会被战斗破坏": {
+    "en": "Cannot be destroyed by battle"
+  },
+  "不受影响": {
+    "en": "Unaffected"
+  },
+  "不处理效果": {
+    "en": "Do not resolve the effect"
+  },
+  "不改变等级": {
+    "en": "Do not change Level"
+  },
+  "不用祭品召唤": {
+    "en": "Normal Summon without Tributing"
+  },
+  "不用解放作召唤": {
+    "en": "Normal Summon without Tributing"
+  },
+  "不用解放召唤": {
+    "en": "Normal Summon without Tributing"
+  },
+  "不能作为素材": {
+    "en": "Cannot be used as material"
+  },
+  "不能发动": {
+    "en": "Cannot activate"
+  },
+  "不能对应发动": {
+    "en": "Cannot be activated in response"
+  },
+  "不能特殊召唤": {
+    "en": "Cannot be Special Summoned"
+  },
+  "不被战斗破坏": {
+    "en": "Cannot be destroyed by battle"
+  },
+  "不解放怪兽发动": {
+    "en": "Activate without Tributing a monster"
+  },
+  "不解放怪兽进行召唤": {
+    "en": "Summon without Tributing monsters"
+  },
+  "不解放进行召唤": {
+    "en": "Summon without Tributing"
+  },
+  "不选择效果": {
+    "en": "No effect"
+  },
+  "丢弃": {
+    "en": "Discard"
+  },
+  "丢弃发动效果": {
+    "en": "Discard to activate the effect"
+  },
+  "丢弃手卡": {
+    "en": "Discard 1 card"
+  },
+  "丢弃手牌": {
+    "en": "Discard a card"
+  },
+  "两个效果都使用": {
+    "en": "Use both effects"
+  },
+  "两次攻击": {
+    "en": "Attack twice"
+  },
+  "交换位置": {
+    "en": "Switch positions"
+  },
+  "交换控制权": {
+    "en": "Switch control"
+  },
+  "什么都不做": {
+    "en": "Do nothing"
+  },
+  "从卡组加入手卡": {
+    "en": "Add from the Deck to your hand"
+  },
+  "从卡组把「星际仙踪」卡加入手卡": {
+    "en": "Add a \"Kozmo\" card from your Deck to your hand"
+  },
+  "从卡组把「星际仙踪」怪兽特殊召唤": {
+    "en": "Special Summon a \"Kozmo\" monster from the Deck"
+  },
+  "从卡组抽1张": {
+    "en": "Draw 1 card(s)",
+    "es": "Robar 1 carta"
+  },
+  "从卡组放置「天气」魔法·陷阱卡": {
+    "en": "Set 1 \"The Weather\" Spell/Trap from your Deck",
+    "es": "Poner boca arriba en tu Zona de Mágica/Trampa 1 Mágica/Trampa \"Meteorológico/a\" desde tu Deck"
+  },
+  "从卡组特殊召唤": {
+    "en": "Special Summon from the Deck"
+  },
+  "从卡组送2张卡去墓地": {
+    "en": "Send 2 cards from your Deck to the GY"
+  },
+  "从卡组送3张卡去墓地": {
+    "en": "Send 3 cards from your Deck to the GY"
+  },
+  "从卡组送去墓地": {
+    "en": "Send from the Deck to the GY"
+  },
+  "从场上送去墓地": {
+    "en": "Send from the field to the GY"
+  },
+  "从墓地加入手卡": {
+    "en": "Add from the GY to your hand"
+  },
+  "从墓地特殊召唤": {
+    "en": "Special Summon from the GY"
+  },
+  "从手卡·卡组特殊召唤": {
+    "en": "Special Summon from your hand/Deck"
+  },
+  "从手卡·墓地特殊召唤": {
+    "en": "Special Summon from your hand or GY"
+  },
+  "从手卡把1只怪兽特殊召唤": {
+    "en": "Special Summon 1 monster from your hand",
+    "es": "Invocar de Modo Especial 1 monstruo de tu mano"
+  },
+  "从手卡把「星际仙踪」怪兽特殊召唤": {
+    "en": "Special Summon a \"Kozmo\" monster from your hand"
+  },
+  "从手卡特殊召唤": {
+    "en": "Special Summon from the hand"
+  },
+  "从手卡盖放": {
+    "en": "Set from the hand"
+  },
+  "从额外卡组特殊召唤": {
+    "en": "Special Summon from the Extra Deck"
+  },
+  "代替破坏": {
+    "en": "Destruction replacement"
+  },
+  "代替素材": {
+    "en": "Substitute material"
+  },
+  "仪式召唤": {
+    "en": "Ritual Summon"
+  },
+  "仪式召唤使用的怪兽的等级合计是2星以下": {
+    "en": "Total Levels of monsters used for the Ritual Summon is 2 or lower",
+    "es": "Invocado por Ritual usando 2 o menos Niveles totales de monstruos"
+  },
+  "伤害": {
+    "en": "Inflict damage"
+  },
+  "伤害减半": {
+    "en": "Halve damage"
+  },
+  "伤害变成0": {
+    "en": "Damage becomes 0"
+  },
+  "伤害效果": {
+    "en": "Damage effect"
+  },
+  "伤害给与": {
+    "en": "Inflict damage"
+  },
+  "位置交换": {
+    "en": "Swap positions"
+  },
+  "位置移动": {
+    "en": "Move position"
+  },
+  "作为超量素材": {
+    "en": "As Xyz Material"
+  },
+  "使用场上的怪兽作仪式召唤": {
+    "en": "Ritual Summon using monsters on the field"
+  },
+  "光属性怪兽为同调素材": {
+    "en": "Use a LIGHT monster as Synchro Material"
+  },
+  "全部破坏": {
+    "en": "Destroy all"
+  },
+  "全部送去墓地": {
+    "en": "Send all to the GY"
+  },
+  "再次攻击": {
+    "en": "Make another attack"
+  },
+  "减少解放数量": {
+    "en": "Reduce the number of Tributes"
+  },
+  "出场方式为特殊召唤": {
+    "en": "Summoning method: Special Summon"
+  },
+  "刻度上升": {
+    "en": "Increase Scale"
+  },
+  "刻度下降": {
+    "en": "Decrease Scale"
+  },
+  "加入手卡": {
+    "en": "Add to hand"
+  },
+  "加入手卡或在自己场上发动": {
+    "en": "Add to hand or activate on your field"
+  },
+  "加入手卡或特殊召唤": {
+    "en": "Add to hand or Special Summon"
+  },
+  "加入手牌": {
+    "en": "Add to hand"
+  },
+  "加入额外卡组": {
+    "en": "Add to the Extra Deck"
+  },
+  "卡名变化": {
+    "en": "Name change"
+  },
+  "卡名变更": {
+    "en": "Change card name"
+  },
+  "卡片回收": {
+    "en": "Recover cards"
+  },
+  "卡片破坏": {
+    "en": "Destroy a card"
+  },
+  "卡片除外": {
+    "en": "Banish a card"
+  },
+  "卡组怪兽作为超量素材": {
+    "en": "Use a monster from the Deck as Xyz Material"
+  },
+  "卡组怪兽特殊召唤": {
+    "en": "Special Summon a monster from the Deck"
+  },
+  "卡组操作": {
+    "en": "Deck manipulation"
+  },
+  "卡组最上面": {
+    "en": "Top of the Deck"
+  },
+  "卡组最下面": {
+    "en": "Bottom of the Deck"
+  },
+  "卡组检索": {
+    "en": "Search the Deck"
+  },
+  "卡组特殊召唤": {
+    "en": "Special Summon from the Deck"
+  },
+  "卡组盖放": {
+    "en": "Set from the Deck"
+  },
+  "卡组破坏": {
+    "en": "Send from Deck to the GY"
+  },
+  "卡组确认": {
+    "en": "Check the Deck"
+  },
+  "卡组送去墓地": {
+    "en": "Send from the Deck to the GY"
+  },
+  "卡组送墓": {
+    "en": "Send from Deck to the GY"
+  },
+  "去除素材": {
+    "en": "Detach material"
+  },
+  "反转": {
+    "en": "Flip"
+  },
+  "反转召唤无效并破坏": {
+    "en": "Negate the Flip Summon and destroy"
+  },
+  "反转效果": {
+    "en": "Flip effect"
+  },
+  "反面": {
+    "en": "Tails"
+  },
+  "发动": {
+    "en": "Activate"
+  },
+  "发动但不使用②效果": {
+    "en": "Activate, without applying the second effect"
+  },
+  "发动但不使用效果": {
+    "en": "Activate, but do not resolve the effect"
+  },
+  "发动同时使用效果": {
+    "en": "Activate and apply the effect"
+  },
+  "发动并使用①效果": {
+    "en": "Activate and apply the first Effect"
+  },
+  "发动并使用②效果": {
+    "en": "Activate and apply the second effect"
+  },
+  "发动并使用效果": {
+    "en": "Activate and resolve the effect"
+  },
+  "发动效果": {
+    "en": "Activate the effect"
+  },
+  "发动无效": {
+    "en": "Negate the activation"
+  },
+  "发动无效并破坏": {
+    "en": "Negate the activation and destroy"
+  },
+  "发动的速攻魔法卡在这张卡下面重叠": {
+    "en": "Attach the activated Quick-Play Spell to this card",
+    "es": "Acoplar la Carta Mágica de Juego Rápido \"Purrely\" activada en el Campo a esta carta como material"
+  },
+  "发动限制": {
+    "en": "Activation restriction"
+  },
+  "取除1个超量素材": {
+    "en": "Detach 1 Xyz Material(s)"
+  },
+  "取除指示物": {
+    "en": "Remove Counters"
+  },
+  "取除素材": {
+    "en": "Detach Xyz material"
+  },
+  "取除超量素材": {
+    "en": "Detach Xyz material"
+  },
+  "受到伤害": {
+    "en": "Take damage"
+  },
+  "变成同名卡": {
+    "en": "Become the same name"
+  },
+  "变成同名卡的效果结束": {
+    "en": "End the “same name” effect"
+  },
+  "变成守备表示": {
+    "en": "Change to Defense Position"
+  },
+  "变成攻击表示": {
+    "en": "Change to Attack Position"
+  },
+  "变成表侧守备表示": {
+    "en": "Change to face-up Defense Position"
+  },
+  "变成表侧攻击": {
+    "en": "Change to face-up Attack Position"
+  },
+  "变成表侧攻击表示": {
+    "en": "Change to face-up Attack Position"
+  },
+  "变成装备": {
+    "en": "Treat as an Equip Card"
+  },
+  "变成装备卡": {
+    "en": "Become an Equip Card"
+  },
+  "变成调整": {
+    "en": "Become a Tuner"
+  },
+  "变成超量素材": {
+    "en": "Become Xyz material"
+  },
+  "变成这个回合的结束阶段": {
+    "en": "Proceed to this turn's End Phase"
+  },
+  "变成里侧": {
+    "en": "Change to face-down position"
+  },
+  "变成里侧守备": {
+    "en": "Change to face-down Defense Position"
+  },
+  "变成里侧守备表示": {
+    "en": "Change to face-down Defense Position"
+  },
+  "变成里侧表示": {
+    "en": "Change to face-down position"
+  },
+  "变更属性": {
+    "en": "Change Attribute"
+  },
+  "变更表示形式": {
+    "en": "Change battle position"
+  },
+  "召唤": {
+    "en": "Summon"
+  },
+  "召唤无效并破坏": {
+    "en": "Negate the Summon and destroy"
+  },
+  "召唤限制": {
+    "en": "Summon restriction"
+  },
+  "同调召唤": {
+    "en": "Synchro Summon"
+  },
+  "吸收素材": {
+    "en": "Attach as material"
+  },
+  "回到卡组": {
+    "en": "Return to the Deck"
+  },
+  "回到卡组上面": {
+    "en": "Place on top of the Deck"
+  },
+  "回到卡组下面": {
+    "en": "Place on bottom of the Deck"
+  },
+  "回到卡组并抽卡": {
+    "en": "Return to the Deck and draw 1 card"
+  },
+  "回到卡组并特殊召唤": {
+    "en": "Return to the Deck and Special Summon"
+  },
+  "回到卡组最上面": {
+    "en": "Place on top of the Deck"
+  },
+  "回到卡组最下面": {
+    "en": "Return to the bottom of the Deck"
+  },
+  "回到墓地": {
+    "en": "Return to the GY"
+  },
+  "回到手牌": {
+    "en": "Return to the hand"
+  },
+  "回到持有者卡组": {
+    "en": "Return to its owner's Deck"
+  },
+  "回到持有者手卡": {
+    "en": "Return to its owner's hand"
+  },
+  "回到额外": {
+    "en": "Return to the Extra Deck",
+    "es": "Devolver al Deck Extra"
+  },
+  "回到额外卡组": {
+    "en": "Return to the Extra Deck"
+  },
+  "回卡组": {
+    "en": "Return to the Deck"
+  },
+  "回合计数": {
+    "en": "Turn count"
+  },
+  "回复": {
+    "en": "Gain LP"
+  },
+  "回复LP": {
+    "en": "Gain LP"
+  },
+  "回复基本分": {
+    "en": "Gain LP"
+  },
+  "回复并特殊召唤": {
+    "en": "Gain LP and Special Summon"
+  },
+  "回手": {
+    "en": "Return to hand"
+  },
+  "回收": {
+    "en": "Recycle"
+  },
+  "回收场地": {
+    "en": "Recover the Field Spell"
+  },
+  "回收墓地": {
+    "en": "Recover from the GY"
+  },
+  "回收并抽卡": {
+    "en": "Recycle and draw"
+  },
+  "回收怪兽": {
+    "en": "Recover a monster"
+  },
+  "回收效果": {
+    "en": "Recovery effect"
+  },
+  "回收装备魔法卡": {
+    "en": "Recover Equip Spell Card(s)"
+  },
+  "回收超量怪兽": {
+    "en": "Recover an Xyz Monster"
+  },
+  "回收除外": {
+    "en": "Recover banished cards"
+  },
+  "回收除外的卡": {
+    "en": "Recover a banished card"
+  },
+  "回收除外的怪兽": {
+    "en": "Recover banished monsters"
+  },
+  "回收魔法": {
+    "en": "Recover a Spell Card"
+  },
+  "在卡组最上面放置": {
+    "en": "Place on top of the Deck"
+  },
+  "在场上盖放": {
+    "en": "Set on the field"
+  },
+  "在对方场上特殊召唤": {
+    "en": "Special Summon to your opponent's field"
+  },
+  "在灵摆区发动": {
+    "en": "Activate in the Pendulum Zone"
+  },
+  "在灵摆区域放置": {
+    "en": "Place in the Pendulum Zone"
+  },
+  "在自己场上特殊召唤": {
+    "en": "Special Summon to your field"
+  },
+  "在自己场上盖放": {
+    "en": "Set on your field"
+  },
+  "场上1张卡破坏": {
+    "en": "Destroy 1 card on the field",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "场上1张卡除外": {
+    "en": "Banish 1 card on the field"
+  },
+  "场上卡破坏": {
+    "en": "Destroy a card on the field",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "场上存在的1张卡破坏": {
+    "en": "Destroy 1 card on the field",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "场上的卡全部破坏": {
+    "en": "Destroy all cards on the field"
+  },
+  "场上的卡破坏": {
+    "en": "Destroy cards on the field",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "场上盖放的1张卡破坏": {
+    "en": "Destroy 1 Set card on the field",
+    "es": "Destruir 1 carta Colocada en el Campo"
+  },
+  "场地魔法卡发动": {
+    "en": "Activate a Field Spell",
+    "es": "Enviar 1 Carta Mágica de Campo \"Trirámide\" en tu Zona del Campo al Cementerio y activar desde tu Deck 1 Carta Mágica de Campo \"Trirámide\" con nombre diferente"
+  },
+  "基本分伤害": {
+    "en": "Life Point damage"
+  },
+  "基本分回复": {
+    "en": "Recover LP"
+  },
+  "墓地加入手卡": {
+    "en": "Add from the GY to hand"
+  },
+  "墓地回收": {
+    "en": "Recover from the GY"
+  },
+  "墓地怪兽特殊召唤": {
+    "en": "Special Summon a monster from the GY"
+  },
+  "墓地特殊召唤": {
+    "en": "Special Summon from the GY"
+  },
+  "墓地的这张卡加入手卡": {
+    "en": "Add this card from the GY to your hand"
+  },
+  "墓地苏生": {
+    "en": "Special Summon from the GY"
+  },
+  "增加素材": {
+    "en": "Attach material"
+  },
+  "复制效果": {
+    "en": "Copy effect"
+  },
+  "复制效果结束": {
+    "en": "End the copied effect"
+  },
+  "多次攻击": {
+    "en": "Multiple attacks"
+  },
+  "失去基本分": {
+    "en": "Lose LP",
+    "es": "Perder 1000 LP"
+  },
+  "守备上升": {
+    "en": "Increase DEF"
+  },
+  "守备力上升": {
+    "en": "Increase DEF"
+  },
+  "守备变化": {
+    "en": "Change to Defense Position"
+  },
+  "宣言": {
+    "en": "Declare"
+  },
+  "宣言卡名": {
+    "en": "Declare a card name"
+  },
+  "宣言属性": {
+    "en": "Declare an Attribute"
+  },
+  "宣言种族": {
+    "en": "Declare a monster type"
+  },
+  "宣言等级": {
+    "en": "Declare a Level"
+  },
+  "对方卡回到卡组": {
+    "en": "Return an opponent's card to the Deck"
+  },
+  "对方卡回到手卡": {
+    "en": "Return an opponent's card to the hand"
+  },
+  "对方卡破坏": {
+    "en": "Destroy opponent's card"
+  },
+  "对方卡送去墓地": {
+    "en": "Send an opponent's card to the GY"
+  },
+  "对方发动限制": {
+    "en": "Opponent cannot activate cards or effects"
+  },
+  "对方回复1000基本分": {
+    "en": "Your opponent gains 1000 LP"
+  },
+  "对方场上1张卡破坏": {
+    "en": "Destroy 1 card your opponent controls"
+  },
+  "对方场上存在的1只怪兽破坏": {
+    "en": "Destroy 1 monster your opponent controls"
+  },
+  "对方场上存在的1张卡破坏": {
+    "en": "Destroy 1 card your opponent controls",
+    "es": "Destruir 1 carta que controle tu adversario"
+  },
+  "对方场上怪兽全部破坏": {
+    "en": "Destroy all monsters your opponent controls"
+  },
+  "对方场上的卡全部破坏": {
+    "en": "Destroy all cards your opponent controls"
+  },
+  "对方场上的怪兽全部破坏": {
+    "en": "Destroy all monsters your opponent controls"
+  },
+  "对方场上的魔法·陷阱卡全部破坏": {
+    "en": "Destroy all Spells and Traps your opponent controls"
+  },
+  "对方场上表侧表示存在的1只怪兽破坏": {
+    "en": "Destroy 1 face-up monster your opponent controls"
+  },
+  "对方基本分变成一半": {
+    "en": "Halve your opponent's LP"
+  },
+  "对方墓地的卡除外": {
+    "en": "Banish cards from your opponent's GY"
+  },
+  "对方怪兽回到手卡": {
+    "en": "Return an opponent's monster to the hand"
+  },
+  "对方怪兽攻击力下降": {
+    "en": "Decrease opponent's monster's ATK"
+  },
+  "对方怪兽效果无效": {
+    "en": "Negate an opponent's monster's effects"
+  },
+  "对方怪兽破坏": {
+    "en": "Destroy an opponent's monster"
+  },
+  "对方怪兽除外": {
+    "en": "Banish an opponent's monster"
+  },
+  "对方手卡随机选1张送去墓地": {
+    "en": "Send 1 random card from your opponent's hand to the GY"
+  },
+  "对方抽卡": {
+    "en": "Opponent draws"
+  },
+  "对方效果无效": {
+    "en": "Negate your opponent's effect"
+  },
+  "对方特殊召唤": {
+    "en": "Special Summon to your opponent's field"
+  },
+  "对方的卡破坏": {
+    "en": "Destroy an opponent's card"
+  },
+  "对象转移": {
+    "en": "Change target"
+  },
+  "展示地·炎属性的怪兽": {
+    "en": "Reveal an EARTH or FIRE monster"
+  },
+  "展示地属性的怪兽": {
+    "en": "Reveal an EARTH monster"
+  },
+  "展示暗·地属性的怪兽": {
+    "en": "Reveal a DARK or EARTH monster"
+  },
+  "展示暗属性的怪兽": {
+    "en": "Reveal a DARK monster"
+  },
+  "展示炎属性的怪兽": {
+    "en": "Reveal a FIRE monster"
+  },
+  "属性变化": {
+    "en": "Change Attribute"
+  },
+  "已反转过": {
+    "en": "Already flipped"
+  },
+  "已发动过效果": {
+    "en": "Effect already activated"
+  },
+  "弹回手卡": {
+    "en": "Return to the hand"
+  },
+  "当作怪兽特殊召唤": {
+    "en": "Special Summon as a monster",
+    "es": "Invocar de Modo Especial como monstruo"
+  },
+  "当作永续魔法卡放置": {
+    "en": "Place as a Continuous Spell"
+  },
+  "当作装备卡": {
+    "en": "Treat as an Equip Card"
+  },
+  "当作装备卡给自己场上的超量怪兽装备": {
+    "en": "Equip to an Xyz Monster you control as an Equip Card"
+  },
+  "当作调整使用": {
+    "en": "Treat as a Tuner"
+  },
+  "当作魔法卡放置": {
+    "en": "Place it as a Spell Card",
+    "es": "Poner esta carta en tu Zona de Mágica/Trampa como una Mágica Continua"
+  },
+  "当成装备卡装备": {
+    "en": "Equip it as an Equip Card",
+    "es": "Equipar esta carta en tu Cementerio a 1 monstruo boca arriba que controles"
+  },
+  "往对方场上特殊召唤": {
+    "en": "Special Summon to your opponent's field"
+  },
+  "往自己场上特殊召唤": {
+    "en": "Special Summon to your field"
+  },
+  "得到控制权": {
+    "en": "Take control"
+  },
+  "得到效果": {
+    "en": "Gain an effect"
+  },
+  "怪兽卡": {
+    "en": "Monster Card"
+  },
+  "怪兽变成里侧守备表示": {
+    "en": "Change a monster to face-down Defense Position"
+  },
+  "怪兽无效": {
+    "en": "Negate a monster"
+  },
+  "怪兽破坏": {
+    "en": "Destroy a monster"
+  },
+  "怪兽送去墓地": {
+    "en": "Send a monster to the GY"
+  },
+  "怪兽送墓": {
+    "en": "Send a monster to the GY"
+  },
+  "怪兽除外": {
+    "en": "Banish a monster"
+  },
+  "恢复LP": {
+    "en": "Gain LP"
+  },
+  "战斗伤害变成0": {
+    "en": "Battle damage becomes 0"
+  },
+  "战斗无效": {
+    "en": "Negate the battle"
+  },
+  "战斗破坏耐性": {
+    "en": "Cannot be destroyed by battle"
+  },
+  "战斗阶段结束": {
+    "en": "End the Battle Phase"
+  },
+  "手卡·卡组特殊召唤": {
+    "en": "Special Summon from hand/Deck"
+  },
+  "手卡回到卡组": {
+    "en": "Return your hand to the Deck"
+  },
+  "手卡特殊召唤": {
+    "en": "Special Summon from the hand"
+  },
+  "手卡破坏": {
+    "en": "Destroy cards in the hand"
+  },
+  "手卡送去墓地": {
+    "en": "Send a card from your hand to the GY"
+  },
+  "手卡除外": {
+    "en": "Banish from hand"
+  },
+  "手牌丢弃": {
+    "en": "Discard from hand"
+  },
+  "手牌交换": {
+    "en": "Hand exchange"
+  },
+  "手牌破坏": {
+    "en": "Discard from hand"
+  },
+  "手牌送墓": {
+    "en": "Send 1 card from your hand to the GY"
+  },
+  "把1只5星以上的怪兽解放上级召唤": {
+    "en": "Tribute 1 Level 5 or higher monster to Tribute Summon"
+  },
+  "把1只上级召唤的怪兽解放作上级召唤": {
+    "en": "Tribute 1 Tribute Summoned monster to Tribute Summon"
+  },
+  "把1只怪兽解放作上级召唤": {
+    "en": "Tribute 1 monster to Tribute Summon"
+  },
+  "把1只怪兽解放召唤": {
+    "en": "Tribute 1 monster to Summon"
+  },
+  "把1只恐龙族怪兽解放上级召唤": {
+    "en": "Tribute Summon by Tributing 1 Dinosaur monster"
+  },
+  "把1张手卡送去墓地": {
+    "en": "Send 1 card from your hand to the GY",
+    "es": "Enviar 1 carta de tu mano al Cementerio"
+  },
+  "把3只「机壳」怪兽解放": {
+    "en": "Tribute 3 \"Qli\" monsters",
+    "es": "Invocar esta carta por Sacrificio usando 3 monstruos \"Qli\""
+  },
+  "把3只解放作召唤": {
+    "en": "Tribute 3 monsters to Summon",
+    "es": "Invocar esta carta de Modo Normal con 3 Sacrificios"
+  },
+  "把墓地的这张卡除外": {
+    "en": "Banish this card from your GY"
+  },
+  "把对方手卡确认，选那之内的1张回到卡组": {
+    "en": "Look at your opponent's hand, then choose 1 card to shuffle into the Deck"
+  },
+  "投掷硬币": {
+    "en": "Toss a coin"
+  },
+  "投掷骰子": {
+    "en": "Roll a die"
+  },
+  "抽1张卡": {
+    "en": "Draw 1 card(s)"
+  },
+  "抽1张卡并给双方确认": {
+    "en": "Draw 1 card and reveal it to both players",
+    "es": "Robar 1 carta"
+  },
+  "抽2张卡": {
+    "en": "Draw 2 card(s)"
+  },
+  "抽一张卡": {
+    "en": "Draw 1 card",
+    "es": "Robar 1 carta"
+  },
+  "抽卡": {
+    "en": "Draw"
+  },
+  "抽卡&手卡回卡组": {
+    "en": "Draw & return your hand to the Deck",
+    "es": "Robar 1 carta"
+  },
+  "抽卡并丢弃手卡": {
+    "en": "Draw, then discard 1 card"
+  },
+  "抽卡效果": {
+    "en": "Draw"
+  },
+  "抽滤": {
+    "en": "Discard and draw"
+  },
+  "控制权交换": {
+    "en": "Switch control"
+  },
+  "控制权转移": {
+    "en": "Transfer control"
+  },
+  "掷骰子": {
+    "en": "Roll a die"
+  },
+  "改变刻度": {
+    "en": "Change Scale"
+  },
+  "改变卡名": {
+    "en": "Change card name"
+  },
+  "改变对方效果": {
+    "en": "Change your opponent's effect"
+  },
+  "改变属性": {
+    "en": "Change Attribute"
+  },
+  "改变攻击力": {
+    "en": "Change ATK"
+  },
+  "改变攻击对象": {
+    "en": "Change the attack target"
+  },
+  "改变灵摆刻度": {
+    "en": "Change Pendulum Scale"
+  },
+  "改变种族": {
+    "en": "Change Type"
+  },
+  "改变等级": {
+    "en": "Change Level"
+  },
+  "改变表示形式": {
+    "en": "Change battle position"
+  },
+  "改变装备怪兽的表示形式": {
+    "en": "Change the equipped monster's battle position"
+  },
+  "攻击上升": {
+    "en": "Increase ATK"
+  },
+  "攻击下降": {
+    "en": "Decrease ATK"
+  },
+  "攻击力·守备力上升": {
+    "en": "Increase ATK/DEF"
+  },
+  "攻击力上升": {
+    "en": "Increase ATK"
+  },
+  "攻击力上升1000": {
+    "en": "Increase ATK by 1000"
+  },
+  "攻击力上升或者给予伤害": {
+    "en": "Increase ATK or inflict damage",
+    "es": "Elegir 1 de los efectos a aplicar"
+  },
+  "攻击力下降": {
+    "en": "Decrease ATK"
+  },
+  "攻击力变成0": {
+    "en": "ATK becomes 0"
+  },
+  "攻击力变成2倍": {
+    "en": "Double its ATK"
+  },
+  "攻击力变成一半": {
+    "en": "ATK becomes half"
+  },
+  "攻击力变成一半数值": {
+    "en": "ATK becomes half"
+  },
+  "攻击力翻倍": {
+    "en": "Double ATK"
+  },
+  "攻击力降低": {
+    "en": "Decrease ATK"
+  },
+  "攻击变化": {
+    "en": "Change ATK"
+  },
+  "攻击变成0": {
+    "en": "ATK becomes 0"
+  },
+  "攻击变成0，不能改变表示形式": {
+    "en": "ATK becomes 0, and its battle position cannot be changed"
+  },
+  "攻击变成一半": {
+    "en": "Halve ATK"
+  },
+  "攻击对象转移": {
+    "en": "Change attack target"
+  },
+  "攻击怪兽破坏": {
+    "en": "Destroy the attacking monster"
+  },
+  "攻击无效": {
+    "en": "Negate the attack"
+  },
+  "攻击无效并结束战斗阶段": {
+    "en": "Negate the attack and end the Battle Phase"
+  },
+  "攻击限制": {
+    "en": "Attack restriction"
+  },
+  "攻守上升": {
+    "en": "Increase ATK/DEF"
+  },
+  "攻守下降": {
+    "en": "Decrease ATK/DEF"
+  },
+  "攻守下降500": {
+    "en": "ATK/DEF decrease by 500"
+  },
+  "攻守交换": {
+    "en": "Switch ATK and DEF"
+  },
+  "攻守变化": {
+    "en": "Change ATK/DEF"
+  },
+  "攻防减半": {
+    "en": "Halve ATK/DEF"
+  },
+  "放回卡组最上面": {
+    "en": "Place on top of the Deck"
+  },
+  "放回卡组最下面": {
+    "en": "Place on bottom of the Deck"
+  },
+  "放置": {
+    "en": "Place"
+  },
+  "放置1个魔力指示物": {
+    "en": "Place 1 Spell Counter"
+  },
+  "放置「A指示物」": {
+    "en": "Place \"A-Counter\""
+  },
+  "放置到灵摆区域": {
+    "en": "Place in the Pendulum Zone"
+  },
+  "放置到魔陷区": {
+    "en": "Place in the Spell/Trap Zone"
+  },
+  "放置场地魔法": {
+    "en": "Place a Field Spell"
+  },
+  "放置怪兽": {
+    "en": "Place a monster"
+  },
+  "放置指示物": {
+    "en": "Place a counter"
+  },
+  "放置效果": {
+    "en": "Placement effect"
+  },
+  "放置永续陷阱卡": {
+    "en": "Set a Continuous Trap Card"
+  },
+  "放置灵摆刻度": {
+    "en": "Place Pendulum Scale"
+  },
+  "放置灵摆区域": {
+    "en": "Place in the Pendulum Zone"
+  },
+  "放置魔力指示物": {
+    "en": "Place Spell Counters"
+  },
+  "放置魔陷": {
+    "en": "Set Spell/Trap"
+  },
+  "效果伤害": {
+    "en": "Effect damage"
+  },
+  "效果免疫": {
+    "en": "Unaffected by effects"
+  },
+  "效果发动": {
+    "en": "Activate effect"
+  },
+  "效果发动无效": {
+    "en": "Negate the activation of the effect"
+  },
+  "效果发动无效并破坏": {
+    "en": "Negate the activation and destroy"
+  },
+  "效果变化": {
+    "en": "Change effect"
+  },
+  "效果变更": {
+    "en": "Change effect"
+  },
+  "效果复制": {
+    "en": "Copy effect"
+  },
+  "效果怪兽的效果发动无效并破坏": {
+    "en": "Negate the activation of an Effect Monster's effect, and destroy it"
+  },
+  "效果抑制": {
+    "en": "Effect suppression"
+  },
+  "效果抗性": {
+    "en": "Effect protection"
+  },
+  "效果无效": {
+    "en": "Negate the effect"
+  },
+  "效果无效化": {
+    "en": "Negate effects"
+  },
+  "效果无效并破坏": {
+    "en": "Negate its effects and destroy it"
+  },
+  "效果耐性": {
+    "en": "Unaffected"
+  },
+  "无效": {
+    "en": "Negate"
+  },
+  "无效对方怪兽": {
+    "en": "Negate an opponent's monster"
+  },
+  "无效并破坏": {
+    "en": "Negate and destroy"
+  },
+  "无效并除外": {
+    "en": "Negate and banish"
+  },
+  "无效怪兽": {
+    "en": "Negate a monster"
+  },
+  "无效攻击": {
+    "en": "Negate the attack"
+  },
+  "无效效果": {
+    "en": "Negate the effect"
+  },
+  "无效特殊召唤": {
+    "en": "Negate the Special Summon"
+  },
+  "是否上升等级？": {
+    "en": "Increase the Level?"
+  },
+  "是否下降等级？": {
+    "en": "Decrease Level?"
+  },
+  "是否丢弃手卡？": {
+    "en": "Discard a card?"
+  },
+  "是否为此怪兽补充超量素材？": {
+    "en": "Attach Xyz material to this monster?"
+  },
+  "是否从卡组加入手卡？": {
+    "en": "Add from the Deck to your hand?"
+  },
+  "是否从卡组把1只怪兽加入手卡？": {
+    "en": "Add 1 monster from your Deck to your hand?",
+    "es": "¿Quieres añadir 1 monstruo de tu Deck a tu mano?"
+  },
+  "是否从卡组把卡加入手卡？": {
+    "en": "Add a card from your Deck to your hand?"
+  },
+  "是否从卡组把卡送去墓地？": {
+    "en": "Send a card from your Deck to the GY?"
+  },
+  "是否从卡组把怪兽加入手卡？": {
+    "en": "Add a monster from your Deck to your hand?"
+  },
+  "是否从卡组把灵摆怪兽加入额外卡组？": {
+    "en": "Place Pendulum Monsters from your Deck in your Extra Deck?"
+  },
+  "是否从卡组特殊召唤？": {
+    "en": "Special Summon from the Deck?"
+  },
+  "是否从墓地把怪兽加入手卡？": {
+    "en": "Add a monster from the GY to your hand?"
+  },
+  "是否从墓地把怪兽特殊召唤？": {
+    "en": "Special Summon a monster from the GY?"
+  },
+  "是否从墓地特殊召唤？": {
+    "en": "Special Summon from the GY?"
+  },
+  "是否从对方墓地选怪兽特殊召唤？": {
+    "en": "Special Summon a monster from your opponent's GY?"
+  },
+  "是否从手卡把怪兽特殊召唤？": {
+    "en": "Special Summon a monster from your hand?"
+  },
+  "是否从手卡特殊召唤怪兽？": {
+    "en": "Special Summon a monster from your hand?"
+  },
+  "是否从手卡特殊召唤？": {
+    "en": "Special Summon from your hand?"
+  },
+  "是否从额外卡组特殊召唤？": {
+    "en": "Special Summon from the Extra Deck?"
+  },
+  "是否代替破坏？": {
+    "en": "Use as destruction replacement?"
+  },
+  "是否作为代替除外？": {
+    "en": "Banish it instead?"
+  },
+  "是否使用效果？": {
+    "en": "Use the effect?"
+  },
+  "是否再把怪兽特殊召唤？": {
+    "en": "Special Summon another monster?"
+  },
+  "是否再特殊召唤？": {
+    "en": "Special Summon again?"
+  },
+  "是否出示「千年十字」？": {
+    "en": "Reveal \"Millennium Ankh\"?",
+    "es": "¿Quieres mostrar 1 \"Anj Milenario\" en tu mano?"
+  },
+  "是否加入手卡？": {
+    "en": "Add to hand?"
+  },
+  "是否召唤？": {
+    "en": "Summon?"
+  },
+  "是否同调召唤？": {
+    "en": "Synchro Summon?"
+  },
+  "是否回到手卡？": {
+    "en": "Return to the hand?"
+  },
+  "是否回复基本分？": {
+    "en": "Gain LP?"
+  },
+  "是否回收并抽卡？": {
+    "en": "Recover and draw a card?"
+  },
+  "是否在「No.39 希望皇 霍普」上面重叠超量召唤？": {
+    "en": "Xyz Summon by using \"Number 39: Utopia\" as material?",
+    "es": "Invocar Xyz usando 1 \"Número 39: Utopía\" como material"
+  },
+  "是否在「十二兽」怪兽上面重叠来超量召唤？": {
+    "en": "Xyz Summon by overlaying on a \"Zoodiac\" monster?"
+  },
+  "是否在「银河眼」超量怪兽上面重叠超量召唤？": {
+    "en": "Xyz Summon by using a \"Galaxy-Eyes\" Xyz Monster as material?"
+  },
+  "是否在在超量怪兽上面重叠来超量召唤？": {
+    "en": "Xyz Summon by stacking on top of an Xyz Monster?"
+  },
+  "是否在对方场上特殊召唤？": {
+    "en": "Special Summon to your opponent's field?"
+  },
+  "是否在持有超量素材5个以上的自己的2阶怪兽上面重叠来超量召唤？": {
+    "en": "Xyz Summon by overlaying on your Rank 2 monster with 5 or more materials?"
+  },
+  "是否在超量怪兽上面重叠来超量召唤？": {
+    "en": "Xyz Summon by using an Xyz Monster as material?"
+  },
+  "是否在超量怪兽上面重叠超量召唤？": {
+    "en": "Xyz Summon by using an Xyz Monster as material?"
+  },
+  "是否得到控制权？": {
+    "en": "Take control?"
+  },
+  "是否把1只怪兽召唤？": {
+    "en": "Summon 1 monster?",
+    "es": "¿Quieres Invocar de Modo Normal 1 monstruo?"
+  },
+  "是否把1张「方界」卡加入手卡？": {
+    "en": "Add 1 \"Cubic\" card to your hand?"
+  },
+  "是否把全部同调素材怪兽当作2星怪兽使用？": {
+    "en": "Treat all Synchro Material monsters as Level 2 monsters?"
+  },
+  "是否把卡加入手卡？": {
+    "en": "Add this card to your hand?"
+  },
+  "是否把卡无效？": {
+    "en": "Negate the card's effects?"
+  },
+  "是否把卡盖放？": {
+    "en": "Set a card?"
+  },
+  "是否把卡破坏？": {
+    "en": "Destroy the card?"
+  },
+  "是否把卡送去墓地？": {
+    "en": "Send the card to the GY?"
+  },
+  "是否把卡除外？": {
+    "en": "Banish the card?"
+  },
+  "是否把场上1张魔法·陷阱卡破坏？": {
+    "en": "Destroy 1 Spell/Trap Card on the field?"
+  },
+  "是否把墓地怪兽特殊召唤？": {
+    "en": "Special Summon a monster from your GY?"
+  },
+  "是否把对方场上的表侧表示的卡全部送去墓地？": {
+    "en": "Send all face-up cards your opponent controls to the GY?",
+    "es": "¿Quieres enviar todas las cartas boca arriba que controle tu adversario al Cementerio?"
+  },
+  "是否把怪兽加入手卡？": {
+    "en": "Add that monster to your hand?"
+  },
+  "是否把怪兽变成里侧守备表示？": {
+    "en": "Change a monster to face-down Defense Position?"
+  },
+  "是否把怪兽无效？": {
+    "en": "Negate a monster?"
+  },
+  "是否把怪兽特殊召唤？": {
+    "en": "Special Summon a monster?"
+  },
+  "是否把怪兽破坏？": {
+    "en": "Destroy that monster?"
+  },
+  "是否把怪兽送去墓地？": {
+    "en": "Send that monster to the GY?"
+  },
+  "是否把怪兽除外？": {
+    "en": "Banish the monster?"
+  },
+  "是否把自己的灵摆区域1张卡回到卡组？": {
+    "en": "Shuffle 1 card from your Pendulum Zone into the Deck?",
+    "es": "¿Quieres barajar 1 carta de tu Zona de Péndulo al Deck?"
+  },
+  "是否把这张卡在自己的灵摆区域放置？": {
+    "en": "Place this card in your Pendulum Zone?"
+  },
+  "是否把这张卡特殊召唤？": {
+    "en": "Special Summon this card?"
+  },
+  "是否把那只怪兽无视召唤条件特殊召唤？": {
+    "en": "Special Summon that monster, ignoring its Summoning conditions?",
+    "es": "¿Quieres Invocar el monstrruos de Modo Especial?"
+  },
+  "是否把那只怪兽特殊召唤？": {
+    "en": "Special Summon that monster?"
+  },
+  "是否把那只怪兽破坏？": {
+    "en": "Destroy that monster?"
+  },
+  "是否把那张卡盖放？": {
+    "en": "Set that card?"
+  },
+  "是否把那张卡破坏？": {
+    "en": "Destroy that card?"
+  },
+  "是否把陷阱卡盖放？": {
+    "en": "Set a Trap Card?"
+  },
+  "是否把魔法·陷阱卡加入手卡？": {
+    "en": "Add a Spell/Trap Card to your hand?"
+  },
+  "是否把魔法·陷阱卡盖放？": {
+    "en": "Set a Spell/Trap?"
+  },
+  "是否把鸟兽族怪兽召唤？": {
+    "en": "Summon a Winged Beast monster?",
+    "es": "¿Quieres Invocar de Modo Normal 1 monstruo Bestia Alada?"
+  },
+  "是否抽卡？": {
+    "en": "Draw a card?"
+  },
+  "是否支付基本分？": {
+    "en": "Pay LP?"
+  },
+  "是否改变属性？": {
+    "en": "Change Attribute?"
+  },
+  "是否改变种族？": {
+    "en": "Change Type?"
+  },
+  "是否改变等级？": {
+    "en": "Change Level?"
+  },
+  "是否改变表示形式？": {
+    "en": "Change battle position?"
+  },
+  "是否放置魔力指示物？": {
+    "en": "Place a Spell Counter?"
+  },
+  "是否特殊召唤同名怪兽？": {
+    "en": "Special Summon a monster with the same name?"
+  },
+  "是否特殊召唤怪兽？": {
+    "en": "Special Summon the monster?"
+  },
+  "是否特殊召唤衍生物？": {
+    "en": "Special Summon a Token?"
+  },
+  "是否盖放魔法·陷阱卡？": {
+    "en": "Set the Spell/Trap?"
+  },
+  "是否盖放？": {
+    "en": "Set?"
+  },
+  "是否破坏场上1张卡？": {
+    "en": "Destroy 1 card on the field?"
+  },
+  "是否破坏怪兽？": {
+    "en": "Destroy the monster?"
+  },
+  "是否破坏？": {
+    "en": "Destroy?"
+  },
+  "是否立即使用效果？": {
+    "en": "Use the effect now?"
+  },
+  "是否给与伤害？": {
+    "en": "Inflict damage?"
+  },
+  "是否给与对方伤害？": {
+    "en": "Inflict damage to your opponent?"
+  },
+  "是否继续攻击？": {
+    "en": "Continue attacking?"
+  },
+  "是否继续特殊召唤？": {
+    "en": "Special Summon another monster?"
+  },
+  "是否继续选择怪兽特殊召唤？": {
+    "en": "Continue selecting monsters to Special Summon?"
+  },
+  "是否继续选择怪兽除外？": {
+    "en": "Continue selecting monsters to banish?"
+  },
+  "是否继续选择？": {
+    "en": "Continue selecting?"
+  },
+  "是否获取超量素材？": {
+    "en": "Attach Xyz Material?"
+  },
+  "是否获得控制权？": {
+    "en": "Take control?"
+  },
+  "是否融合召唤？": {
+    "en": "Fusion Summon?"
+  },
+  "是否装备？": {
+    "en": "Equip?"
+  },
+  "是否要丢弃手牌？": {
+    "en": "Discard a card?"
+  },
+  "是否要使用「超量超控」的效果？": {
+    "en": "Use the effect of \"Xyz Override\"?"
+  },
+  "是否要在自己场上的怪兽上面叠放来超量召唤？": {
+    "en": "Xyz Summon by overlaying on a monster you control?"
+  },
+  "是否要把宣言的怪兽特殊召唤？": {
+    "en": "Special Summon the declared monster?"
+  },
+  "是否要把怪兽特殊召唤？": {
+    "en": "Special Summon that monster?"
+  },
+  "是否要把战斗伤害变成0？": {
+    "en": "Make the battle damage 0?"
+  },
+  "是否要把素材特殊召唤？": {
+    "en": "Special Summon the material?"
+  },
+  "是否要抽卡？": {
+    "en": "Draw a card?"
+  },
+  "是否要放置魔法或陷阱卡？": {
+    "en": "Set a Spell or Trap Card?",
+    "es": "¿Quieres Colocar 1 Mágica/Trampa desde tu mano?"
+  },
+  "是否要特殊召唤": {
+    "en": "Special Summon?"
+  },
+  "是否要特殊召唤融合素材？": {
+    "en": "Special Summon Fusion Materials?"
+  },
+  "是否要特殊召唤？": {
+    "en": "Special Summon?"
+  },
+  "是否要破坏对方场上的卡？": {
+    "en": "Destroy a card your opponent controls?"
+  },
+  "是否要继续攻击？": {
+    "en": "Continue attacking?"
+  },
+  "是否要继续特殊召唤？": {
+    "en": "Continue Special Summoning?"
+  },
+  "是否要进行特殊召唤？": {
+    "en": "Special Summon?"
+  },
+  "是否要选择对方场上表侧表示存在的1张卡破坏？": {
+    "en": "Select 1 face-up card your opponent controls to destroy?"
+  },
+  "是否要除外手卡？": {
+    "en": "Banish cards from your hand?"
+  },
+  "是否解放自己场上1只怪兽？": {
+    "en": "Tribute 1 monster you control?"
+  },
+  "是否让卡回到手卡？": {
+    "en": "Return the card to the hand?"
+  },
+  "是否让怪兽回到手卡？": {
+    "en": "Return the monster to the hand?"
+  },
+  "是否还要特殊召唤？": {
+    "en": "Special Summon another monster?"
+  },
+  "是否还要选择一个区域？": {
+    "en": "Select another zone?"
+  },
+  "是否进行召唤？": {
+    "en": "Normal Summon?"
+  },
+  "是否进行同调召唤？": {
+    "en": "Synchro Summon?"
+  },
+  "是否进行融合召唤？": {
+    "en": "Perform a Fusion Summon?"
+  },
+  "是否选卡加入手卡？": {
+    "en": "Select a card to add to your hand?"
+  },
+  "是否选卡回到手卡？": {
+    "en": "Return a card to the hand?"
+  },
+  "是否选卡盖放？": {
+    "en": "Set the selected card?"
+  },
+  "是否选卡破坏？": {
+    "en": "Destroy the selected card?"
+  },
+  "是否选卡送去墓地？": {
+    "en": "Send the selected card to the GY?"
+  },
+  "是否选场上1张卡破坏？": {
+    "en": "Destroy 1 card on the field?",
+    "es": "¿Quieres destruir 1 carta en el Campo?"
+  },
+  "是否选场上1张魔法·陷阱卡破坏？": {
+    "en": "Destroy 1 Spell/Trap on the field?",
+    "es": "¿Quieres destruir 1 Mágica/Trampa en el Campo?"
+  },
+  "是否选对方场上1只怪兽破坏？": {
+    "en": "Destroy 1 monster your opponent controls?",
+    "es": "¿Quieres destruir 1 monstruo que controle tu adversario?"
+  },
+  "是否选对方场上1张卡破坏？": {
+    "en": "Destroy 1 card your opponent controls?",
+    "es": "¿Quieres destruir 1 carta que controle tu adversario?"
+  },
+  "是否选对方场上1张魔法·陷阱卡破坏？": {
+    "en": "Destroy 1 Spell/Trap your opponent controls?"
+  },
+  "是否选对方场上的卡破坏？": {
+    "en": "Destroy a card your opponent controls?"
+  },
+  "是否选对方怪兽变成里侧守备表示？": {
+    "en": "Change an opponent's monster to face-down Defense Position?"
+  },
+  "是否选对方怪兽送去墓地？": {
+    "en": "Send an opponent's monster to the GY?"
+  },
+  "是否选对方的卡破坏？": {
+    "en": "Destroy 1 card your opponent controls?"
+  },
+  "是否选怪兽上升攻击力？": {
+    "en": "Increase a monster's ATK?"
+  },
+  "是否选怪兽特殊召唤？": {
+    "en": "Select a monster to Special Summon?"
+  },
+  "是否选怪兽装备？": {
+    "en": "Equip a monster?"
+  },
+  "是否选怪兽除外？": {
+    "en": "Banish the selected monster?"
+  },
+  "是否选择魔法·陷阱卡解放？": {
+    "en": "Tribute a Spell/Trap Card?"
+  },
+  "是否选装备魔法卡装备？": {
+    "en": "Equip an Equip Spell?"
+  },
+  "是否选魔法·陷阱卡破坏？": {
+    "en": "Destroy a Spell/Trap Card?"
+  },
+  "是否除外手卡？": {
+    "en": "Banish a card from your hand?"
+  },
+  "是否除外？": {
+    "en": "Banish?"
+  },
+  "检索": {
+    "en": "Add to hand"
+  },
+  "检索「旋风」": {
+    "en": "Add \"Mystical Space Typhoon\" to your hand",
+    "es": "Añadir 1 \"Tifón del Espacio Místico\" desde tu Deck o Cementerio a tu mano"
+  },
+  "检索卡组": {
+    "en": "Search the Deck"
+  },
+  "检索怪兽": {
+    "en": "Add a monster to your hand"
+  },
+  "检索或回收": {
+    "en": "Search or recover"
+  },
+  "检索效果": {
+    "en": "Search effect"
+  },
+  "检索送墓": {
+    "en": "Add to hand and send to the GY"
+  },
+  "检索魔法": {
+    "en": "Add a Spell to hand"
+  },
+  "检索魔陷": {
+    "en": "Add a Spell/Trap to your hand"
+  },
+  "正面": {
+    "en": "Heads"
+  },
+  "水属性怪兽破坏": {
+    "en": "Destroy a WATER monster"
+  },
+  "灵摆刻度上升": {
+    "en": "Increase Pendulum Scale"
+  },
+  "灵摆区域放置": {
+    "en": "Place in the Pendulum Zone"
+  },
+  "特殊召唤": {
+    "en": "Special Summon"
+  },
+  "特殊召唤Token": {
+    "en": "Special Summon a Token"
+  },
+  "特殊召唤「蕾祸」怪兽": {
+    "en": "Special Summon a \"Ragnaraika\" monster"
+  },
+  "特殊召唤墓地怪兽": {
+    "en": "Special Summon a monster from the GY"
+  },
+  "特殊召唤并同调召唤": {
+    "en": "Special Summon, then Synchro Summon"
+  },
+  "特殊召唤并检索": {
+    "en": "Special Summon and add to hand"
+  },
+  "特殊召唤并装备": {
+    "en": "Special Summon and equip"
+  },
+  "特殊召唤并除外": {
+    "en": "Special Summon and banish"
+  },
+  "特殊召唤无效": {
+    "en": "Negate the Special Summon"
+  },
+  "特殊召唤无效并破坏": {
+    "en": "Negate the Special Summon and destroy"
+  },
+  "特殊召唤的怪兽全部破坏": {
+    "en": "Destroy all Special Summoned monsters"
+  },
+  "特殊召唤的怪兽除外": {
+    "en": "Banish the Special Summoned monster(s)"
+  },
+  "特殊召唤素材": {
+    "en": "Special Summon materials"
+  },
+  "特殊召唤自身": {
+    "en": "Special Summon itself"
+  },
+  "特殊召唤衍生物": {
+    "en": "Special Summon a Token"
+  },
+  "特殊召唤这张卡": {
+    "en": "Special Summon this card"
+  },
+  "猜硬币": {
+    "en": "Call the coin toss"
+  },
+  "用1只怪兽解放上级召唤": {
+    "en": "Tribute 1 monster to Tribute Summon"
+  },
+  "用1只祭品作召唤": {
+    "en": "Tribute Summon with 1 Tribute"
+  },
+  "用通常怪兽为素材作融合召唤": {
+    "en": "Fusion Summon using a Normal Monster as material"
+  },
+  "盖卡破坏": {
+    "en": "Destroy a Set card"
+  },
+  "盖放": {
+    "en": "Set"
+  },
+  "盖放「金属化」陷阱": {
+    "en": "Set a \"Metalmorph\" Trap"
+  },
+  "盖放「金属化」陷阱卡": {
+    "en": "Set the \"Metalmorph\" Trap Card",
+    "es": "Colocar 1 carta Trampa “Metalmorph”desde el Deck"
+  },
+  "盖放怪兽": {
+    "en": "Set a monster"
+  },
+  "盖放效果": {
+    "en": "Set effect"
+  },
+  "盖放陷阱": {
+    "en": "Set a Trap"
+  },
+  "盖放魔法卡": {
+    "en": "Set a Spell Card"
+  },
+  "盖放魔陷": {
+    "en": "Set Spell/Trap"
+  },
+  "直到结束阶段除外": {
+    "en": "Banish until the End Phase"
+  },
+  "直接攻击": {
+    "en": "Direct attack"
+  },
+  "破坏": {
+    "en": "Destroy"
+  },
+  "破坏1张卡": {
+    "en": "Destroy 1 card"
+  },
+  "破坏一张魔法陷阱卡": {
+    "en": "Destroy 1 Spell/Trap Card"
+  },
+  "破坏场上的卡": {
+    "en": "Destroy a card on the field"
+  },
+  "破坏对方1只怪兽": {
+    "en": "Destroy 1 monster your opponent controls"
+  },
+  "破坏对方场上1只怪兽": {
+    "en": "Destroy 1 monster your opponent controls"
+  },
+  "破坏对方怪兽": {
+    "en": "Destroy an opponent's monster"
+  },
+  "破坏并伤害": {
+    "en": "Destroy and inflict damage"
+  },
+  "破坏并抽卡": {
+    "en": "Destroy and draw a card"
+  },
+  "破坏并检索": {
+    "en": "Destroy and search"
+  },
+  "破坏并特殊召唤": {
+    "en": "Destroy and Special Summon"
+  },
+  "破坏并除外": {
+    "en": "Destroy and banish"
+  },
+  "破坏怪兽": {
+    "en": "Destroy a monster"
+  },
+  "破坏抗性": {
+    "en": "Destruction protection"
+  },
+  "破坏效果": {
+    "en": "Destruction effect"
+  },
+  "破坏时放置魔法陷阱区": {
+    "en": "Place in the Spell & Trap Zone when destroyed"
+  },
+  "破坏耐性": {
+    "en": "Cannot be destroyed"
+  },
+  "破坏衍生物": {
+    "en": "Destroy Tokens"
+  },
+  "破坏魔法·陷阱卡": {
+    "en": "Destroy Spell/Trap Card(s)"
+  },
+  "破坏魔法陷阱": {
+    "en": "Destroy a Spell/Trap"
+  },
+  "破坏魔陷": {
+    "en": "Destroy Spell/Trap"
+  },
+  "确认": {
+    "en": "Confirm"
+  },
+  "确认卡组": {
+    "en": "Reveal the Deck"
+  },
+  "确认卡组顺序": {
+    "en": "Check the order of the Deck"
+  },
+  "确认对方的额外卡组": {
+    "en": "View your opponent's Extra Deck"
+  },
+  "确认手卡": {
+    "en": "Reveal the hand"
+  },
+  "确认手牌": {
+    "en": "Reveal your hand"
+  },
+  "确认盖卡": {
+    "en": "Reveal a Set card"
+  },
+  "确认自己的额外卡组": {
+    "en": "View your Extra Deck"
+  },
+  "确认额外卡组": {
+    "en": "Check the Extra Deck"
+  },
+  "种族变化": {
+    "en": "Change Type"
+  },
+  "移动": {
+    "en": "Move"
+  },
+  "移动位置": {
+    "en": "Move to another zone"
+  },
+  "移除指示物": {
+    "en": "Remove a counter"
+  },
+  "等级上升": {
+    "en": "Increase Level"
+  },
+  "等级上升1": {
+    "en": "Increase Level by 1"
+  },
+  "等级上升1星": {
+    "en": "Increase Level by 1"
+  },
+  "等级上升１星": {
+    "en": "Increase by 1 Level",
+    "es": "Incrementar Nivel en 1"
+  },
+  "等级上升２星": {
+    "en": "Increase by 2 Levels",
+    "es": "Incrementar Nivel en 2"
+  },
+  "等级下降": {
+    "en": "Decrease Level"
+  },
+  "等级下降1星": {
+    "en": "Decrease Level by 1"
+  },
+  "等级变化": {
+    "en": "Change Level"
+  },
+  "等级变更": {
+    "en": "Change Level"
+  },
+  "等级改变": {
+    "en": "Change Level"
+  },
+  "等级攻击上升": {
+    "en": "Increase Level and ATK"
+  },
+  "素材补充": {
+    "en": "Replenish materials"
+  },
+  "结束复制效果": {
+    "en": "End copied effect"
+  },
+  "结束战斗阶段": {
+    "en": "End the Battle Phase"
+  },
+  "给「超重武者」怪兽装备": {
+    "en": "Equip to a \"Superheavy Samurai\" monster"
+  },
+  "给与伤害": {
+    "en": "Inflict damage"
+  },
+  "给与对方1000伤害": {
+    "en": "Inflict 1000 damage to your opponent"
+  },
+  "给与对方1500伤害": {
+    "en": "Inflict 1500 damage to your opponent"
+  },
+  "给与对方500伤害": {
+    "en": "Inflict 500 damage to your opponent"
+  },
+  "给与对方800伤害": {
+    "en": "Inflict 800 damage to your opponent"
+  },
+  "给与对方伤害": {
+    "en": "Inflict damage to your opponent"
+  },
+  "给予伤害": {
+    "en": "Inflict damage"
+  },
+  "给予对方500伤害": {
+    "en": "Inflict 500 damage to your opponent"
+  },
+  "给予对方600伤害": {
+    "en": "Inflict 600 damage to your opponent",
+    "es": "Infligir 600 de daño a tu adversario"
+  },
+  "给予对方伤害": {
+    "en": "Inflict damage to your opponent"
+  },
+  "继续攻击": {
+    "en": "Continue attacking"
+  },
+  "翻卡": {
+    "en": "Excavate cards",
+    "es": "¿Excavar cartas?"
+  },
+  "翻开卡组": {
+    "en": "Excavate cards from your Deck"
+  },
+  "自坏": {
+    "en": "Self-destruct",
+    "es": "Destruir esta carta"
+  },
+  "自己从卡组抽1张": {
+    "en": "Draw 1 card(s)",
+    "es": "Robar 1 carta"
+  },
+  "自己受到500伤害": {
+    "en": "Take 500 damage"
+  },
+  "自己回复500基本分": {
+    "en": "Gain 500 LP"
+  },
+  "自己抽2张": {
+    "en": "Draw 2 cards",
+    "es": "Robar 2 cartas"
+  },
+  "苏生": {
+    "en": "Revive"
+  },
+  "获取控制权": {
+    "en": "Take control"
+  },
+  "获取素材": {
+    "en": "Attach material"
+  },
+  "获取超量素材": {
+    "en": "Attach Xyz material"
+  },
+  "获得怪物效果": {
+    "en": "Gain a monster effect"
+  },
+  "获得控制权": {
+    "en": "Take control"
+  },
+  "获得效果": {
+    "en": "Gain effect"
+  },
+  "融合": {
+    "en": "Fusion"
+  },
+  "融合召唤": {
+    "en": "Fusion Summon"
+  },
+  "融合召唤「霸王龙 扎克」": {
+    "en": "Fusion Summon \"Supreme King Z-ARC\""
+  },
+  "融合效果": {
+    "en": "Fusion effect"
+  },
+  "补充素材": {
+    "en": "Attach material"
+  },
+  "补充超量素材": {
+    "en": "Attach Xyz Material"
+  },
+  "表": {
+    "en": "Face-up"
+  },
+  "表侧表示召唤": {
+    "en": "Normal Summon (face-up)"
+  },
+  "表侧表示放置": {
+    "en": "Place face-up"
+  },
+  "表侧表示的1张卡破坏": {
+    "en": "Destroy 1 face-up card",
+    "es": "Destruir 1 carta boca arriba en el Campo"
+  },
+  "表示变更": {
+    "en": "Change battle position"
+  },
+  "表示形式": {
+    "en": "Battle position"
+  },
+  "表示形式变更": {
+    "en": "Change battle position"
+  },
+  "装备": {
+    "en": "Equip"
+  },
+  "装备卡破坏": {
+    "en": "Destroy Equip Card(s)"
+  },
+  "装备同调怪兽": {
+    "en": "Equip a Synchro Monster"
+  },
+  "装备怪兽": {
+    "en": "Equip monsters"
+  },
+  "装备效果": {
+    "en": "Equip effect"
+  },
+  "装备的这张卡特殊召唤": {
+    "en": "Special Summon the equipped card"
+  },
+  "装备转移": {
+    "en": "Transfer the Equip Card"
+  },
+  "解放": {
+    "en": "Tribute"
+  },
+  "解放3只怪兽召唤": {
+    "en": "Tribute 3 monsters to Summon"
+  },
+  "解放并特殊召唤": {
+    "en": "Tribute and Special Summon"
+  },
+  "解放怪兽": {
+    "en": "Tribute a monster"
+  },
+  "解放怪兽卡上级召唤": {
+    "en": "Tribute Summon by Tributing a Monster Card",
+    "es": "No es afectado por efectos de Monstruos"
+  },
+  "解放怪兽发动": {
+    "en": "Tribute a monster to activate"
+  },
+  "解放陷阱卡上级召唤": {
+    "en": "Tribute Summon by Tributing a Trap Card",
+    "es": "No es afectado por efectos de Trampas"
+  },
+  "解放魔法·陷阱卡上级召唤": {
+    "en": "Tribute Summon by Tributing a Spell/Trap Card"
+  },
+  "解放魔法卡上级召唤": {
+    "en": "Tribute Summon by Tributing a Spell Card",
+    "es": "No es afectado por efectos de Mágicas"
+  },
+  "解除装备状态表侧攻击表示特殊召唤": {
+    "en": "Unequip and Special Summon it (face-up Attack Position)",
+    "es": "Desequipar esta carta e Invocarla de Modo Especial en Posición de Ataque"
+  },
+  "请宣言卡的种类": {
+    "en": "Declare a card type"
+  },
+  "请选择1只超量怪兽": {
+    "en": "Select 1 Xyz Monster"
+  },
+  "请选择一张场地魔法卡": {
+    "en": "Select a Field Spell"
+  },
+  "请选择一张怪兽卡": {
+    "en": "Select a Monster Card"
+  },
+  "请选择一张装备魔法卡": {
+    "en": "Select 1 Equip Spell Card"
+  },
+  "请选择一张要确认的卡": {
+    "en": "Select a card to reveal"
+  },
+  "请选择对方的魔法与陷阱区域盖放的1张卡": {
+    "en": "Select 1 Set card in your opponent's Spell & Trap Zone"
+  },
+  "请选择攻击力上升的怪兽": {
+    "en": "Select the monster to increase its ATK"
+  },
+  "请选择攻击力变成一半的怪兽": {
+    "en": "Select the monster whose ATK becomes half"
+  },
+  "请选择攻击对象": {
+    "en": "Select an attack target"
+  },
+  "请选择移动位置的怪兽": {
+    "en": "Select the monster to move"
+  },
+  "请选择要上升攻击力的怪兽": {
+    "en": "Select the monster to increase its ATK"
+  },
+  "请选择要上升的等级": {
+    "en": "Select the Level to increase"
+  },
+  "请选择要上升等级的怪兽": {
+    "en": "Select the monster to increase its Level"
+  },
+  "请选择要下降等级的怪兽": {
+    "en": "Select the monster whose Level will be decreased"
+  },
+  "请选择要保留的属性": {
+    "en": "Select the Attribute to keep"
+  },
+  "请选择要加入对方手卡的卡": {
+    "en": "Select the card to add to your opponent's hand"
+  },
+  "请选择要加入手卡或在自己场上发动的卡": {
+    "en": "Select the card to add to your hand or activate on your field"
+  },
+  "请选择要加入手卡或特殊召唤的卡": {
+    "en": "Select a card to add to your hand or Special Summon"
+  },
+  "请选择要加入手卡或送去墓地的卡": {
+    "en": "Select a card to add to your hand or send to the GY"
+  },
+  "请选择要加入自己的额外卡组的卡": {
+    "en": "Select the card to add to your Extra Deck"
+  },
+  "请选择要加入额外卡组的卡": {
+    "en": "Select a card to add to the Extra Deck"
+  },
+  "请选择要发动的场地魔法卡": {
+    "en": "Select the Field Spell to activate"
+  },
+  "请选择要取除超量素材的卡": {
+    "en": "Select the card to detach as Xyz material"
+  },
+  "请选择要回到场上的卡": {
+    "en": "Select the card(s) to return to the field"
+  },
+  "请选择要回到墓地的卡": {
+    "en": "Select the card to return to the GY"
+  },
+  "请选择要在卡组最上面放置的卡": {
+    "en": "Select the card(s) to place on top of the Deck"
+  },
+  "请选择要在对方场上特殊召唤的怪兽": {
+    "en": "Select the monster to Special Summon to your opponent's field"
+  },
+  "请选择要在自己场上特殊召唤的怪兽": {
+    "en": "Select the monster to Special Summon to your field"
+  },
+  "请选择要支付的基本分": {
+    "en": "Select the LP to pay"
+  },
+  "请选择要改变的等级": {
+    "en": "Select the Level to change"
+  },
+  "请选择要改变等级的怪兽": {
+    "en": "Select the monster whose Level will be changed"
+  },
+  "请选择要放置「A指示物」的怪兽": {
+    "en": "Select the monster to place \"A-Counter\" on"
+  },
+  "请选择要放置冰指示物的怪兽": {
+    "en": "Select the monster to place an Ice Counter on"
+  },
+  "请选择要放置到卡组最上方的卡": {
+    "en": "Select the card to place on top of the Deck"
+  },
+  "请选择要放置到卡组最上面的卡": {
+    "en": "Select the card to place on top of the Deck"
+  },
+  "请选择要放置到后场的怪兽": {
+    "en": "Select the monster to place in the back row"
+  },
+  "请选择要放置到灵摆区域的卡": {
+    "en": "Select a card to place in the Pendulum Zone"
+  },
+  "请选择要放置在卡组最上面的卡": {
+    "en": "Select the card(s) to place on top of the Deck"
+  },
+  "请选择要放置指示物的怪兽": {
+    "en": "Select the monster to place a counter on"
+  },
+  "请选择要放置魔力指示物的卡": {
+    "en": "Select a card to place Spell Counters on"
+  },
+  "请选择要无效的卡": {
+    "en": "Select a card to negate"
+  },
+  "请选择要特殊召唤的怪兽的等级": {
+    "en": "Select the Level of the monster to Special Summon"
+  },
+  "请选择要特殊召唤的衍生物数量": {
+    "en": "Select the number of Tokens to Special Summon"
+  },
+  "请选择要特殊召唤的衍生物的数量": {
+    "en": "Select the number of Tokens to Special Summon"
+  },
+  "请选择要确认的卡的数量": {
+    "en": "Select the number of cards to reveal"
+  },
+  "请选择要禁止发动的卡": {
+    "en": "Select the card whose activation will be prohibited"
+  },
+  "请选择要移动位置的卡": {
+    "en": "Select a card to move"
+  },
+  "请选择要移动位置的怪兽": {
+    "en": "Select a monster to move"
+  },
+  "请选择要移动到的位置": {
+    "en": "Select the zone to move to"
+  },
+  "请选择要翻开的卡的数量": {
+    "en": "Select the number of cards to reveal"
+  },
+  "请选择要翻开的数量": {
+    "en": "Select how many to reveal"
+  },
+  "请选择要解放或代替解放除外的卡": {
+    "en": "Select a card to Tribute, or to banish instead"
+  },
+  "请选择要转移的素材": {
+    "en": "Select the material(s) to transfer"
+  },
+  "请选择要送去墓地的卡的数量": {
+    "en": "Choose the number of cards to send to the GY"
+  },
+  "请选择要送去墓地的数量": {
+    "en": "Select the number of cards to send to the GY"
+  },
+  "请选择要除外的卡的数量": {
+    "en": "Select the number of cards to banish"
+  },
+  "请选择要除外的怪兽的数量": {
+    "en": "Select the number of monsters to banish"
+  },
+  "赋予抗性": {
+    "en": "Grant protection",
+    "es": "Otorgar protección"
+  },
+  "赋予效果": {
+    "en": "Grant an effect"
+  },
+  "超量": {
+    "en": "Xyz"
+  },
+  "超量召唤": {
+    "en": "Xyz Summon"
+  },
+  "超量素材": {
+    "en": "Xyz Material"
+  },
+  "超量素材加入手卡": {
+    "en": "Add Xyz material to your hand"
+  },
+  "跳过战斗阶段": {
+    "en": "Skip the Battle Phase"
+  },
+  "跳过抽卡阶段": {
+    "en": "Skip the Draw Phase"
+  },
+  "转移控制权": {
+    "en": "Transfer control"
+  },
+  "转移超量素材": {
+    "en": "Transfer Xyz materials"
+  },
+  "返回卡组": {
+    "en": "Return to the Deck"
+  },
+  "返回卡组并抽卡": {
+    "en": "Return to the Deck, then draw 1 card"
+  },
+  "返回卡组抽卡": {
+    "en": "Return to the Deck and draw"
+  },
+  "返回卡组最上面": {
+    "en": "Place on top of the Deck"
+  },
+  "返回卡组最下面": {
+    "en": "Place on the bottom of the Deck"
+  },
+  "返回场上": {
+    "en": "Return to the field"
+  },
+  "返回墓地": {
+    "en": "Return to the GY"
+  },
+  "返回手卡": {
+    "en": "Return to hand"
+  },
+  "返回手牌": {
+    "en": "Return to hand"
+  },
+  "返回额外卡组": {
+    "en": "Return to the Extra Deck"
+  },
+  "这张卡从墓地特殊召唤": {
+    "en": "Special Summon this card from the GY"
+  },
+  "这张卡从手卡特殊召唤": {
+    "en": "Special Summon this card from your hand"
+  },
+  "这张卡以外的场上的卡全部破坏": {
+    "en": "Destroy all cards on the field except this card",
+    "es": "Destruir todas las demás cartas en el Campo"
+  },
+  "这张卡加入手卡": {
+    "en": "Add this card to your hand"
+  },
+  "这张卡加入手牌": {
+    "en": "Add this card to your hand"
+  },
+  "这张卡回到手卡": {
+    "en": "Return this card to the hand",
+    "es": "Devolver esta carta a la mano"
+  },
+  "这张卡在灵摆区域放置": {
+    "en": "Place this card in the Pendulum Zone",
+    "es": "Poner esta carta en la Zona de Péndulo"
+  },
+  "这张卡在自己场上盖放": {
+    "en": "Set this card on your field"
+  },
+  "这张卡在自己的灵摆区域放置": {
+    "en": "Place this card in your Pendulum Zone"
+  },
+  "这张卡当作永续陷阱卡放置": {
+    "en": "Set this card as a Continuous Trap Card"
+  },
+  "这张卡攻击力上升": {
+    "en": "This card gains ATK"
+  },
+  "这张卡特殊召唤": {
+    "en": "Special Summon this card"
+  },
+  "这张卡的攻击力上升": {
+    "en": "This card's ATK increases"
+  },
+  "这张卡盖放": {
+    "en": "Set this card"
+  },
+  "这张卡破坏": {
+    "en": "Destroy this card"
+  },
+  "这张卡送去墓地": {
+    "en": "Send this card to the GY"
+  },
+  "这张卡除外": {
+    "en": "Banish this card"
+  },
+  "进行召唤": {
+    "en": "Normal Summon"
+  },
+  "进行同调召唤": {
+    "en": "Synchro Summon",
+    "es": "Invocar por Sincronía"
+  },
+  "连接召唤": {
+    "en": "Link Summon"
+  },
+  "连续攻击": {
+    "en": "Continue attacking"
+  },
+  "追加召唤": {
+    "en": "Additional Normal Summon"
+  },
+  "送去墓地": {
+    "en": "Send to the GY"
+  },
+  "送去墓地并抽卡": {
+    "en": "Send to the GY and draw"
+  },
+  "送墓": {
+    "en": "Send to the GY"
+  },
+  "送墓并伤害": {
+    "en": "Send to the GY and inflict damage"
+  },
+  "送墓效果": {
+    "en": "Send to the GY"
+  },
+  "适用效果": {
+    "en": "Apply effects"
+  },
+  "选两方适用": {
+    "en": "Apply both",
+    "es": "Aplicar ambos efectos en secuencia"
+  },
+  "选场上1张卡破坏": {
+    "en": "Destroy 1 card on the field",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "选对方场上的卡破坏": {
+    "en": "Select 1 card your opponent controls to destroy"
+  },
+  "选择1个效果发动": {
+    "en": "Choose 1 effect to activate"
+  },
+  "选择一个效果": {
+    "en": "Choose an effect"
+  },
+  "选择一个效果发动": {
+    "en": "Activate 1 effect"
+  },
+  "选择一只岩石族怪物给对方观看": {
+    "en": "Reveal 1 Rock monster to your opponent",
+    "es": "Mostrar 1 monstruo Roca en tu mano"
+  },
+  "选择一张「核成兽的钢核」送去墓地": {
+    "en": "Select 1 \"Iron Core of Koa'ki Meiru\" to send to the GY"
+  },
+  "选择一张兽战士族怪兽给对方观看": {
+    "en": "Select a Beast-Warrior monster to reveal to your opponent"
+  },
+  "选择一张战士族怪兽给对方观看": {
+    "en": "Reveal 1 Warrior monster to your opponent",
+    "es": "Mostrar 1 monstruo Guerrero en tu mano"
+  },
+  "选择两方": {
+    "en": "Select both players"
+  },
+  "选择场上1张卡破坏": {
+    "en": "Select 1 card on the field to destroy",
+    "es": "Destruir 1 carta en el Campo"
+  },
+  "选择效果": {
+    "en": "Choose an effect"
+  },
+  "选择效果发动": {
+    "en": "Activate the chosen effect"
+  },
+  "选择效果适用": {
+    "en": "Apply 1 effect"
+  },
+  "通常召唤": {
+    "en": "Normal Summon"
+  },
+  "里": {
+    "en": "Face-down"
+  },
+  "里侧守备的攻击对象怪兽破坏": {
+    "en": "Destroy the attack target monster in face-down Defense Position"
+  },
+  "里侧表示放置": {
+    "en": "Set (face-down)"
+  },
+  "里侧除外": {
+    "en": "Banish face-down"
+  },
+  "附加能力": {
+    "en": "Additional ability"
+  },
+  "除外": {
+    "en": "Banish"
+  },
+  "除外3张卡发动": {
+    "en": "Activate by banishing 3 card(s)",
+    "es": "Desterrar 3 cartas"
+  },
+  "除外6张卡发动": {
+    "en": "Activate by banishing 6 card(s)",
+    "es": "Desterrar 6 cartas"
+  },
+  "除外并伤害": {
+    "en": "Banish and inflict damage"
+  },
+  "除外并抽卡": {
+    "en": "Banish and draw"
+  },
+  "除外并特殊召唤": {
+    "en": "Banish and Special Summon"
+  },
+  "除外并破坏": {
+    "en": "Banish and destroy"
+  },
+  "除外怪兽": {
+    "en": "Banish a monster"
+  },
+  "除外效果": {
+    "en": "Banish effect"
+  },
+  "除外的卡回到墓地": {
+    "en": "Return the banished card to the GY"
+  },
+  "除外的怪兽回到场上": {
+    "en": "Return the banished monster to the field"
+  },
+  "除外的怪兽特殊召唤": {
+    "en": "Special Summon a banished monster"
+  },
+  "除外的这张卡特殊召唤": {
+    "en": "Special Summon this banished card",
+    "es": "Invocar de Modo Especial esta carta desterrada"
+  },
+  "除外额外": {
+    "en": "Banish from the Extra Deck"
+  },
+  "陷阱卡": {
+    "en": "Trap Card"
+  },
+  "陷阱发动无效并破坏": {
+    "en": "Negate Trap activation and destroy it"
+  },
+  "陷阱无效并破坏": {
+    "en": "Negate the Trap Card activation and destroy it"
+  },
+  "陷阱破坏": {
+    "en": "Destroy a Trap"
+  },
+  "随机选对方手卡破坏": {
+    "en": "Randomly select a card in your opponent's hand to destroy"
+  },
+  "额外卡组灵摆怪兽加入手卡": {
+    "en": "Add a Pendulum monster from your Extra Deck to your hand"
+  },
+  "额外卡组送去墓地": {
+    "en": "Send from the Extra Deck to the GY"
+  },
+  "魔法·陷阱卡全部破坏": {
+    "en": "Destroy all Spell/Trap Cards"
+  },
+  "魔法·陷阱卡的发动无效并破坏": {
+    "en": "Negate the activation of a Spell/Trap Card, and destroy it"
+  },
+  "魔法·陷阱卡破坏": {
+    "en": "Destroy Spell/Trap Card"
+  },
+  "魔法卡": {
+    "en": "Spell Card"
+  },
+  "魔法卡的效果无效": {
+    "en": "Negate the Spell Card's effect"
+  },
+  "魔法发动无效并破坏": {
+    "en": "Negate Spell activation and destroy it"
+  },
+  "魔法回收": {
+    "en": "Recover a Spell"
+  },
+  "魔法无效并破坏": {
+    "en": "Negate a Spell and destroy it"
+  },
+  "魔法破坏": {
+    "en": "Destroy a Spell"
+  },
+  "魔法陷阱发动无效并破坏": {
+    "en": "Negate the activation of a Spell/Trap Card, and destroy it"
+  },
+  "魔陷破坏": {
+    "en": "Destroy Spells/Traps"
+  }
+}
