@@ -1,15 +1,17 @@
-// Maintains rush/translations.json — ygopro card id → en/es names and lores —
-// from Yugipedia's SMW store, for every id rush/pages.json maps to a page
-// title. Stored text is plain: links, italic quotes, and layout HTML are
-// stripped so the cdb build step can drop it straight into card text.
+// Maintains rush/translations.json — ygopro card id → en/es names, effects,
+// and requirements — from Yugipedia's SMW store, for every id rush/pages.json
+// maps to a page title. Stored text is plain: links, italic quotes, and layout
+// HTML are stripped so the cdb build step can drop it straight into card text.
 //
-// The run is incremental and idempotent: only ids without a cached entry are
-// worked, a reprint reuses the entry a sibling id already holds for the same
-// title, and a bootstrap run may seed titles from a pre-fetched SMW dump
-// (directory argument with yugipedia.json, same pattern as
-// derive-rush-pages.mjs). Any network or API failure aborts the whole run
-// without touching translations.json — same contract as
-// fetch-rush-code-pages.mjs.
+// The run is incremental and idempotent: only ids whose cached entry is absent
+// or incomplete are worked, a reprint reuses the entry a sibling id already
+// holds for the same title, and a bootstrap run may seed titles from a
+// pre-fetched SMW dump (directory argument with yugipedia.json, same pattern
+// as derive-rush-pages.mjs). An entry is incomplete when it lacks a key a
+// later version of this script added — see REQUIREMENT_FIELD — which is how
+// cards cached before a new field existed pick it up. Any network or API
+// failure aborts the whole run without touching translations.json — same
+// contract as fetch-rush-code-pages.mjs.
 //
 // Titles are queried through `action=ask` disjunctions. A `#` in a stored
 // title is display-only — MediaWiki forbids `#` in page titles, so the real
@@ -29,9 +31,29 @@ import { reportFragment } from "./run-report.mjs";
 const API_URL = "https://yugipedia.com/api.php";
 const USER_AGENT =
 	"EvolutionAssetsBot/1.0 (https://github.com/evolutionygo; card translations)";
-const BATCH_SIZE = 20;
+// Conditions and printouts share one query-size budget on the wiki, and asking
+// for the requirement alongside the lore spends more of it: 16 titles against
+// six printouts is the most SMW still answers, 18 comes back refused. Measured
+// live, and kept a title below the ceiling.
+const BATCH_SIZE = 15;
 const REQUEST_INTERVAL_MS = 1100;
-const PRINTOUTS = ["English name", "Lore", "Spanish name", "Spanish lore"];
+// A Rush card prints two blocks and SMW keeps them in two properties: `Lore`
+// carries the 【效果】 half only, and the 【条件】 half — what the card needs
+// before it can be activated at all — lives in `Requirement`. Asking for the
+// lore alone stores half a card.
+const PRINTOUTS = [
+	"English name",
+	"Lore",
+	"Requirement",
+	"Spanish name",
+	"Spanish lore",
+	"Spanish requirement",
+];
+
+// The field whose absence marks a cache entry as written before the
+// requirement was fetched at all. `""` is a fetched answer — this card has no
+// requirement — so only a missing KEY means the entry is incomplete.
+const REQUIREMENT_FIELD = "en_req";
 
 /**
  * SMW printout wikitext → the plain text we store. The rules cover every
@@ -51,23 +73,44 @@ export function stripMarkup(text) {
 		.trim();
 }
 
-/** One SMW printouts object → one cache entry; an absent field is "". */
+/**
+ * One SMW printouts object → one cache entry; an absent field is "".
+ *
+ * A printout arrives as a bare string or, when SMW types the property as a
+ * page, as a subject object carrying the text in `fulltext` — `Requirement`
+ * and `Spanish requirement` differ that way on one and the same card.
+ */
 export function translationFromPrintouts(printouts) {
 	const field = (name) => {
 		const value = printouts[name]?.[0];
-		return typeof value === "string" ? stripMarkup(value) : "";
+		if (typeof value === "string") return stripMarkup(value);
+		if (typeof value?.fulltext === "string") return stripMarkup(value.fulltext);
+		return "";
 	};
 	return {
 		en: field("English name"),
 		en_lore: field("Lore"),
+		en_req: field("Requirement"),
 		es: field("Spanish name"),
 		es_lore: field("Spanish lore"),
+		es_req: field("Spanish requirement"),
 	};
 }
 
-/** The ids translations.json does not cover yet, in pages.json order. */
+/**
+ * Whether a cached entry predates the requirement fields. Such an entry covers
+ * its id, but only half of the card, so the run has to work it again.
+ */
+export function isIncomplete(entry) {
+	return !(REQUIREMENT_FIELD in entry);
+}
+
+/**
+ * The ids translations.json does not fully cover yet, in pages.json order —
+ * an id with no entry at all, or one whose entry predates a stored field.
+ */
 export function uncoveredIds(pages, translations) {
-	return Object.keys(pages).filter((id) => !(id in translations));
+	return Object.keys(pages).filter((id) => !(id in translations) || isIncomplete(translations[id]));
 }
 
 /**
@@ -78,7 +121,10 @@ export function uncoveredIds(pages, translations) {
 export function cachedTitleEntries(pages, translations) {
 	const entries = {};
 	for (const [id, title] of Object.entries(pages)) {
-		if (!(title in entries) && id in translations) entries[title] = translations[id];
+		if (title in entries || !(id in translations)) continue;
+		// An incomplete entry is not coverage: handing it to a sibling would
+		// spread the half-card instead of refetching it once for both.
+		if (!isIncomplete(translations[id])) entries[title] = translations[id];
 	}
 	return entries;
 }
@@ -108,7 +154,7 @@ export function batchTitles(titles) {
 
 /**
  * The `action=ask` query string: hash-stripped title conditions joined with
- * OR, the four printouts, and a limit above any batch size.
+ * OR, the printouts, and a limit above any batch size.
  */
 export function askQuery(titles) {
 	const conditions = titles.map((title) => `[[${title.replaceAll("#", "")}]]`).join(" OR ");
@@ -220,6 +266,10 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 	const next = { ...translations };
 	let reusedIds = 0;
 	let seededIds = 0;
+	let fetchedIds = 0;
+	// An id whose entry was only completed, counted apart: it was already
+	// covered before this run, so it is not new coverage.
+	let refreshedIds = 0;
 	// The network-fetched ids by identity, not just count: they are the run's
 	// genuinely new translations, which the run report announces.
 	const gainedIds = [];
@@ -233,13 +283,17 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 			seededIds++;
 		} else if (title in fetched) {
 			next[id] = fetched[title];
-			gainedIds.push(id);
+			fetchedIds++;
+			if (!(id in translations)) gainedIds.push(id);
+		} else {
+			continue;
 		}
+		if (id in translations) refreshedIds++;
 	}
 
 	writeTranslations(renderPagesJson(next));
 
-	const coverage = { en: 0, en_lore: 0, es: 0, es_lore: 0 };
+	const coverage = { en: 0, en_lore: 0, en_req: 0, es: 0, es_lore: 0, es_req: 0 };
 	for (const entry of Object.values(next)) {
 		for (const key of Object.keys(coverage)) if (entry[key] !== "") coverage[key]++;
 	}
@@ -249,7 +303,8 @@ export async function run({ pages, translations, seed, fetchImpl, sleep, writeTr
 		workList,
 		reusedIds,
 		seededIds,
-		fetchedIds: gainedIds.length,
+		fetchedIds,
+		refreshedIds,
 		gainedIds,
 		missing,
 		entries: Object.keys(next).length,
@@ -302,12 +357,14 @@ async function main() {
 	console.error(`reused from cache: ${stats.reusedIds}`);
 	console.error(`seeded: ${stats.seededIds}`);
 	console.error(`fetched: ${stats.fetchedIds}`);
+	console.error(`refreshed (entry predated a stored field): ${stats.refreshedIds}`);
 	console.error(`missing after fetch: ${stats.missing.length}`);
 	for (const title of stats.missing) console.error(`  ? ${title}`);
 	console.error(`entries: ${stats.entries}`);
 	console.error(
 		`coverage: en ${stats.coverage.en}, en_lore ${stats.coverage.en_lore}, ` +
-			`es ${stats.coverage.es}, es_lore ${stats.coverage.es_lore}`,
+			`en_req ${stats.coverage.en_req}, es ${stats.coverage.es}, ` +
+			`es_lore ${stats.coverage.es_lore}, es_req ${stats.coverage.es_req}`,
 	);
 
 	reportFragment(process.env, fetchTranslationsFragment(stats));

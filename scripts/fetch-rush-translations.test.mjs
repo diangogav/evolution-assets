@@ -88,15 +88,21 @@ test("keeps a literal bracket span even when it nests a real link", () => {
 
 // --- translationFromPrintouts: one SMW printouts object → one cache entry ---
 
-test("reads all four fields and strips their markup", () => {
+test("reads every field and strips their markup", () => {
 	const entry = translationFromPrintouts({
 		"English name": ["1-Up"],
 		Lore: [
 			"[[Special Summon]] 1 [[Level 1 Monster Cards|Level 1]] [[Normal Monster]] from your [[Graveyard]] [[face-up]] to your field.",
 		],
+		Requirement: [
+			"[[Send]] 1 [[EARTH]] [[Attribute]] [[Monster Card|monster]] from your [[hand]] to the [[Graveyard]].",
+		],
 		"Spanish name": ["1 más"],
 		"Spanish lore": [
 			"Invoca de Modo Especial, desde tu Cementerio, 1 Monstruo Normal de Nivel 1 boca arriba en tu Campo.",
+		],
+		"Spanish requirement": [
+			"Manda al Cementerio 1 monstruo con el Atributo TIERRA en tu mano.",
 		],
 		ATK: [],
 		DEF: [],
@@ -106,10 +112,37 @@ test("reads all four fields and strips their markup", () => {
 		en: "1-Up",
 		en_lore:
 			"Special Summon 1 Level 1 Normal Monster from your Graveyard face-up to your field.",
+		en_req: "Send 1 EARTH Attribute monster from your hand to the Graveyard.",
 		es: "1 más",
 		es_lore:
 			"Invoca de Modo Especial, desde tu Cementerio, 1 Monstruo Normal de Nivel 1 boca arriba en tu Campo.",
+		es_req: "Manda al Cementerio 1 monstruo con el Atributo TIERRA en tu mano.",
 	});
+});
+
+// SMW answers a page-typed property with a subject object, not a bare string.
+// `Spanish requirement` is one — verified live on Road Magic - Tectonic Shift,
+// where `Requirement` came back as a plain string on the very same card.
+test("reads a page-typed printout through its fulltext", () => {
+	const entry = translationFromPrintouts({
+		"English name": ["Road Magic - Tectonic Shift"],
+		"Spanish requirement": [
+			{
+				fulltext:
+					"Si tienes un monstruo de Tipo Lanzador de Conjuros boca arriba de Nivel 7 o mayor " +
+					"en tu Campo, manda al Cementerio 1 monstruo con el Atributo TIERRA en tu mano.",
+				fullurl: "https://yugipedia.com/wiki/Si_tienes_un_monstruo",
+				namespace: 0,
+				exists: "",
+				displaytitle: "",
+			},
+		],
+	});
+	assert.equal(
+		entry.es_req,
+		"Si tienes un monstruo de Tipo Lanzador de Conjuros boca arriba de Nivel 7 o mayor " +
+			"en tu Campo, manda al Cementerio 1 monstruo con el Atributo TIERRA en tu mano.",
+	);
 });
 
 test("stores an empty string for a field the wiki does not have", () => {
@@ -118,12 +151,16 @@ test("stores an empty string for a field the wiki does not have", () => {
 		Lore: ["''A fast and lethal creature with very dangerous claws.''"],
 		"Spanish name": [],
 		"Spanish lore": [],
+		Requirement: [],
+		"Spanish requirement": [],
 	});
 	assert.deepEqual(entry, {
 		en: "Nekogal #2",
 		en_lore: "A fast and lethal creature with very dangerous claws.",
+		en_req: "",
 		es: "",
 		es_lore: "",
+		es_req: "",
 	});
 });
 
@@ -131,27 +168,58 @@ test("treats an absent printout key like an empty one", () => {
 	assert.deepEqual(translationFromPrintouts({ "English name": ["Charging Remora"] }), {
 		en: "Charging Remora",
 		en_lore: "",
+		en_req: "",
 		es: "",
 		es_lore: "",
+		es_req: "",
 	});
+});
+
+// A cache entry as the current fetcher writes one: every field present, an
+// empty string where the wiki carries nothing.
+const entryOf = (fields) => ({
+	en: "",
+	en_lore: "",
+	en_req: "",
+	es: "",
+	es_lore: "",
+	es_req: "",
+	...fields,
 });
 
 // --- uncoveredIds: the work list is whatever translations.json does not cover ---
 
 test("keeps only ids without a translations entry, in pages order", () => {
 	const pages = { 120100001: "A", 120100002: "B", 120100003: "C" };
-	const translations = { 120100002: { en: "B", en_lore: "", es: "", es_lore: "" } };
+	const translations = { 120100002: entryOf({ en: "B" }) };
 	assert.deepEqual(uncoveredIds(pages, translations), ["120100001", "120100003"]);
+});
+
+// The requirement fields arrived after the cache did, so an entry written
+// before them is incomplete rather than covered.
+test("puts an entry written before the requirement fields back on the work list", () => {
+	const pages = { 120100001: "A", 120100002: "B" };
+	const translations = {
+		120100001: { en: "A", en_lore: "x", es: "", es_lore: "" },
+		120100002: entryOf({ en: "B", en_lore: "x" }),
+	};
+	assert.deepEqual(uncoveredIds(pages, translations), ["120100001"]);
 });
 
 // --- cachedTitleEntries: a reprint reuses the entry its sibling id already has ---
 
 test("indexes cached entries by title through pages.json", () => {
 	const pages = { 120102001: "Thousand Dragon (Rush Duel)", 120200001: "Thousand Dragon (Rush Duel)" };
-	const entry = { en: "Thousand Dragon", en_lore: "x", es: "", es_lore: "" };
+	const entry = entryOf({ en: "Thousand Dragon", en_lore: "x" });
 	assert.deepEqual(cachedTitleEntries(pages, { 120102001: entry }), {
 		"Thousand Dragon (Rush Duel)": entry,
 	});
+});
+
+test("does not hand a sibling an entry written before the requirement fields", () => {
+	const pages = { 120102001: "Thousand Dragon (Rush Duel)", 120200001: "Thousand Dragon (Rush Duel)" };
+	const stale = { en: "Thousand Dragon", en_lore: "x", es: "", es_lore: "" };
+	assert.deepEqual(cachedTitleEntries(pages, { 120102001: stale }), {});
 });
 
 // --- neededTitles: distinct titles still without data, sibling coverage counts ---
@@ -163,24 +231,24 @@ test("lists each uncovered title once and skips titles a sibling already covers"
 		120100003: "Star Traleo",
 		120100004: "Thousand Dragon (Rush Duel)",
 	};
-	const translations = { 120100004: { en: "Thousand Dragon", en_lore: "", es: "", es_lore: "" } };
+	const translations = { 120100004: entryOf({ en: "Thousand Dragon" }) };
 	assert.deepEqual(neededTitles(pages, translations), [
 		"Road Magic - Explosion",
 		"Star Traleo",
 	]);
 });
 
-// --- batchTitles: at most 20 disjunction conditions per ask request ---
+// --- batchTitles: at most 15 disjunction conditions per ask request ---
 
-test("splits titles into batches of at most 20", () => {
-	const titles = Array.from({ length: 45 }, (_, i) => `Card ${i}`);
+test("splits titles into batches of at most 15", () => {
+	const titles = Array.from({ length: 40 }, (_, i) => `Card ${i}`);
 	const batches = batchTitles(titles);
 	assert.deepEqual(
 		batches.map((b) => b.length),
-		[20, 20, 5],
+		[15, 15, 10],
 	);
 	assert.equal(batches[0][0], "Card 0");
-	assert.equal(batches[2][4], "Card 44");
+	assert.equal(batches[2][9], "Card 39");
 });
 
 // --- askQuery: the SMW disjunction with `#` stripped from every condition ---
@@ -188,7 +256,8 @@ test("splits titles into batches of at most 20", () => {
 test("joins hash-stripped conditions with OR and asks for the four printouts", () => {
 	assert.equal(
 		askQuery(["Jinzo #7.7", "1-Up"]),
-		"[[Jinzo 7.7]] OR [[1-Up]]|?English name|?Lore|?Spanish name|?Spanish lore|limit=50",
+		"[[Jinzo 7.7]] OR [[1-Up]]|?English name|?Lore|?Requirement|?Spanish name|?Spanish lore" +
+			"|?Spanish requirement|limit=50",
 	);
 });
 
@@ -231,8 +300,10 @@ function cannedFetch(bodiesByCall, calls) {
 const printoutsOf = (en) => ({
 	"English name": [en],
 	Lore: [],
+	Requirement: [],
 	"Spanish name": [],
 	"Spanish lore": [],
+	"Spanish requirement": [],
 });
 
 test("requests batches sequentially with the ask shape and User-Agent", async () => {
@@ -243,14 +314,14 @@ test("requests batches sequentially with the ask shape and User-Agent", async ()
 		{
 			query: {
 				results: Object.fromEntries(
-					titles.slice(0, 20).map((t) => [t, { printouts: printoutsOf(t) }]),
+					titles.slice(0, 15).map((t) => [t, { printouts: printoutsOf(t) }]),
 				),
 			},
 		},
 		{
 			query: {
 				results: Object.fromEntries(
-					titles.slice(20).map((t) => [t, { printouts: printoutsOf(t) }]),
+					titles.slice(15).map((t) => [t, { printouts: printoutsOf(t) }]),
 				),
 			},
 		},
@@ -266,8 +337,8 @@ test("requests batches sequentially with the ask shape and User-Agent", async ()
 	assert.equal(first.origin + first.pathname, "https://yugipedia.com/api.php");
 	assert.equal(first.searchParams.get("action"), "ask");
 	assert.equal(first.searchParams.get("format"), "json");
-	assert.equal(first.searchParams.get("query"), askQuery(titles.slice(0, 20)));
-	assert.equal(calls[1].url.searchParams.get("query"), askQuery(titles.slice(20)));
+	assert.equal(first.searchParams.get("query"), askQuery(titles.slice(0, 15)));
+	assert.equal(calls[1].url.searchParams.get("query"), askQuery(titles.slice(15)));
 	for (const { init } of calls) {
 		assert.match(init.headers["User-Agent"], /^EvolutionAssetsBot\/1\.0 /);
 	}
@@ -378,16 +449,13 @@ test("seeds from the dump, fetches the rest, and writes a sorted cache", async (
 	assert.deepEqual(parsed["120100001"], {
 		en: "1-Up",
 		en_lore: "Special Summon 1 monster.",
+		en_req: "",
 		es: "1 más",
 		es_lore: "Invoca 1 monstruo.",
+		es_req: "",
 	});
 	assert.deepEqual(parsed["120100004"], parsed["120100001"]);
-	assert.deepEqual(parsed["120100002"], {
-		en: "Fetched Card",
-		en_lore: "",
-		es: "",
-		es_lore: "",
-	});
+	assert.deepEqual(parsed["120100002"], entryOf({ en: "Fetched Card" }));
 	assert.ok(written[0].endsWith("}\n"));
 
 	assert.equal(stats.idsTotal, 4);
@@ -395,11 +463,18 @@ test("seeds from the dump, fetches the rest, and writes a sorted cache", async (
 	assert.equal(stats.seededIds, 2);
 	assert.equal(stats.fetchedIds, 1);
 	assert.deepEqual(stats.missing, ["Dynamight Dino Dynamix"]);
-	assert.deepEqual(stats.coverage, { en: 3, en_lore: 2, es: 2, es_lore: 2 });
+	assert.deepEqual(stats.coverage, {
+		en: 3,
+		en_lore: 2,
+		en_req: 0,
+		es: 2,
+		es_lore: 2,
+		es_req: 0,
+	});
 });
 
 test("reuses a sibling's cached entry without touching the network", async () => {
-	const entry = { en: "1-Up", en_lore: "x", es: "", es_lore: "" };
+	const entry = entryOf({ en: "1-Up", en_lore: "x" });
 	const written = [];
 
 	const stats = await run({
@@ -441,7 +516,7 @@ test("records which ids the network fetch covered, apart from seed and cache", a
 		120100002: "Sevens Road Magician",
 		120100003: "Blue-Eyes White Dragon (Rush Duel)",
 	};
-	const translations = { 120100001: { en: "Sevens Road Magician", en_lore: "", es: "", es_lore: "" } };
+	const translations = { 120100001: entryOf({ en: "Sevens Road Magician" }) };
 	const seed = {};
 	const fetchImpl = async () => ({
 		status: 200,
@@ -470,6 +545,57 @@ test("records which ids the network fetch covered, apart from seed and cache", a
 	assert.deepEqual(stats.gainedIds, ["120100003"]);
 });
 
+// The cache refresh the requirement fields force: an id already covered by a
+// pre-requirement entry is worked again, but it is not new coverage.
+test("re-fetches an entry written before the requirement fields", async () => {
+	const written = [];
+	const stats = await run({
+		pages: { 120130036: "Road Magic - Tectonic Shift" },
+		translations: {
+			120130036: {
+				en: "Road Magic - Tectonic Shift",
+				en_lore: "1 face-up monster on your opponent's field loses ATK.",
+				es: "",
+				es_lore: "",
+			},
+		},
+		seed: {},
+		fetchImpl: async () => ({
+			status: 200,
+			json: async () => ({
+				query: {
+					results: {
+						"Road Magic - Tectonic Shift": {
+							printouts: {
+								"English name": ["Road Magic - Tectonic Shift"],
+								Lore: ["1 face-up monster on your opponent's field loses [[ATK]]."],
+								Requirement: [
+									"[[Send]] 1 [[EARTH]] monster from your [[hand]] to the [[Graveyard]].",
+								],
+							},
+						},
+					},
+				},
+			}),
+		}),
+		sleep: async () => {},
+		writeTranslations: (text) => written.push(text),
+	});
+
+	assert.deepEqual(JSON.parse(written[0])["120130036"], {
+		en: "Road Magic - Tectonic Shift",
+		en_lore: "1 face-up monster on your opponent's field loses ATK.",
+		en_req: "Send 1 EARTH monster from your hand to the Graveyard.",
+		es: "",
+		es_lore: "",
+		es_req: "",
+	});
+	assert.equal(stats.refreshedIds, 1);
+	assert.deepEqual(stats.gainedIds, []);
+	assert.equal(stats.coverage.en_req, 1);
+	assert.equal(stats.coverage.es_req, 0);
+});
+
 test("builds a changed fragment when the run added entries", () => {
 	const fragment = fetchTranslationsFragment({
 		idsTotal: 10,
@@ -480,7 +606,7 @@ test("builds a changed fragment when the run added entries", () => {
 		gainedIds: ["120100003"],
 		missing: ["Some Uncharted Card"],
 		entries: 9,
-		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+		coverage: { en: 8, en_lore: 7, en_req: 4, es: 6, es_lore: 5, es_req: 3 },
 	});
 
 	assert.deepEqual(fragment, {
@@ -489,7 +615,7 @@ test("builds a changed fragment when the run added entries", () => {
 		gained: ["120100003"],
 		missing: ["Some Uncharted Card"],
 		entries: 9,
-		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+		coverage: { en: 8, en_lore: 7, en_req: 4, es: 6, es_lore: 5, es_req: 3 },
 	});
 });
 
@@ -503,7 +629,7 @@ test("reports unchanged when no id gained an entry from any source", () => {
 		gainedIds: [],
 		missing: ["Some Uncharted Card"],
 		entries: 8,
-		coverage: { en: 8, en_lore: 7, es: 6, es_lore: 5 },
+		coverage: { en: 8, en_lore: 7, en_req: 4, es: 6, es_lore: 5, es_req: 3 },
 	});
 	assert.equal(fragment.status, "unchanged");
 });

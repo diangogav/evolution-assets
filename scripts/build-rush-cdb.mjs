@@ -7,9 +7,10 @@
 // unified .cdb is kept):
 //   rush.cdb.gz    — the plain union, untranslated (zh-CN, as upstream ships).
 //   rush.en.cdb.gz — texts.name/desc overridden from rush/translations.json
-//                    (`en`/`en_lore`) where non-empty; zh otherwise. Cards the
-//                    wiki does not document yet ship in Chinese by design and
-//                    pick up English on a later daily run.
+//                    (`en`, and `en_req` + `en_lore` composed into the two
+//                    blocks a Rush card prints) where non-empty; zh otherwise.
+//                    Cards the wiki does not document yet ship in Chinese by
+//                    design and pick up English on a later daily run.
 //   rush.es.cdb.gz — per-field fallback chain es → en → zh. Its Spanish comes
 //                    from rush/translations.json first and rush/
 //                    translations.base.json — official names mined off the base
@@ -103,22 +104,61 @@ export function findDuplicateIds(idLists) {
 		.sort((a, b) => a - b);
 }
 
+// --- Requirement + effect ---
+//
+// A Rush card is printed as two blocks: what you must do or have before the
+// card can be activated, and what then happens. The Chinese original ships
+// both, each under a label on a line of its own with a blank line between
+// them (【条件】 / 【效果】); Yugipedia keeps them in two properties, so
+// rush/translations.json stores them as two fields.
+//
+// The composed text mirrors that layout with Konami's own printed English
+// labels. They stay English in the Spanish variant too: Rush Duel has no
+// official Spanish printing to take a wording from, so a translated label
+// would be ours rather than the game's — the same reason the Maximum ATK line
+// below is English in both variants.
+const REQUIREMENT_LABEL = "[REQUIREMENT]";
+const EFFECT_LABEL = "[EFFECT]";
+
+/**
+ * The desc one language's two blocks make. A card with no requirement keeps
+ * its bare effect: labelling a single block would add a heading the printed
+ * card does not have.
+ */
+export function composeDesc(requirement, effect) {
+	if (!requirement) return effect;
+	return `${REQUIREMENT_LABEL}\n${requirement}\n\n${EFFECT_LABEL}\n${effect}`;
+}
+
+// Per language, the entry fields one variant is built from.
+const VARIANT_FIELDS = {
+	en: { name: "en", effect: "en_lore", requirement: "en_req" },
+	es: { name: "es", effect: "es_lore", requirement: "es_req" },
+};
+
 /**
  * The name/desc override one translation entry yields for a variant, per
- * field: `en` takes `en`/`en_lore` when non-empty; `es` falls back per field
- * through es → en. A null field keeps the Chinese original.
+ * field: `en` takes the English fields when non-empty; `es` falls back per
+ * field through es → en. A null field keeps the Chinese original.
+ *
+ * The effect anchors the desc in both languages: a language that has one
+ * contributes its own requirement too, and a language that has none is skipped
+ * whole. A Spanish requirement glued to an English effect would read as one
+ * card text while being two.
  */
 export function resolveVariantTexts(entry, variant) {
-	const pick = (fields) => {
+	const pick = (read) => {
 		for (const source of variant === "es" ? ["es", "en"] : ["en"]) {
-			const text = entry[fields[source]];
+			const text = read(VARIANT_FIELDS[source]);
 			if (text) return { text, source };
 		}
 		return null;
 	};
 	return {
-		name: pick({ en: "en", es: "es" }),
-		desc: pick({ en: "en_lore", es: "es_lore" }),
+		name: pick((fields) => entry[fields.name]),
+		desc: pick((fields) =>
+			entry[fields.effect] ? composeDesc(entry[fields.requirement], entry[fields.effect]) : "",
+		),
 	};
 }
 
@@ -211,12 +251,15 @@ function sqlQuote(text) {
  * UPDATE script + per-source counts for one variant, restricted to ids the
  * merged db actually ships — translation rows for cards we don't ship are
  * silently dropped, never added.
+ *
+ * `requirement` counts the descs that print both blocks, against the language
+ * the desc itself was taken from — a fallback carries its own requirement.
  */
 export function buildVariantUpdates(translations, variant, presentIds) {
 	const stats =
 		variant === "es"
-			? { name: { es: 0, en: 0 }, desc: { es: 0, en: 0 } }
-			: { name: { en: 0 }, desc: { en: 0 } };
+			? { name: { es: 0, en: 0 }, desc: { es: 0, en: 0 }, requirement: { es: 0, en: 0 } }
+			: { name: { en: 0 }, desc: { en: 0 }, requirement: { en: 0 } };
 	const statements = [];
 
 	for (const [id, entry] of Object.entries(translations)) {
@@ -230,6 +273,7 @@ export function buildVariantUpdates(translations, variant, presentIds) {
 		if (desc) {
 			sets.push(`"desc"=${sqlQuote(desc.text)}`);
 			stats.desc[desc.source]++;
+			if (entry[VARIANT_FIELDS[desc.source].requirement]) stats.requirement[desc.source]++;
 		}
 		if (sets.length > 0) statements.push(`UPDATE texts SET ${sets.join(",")} WHERE id=${id};`);
 	}
@@ -490,14 +534,18 @@ function main() {
 	for (const { name, rows } of stats.merged.perSource) console.error(`merged ${name}: ${rows} rows`);
 	console.error(`total: ${stats.merged.total} rows`);
 	const { en, es } = stats.variants;
-	console.error(`en: ${en.name.en} names, ${en.desc.en} descs translated`);
+	console.error(
+		`en: ${en.name.en} names, ${en.desc.en} descs translated ` +
+			`(${en.requirement.en} carry a requirement)`,
+	);
 	// Spanish coverage is counted against every card shipped, not against the
 	// cards a translation entry exists for: an untranslated card is the gap.
 	const cards = stats.merged.total;
 	const coverage = (count) => (cards === 0 ? "0%" : `${((100 * count) / cards).toFixed(1)}%`);
 	console.error(
 		`es: ${es.name.es}/${cards} names (${coverage(es.name.es)}, +${es.name.en} en fallback), ` +
-			`${es.desc.es}/${cards} descs (${coverage(es.desc.es)}, +${es.desc.en} en fallback)`,
+			`${es.desc.es}/${cards} descs (${coverage(es.desc.es)}, +${es.desc.en} en fallback), ` +
+			`${es.requirement.es} descs carry a requirement (+${es.requirement.en} en fallback)`,
 	);
 
 	const { withValue, sidePieces, centreWithoutValue } = stats.maximumAtk;
