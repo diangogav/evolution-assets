@@ -9,13 +9,18 @@ import { gunzipSync } from "node:zlib";
 
 import {
 	buildCdbFragment,
+	buildEffectStringUpdates,
 	buildMaximumAtkUpdates,
 	buildRushCdbs,
 	classifyMaximumRows,
+	countStrCoverage,
 	findDuplicateIds,
 	isMaximumSidePiece,
+	mergeEffectStrings,
+	mergeTranslations,
 	parseMaximumAtk,
 	resolveVariantTexts,
+	termsForLanguage,
 } from "./build-rush-cdb.mjs";
 
 const SCHEMA =
@@ -249,6 +254,7 @@ test("carries the merge and variant stats with the changed verdict", () => {
 			es: { name: { es: 0, en: 1 }, desc: { es: 0, en: 0 } },
 		},
 		maximumAtk: { withValue: 1, sidePieces: 0, centreWithoutValue: [] },
+		effectStrings: { total: 4, en: { replaced: 2, nonChinese: 2 }, es: { replaced: 0, nonChinese: 0 } },
 	};
 
 	assert.deepEqual(buildCdbFragment(stats, true), {
@@ -257,6 +263,7 @@ test("carries the merge and variant stats with the changed verdict", () => {
 		merged: stats.merged,
 		variants: stats.variants,
 		maximumAtk: stats.maximumAtk,
+		effectStrings: stats.effectStrings,
 	});
 	assert.equal(buildCdbFragment(stats, false).status, "unchanged");
 });
@@ -377,4 +384,224 @@ test("buildRushCdbs prepends Maximum ATK to en/es and leaves the base untouched"
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
+});
+
+// --- Effect strings: the duel-time UI prompts in texts.str1..str16 ---
+
+test("termsForLanguage keeps only the terms that language actually has", () => {
+	const dictionary = {
+		特殊召唤: { en: "Special Summon", es: "Invocación Especial" },
+		破坏: { en: "Destroy" },
+	};
+
+	assert.deepEqual(termsForLanguage(dictionary, "en"), {
+		特殊召唤: "Special Summon",
+		破坏: "Destroy",
+	});
+	assert.deepEqual(termsForLanguage(dictionary, "es"), { 特殊召唤: "Invocación Especial" });
+	assert.deepEqual(termsForLanguage({}, "en"), {});
+});
+
+test("buildEffectStringUpdates replaces only exact dictionary hits, one statement per row", () => {
+	const terms = { 特殊召唤: "Special Summon", 破坏: "Destroy" };
+	const { sql, replaced } = buildEffectStringUpdates(
+		[
+			// str2 is not in the dictionary; str3 only contains a term, it is not one.
+			{ id: 1, str1: "特殊召唤", str2: "未知的提示", str3: "把这张卡特殊召唤" },
+			{ id: 2, str1: "破坏", str16: "特殊召唤" },
+			{ id: 3, str1: "未知的提示" },
+		],
+		terms,
+	);
+
+	assert.equal(
+		sql,
+		[
+			"UPDATE texts SET str1='Special Summon' WHERE id=1;",
+			"UPDATE texts SET str1='Destroy',str16='Special Summon' WHERE id=2;",
+		].join("\n"),
+	);
+	assert.equal(replaced, 3);
+});
+
+test("buildEffectStringUpdates handles all 16 columns and skips empty ones", () => {
+	const terms = Object.fromEntries(
+		Array.from({ length: 16 }, (_, i) => [`中${i + 1}`, `Term ${i + 1}`]),
+	);
+	const row = { id: 1 };
+	for (let i = 1; i <= 16; i++) row[`str${i}`] = i === 5 ? "" : `中${i}`;
+
+	const { sql, replaced } = buildEffectStringUpdates([row], terms);
+
+	assert.equal(replaced, 15);
+	assert.equal(sql.includes("str5="), false);
+	assert.equal(sql.includes("str16='Term 16'"), true);
+});
+
+test("buildEffectStringUpdates escapes quotes and yields nothing without a hit", () => {
+	assert.equal(
+		buildEffectStringUpdates([{ id: 1, str1: "检索" }], { 检索: "Add to it's hand" }).sql,
+		"UPDATE texts SET str1='Add to it''s hand' WHERE id=1;",
+	);
+	assert.deepEqual(buildEffectStringUpdates([{ id: 1, str1: "检索" }], {}), {
+		sql: "",
+		replaced: 0,
+	});
+});
+
+test("countStrCoverage counts non-empty str fields and how many end up non-Chinese", () => {
+	const rows = [
+		{ id: 1, str1: "特殊召唤", str2: "未知的提示", str3: "" },
+		{ id: 2, str1: "1000", str2: "破坏" },
+	];
+
+	// Nothing translated: only the field that was never Chinese counts.
+	assert.deepEqual(countStrCoverage(rows, {}), { total: 4, nonChinese: 1 });
+	assert.deepEqual(countStrCoverage(rows, { 特殊召唤: "Special Summon", 破坏: "Destroy" }), {
+		total: 4,
+		nonChinese: 3,
+	});
+});
+
+// A merged db whose prompts are partly covered by the dictionary, so the
+// variants can be checked for both outcomes: replaced and left Chinese.
+function effectStringFixture(dir) {
+	const srcDir = join(dir, "eff-src");
+	mkdirSync(srcDir);
+	const source = join(srcDir, "E.cdb");
+	execFileSync("sqlite3", [source], { input: SCHEMA, encoding: "utf8" });
+	execFileSync("sqlite3", [
+		source,
+		"INSERT INTO datas(id,ot,type) VALUES(3001,1,1);" +
+			"INSERT INTO texts(id,name,desc,str1,str2,str16) VALUES" +
+			"(3001,'中文一','中说明一','特殊召唤','未知的提示','破坏');" +
+			"INSERT INTO datas(id,ot,type) VALUES(3002,1,1);" +
+			"INSERT INTO texts(id,name,desc,str1) VALUES(3002,'中文二','中说明二','');",
+	]);
+
+	const effectStrings = {
+		特殊召唤: { en: "Special Summon", es: "Invocación Especial" },
+		破坏: { en: "Destroy" },
+	};
+	return { sources: [source], effectStrings };
+}
+
+test("buildRushCdbs translates str columns in en/es and leaves the base variant Chinese", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-eff-"));
+	try {
+		const { sources, effectStrings } = effectStringFixture(dir);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({
+			sources,
+			translations: {},
+			effectStrings,
+			outDir,
+			workDir,
+		});
+		const strs = (gz) =>
+			queryGz(dir, join(outDir, gz), "SELECT str1, str2, str16 FROM texts WHERE id=3001;");
+
+		assert.equal(strs("rush.cdb.gz"), "特殊召唤\t未知的提示\t破坏");
+		// An unknown prompt stays Chinese, and es keeps 破坏 for lack of an entry.
+		assert.equal(strs("rush.en.cdb.gz"), "Special Summon\t未知的提示\tDestroy");
+		assert.equal(strs("rush.es.cdb.gz"), "Invocación Especial\t未知的提示\t破坏");
+
+		// An empty str is never written to, in any variant.
+		const empty = (gz) => queryGz(dir, join(outDir, gz), "SELECT str1 FROM texts WHERE id=3002;");
+		assert.equal(empty("rush.en.cdb.gz"), "");
+		assert.equal(empty("rush.es.cdb.gz"), "");
+
+		assert.deepEqual(stats.effectStrings, {
+			total: 3,
+			en: { replaced: 2, nonChinese: 2 },
+			es: { replaced: 1, nonChinese: 1 },
+		});
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("mergeEffectStrings lets a mined term overrule the hand-written one", () => {
+	// The mined wording comes from mycard's own translators, so a Rush card reads
+	// the way its OCG counterpart already does.
+	const merged = mergeEffectStrings(
+		{ 破坏: { en: "Destroy" } },
+		{ 破坏: { en: "Destroy it" }, 盲堆: { en: "Mill" } },
+	);
+
+	assert.deepEqual(merged, {
+		破坏: { en: "Destroy" },
+		盲堆: { en: "Mill" },
+	});
+});
+
+test("mergeEffectStrings keeps a hand-written language the mined entry lacks", () => {
+	const merged = mergeEffectStrings({ 破坏: { en: "Destroy" } }, { 破坏: { es: "Destruir" } });
+
+	assert.deepEqual(merged, { 破坏: { en: "Destroy", es: "Destruir" } });
+});
+
+// --- mergeTranslations: the wiki's own Spanish outranks the mined Spanish ---
+
+test("mergeTranslations lets the fetched entry overrule the mined one", () => {
+	// The fetched Spanish is off the Rush card's own wiki page; the mined
+	// Spanish comes from a different card that merely shares an English name.
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, { 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } });
+});
+
+test("mergeTranslations fills a field the fetched entry lacks", () => {
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card." } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, {
+		1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card.", es: "Mago del Tiempo" },
+	});
+});
+
+test("mergeTranslations treats an empty fetched field as the gap it is", () => {
+	// fetch-rush-translations.mjs writes "" for a field the wiki page did not
+	// carry, so an empty override must not blank a mined value.
+	const merged = mergeTranslations(
+		{ 1201: { en: "Time Wizard", es: "", es_lore: "" } },
+		{ 1201: { es: "Mago del Tiempo" } },
+	);
+
+	assert.deepEqual(merged, {
+		1201: { en: "Time Wizard", es: "Mago del Tiempo", es_lore: "" },
+	});
+});
+
+test("mergeTranslations keeps cards only one of the two files knows", () => {
+	const merged = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1202: { es: "Dragón Milenario" } });
+
+	assert.deepEqual(merged, { 1201: { en: "Time Wizard" }, 1202: { es: "Dragón Milenario" } });
+});
+
+test("mergeTranslations does not mutate either input", () => {
+	const fetched = { 1201: { en: "Time Wizard" } };
+	const base = { 1201: { es: "Mago del Tiempo" } };
+	mergeTranslations(fetched, base);
+
+	assert.deepEqual(fetched, { 1201: { en: "Time Wizard" } });
+	assert.deepEqual(base, { 1201: { es: "Mago del Tiempo" } });
+});
+
+test("a mined Spanish name reaches the es variant through the merge", () => {
+	const entry = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1201: { es: "Mago del Tiempo" } })[1201];
+
+	assert.deepEqual(resolveVariantTexts(entry, "es").name, {
+		text: "Mago del Tiempo",
+		source: "es",
+	});
 });
