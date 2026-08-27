@@ -12,7 +12,9 @@ import {
 	buildEffectStringUpdates,
 	buildMaximumAtkUpdates,
 	buildRushCdbs,
+	buildVariantUpdates,
 	classifyMaximumRows,
+	composeDesc,
 	countStrCoverage,
 	findDuplicateIds,
 	isMaximumSidePiece,
@@ -77,6 +79,25 @@ test("findDuplicateIds reports every id shared between sources, sorted", () => {
 	);
 });
 
+// --- composeDesc: the two blocks a Rush card prints, in the printed order ---
+
+test("composeDesc labels both blocks when the card has a requirement", () => {
+	assert.equal(
+		composeDesc(
+			"Send 1 EARTH monster from your hand to the Graveyard.",
+			"1 face-up monster on your opponent's field loses ATK.",
+		),
+		"[REQUIREMENT]\nSend 1 EARTH monster from your hand to the Graveyard.\n\n" +
+			"[EFFECT]\n1 face-up monster on your opponent's field loses ATK.",
+	);
+});
+
+test("composeDesc leaves a card with no requirement as its bare effect", () => {
+	const effect = "A fast and lethal creature with very dangerous claws.";
+	assert.equal(composeDesc("", effect), effect);
+	assert.equal(composeDesc(undefined, effect), effect);
+});
+
 test("resolveVariantTexts en: en/en_lore apply only when non-empty", () => {
 	const full = resolveVariantTexts({ en: "Alpha", en_lore: "Lore", es: "x", es_lore: "y" }, "en");
 	assert.deepEqual(full, {
@@ -100,6 +121,53 @@ test("resolveVariantTexts es: per-field fallback es → en → null", () => {
 
 	const none = resolveVariantTexts({ en: "", en_lore: "", es: "", es_lore: "" }, "es");
 	assert.deepEqual(none, { name: null, desc: null });
+});
+
+test("resolveVariantTexts en: the requirement leads the desc", () => {
+	const { desc } = resolveVariantTexts(
+		{ en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "", es_lore: "", es_req: "" },
+		"en",
+	);
+	assert.deepEqual(desc, {
+		text: "[REQUIREMENT]\nRequirement.\n\n[EFFECT]\nEffect.",
+		source: "en",
+	});
+});
+
+test("resolveVariantTexts es: the desc takes both blocks from one language", () => {
+	const both = resolveVariantTexts(
+		{
+			en: "Alpha",
+			en_lore: "Effect.",
+			en_req: "Requirement.",
+			es: "Alfa",
+			es_lore: "Efecto.",
+			es_req: "Requisito.",
+		},
+		"es",
+	);
+	assert.deepEqual(both.desc, {
+		text: "[REQUIREMENT]\nRequisito.\n\n[EFFECT]\nEfecto.",
+		source: "es",
+	});
+
+	// No Spanish effect: the desc falls back to English whole, requirement
+	// included — a Spanish half glued to an English half is not a card text.
+	const fallback = resolveVariantTexts(
+		{
+			en: "Alpha",
+			en_lore: "Effect.",
+			en_req: "Requirement.",
+			es: "Alfa",
+			es_lore: "",
+			es_req: "Requisito.",
+		},
+		"es",
+	);
+	assert.deepEqual(fallback.desc, {
+		text: "[REQUIREMENT]\nRequirement.\n\n[EFFECT]\nEffect.",
+		source: "en",
+	});
 });
 
 function fixture(dir) {
@@ -183,11 +251,51 @@ test("buildRushCdbs variants apply translations with per-field fallback, zh othe
 		assert.equal(datas("rush.es.cdb.gz"), datas("rush.cdb.gz"));
 
 		// 9999 is not shipped, so it never counts nor appears.
-		assert.deepEqual(stats.variants.en, { name: { en: 3 }, desc: { en: 2 } });
-		assert.deepEqual(stats.variants.es, { name: { es: 1, en: 2 }, desc: { es: 0, en: 2 } });
+		assert.deepEqual(stats.variants.en, {
+			name: { en: 3 },
+			desc: { en: 2 },
+			requirement: { en: 0 },
+		});
+		assert.deepEqual(stats.variants.es, {
+			name: { es: 1, en: 2 },
+			desc: { es: 0, en: 2 },
+			requirement: { es: 0, en: 0 },
+		});
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
+});
+
+// The requirement is counted against the language the desc was taken from, so
+// the run output says how many cards actually print both blocks.
+test("buildVariantUpdates counts the descs that carry a requirement", () => {
+	const translations = {
+		1001: { en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "", es_lore: "", es_req: "" },
+		1002: { en: "Beta", en_lore: "Effect.", en_req: "", es: "", es_lore: "", es_req: "" },
+		1003: {
+			en: "Gamma",
+			en_lore: "Effect.",
+			en_req: "Requirement.",
+			es: "Gama",
+			es_lore: "Efecto.",
+			es_req: "Requisito.",
+		},
+	};
+	const present = new Set([1001, 1002, 1003]);
+
+	assert.deepEqual(buildVariantUpdates(translations, "en", present).stats, {
+		name: { en: 3 },
+		desc: { en: 3 },
+		requirement: { en: 2 },
+	});
+
+	// 1001 and 1002 have no Spanish effect and fall back to English whole, so
+	// their requirement counts as English too; only 1003 is Spanish throughout.
+	assert.deepEqual(buildVariantUpdates(translations, "es", present).stats, {
+		name: { es: 1, en: 2 },
+		desc: { es: 1, en: 2 },
+		requirement: { es: 1, en: 1 },
+	});
 });
 
 test("buildRushCdbs fails loudly on a duplicated id and writes nothing", () => {
@@ -381,6 +489,49 @@ test("buildRushCdbs prepends Maximum ATK to en/es and leaves the base untouched"
 			sidePieces: 1,
 			centreWithoutValue: [2003],
 		});
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+// The Maximum ATK line and the requirement block meet on the same card: the
+// line MDPro3 parses has to stay first, since it only ever reads line 1.
+test("buildRushCdbs keeps Maximum ATK first on a card that also has a requirement", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-max-req-"));
+	try {
+		const srcDir = join(dir, "src");
+		mkdirSync(srcDir);
+		const source = join(srcDir, "M.cdb");
+		makeCdb(source, [
+			{ id: 2101, type: 0x8000 | 1, name: "极大", desc: "RD/A-JP101\r\n极大攻击 3500\r\n中说明\r\n" },
+		]);
+		const translations = {
+			2101: {
+				en: "Maximum One",
+				en_lore: "Effect.",
+				en_req: "Requirement.",
+				es: "Máximo Uno",
+				es_lore: "Efecto.",
+				es_req: "Requisito.",
+			},
+		};
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		buildRushCdbs({ sources: [source], translations, outDir, workDir });
+		const desc = (gz) => queryGz(dir, join(outDir, gz), 'SELECT "desc" FROM texts WHERE id=2101;');
+
+		assert.equal(
+			desc("rush.en.cdb.gz"),
+			"Maximum ATK 3500\n[REQUIREMENT]\nRequirement.\n\n[EFFECT]\nEffect.",
+		);
+		assert.equal(
+			desc("rush.es.cdb.gz"),
+			"Maximum ATK 3500\n[REQUIREMENT]\nRequisito.\n\n[EFFECT]\nEfecto.",
+		);
+		assert.equal(desc("rush.en.cdb.gz").split("\n")[0], "Maximum ATK 3500");
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
