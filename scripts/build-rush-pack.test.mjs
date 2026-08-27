@@ -9,8 +9,8 @@ import { gzipSync } from "node:zlib";
 import {
 	PACK_LANGS,
 	buildRushPack,
-	lflistFileName,
 	packLayout,
+	packUrlFor,
 	renderInstallReadme,
 } from "./build-rush-pack.mjs";
 
@@ -37,86 +37,146 @@ function makeSourceGz(dir, gzName, cards) {
 }
 
 /**
- * The archive's FILE tree, sorted. `unzip -Z1` lists one entry per line and
- * includes the parent directory entries, which zip stores so a GUI extract
- * recreates the folders — they are not part of the manifest.
+ * Every entry the archive stores, in the order it stores them. Nothing is
+ * filtered: a directory entry appearing here is itself the failure, because
+ * the archive is what the client MOUNTS and its root is the mount point.
  */
-function archiveFiles(zipPath) {
-	return execFileSync("unzip", ["-Z1", zipPath], { encoding: "utf8" })
-		.trim()
-		.split("\n")
-		.filter((entry) => !entry.endsWith("/"))
-		.sort();
+function archiveEntries(zipPath) {
+	return execFileSync("unzip", ["-Z1", zipPath], { encoding: "utf8" }).trim().split("\n");
 }
 
 test("PACK_LANGS maps our variant names onto MDPro3's own locale directories", () => {
 	// Verified against a real MDPro3 install: Data/locales/ holds en-US, es-ES
-	// and zh-CN among others.
+	// and zh-CN among others. The mount no longer uses those directories, but
+	// they still name the text a pack carries.
 	assert.deepEqual(PACK_LANGS, { en: "en-US", es: "es-ES", zh: "zh-CN" });
 });
 
-test("packLayout drops the cdb in MDPro3's own per-language Rush slot", () => {
-	// CardsManager.TryLoadCardsForLanguage loads Data/locales/<lang>/rush_cards.cdb
-	// right after cards.cdb. MDPro3 ships no such file, so the slot is free.
+test("packLayout keeps every payload file flat at the archive root", () => {
+	// The archive IS the mount point: MDPro3 reads the files it finds inside a
+	// mounted .ypk, so a Data/ or Expansions/ prefix would bury them.
 	assert.deepEqual(packLayout("en"), {
-		archiveExtension: ".zip",
+		archiveExtension: ".ypk",
 		locale: "en-US",
 		sourceGz: "cdb/rush.en.cdb.gz",
-		cdbPath: "Data/locales/en-US/rush_cards.cdb",
-		lflistPath: "Expansions/evolution-rush.lflist.conf",
+		cdbName: "evolution-rush.cdb",
+		lflistName: "evolution-rush.lflist.conf",
 		readmeName: "README.txt",
-		archiveName: "evolution-rush-en.zip",
+		archiveName: "evolution-rush-en.ypk",
 	});
+	for (const name of ["cdbName", "lflistName", "readmeName"]) {
+		assert.doesNotMatch(packLayout("en")[name], /\//);
+	}
+});
+
+test("packLayout ships a .ypk, never a .zip", () => {
+	// A .zip invites a double-click and an extract, which is the one action that
+	// breaks a mounted pack.
+	for (const lang of Object.keys(PACK_LANGS)) {
+		assert.equal(packLayout(lang).archiveExtension, ".ypk");
+		assert.ok(packLayout(lang).archiveName.endsWith(".ypk"));
+	}
 });
 
 test("packLayout ships the untranslated union for zh", () => {
 	const layout = packLayout("zh");
 	// rush.cdb.gz is upstream's own Chinese text — there is no rush.zh.cdb.gz.
 	assert.equal(layout.sourceGz, "cdb/rush.cdb.gz");
-	assert.equal(layout.cdbPath, "Data/locales/zh-CN/rush_cards.cdb");
+	assert.equal(layout.locale, "zh-CN");
 });
 
 test("packLayout refuses a language MDPro3 has no locale directory for", () => {
 	assert.throws(() => packLayout("fr"), /fr/);
 });
 
-test("lflistFileName ends in lflist.conf and namespaces itself", () => {
+test("packLayout names the ban list so it ends in lflist.conf and namespaces itself", () => {
 	// BanlistManager.Initialize -> ResourceManager.GetTextsByExtensions(["lflist.conf"])
 	// -> FileManager matches on EndsWith, so the suffix is the whole contract.
-	// The file lands LOOSE in Expansions/, where a bare "lflist.conf" would
-	// collide with any other pack that extracts one there.
-	assert.ok(lflistFileName().endsWith("lflist.conf"));
-	assert.notEqual(lflistFileName(), "lflist.conf");
-	assert.match(lflistFileName(), /evolution/);
+	// Entries from every mounted archive land in one merged list, so the prefix
+	// says whose list this is.
+	const { lflistName } = packLayout("en");
+	assert.ok(lflistName.endsWith("lflist.conf"));
+	assert.notEqual(lflistName, "lflist.conf");
+	assert.match(lflistName, /evolution/);
 });
 
-test("renderInstallReadme names both destinations and the card count", () => {
-	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
+test("packUrlFor addresses the rush-pack release slot per language", () => {
+	assert.equal(
+		packUrlFor("en"),
+		"https://github.com/diangogav/evolution-assets/releases/download/rush-pack/evolution-rush-en.ypk",
+	);
+	for (const lang of Object.keys(PACK_LANGS)) {
+		const url = packUrlFor(lang);
+		assert.ok(url.endsWith(`/evolution-rush-${lang}.ypk`));
+		// The client validates the extension and names the saved file after the
+		// URL, so it must end clean with no query string.
+		assert.doesNotMatch(url, /[?#]/);
+	}
+});
+
+test("renderInstallReadme leads with the download-by-URL install", () => {
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
 	assert.match(readme, /3463 cards/);
-	assert.match(readme, /Data\/locales\/en-US\/rush_cards\.cdb/);
-	assert.match(readme, /Expansions\/evolution-rush\.lflist\.conf/);
+	assert.match(readme, /Settings/);
+	assert.ok(readme.includes(packUrlFor("en")));
+	// Extracting the archive is what breaks a mounted pack.
+	assert.doesNotMatch(readme, /[Ee]xtract this archive/);
 });
 
-test("renderInstallReadme points at upstream's art pack instead of bundling art", () => {
-	// MDPro3 applies its OWN Rush art crop, and upstream already publishes the
-	// full 624 MB art .ypk — shipping our own crop would be both wrong and huge.
-	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
+test("renderInstallReadme offers the manual drop into Expansions as the fallback", () => {
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
+	assert.match(readme, /Expansions/);
+	// Note the capital E: ygopro-family clients use a lowercase expansions/,
+	// which matters on a case-sensitive filesystem.
+	assert.doesNotMatch(readme, /\/expansions\//);
+});
+
+test("renderInstallReadme names the ban list entry and where the client files it", () => {
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
+	assert.match(readme, /"RD"/);
+	assert.match(readme, /Genesys/);
+});
+
+test("renderInstallReadme tells the player to install exactly one language pack", () => {
+	// A mounted pack is loaded for EVERY client language — the per-language slot
+	// the old folder overlay used does not exist inside an archive. Two installed
+	// packs mean whichever the client happens to load last wins.
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
+	assert.match(readme, /\bONE\b/);
+	assert.match(readme, /every language|any language|whatever language/i);
+	assert.doesNotMatch(readme, /client language must be/i);
+});
+
+test("renderInstallReadme requires deleting the databases inside upstream's art pack", () => {
+	// ygopro-rush-duel-master.ypk carries RD Alternate.cdb, RD Patch.cdb and
+	// RD Standard.cdb — upstream's UNTRANSLATED Chinese databases. CardsManager
+	// reads cdbs out of mounted archives via ZipManager.GetAllFilesByExtensions,
+	// which enumerates a dictionary's keys, and LoadCard does
+	// targetCards[card.Id] = card. Order is not guaranteed and last write wins.
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
 	assert.match(readme, /ygopro-rush-duel-master\.ypk/);
+	assert.match(readme, /RD Alternate\.cdb/);
+	assert.match(readme, /RD Patch\.cdb/);
+	assert.match(readme, /RD Standard\.cdb/);
+	assert.match(readme, /delete/i);
+	// Stated as required, with the reason, not as a suggestion.
+	assert.doesNotMatch(readme, /optional|if you like|you may want to delete/i);
+	assert.match(readme, /overwrite/i);
+	assert.match(readme, /pics\//);
 });
 
 test("renderInstallReadme does not promise MDPro3 downloads the art itself", () => {
 	// Its card-pack downloader only carries ygopro-super-pre URLs (Settings.cs
 	// PrereleasePackUrl*), and card images are read off disk rather than fetched
 	// per card — a player who waits for an automatic download waits forever.
-	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
-	assert.doesNotMatch(readme, /Download Card Pack/);
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
 	assert.match(readme, /will not fetch it for you/);
 });
 
 test("renderInstallReadme warns that the deck editor does not enforce Legend limits", () => {
 	// Banlist.GetCredit(cardId) only ever consults CreditLimits.FirstOrDefault().Key,
 	// so $legend_spell and $legend_trap are parsed and then never charged.
-	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
 	assert.match(readme, /Legend/);
 	assert.match(readme, /server/i);
 });
@@ -124,16 +184,23 @@ test("renderInstallReadme warns that the deck editor does not enforce Legend lim
 test("renderInstallReadme flags the bundled local server as a caveat, not a blocker", () => {
 	// YGOSharp/BanlistManager.Init int.Parse(data[1]) throws on "$legend_monster".
 	// Joining our rooms never touches that parser.
-	const readme = renderInstallReadme({ lang: "en", cards: 3463 });
+	const readme = renderInstallReadme({ lang: "en", cards: 3463, packUrl: packUrlFor("en") });
 	assert.match(readme, /local/i);
 	assert.doesNotMatch(readme, /cannot join|does not work online/i);
+});
+
+test("renderInstallReadme falls back to the manual install when there is no pack URL", () => {
+	// A local or test build has no published address to paste.
+	const readme = renderInstallReadme({ lang: "en", cards: 1, packUrl: null });
+	assert.match(readme, /Expansions/);
+	assert.doesNotMatch(readme, /https:\/\/github\.com/);
 });
 
 test("renderInstallReadme is English for every language pack", () => {
 	// Same reason as the Edison pack: it goes to players whose community
 	// language is not ours.
 	for (const lang of Object.keys(PACK_LANGS)) {
-		assert.match(renderInstallReadme({ lang, cards: 1 }), /Install/);
+		assert.match(renderInstallReadme({ lang, cards: 1, packUrl: packUrlFor(lang) }), /Install/);
 	}
 });
 
@@ -147,7 +214,7 @@ function packFixture(dir) {
 	return { gz, lflist };
 }
 
-test("buildRushPack lays the archive out as an MDPro3 folder overlay", () => {
+test("buildRushPack produces a flat .ypk holding exactly the three payload files", () => {
 	const dir = mkdtempSync(join(tmpdir(), "rush-pack-"));
 	try {
 		const { gz, lflist } = packFixture(dir);
@@ -160,11 +227,13 @@ test("buildRushPack lays the archive out as an MDPro3 folder overlay", () => {
 		assert.equal(result.locale, "en-US");
 		assert.equal(result.cards, 2);
 		assert.deepEqual(result.entries, [
-			"Data/locales/en-US/rush_cards.cdb",
-			"Expansions/evolution-rush.lflist.conf",
 			"README.txt",
+			"evolution-rush.cdb",
+			"evolution-rush.lflist.conf",
 		]);
-		assert.deepEqual(archiveFiles(result.zipPath), result.entries);
+		// No directory entries and no nesting: the archive root is the mount point.
+		assert.deepEqual(archiveEntries(result.zipPath), result.entries);
+		assert.ok(result.zipPath.endsWith("evolution-rush-en.ypk"));
 		assert.ok(result.bytes > 0);
 		assert.match(result.sha256, /^[0-9a-f]{64}$/);
 	} finally {
@@ -184,17 +253,48 @@ test("buildRushPack ships the ban list byte-identical and the cdb queryable", ()
 		execFileSync("unzip", ["-q", zipPath, "-d", unpacked]);
 
 		assert.deepEqual(
-			readFileSync(join(unpacked, "Expansions/evolution-rush.lflist.conf")),
+			readFileSync(join(unpacked, "evolution-rush.lflist.conf")),
 			readFileSync(lflist),
 		);
 
 		// The cdb must land DECOMPRESSED: MDPro3 opens it with SqliteConnection.
 		const names = execFileSync(
 			"sqlite3",
-			[join(unpacked, "Data/locales/en-US/rush_cards.cdb"), "SELECT name FROM texts ORDER BY id;"],
+			[join(unpacked, "evolution-rush.cdb"), "SELECT name FROM texts ORDER BY id;"],
 			{ encoding: "utf8" },
 		).trim();
 		assert.equal(names, "Blue-Eyes White Dragon\nSupreme Machine Magnum Overlord");
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("buildRushPack embeds the published pack URL in the README it ships", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-pack-readme-"));
+	try {
+		const { gz, lflist } = packFixture(dir);
+		const outDir = join(dir, "out");
+		mkdirSync(outDir);
+
+		const { zipPath } = buildRushPack("en", outDir, { sourceGz: gz, lflist });
+		const readme = execFileSync("unzip", ["-p", zipPath, "README.txt"], { encoding: "utf8" });
+		assert.ok(readme.includes(packUrlFor("en")));
+		assert.match(readme, /2 cards/);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("buildRushPack is deterministic: two runs produce byte-identical archives", () => {
+	// The published asset is replaced in place under a fixed release tag, so a
+	// rebuild that changed nothing must not look like a new file.
+	const dir = mkdtempSync(join(tmpdir(), "rush-pack-det-"));
+	try {
+		const { gz, lflist } = packFixture(dir);
+		const first = buildRushPack("en", join(dir, "out1"), { sourceGz: gz, lflist });
+		const second = buildRushPack("en", join(dir, "out2"), { sourceGz: gz, lflist });
+		assert.equal(first.sha256, second.sha256);
+		assert.equal(first.bytes, second.bytes);
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
@@ -226,7 +326,7 @@ test("buildRushPack works when outDir is a relative path", () => {
 
 		const result = buildRushPack("en", "out", { sourceGz: gz, lflist });
 		assert.equal(result.cards, 2);
-		assert.deepEqual(archiveFiles(result.zipPath), result.entries);
+		assert.deepEqual(archiveEntries(result.zipPath), result.entries);
 	} finally {
 		process.chdir(cwd);
 		rmSync(dir, { recursive: true, force: true });
