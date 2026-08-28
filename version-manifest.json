@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-28T18:18:53.876Z",
+  "generatedAt": "2026-08-28T19:29:38.945Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -58,9 +58,9 @@
       "bytes": 73728,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-27T18:20:55.735Z",
-      "commitSha": "c320ded40177f0aa9efa7f8b39def4a15b11e71e",
-      "commitDate": "2026-08-25T08:04:22Z"
+      "mirroredAt": "2026-08-28T19:29:38.945Z",
+      "commitSha": "580265f638bf22684ac9640e19270b8183ab73d4",
+      "commitDate": "2026-08-27T18:20:55Z"
     },
     "cdb:prerelease:en": {
       "path": "cdb/prerelease.en.cdb.gz",
@@ -68,9 +68,9 @@
       "bytes": 77824,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-27T18:20:55.735Z",
-      "commitSha": "54addba4d7217d832d8c6b7127c573ee399dd717",
-      "commitDate": "2026-08-20T08:01:45Z"
+      "mirroredAt": "2026-08-28T19:29:38.945Z",
+      "commitSha": "580265f638bf22684ac9640e19270b8183ab73d4",
+      "commitDate": "2026-08-27T18:20:55Z"
     },
     "cdb:prerelease:es": {
       "path": "cdb/prerelease.es.cdb.gz",
@@ -78,9 +78,9 @@
       "bytes": 81920,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-08-27T18:20:55.735Z",
-      "commitSha": "54addba4d7217d832d8c6b7127c573ee399dd717",
-      "commitDate": "2026-08-20T08:01:45Z"
+      "mirroredAt": "2026-08-28T19:29:38.945Z",
+      "commitSha": "580265f638bf22684ac9640e19270b8183ab73d4",
+      "commitDate": "2026-08-27T18:20:55Z"
     },
     "lflist:evolution:genesys": {
       "path": "lflist/genesys.lflist.conf",
