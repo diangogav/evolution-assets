@@ -1,0 +1,34 @@
+{
+  "$comment": "Home page news manifest for the Evolution client. Editing this file publishes announcements without redeploying the app. Fields: id (unique, stable — player dismissals key off it), date (ISO, drives ordering + display), tone (arcane | gold | blue), link (optional, internal route or https URL), image (optional thumbnail, same-origin path or https URL), expiresAt (optional ISO instant, hides the item after it), title/summary (per-locale, a missing locale falls back to the other). The home panel shows the 3 newest non-expired, non-dismissed items.",
+  "items": [
+    {
+      "id": "edison-pre-errata-rulings-2026-08",
+      "date": "2026-08-28",
+      "tone": "gold",
+      "link": "/releases",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/44508094.jpg",
+      "title": {
+        "es-419": "Edison con rulings de época",
+        "en": "Edison with era-correct rulings"
+      },
+      "summary": {
+        "es-419": "Las cartas de Edison ya funcionan con sus textos y rulings pre-errata, tal como se jugaba en 2010.",
+        "en": "Edison cards now play with their pre-errata texts and rulings, just as the format played in 2010."
+      }
+    },
+    {
+      "id": "rush-duel-beta-2026-08",
+      "date": "2026-08-28",
+      "tone": "blue",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/120105001.jpg",
+      "title": {
+        "es-419": "Rush Duel entra en beta",
+        "en": "Rush Duel enters beta"
+      },
+      "summary": {
+        "es-419": "El formato Rush Duel llega en fase beta: pruébalo y cuéntanos en Discord qué encuentras.",
+        "en": "The Rush Duel format lands in beta: try it out and tell us on Discord what you find."
+      }
+    }
+  ]
+}
