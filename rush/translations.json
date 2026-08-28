@@ -26255,6 +26255,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309006": {
+    "en": "Dark Magician Knight",
+    "en_lore": "Destroy 1 card on your opponent's field.",
+    "en_req": "You have \"Knight's Title\" in your Graveyard during your Main Phase that you Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309008": {
     "en": "Pitch-Dark Eradicator Sorcerer",
     "en_lore": "Inflict 500 damage to your opponent.",
@@ -26275,6 +26283,22 @@
     "en": "The United Front with Timaeus",
     "en_lore": "Fusion Summon a Dragon Type monster that mentions \"Dark Magician\" or \"Dark Magician Girl\" as material by shuffling 2 non-Fusion DARK Attribute monsters from your Graveyard into the Deck as material.",
     "en_req": "During a turn you have not activated \"The United Front with Timaeus\".",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309017": {
+    "en": "Knight's Title",
+    "en_lore": "Send 1 Spellcaster Type monster from your hand or 1 face-up Spellcaster Type monster from your field to the Graveyard. Then, if you have \"Dark Magician\" in your Graveyard, you can Special Summon 1 \"Dark Magician Knight\" from your hand or Graveyard face-up to your field.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309019": {
+    "en": "The Sleeping Nameless Dragon",
+    "en_lore": "Add 1 \"The Allied Dark Magicians\" and/or 1 \"The United Front with Timaeus\" from your Graveyard to your hand. This turn, you can only attack with DARK Attribute monsters.",
+    "en_req": "None",
     "es": "",
     "es_lore": "",
     "es_req": ""

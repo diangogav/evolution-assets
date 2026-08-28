@@ -1,13 +1,26 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-08-26T11:32:07.544Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/32963758102",
+  "generatedAt": "2026-08-28T18:18:53.988Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/33198697448",
   "steps": [
     {
       "step": "resolve-pages",
-      "status": "unchanged",
-      "mapped": [],
+      "status": "changed",
+      "mapped": [
+        {
+          "id": "120309006",
+          "title": "Dark Magician Knight (Rush Duel)"
+        },
+        {
+          "id": "120309017",
+          "title": "Knight's Title (Rush Duel)"
+        },
+        {
+          "id": "120309019",
+          "title": "The Sleeping Nameless Dragon"
+        }
+      ],
       "unresolved": {
         "count": 116,
         "sample": [
@@ -62,23 +75,29 @@
     },
     {
       "step": "fetch-translations",
-      "status": "unchanged",
-      "gained": [],
+      "status": "changed",
+      "gained": [
+        "120309006",
+        "120309017",
+        "120309019"
+      ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3296,
+      "entries": 3299,
       "coverage": {
-        "en": 3296,
-        "en_lore": 3290,
+        "en": 3299,
+        "en_lore": 3293,
+        "en_req": 2872,
         "es": 527,
-        "es_lore": 418
+        "es_lore": 418,
+        "es_req": 301
       }
     },
     {
       "step": "build-cdb",
-      "status": "unchanged",
+      "status": "changed",
       "merged": {
         "perSource": [
           {
@@ -87,33 +106,59 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 55
+            "rows": 58
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3463
+        "total": 3466
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3296
+            "en": 3299
           },
           "desc": {
-            "en": 3290
+            "en": 3293
+          },
+          "requirement": {
+            "en": 2872
           }
         },
         "es": {
           "name": {
-            "es": 527,
-            "en": 2769
+            "es": 854,
+            "en": 2445
           },
           "desc": {
-            "es": 418,
-            "en": 2872
+            "es": 523,
+            "en": 2770
+          },
+          "requirement": {
+            "es": 301,
+            "en": 2566
           }
+        }
+      },
+      "maximumAtk": {
+        "withValue": 30,
+        "sidePieces": 60,
+        "centreWithoutValue": [
+          120293061,
+          120293062
+        ]
+      },
+      "effectStrings": {
+        "total": 4480,
+        "en": {
+          "replaced": 3594,
+          "nonChinese": 3594
+        },
+        "es": {
+          "replaced": 3582,
+          "nonChinese": 3582
         }
       }
     },
@@ -128,7 +173,26 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
+    "cardsAdded": [
+      {
+        "id": "120309006",
+        "zh": "黑魔术师族骑士",
+        "en": "Dark Magician Knight",
+        "es": null
+      },
+      {
+        "id": "120309017",
+        "zh": "骑士的称号",
+        "en": "Knight's Title",
+        "es": null
+      },
+      {
+        "id": "120309019",
+        "zh": "沉睡的无名之龙",
+        "en": "The Sleeping Nameless Dragon",
+        "es": null
+      }
+    ],
     "cardsRemoved": [],
     "translationsAdded": [],
     "unresolved": {
