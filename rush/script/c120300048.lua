@@ -28,6 +28,7 @@ end
 function cm.activate(e,tp,eg,ep,ev,re,r,rp)
 	RD.SelectAndSpecialSummon(aux.NecroValleyFilter(cm.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,POS_FACEUP)
 	if Duel.GetFlagEffect(tp,m)~=0 then return end
+	RD.CreateRaceCannotAttackEffect(e,aux.Stringid(m,1),RACE_ALL-RACE_BEASTWARRIOR,tp,1,0,RESET_PHASE+PHASE_END)
 	RD.CreateAttackLimitEffect(e,cm.atktg,tp,LOCATION_MZONE,0,RESET_PHASE+PHASE_END)
 	Duel.RegisterFlagEffect(tp,m,RESET_PHASE+PHASE_END,0,1)
 end

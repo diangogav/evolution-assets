@@ -4,14 +4,15 @@ function cm.initial_effect(c)
 	--Summon Procedure
 	RD.AddSummonProcedureOne(c,aux.Stringid(m,0),nil,cm.sumfilter)
 	--Union
-	RD.RegisterUnionEffect(c,cm.filter,nil,nil,cm.operation)
+	local e1=RD.RegisterUnionEffect(c,cm.filter,nil,nil,cm.operation)
+	e1:SetCategory(e1:GetCategory()|CATEGORY_DESTROY)
 	--Atk Up
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_EQUIP)
-	e1:SetCode(EFFECT_UPDATE_ATTACK)
-	e1:SetCondition(aux.IsUnionState)
-	e1:SetValue(300)
-	c:RegisterEffect(e1)
+	local e2=Effect.CreateEffect(c)
+	e2:SetType(EFFECT_TYPE_EQUIP)
+	e2:SetCode(EFFECT_UPDATE_ATTACK)
+	e2:SetCondition(aux.IsUnionState)
+	e2:SetValue(300)
+	c:RegisterEffect(e2)
 end
 --Summon Procedure
 function cm.sumfilter(c,e,tp)

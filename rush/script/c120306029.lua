@@ -32,6 +32,7 @@ function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 			end
 		end)
 	end
+	RD.CreateRaceCannotAttackEffect(e,aux.Stringid(m,2),RACE_ALL-RACE_WARRIOR,tp,1,0,RESET_PHASE+PHASE_END)
 	RD.CreateAttackLimitEffect(e,cm.atktg,tp,LOCATION_MZONE,0,RESET_PHASE+PHASE_END)
 	RD.CreateCannotActivateSameCodeEffect(e,aux.Stringid(m,3),m,tp,list[2])
 end

@@ -5,6 +5,10 @@ RushDuel = RushDuel or {}
 function RushDuel.IsNormalSpell(card)
     return card:GetType()==TYPE_SPELL or card:GetType()==TYPE_SPELL+TYPE_LEGEND
 end
+-- 条件: 卡片是同盟怪兽卡
+function RushDuel.IsUnionMonsterCard(card)
+    return card:GetOriginalType()&TYPE_UNION==TYPE_UNION
+end
 -- 条件: 卡片是否处于"极大模式"
 function RushDuel.IsMaximumMode(card)
     return card:IsLocation(LOCATION_MZONE) and card:IsSummonType(SUMMON_TYPE_MAXIMUM) and card:GetOverlayCount() > 0
