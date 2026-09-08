@@ -26271,6 +26271,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309013": {
+    "en": "Returnee of the Temple",
+    "en_lore": "Special Summon 1 Level 7 DARK Attribute Warrior Type Effect Monster with 2100 DEF or 1 Level 7 Normal Monster with 2100 DEF from your Graveyard face-up to your field.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309015": {
     "en": "The Allied Dark Magicians",
     "en_lore": "Special Summon 1 \"Dark Magician\" or \"Dark Magician Girl\" from your hand or Graveyard face-up to your field. The monster Special Summoned by this effect gains 500 ATK until the end of this turn.",
@@ -26379,6 +26387,78 @@
     "en": "Fuden Issen",
     "en_lore": "Choose 1 face-up Level 8 or lower monster on your opponent's field, and change it to face-down Defense Position. Then, if you have a face-up EARTH Attribute Cyberse Type Ritual Monster on your field, you can destroy the chosen monster.",
     "en_req": "When your opponent Normal or Special Summons a monster, shuffle 1 Cyberse Type monster and 1 non-Cyberse Type monster from your Graveyard into the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309035": {
+    "en": "Cross Lostream Verdias",
+    "en_lore": "During the Battle Phase, this card gains ATK equal to [the number of face-up Union Monster Cards on your field] x 400. If you have 3 or more face-up Union Monster Cards on your field, this card cannot be destroyed by card effects. During the End Phase of the turn this card attacked, if you do not have \"Cross Lostream Melutine\" face-up on your field, change this card to face-up Defense Position.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309036": {
+    "en": "Cross Lostream Melutine",
+    "en_lore": "Choose 1 face-up WIND Attribute Sea Serpent Type monster on your field. This turn, that monster can attack monsters a number of times, up to [the number of face-up Union Monster Cards on your field].",
+    "en_req": "You have 2 or more face-up Union Monster Cards on your field.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309037": {
+    "en": "Lostream Nemora",
+    "en_lore": "Equip this card to 1 face-up WIND Attribute Sea Serpent Type monster on your field as an Equip Spell Card with the following effect. Then, you can place 1 Spell/Trap Card from your opponent's field on the bottom of the owner's Deck. ●The equipped monster gains 1000 DEF.",
+    "en_req": "Change the battle position of 1 face-up monster on your field.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309038": {
+    "en": "Lostream Nepia",
+    "en_lore": "Equip this card to 1 face-up WIND Attribute Sea Serpent Type monster on your field as an Equip Spell Card with the following effect. Then, you can Special Summon 1 \"Lostream Nemora\" from your Graveyard face-up to your field. ●Face-up monsters on your opponent's field lose 400 ATK.",
+    "en_req": "During a turn you have not Special Summoned a monster from the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309040": {
+    "en": "Lostream Polka",
+    "en_lore": "Equip this card to 1 face-up WIND Attribute Sea Serpent Type monster on your field as an Equip Spell Card with the following effect. Then, you can add 1 Level 5 or higher WIND Attribute Sea Serpent Type monster from your Graveyard to your hand. ●While the equipped monster is face-up on your field, your opponent cannot declare an attack on monsters that are not equipped with an Equip Spell Card.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309042": {
+    "en": "Lostream Gift",
+    "en_lore": "Draw 2 cards. Then, you can Special Summon 1 WIND Attribute Sea Serpent Type monster from your hand face-up to your field. This turn, you can only attack with WIND Attribute Sea Serpent Type monsters.",
+    "en_req": "Send 1 other face-up Spell Card from your field to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309044": {
+    "en": "Lostream Record",
+    "en_lore": "Excavate the top 5 cards of your Deck. You can add up to 2 excavated WIND Attribute Sea Serpent Type monsters to your hand. Place the other cards on the bottom of your Deck in any order. If you added 2 monsters to your hand by this effect, send 1 card from your hand to the Graveyard. This turn, you can only attack with WIND Attribute Sea Serpent Type monsters.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309045": {
+    "en": "Lostream - The Circulating Sea of Clouds",
+    "en_lore": "While this card is face-up in the Field Zone, when your attacking WIND Attribute Sea Serpent Type monster destroys a monster and sends it to the Graveyard, inflict 1000 damage to your opponent.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309046": {
+    "en": "Lostream Stream",
+    "en_lore": "Send 1 face-up Union Monster Card from your field to the Graveyard. Then, if you sent a Sea Serpent Type Monster Card to the Graveyard by this effect, you can change up to 2 face-up Effect Monsters on your opponent's field to face-down Defense Position.",
+    "en_req": "When your opponent Normal Summons a monster.",
     "es": "",
     "es_lore": "",
     "es_req": ""

@@ -1,24 +1,52 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-08-28T18:18:53.988Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/33198697448",
+  "generatedAt": "2026-09-08T10:48:46.757Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/34217368784",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120309006",
-          "title": "Dark Magician Knight (Rush Duel)"
+          "id": "120309013",
+          "title": "Returnee of the Temple"
         },
         {
-          "id": "120309017",
-          "title": "Knight's Title (Rush Duel)"
+          "id": "120309035",
+          "title": "Cross Lostream Verdias"
         },
         {
-          "id": "120309019",
-          "title": "The Sleeping Nameless Dragon"
+          "id": "120309036",
+          "title": "Cross Lostream Melutine"
+        },
+        {
+          "id": "120309037",
+          "title": "Lostream Nemora"
+        },
+        {
+          "id": "120309038",
+          "title": "Lostream Nepia"
+        },
+        {
+          "id": "120309040",
+          "title": "Lostream Polka"
+        },
+        {
+          "id": "120309042",
+          "title": "Lostream Gift"
+        },
+        {
+          "id": "120309044",
+          "title": "Lostream Record"
+        },
+        {
+          "id": "120309045",
+          "title": "Lostream - The Circulating Sea of Clouds"
+        },
+        {
+          "id": "120309046",
+          "title": "Lostream Stream"
         }
       ],
       "unresolved": {
@@ -77,19 +105,26 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120309006",
-        "120309017",
-        "120309019"
+        "120309013",
+        "120309035",
+        "120309036",
+        "120309037",
+        "120309038",
+        "120309040",
+        "120309042",
+        "120309044",
+        "120309045",
+        "120309046"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3299,
+      "entries": 3309,
       "coverage": {
-        "en": 3299,
-        "en_lore": 3293,
-        "en_req": 2872,
+        "en": 3309,
+        "en_lore": 3303,
+        "en_req": 2882,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -106,39 +141,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 58
+            "rows": 68
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3466
+        "total": 3476
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3299
+            "en": 3309
           },
           "desc": {
-            "en": 3293
+            "en": 3303
           },
           "requirement": {
-            "en": 2872
+            "en": 2882
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2445
+            "en": 2455
           },
           "desc": {
             "es": 523,
-            "en": 2770
+            "en": 2780
           },
           "requirement": {
             "es": 301,
-            "en": 2566
+            "en": 2576
           }
         }
       },
@@ -151,14 +186,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4480,
+        "total": 4500,
         "en": {
-          "replaced": 3594,
-          "nonChinese": 3594
+          "replaced": 3603,
+          "nonChinese": 3603
         },
         "es": {
-          "replaced": 3582,
-          "nonChinese": 3582
+          "replaced": 3591,
+          "nonChinese": 3591
         }
       }
     },
@@ -175,21 +210,63 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309006",
-        "zh": "黑魔术师族骑士",
-        "en": "Dark Magician Knight",
+        "id": "120309013",
+        "zh": "祭殿的归还者",
+        "en": "Returnee of the Temple",
         "es": null
       },
       {
-        "id": "120309017",
-        "zh": "骑士的称号",
-        "en": "Knight's Title",
+        "id": "120309035",
+        "zh": "云海翔龙 青绿龙",
+        "en": "Cross Lostream Verdias",
         "es": null
       },
       {
-        "id": "120309019",
-        "zh": "沉睡的无名之龙",
-        "en": "The Sleeping Nameless Dragon",
+        "id": "120309036",
+        "zh": "云海抱龙 旋律龙",
+        "en": "Cross Lostream Melutine",
+        "es": null
+      },
+      {
+        "id": "120309037",
+        "zh": "云海龙 尼莫拉",
+        "en": "Lostream Nemora",
+        "es": null
+      },
+      {
+        "id": "120309038",
+        "zh": "云海龙 内佩拉",
+        "en": "Lostream Nepia",
+        "es": null
+      },
+      {
+        "id": "120309040",
+        "zh": "云海龙 波尔卡",
+        "en": "Lostream Polka",
+        "es": null
+      },
+      {
+        "id": "120309042",
+        "zh": "风之足迹",
+        "en": "Lostream Gift",
+        "es": null
+      },
+      {
+        "id": "120309044",
+        "zh": "在风中飘荡的飞来物",
+        "en": "Lostream Record",
+        "es": null
+      },
+      {
+        "id": "120309045",
+        "zh": "失落气流—循环的云海",
+        "en": "Lostream - The Circulating Sea of Clouds",
+        "es": null
+      },
+      {
+        "id": "120309046",
+        "zh": "离别之风",
+        "en": "Lostream Stream",
         "es": null
       }
     ],
