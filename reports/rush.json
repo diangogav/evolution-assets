@@ -1,56 +1,15 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-08T10:48:46.757Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/34217368784",
+  "generatedAt": "2026-09-11T10:47:49.448Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/34590912895",
   "steps": [
     {
       "step": "resolve-pages",
-      "status": "changed",
-      "mapped": [
-        {
-          "id": "120309013",
-          "title": "Returnee of the Temple"
-        },
-        {
-          "id": "120309035",
-          "title": "Cross Lostream Verdias"
-        },
-        {
-          "id": "120309036",
-          "title": "Cross Lostream Melutine"
-        },
-        {
-          "id": "120309037",
-          "title": "Lostream Nemora"
-        },
-        {
-          "id": "120309038",
-          "title": "Lostream Nepia"
-        },
-        {
-          "id": "120309040",
-          "title": "Lostream Polka"
-        },
-        {
-          "id": "120309042",
-          "title": "Lostream Gift"
-        },
-        {
-          "id": "120309044",
-          "title": "Lostream Record"
-        },
-        {
-          "id": "120309045",
-          "title": "Lostream - The Circulating Sea of Clouds"
-        },
-        {
-          "id": "120309046",
-          "title": "Lostream Stream"
-        }
-      ],
+      "status": "unchanged",
+      "mapped": [],
       "unresolved": {
-        "count": 116,
+        "count": 117,
         "sample": [
           "120181011",
           "120195004",
@@ -103,19 +62,8 @@
     },
     {
       "step": "fetch-translations",
-      "status": "changed",
-      "gained": [
-        "120309013",
-        "120309035",
-        "120309036",
-        "120309037",
-        "120309038",
-        "120309040",
-        "120309042",
-        "120309044",
-        "120309045",
-        "120309046"
-      ],
+      "status": "unchanged",
+      "gained": [],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
@@ -141,14 +89,14 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 68
+            "rows": 69
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3476
+        "total": 3477
       },
       "variants": {
         "en": {
@@ -186,14 +134,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4500,
+        "total": 4502,
         "en": {
-          "replaced": 3603,
-          "nonChinese": 3603
+          "replaced": 3604,
+          "nonChinese": 3604
         },
         "es": {
-          "replaced": 3591,
-          "nonChinese": 3591
+          "replaced": 3592,
+          "nonChinese": 3592
         }
       }
     },
@@ -210,70 +158,16 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309013",
-        "zh": "祭殿的归还者",
-        "en": "Returnee of the Temple",
-        "es": null
-      },
-      {
-        "id": "120309035",
-        "zh": "云海翔龙 青绿龙",
-        "en": "Cross Lostream Verdias",
-        "es": null
-      },
-      {
-        "id": "120309036",
-        "zh": "云海抱龙 旋律龙",
-        "en": "Cross Lostream Melutine",
-        "es": null
-      },
-      {
-        "id": "120309037",
-        "zh": "云海龙 尼莫拉",
-        "en": "Lostream Nemora",
-        "es": null
-      },
-      {
-        "id": "120309038",
-        "zh": "云海龙 内佩拉",
-        "en": "Lostream Nepia",
-        "es": null
-      },
-      {
-        "id": "120309040",
-        "zh": "云海龙 波尔卡",
-        "en": "Lostream Polka",
-        "es": null
-      },
-      {
-        "id": "120309042",
-        "zh": "风之足迹",
-        "en": "Lostream Gift",
-        "es": null
-      },
-      {
-        "id": "120309044",
-        "zh": "在风中飘荡的飞来物",
-        "en": "Lostream Record",
-        "es": null
-      },
-      {
-        "id": "120309045",
-        "zh": "失落气流—循环的云海",
-        "en": "Lostream - The Circulating Sea of Clouds",
-        "es": null
-      },
-      {
-        "id": "120309046",
-        "zh": "离别之风",
-        "en": "Lostream Stream",
+        "id": "120309012",
+        "zh": "暗黑之魔龙王",
+        "en": null,
         "es": null
       }
     ],
     "cardsRemoved": [],
     "translationsAdded": [],
     "unresolved": {
-      "count": 116,
+      "count": 117,
       "sample": [
         "120181011",
         "120195004",
