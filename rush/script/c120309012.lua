@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="超可爱执行者·主存女"
+cm.name="暗黑之魔龙王"
 function cm.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)
@@ -7,6 +7,7 @@ function cm.initial_effect(c)
 	e1:SetCategory(CATEGORY_DESTROY)
 	e1:SetType(EFFECT_TYPE_IGNITION)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetCondition(RD.ConditionSummonOrSpecialSummonMainPhase)
 	e1:SetCost(cm.cost)
 	e1:SetTarget(cm.target)
 	e1:SetOperation(cm.operation)
@@ -14,7 +15,8 @@ function cm.initial_effect(c)
 end
 --Destroy
 function cm.costfilter(c)
-	return c:IsLevel(6) and RD.IsDefense(c,500) and c:IsAbleToGraveAsCost()
+	return c:IsAttribute(ATTRIBUTE_DARK) and c:IsRace(RACE_DRAGON+RACE_SPELLCASTER)
+		and c:IsAbleToGraveAsCost()
 end
 function cm.filter(c)
 	return c:IsType(TYPE_SPELL+TYPE_TRAP)
@@ -35,5 +37,5 @@ function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 	Duel.RegisterFlagEffect(tp,m,RESET_PHASE+PHASE_END,0,1)
 end
 function cm.atktg(e,c)
-	return c:IsLevelAbove(7)
+	return not c:IsAttribute(ATTRIBUTE_DARK)
 end

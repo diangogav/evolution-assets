@@ -39,8 +39,7 @@ function cm.filter(c)
 end
 function cm.atkcon(e)
 	local ph=Duel.GetCurrentPhase()
-	return Duel.GetTurnPlayer()==e:GetHandlerPlayer()
-		and ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
+	return ph>=PHASE_BATTLE_START and ph<=PHASE_BATTLE
 end
 function cm.atkval(e)
 	return Duel.GetMatchingGroupCount(cm.filter,e:GetHandlerPlayer(),LOCATION_ONFIELD,0,nil)*400

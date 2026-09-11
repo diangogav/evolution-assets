@@ -28,12 +28,14 @@ function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 	RD.SelectAndDoAction(HINTMSG_DESTROY,nil,tp,0,LOCATION_ONFIELD,1,1,nil,function(g)
-		Duel.Destroy(g,REASON_EFFECT)
-		local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
-		local ct=mg:GetClassCount(Card.GetRace)
-		local c=e:GetHandler()
-		if c:IsFaceup() and c:IsRelateToEffect(e) and ct>=3 then
-			RD.AttachAtkDef(e,c,600,0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+		if Duel.Destroy(g,REASON_EFFECT)~=0 then
+			local mg=Duel.GetMatchingGroup(Card.IsType,tp,LOCATION_GRAVE,0,nil,TYPE_MONSTER)
+			local ct=mg:GetClassCount(Card.GetRace)
+			local c=e:GetHandler()
+			if c:IsFaceup() and c:IsRelateToEffect(e) and ct>=3 then
+				Duel.BreakEffect()
+				RD.AttachAtkDef(e,c,600,0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
+			end
 		end
 	end)
 	if Duel.GetFlagEffect(tp,m)~=0 then return end
