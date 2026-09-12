@@ -26271,6 +26271,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309012": {
+    "en": "Blackland Magic Dragon",
+    "en_lore": "Destroy 1 Spell/Trap Card on your opponent's field. This turn, you can only attack with DARK Attribute monsters.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card, send 1 DARK Attribute Dragon or Spellcaster Type monster from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309013": {
     "en": "Returnee of the Temple",
     "en_lore": "Special Summon 1 Level 7 DARK Attribute Warrior Type Effect Monster with 2100 DEF or 1 Level 7 Normal Monster with 2100 DEF from your Graveyard face-up to your field.",
