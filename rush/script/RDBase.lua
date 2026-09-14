@@ -97,6 +97,27 @@ function RushDuel.OnlyFusionSummon(card)
     card:RegisterEffect(e2)
     return e1, e2
 end
+-- 创建效果: 这个卡名1回合只能有1次表侧表示的特殊召唤
+function RushDuel.SetFaceupSpSummonOnce(code, hint)
+    local filter = function (c, p)
+        return c:IsFaceup() and c:IsCode(code) and c:GetSummonPlayer() == p
+    end
+    local sumlimit = function (e, c, sump, sumtype, sumpos, targetp, se)
+        return c:IsCode(code) and sumpos&POS_FACEUP == POS_FACEUP
+    end
+    local e=Effect.GlobalEffect()
+    e:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+    e:SetCode(EVENT_SPSUMMON_SUCCESS)
+    e:SetOperation(function (e, tp, eg, ep, ev, re, r, rp)
+        if eg:IsExists(filter, 1, nil, 0) then
+            RD.CreateCannotSpecialSummonEffect(e, hint, sumlimit, 0, 1, 0, RESET_PHASE + PHASE_END)
+        end
+        if eg:IsExists(filter, 1, nil, 1) then
+            RD.CreateCannotSpecialSummonEffect(e, hint, sumlimit, 1, 1, 0, RESET_PHASE + PHASE_END)
+        end
+    end)
+    Duel.RegisterEffect(e,0)
+end
 -- 创建效果: 玩家对象的全局效果
 function RushDuel.CreatePlayerTargetGlobalEffect(code, value)
     local e1 = Effect.GlobalEffect()
