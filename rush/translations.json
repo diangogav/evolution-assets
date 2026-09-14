@@ -26391,6 +26391,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309033": {
+    "en": "Searching Fuden",
+    "en_lore": "Add 1 \"Dimension Pair Link L\", \"Dimension Pair Link R\", or \"Fuden Issen\" from your Graveyard to your hand. Then, you can shuffle 3 monsters from your Graveyard into the Deck. Then, if you shuffled an EARTH Attribute monster by this effect, you can make 1 face-up monster on your opponent's field lose 600 ATK until the end of this turn.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309034": {
     "en": "Fuden Issen",
     "en_lore": "Choose 1 face-up Level 8 or lower monster on your opponent's field, and change it to face-down Defense Position. Then, if you have a face-up EARTH Attribute Cyberse Type Ritual Monster on your field, you can destroy the chosen monster.",
@@ -26439,6 +26447,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309041": {
+    "en": "Lostream Myura",
+    "en_lore": "Equip this card to 1 face-up WIND Attribute Sea Serpent Type monster on your field as an Equip Spell Card with the following effect. Then, you can Special Summon 1 WIND Attribute Sea Serpent Type monster from your hand face-up to your field. ●The equipped monster cannot be returned to the hand/Deck/Extra Deck by card effects.",
+    "en_req": "Send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309042": {
     "en": "Lostream Gift",
     "en_lore": "Draw 2 cards. Then, you can Special Summon 1 WIND Attribute Sea Serpent Type monster from your hand face-up to your field. This turn, you can only attack with WIND Attribute Sea Serpent Type monsters.",
@@ -26467,6 +26483,46 @@
     "en": "Lostream Stream",
     "en_lore": "Send 1 face-up Union Monster Card from your field to the Graveyard. Then, if you sent a Sea Serpent Type Monster Card to the Graveyard by this effect, you can change up to 2 face-up Effect Monsters on your opponent's field to face-down Defense Position.",
     "en_req": "When your opponent Normal Summons a monster.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309047": {
+    "en": "The Flame Dragon Haunting the Temple",
+    "en_lore": "This card gains 500 ATK until the end of this turn. Then, you can Special Summon 1 face-up Monster Card from either player's Spell & Trap Zone to your field in face-up Defense Position.",
+    "en_req": "Send 1 card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309048": {
+    "en": "The Black Witch Facing the Temple",
+    "en_lore": "Set 1 \"Sinful Spoils of Doom - Rciela\" from your Graveyard to your Spell & Trap Zone.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card, send 1 monster from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309049": {
+    "en": "Sinful Spoils of Doom - Rciela",
+    "en_lore": "Choose 1 face-up Level 7 or higher Spellcaster Type monster on your field. That monster cannot be destroyed by your opponent's card effects until the end of your opponent's next turn. Then, you can choose up to 3 face-up monsters with 100 or more ATK on your opponent's field. While those opponent's monsters are face-up, they lose ATK equal to [the ATK of your chosen monster]. Monsters whose ATK becomes 0 by this effect are destroyed.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309060": {
+    "en": "Grand Legendary Party",
+    "en_lore": "Special Summon 1 Legend monster from either Graveyard face-up to your field. This turn, you cannot activate the effect of \"Grand Legendary Party\".",
+    "en_req": "Shuffle 1 Legend Card from your Graveyard into the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309061": {
+    "en": "Legendary Party",
+    "en_lore": "Face-up LIGHT Attribute monsters with 300 original DEF on your field gain 400 ATK. If you have a face-up Level 10 LIGHT Attribute monster on your field, this card gains 1000 ATK, and Spell/Trap Cards on your field cannot be destroyed by card effects.",
+    "en_req": "None",
     "es": "",
     "es_lore": "",
     "es_req": ""
