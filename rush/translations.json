@@ -767,6 +767,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120109068": {
+    "en": "Lostream Nereides",
+    "en_lore": "Equip this card to 1 face-up monster on your field as an Equip Spell Card with the following effect. ●Other Spell/Trap Cards on your field cannot be destroyed by your opponent's card effects.",
+    "en_req": "Send the top 2 cards of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120110001": {
     "en": "Multistrike Dragon Dragias",
     "en_lore": "This turn, if this card destroyed a monster by battle, it can make a second attack during that Battle Phase.",
@@ -26506,6 +26514,14 @@
   "120309049": {
     "en": "Sinful Spoils of Doom - Rciela",
     "en_lore": "Choose 1 face-up Level 7 or higher Spellcaster Type monster on your field. That monster cannot be destroyed by your opponent's card effects until the end of your opponent's next turn. Then, you can choose up to 3 face-up monsters with 100 or more ATK on your opponent's field. While those opponent's monsters are face-up, they lose ATK equal to [the ATK of your chosen monster]. Monsters whose ATK becomes 0 by this effect are destroyed.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309050": {
+    "en": "In a Corner of the Underground City",
+    "en_lore": "Add 1 \"The Flame Dragon Haunting the Temple\" or \"The Black Witch Facing the Temple\" from your Graveyard to your hand. Then, if your opponent has a face-up Level 8 or higher monster on their field, you can Special Summon 1 monster from your hand face-up to your field.",
     "en_req": "None",
     "es": "",
     "es_lore": "",

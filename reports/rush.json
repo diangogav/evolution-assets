@@ -1,40 +1,20 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-14T12:06:37.309Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/34841593221",
+  "generatedAt": "2026-09-19T10:29:04.730Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35437510855",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120309033",
-          "title": "Searching Fuden"
+          "id": "120109068",
+          "title": "Lostream Nereides"
         },
         {
-          "id": "120309041",
-          "title": "Lostream Myura"
-        },
-        {
-          "id": "120309047",
-          "title": "The Flame Dragon Haunting the Temple"
-        },
-        {
-          "id": "120309048",
-          "title": "The Black Witch Facing the Temple"
-        },
-        {
-          "id": "120309049",
-          "title": "Sinful Spoils of Doom - Rciela (Rush Duel)"
-        },
-        {
-          "id": "120309060",
-          "title": "Grand Legendary Party"
-        },
-        {
-          "id": "120309061",
-          "title": "Legendary Party"
+          "id": "120309050",
+          "title": "In a Corner of the Underground City"
         }
       ],
       "unresolved": {
@@ -93,23 +73,18 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120309033",
-        "120309041",
-        "120309047",
-        "120309048",
-        "120309049",
-        "120309060",
-        "120309061"
+        "120109068",
+        "120309050"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3317,
+      "entries": 3319,
       "coverage": {
-        "en": 3317,
-        "en_lore": 3311,
-        "en_req": 2890,
+        "en": 3319,
+        "en_lore": 3313,
+        "en_req": 2892,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -126,39 +101,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 76
+            "rows": 78
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3484
+        "total": 3486
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3317
+            "en": 3319
           },
           "desc": {
-            "en": 3311
+            "en": 3313
           },
           "requirement": {
-            "en": 2890
+            "en": 2892
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2463
+            "en": 2465
           },
           "desc": {
             "es": 523,
-            "en": 2788
+            "en": 2790
           },
           "requirement": {
             "es": 301,
-            "en": 2584
+            "en": 2586
           }
         }
       },
@@ -171,14 +146,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4518,
+        "total": 4521,
         "en": {
-          "replaced": 3614,
-          "nonChinese": 3614
+          "replaced": 3615,
+          "nonChinese": 3615
         },
         "es": {
-          "replaced": 3602,
-          "nonChinese": 3602
+          "replaced": 3603,
+          "nonChinese": 3603
         }
       }
     },
@@ -195,45 +170,15 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309033",
-        "zh": "符电探访",
-        "en": "Searching Fuden",
+        "id": "120109068",
+        "zh": "云海龙 棘颊双锯龙",
+        "en": "Lostream Nereides",
         "es": null
       },
       {
-        "id": "120309041",
-        "zh": "云海龙 缪拉",
-        "en": "Lostream Myura",
-        "es": null
-      },
-      {
-        "id": "120309047",
-        "zh": "巢食神殿之炎龙",
-        "en": "The Flame Dragon Haunting the Temple",
-        "es": null
-      },
-      {
-        "id": "120309048",
-        "zh": "到临神殿之黑魔女",
-        "en": "The Black Witch Facing the Temple",
-        "es": null
-      },
-      {
-        "id": "120309049",
-        "zh": "死之罪宝-濡血蝠",
-        "en": "Sinful Spoils of Doom - Rciela",
-        "es": null
-      },
-      {
-        "id": "120309060",
-        "zh": "大传说的派对",
-        "en": "Grand Legendary Party",
-        "es": null
-      },
-      {
-        "id": "120309061",
-        "zh": "传说的派对",
-        "en": "Legendary Party",
+        "id": "120309050",
+        "zh": "地下街的一角",
+        "en": "In a Corner of the Underground City",
         "es": null
       }
     ],
