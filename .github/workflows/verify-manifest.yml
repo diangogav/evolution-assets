@@ -38,6 +38,13 @@ jobs:
         with:
           node-version: "22"
 
+      # `scripts/parse-genesys-blog.mjs` imports cheerio, the repo's only runtime
+      # dependency. Without this step that import throws and `npm test` has
+      # failed every run since this workflow was added — a guardrail nobody
+      # could read. The other workflows that run the suite install first.
+      - name: Install dependencies
+        run: npm install
+
       - name: Run script tests
         run: npm test
 
