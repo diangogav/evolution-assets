@@ -118,6 +118,37 @@ jobs:
             echo "No Rush pack changes."
           fi
 
+      # `rush/lflist.conf` is a published client asset, and the client can only
+      # see an update through version-manifest.json — raw.githubusercontent.com
+      # exposes no CORS-readable validator. Its entry used to be refreshed by
+      # repo-assets-manifest.yml, whose `paths:` filter lists this very file;
+      # that never fired, because GitHub does not trigger workflows from a push
+      # made with GITHUB_TOKEN, which is exactly how the commit above lands. The
+      # manifest froze on 2026-08-26 while the file kept moving, so every client
+      # held a stale ban list and Settings showed a permanent server divergence.
+      # Refresh it here instead: same run, no cross-workflow trigger to rely on.
+      #
+      # Placed BEFORE the translation pipeline on purpose — those steps talk to
+      # a wiki and may fail, and the manifest must not be left describing bytes
+      # nobody has until the next successful run.
+      - name: Refresh the mirrored lflist entry in the version manifest
+        # Runs after the commit above so the entry's commitSha/commitDate name
+        # the commit that actually carried the new bytes.
+        run: node scripts/update-repo-assets-manifest.mjs
+
+      - name: Commit if the version manifest changed
+        run: |
+          if [ -n "$(git status --porcelain version-manifest.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add version-manifest.json
+            git commit -m "chore(manifest): refresh repo asset entries"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No version manifest changes."
+          fi
+
       # The translation pipeline runs on every daily pass, after the mirror
       # commit has already landed: each script is incremental and idempotent
       # (a no-op when nothing changed), and a wiki/network failure here must

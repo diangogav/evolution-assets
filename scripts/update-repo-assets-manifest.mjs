@@ -28,7 +28,11 @@ export const REPO_ASSETS = [
 	{ id: "lflist:evolution:jtp", path: "lflist/jtp.lflist.conf" },
 	{ id: "lflist:evolution:jtp-adv-2007-03", path: "lflist/jtp-advanced-marzo-2007.lflist.conf" },
 	// Unlike the others this one is refreshed by the daily Rush mirror, not by
-	// hand — the mirror's push retriggers this workflow through the paths filter.
+	// hand. It is listed here so a hand edit still lands, but the mirror cannot
+	// rely on repo-assets-manifest.yml's `paths:` filter to pick its push up:
+	// GitHub never triggers a workflow from a push made with GITHUB_TOKEN, so
+	// that filter has never once fired for this file. mirror-rush-pack.yml runs
+	// this script itself, in the same run that moves the file.
 	{ id: "lflist:evolution:rush", path: "rush/lflist.conf" },
 	{ id: "cdb:pre-errata:en", path: "cdb/pre-errata.en.cdb" },
 	{ id: "cdb:pre-errata:es", path: "cdb/pre-errata.es.cdb" },
