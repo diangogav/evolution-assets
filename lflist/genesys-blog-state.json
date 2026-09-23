@@ -1967,6 +1967,199 @@
       "url": "https://yugiohblog.konami.com/2026/genesys/what-to-expect-in-the-march-points-update/",
       "status": "no-deltas",
       "deltas": []
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/beyond-the-brave-initial-genesys-points/",
+      "status": "pending",
+      "publishedAt": "2026-09-22",
+      "deltas": [
+        {
+          "name": "Swiftwind Panther Warrior",
+          "oldPoints": null,
+          "newPoints": 3,
+          "code": 77482666
+        },
+        {
+          "name": "Alligator’s Dragon Knight",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": 4881365
+        },
+        {
+          "name": "Dark Time Wizard",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 40235813
+        },
+        {
+          "name": "Shining Umbral Horror",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 3064783
+        },
+        {
+          "name": "V Umbral Horror",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 39053882
+        },
+        {
+          "name": "Gorgonic Umbral Horror",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 76548531
+        },
+        {
+          "name": "Number 104: Masquerade V",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "CXyz Hope Chaos Barian Dragon",
+          "oldPoints": null,
+          "newPoints": 100,
+          "code": 79791695
+        },
+        {
+          "name": "Barian’s Seventh Untopia",
+          "oldPoints": null,
+          "newPoints": 33,
+          "code": null
+        },
+        {
+          "name": "Monster Arms of Atlantis",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "Destiny HERO – Destro-Dogma",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 25158975
+        },
+        {
+          "name": "Destiny HERO – Doom Overlord",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 62542673
+        },
+        {
+          "name": "Destiny HERO – Dreadnought Master",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 54641720
+        },
+        {
+          "name": "Dark City at Midnight",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 4663194
+        },
+        {
+          "name": "Yoa the Plague Ashtra",
+          "oldPoints": null,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Mikumari the Barrier Ashtra",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": null
+        },
+        {
+          "name": "Ashtrashen – Gate to the Worlds Beyond",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": null
+        },
+        {
+          "name": "Theorealized Medius",
+          "oldPoints": null,
+          "newPoints": 80,
+          "code": null
+        },
+        {
+          "name": "Ars Magna “Citrinitas”",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "Adamancipator Risen – Tiamite",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 89913287
+        },
+        {
+          "name": "Adamancipator Mates",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 30068809
+        },
+        {
+          "name": "Spell Shattering Sword",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 77456448
+        },
+        {
+          "name": "Sacred Beasts Skyfall",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "Blitzclique Overvolt",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": null
+        },
+        {
+          "name": "The Great Gallant Bandit",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 24203749
+        },
+        {
+          "name": "Elemental Saga Doriado",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 50208444
+        },
+        {
+          "name": "Hey, Space Trunade!",
+          "oldPoints": null,
+          "newPoints": 11,
+          "code": null
+        },
+        {
+          "name": "Spell Power Attainment",
+          "oldPoints": null,
+          "newPoints": 11,
+          "code": 39123673
+        },
+        {
+          "name": "Chaospawn Bishop",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": null
+        },
+        {
+          "name": "Angelechy Castellan",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "Verre, the Maid of Endymion",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 22623509
+        }
+      ]
     }
   ]
 }
