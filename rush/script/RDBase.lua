@@ -2,7 +2,8 @@
 RushDuel = RushDuel or {}
 
 -- 特殊卡号
-CARD_CODE_OTS = 120000010    -- OTS
+CARD_CODE_OTS = 120000010    -- 外宇宙
+CARD_CODE_FuSiGiNaKoBiTo = 120000011    -- 不可思议的小人
 
 -- 新种族
 RACE_MAGICALKNIGHT = 0x4000000 -- 魔导骑士
