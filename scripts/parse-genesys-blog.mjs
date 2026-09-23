@@ -129,6 +129,9 @@ const FRESH_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
  * (`publishedAt` within 30 days of `now`); for older or undated posts,
  * absence means the points were since removed and counts as convergence.
  *
+ * A delta whose name never resolved to a card id keeps a fresh post pending
+ * so a later run can retry the lookup; past the window it converges too.
+ *
  * Newer posts supersede older ones per card: Konami republishes a card's cost
  * in later updates (including removals to 0), so only the most recently
  * published delta for each card may act — earlier ones count as converged,
@@ -191,8 +194,15 @@ export function applyBlogDeltas(baseCards, stateEntries, { now } = {}) {
 		let allConverged = true;
 
 		for (const delta of entry.deltas) {
-			// Unresolved names can never be applied nor converge; they are inert.
+			// An unresolved name cannot be applied, but the card database may add
+			// it later, so keep the post pending for healPendingPosts to retry
+			// while the delta could still act. Past the freshness window it never
+			// will, and holding the post open would retry forever for nothing.
 			if (delta.code == null) {
+				if (fresh) {
+					allConverged = false;
+				}
+
 				continue;
 			}
 

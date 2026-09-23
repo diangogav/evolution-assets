@@ -249,7 +249,7 @@ test("treats a new-card delta as a conflict when the base holds a different valu
 	assert.equal(conflicts.length, 1);
 });
 
-test("skips unresolved (null code) deltas without blocking spent transition", () => {
+test("converges an unresolved (null code) delta once the post can no longer act", () => {
 	const base = freeze([{ name: "A", points: 5, code: 1 }]);
 	const entries = freeze([
 		{
@@ -263,6 +263,40 @@ test("skips unresolved (null code) deltas without blocking spent transition", ()
 	]);
 	const { cards, state } = applyBlogDeltas(base, entries);
 	assert.deepEqual(cards, [{ name: "A", points: 5, code: 1 }]);
+	assert.equal(state[0].status, "spent");
+});
+
+test("keeps a fresh post pending while an unresolved delta may still resolve", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			publishedAt: "2026-09-22",
+			deltas: [
+				{ name: "A", code: 1, oldPoints: null, newPoints: 5 },
+				{ name: "Unknown", code: null, oldPoints: null, newPoints: 3 },
+			],
+		},
+	]);
+	const { state } = applyBlogDeltas(base, entries, { now: Date.parse("2026-09-23") });
+	assert.equal(state[0].status, "pending");
+});
+
+test("converges an unresolved delta once the post is past the freshness window", () => {
+	const base = freeze([{ name: "A", points: 5, code: 1 }]);
+	const entries = freeze([
+		{
+			url: "u",
+			status: "pending",
+			publishedAt: "2026-01-01",
+			deltas: [
+				{ name: "A", code: 1, oldPoints: null, newPoints: 5 },
+				{ name: "Unknown", code: null, oldPoints: null, newPoints: 3 },
+			],
+		},
+	]);
+	const { state } = applyBlogDeltas(base, entries, { now: Date.parse("2026-09-23") });
 	assert.equal(state[0].status, "spent");
 });
 
