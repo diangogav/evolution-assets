@@ -68,6 +68,68 @@ test("ignores prose lines, even when mixed into the same paragraph", () => {
 	]);
 });
 
+test("parses bare point lines (`Name N`) with null oldPoints", () => {
+	const html = `<p>Swiftwind Panther Warrior 3<br>Dark Time Wizard 5<br>Theorealized Medius 80</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Swiftwind Panther Warrior", oldPoints: null, newPoints: 3 },
+		{ name: "Dark Time Wizard", oldPoints: null, newPoints: 5 },
+		{ name: "Theorealized Medius", oldPoints: null, newPoints: 80 },
+	]);
+});
+
+test("parses bare point lines whose names carry punctuation and trailing tokens", () => {
+	const html = `<p>Alligator&#8217;s Dragon Knight 4<br>Number 104: Masquerade V 20<br>CXyz Hope Chaos Barian Dragon 100<br>Destiny HERO &#8211; Destro-Dogma 10<br>Ars Magna &#8220;Citrinitas&#8221; 10<br>Hey, Space Trunade! 11<br>Verre, the Maid of Endymion 5</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Alligator’s Dragon Knight", oldPoints: null, newPoints: 4 },
+		{ name: "Number 104: Masquerade V", oldPoints: null, newPoints: 20 },
+		{ name: "CXyz Hope Chaos Barian Dragon", oldPoints: null, newPoints: 100 },
+		{ name: "Destiny HERO – Destro-Dogma", oldPoints: null, newPoints: 10 },
+		{ name: "Ars Magna “Citrinitas”", oldPoints: null, newPoints: 10 },
+		{ name: "Hey, Space Trunade!", oldPoints: null, newPoints: 11 },
+		{ name: "Verre, the Maid of Endymion", oldPoints: null, newPoints: 5 },
+	]);
+});
+
+test("parses a single-line bare point paragraph", () => {
+	const html = `<p>Monster Arms of Atlantis 10</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Monster Arms of Atlantis", oldPoints: null, newPoints: 10 },
+	]);
+});
+
+test("keeps trailing digits attached to the name in bare point lines (LV10 case)", () => {
+	const html = `<p>Cyber Dragon LV10 7</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Cyber Dragon LV10", oldPoints: null, newPoints: 7 },
+	]);
+});
+
+test("ignores prose paragraphs that carry no point lines", () => {
+	const html = `<p>The Beyond the Brave Premiere! events aren&#8217;t until next week, but to hold you over until then, we present the initial Genesys points for Beyond the Brave.</p>
+		<p>The OP schedule is pretty tight for this, but expect YCS Ecuador to play with the current points and then Houston to play with the new adjustments.</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), []);
+});
+
+test("does not promote a prose line sharing a paragraph with bare point lines", () => {
+	// The bare `Name N` shape is only honored when every non-empty line of the
+	// paragraph is a point line, so one prose neighbour disarms the whole block
+	// rather than letting the sentence through as a card.
+	//
+	// Known tradeoff: a prose sentence that ends in a standalone number and sits
+	// alone in its own paragraph is indistinguishable from a bare point line and
+	// would be read as one. Konami's prose paragraphs end in sentence
+	// punctuation, so this has not been observed in practice.
+	const html = `<p>These point changes take effect on Monday.<br>Dark Time Wizard 5</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), []);
+});
+
+test("still parses arrow lines in a paragraph mixed with prose and bare lines", () => {
+	const html = `<p>Elfnote Lucina 0-&gt;1<br>These point changes take effect on Monday.<br>Dark Time Wizard 5</p>`;
+	assert.deepEqual(parseGenesysBlogPost(html), [
+		{ name: "Elfnote Lucina", oldPoints: 0, newPoints: 1 },
+	]);
+});
+
 test("returns an empty list for posts without point lines", () => {
 	const html = `<p>Standings after day 1 of the Genesys Championship.</p>`;
 	assert.deepEqual(parseGenesysBlogPost(html), []);
@@ -376,6 +438,10 @@ const SCRATCHPAD =
 const REAL_POST = `${SCRATCHPAD}/konami-post.html`;
 const REAL_CATEGORY = `${SCRATCHPAD}/genesys-cat.html`;
 
+const INITIAL_POINTS_SCRATCHPAD =
+	"/tmp/claude-1000/-home-diango-code-evolution-evolution-assets/ff1a777c-b73f-43d7-963d-222e2964dcc7/scratchpad";
+const REAL_INITIAL_POINTS_POST = `${INITIAL_POINTS_SCRATCHPAD}/post.html`;
+
 test("parses the real Magnificent Monsters post", { skip: !existsSync(REAL_POST) }, () => {
 	const deltas = parseGenesysBlogPost(readFileSync(REAL_POST, "utf-8"));
 	assert.equal(deltas.length, 10);
@@ -389,6 +455,26 @@ test("parses the real Magnificent Monsters post", { skip: !existsSync(REAL_POST)
 test("extracts the date from the real Magnificent Monsters post", { skip: !existsSync(REAL_POST) }, () => {
 	assert.equal(extractPostDate(readFileSync(REAL_POST, "utf-8")), "2026-08-24");
 });
+
+test(
+	"parses the real Beyond the Brave initial-points post",
+	{ skip: !existsSync(REAL_INITIAL_POINTS_POST) },
+	() => {
+		const deltas = parseGenesysBlogPost(readFileSync(REAL_INITIAL_POINTS_POST, "utf-8"));
+		assert.equal(deltas.length, 31);
+		assert.ok(deltas.every((d) => d.oldPoints === null));
+		assert.deepEqual(
+			deltas.find((d) => d.name === "CXyz Hope Chaos Barian Dragon"),
+			{ name: "CXyz Hope Chaos Barian Dragon", oldPoints: null, newPoints: 100 },
+		);
+		assert.deepEqual(
+			deltas.find((d) => d.name === "Number 104: Masquerade V"),
+			{ name: "Number 104: Masquerade V", oldPoints: null, newPoints: 20 },
+		);
+		// The post opens and closes with prose paragraphs; none of them may leak in.
+		assert.ok(deltas.every((d) => !d.name.includes("Genesys points for")));
+	},
+);
 
 test("extracts post URLs from the real category page", { skip: !existsSync(REAL_CATEGORY) }, () => {
 	const urls = extractGenesysPostUrls(readFileSync(REAL_CATEGORY, "utf-8"));

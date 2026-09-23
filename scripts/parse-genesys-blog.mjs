@@ -46,10 +46,28 @@ export function extractPostDate(html) {
 const ADJUSTMENT_LINE = /^(.+?)\s+(\d+)\s*->\s*(\d+)$/;
 const NEW_CARD_LINE = /^(.+?)\s*->\s*(\d+)$/;
 
+// Initial-points posts for a new set omit the arrow entirely: `Name N`. Same
+// standalone-number rule as above, so a name ending in digits (`... LV10 7`)
+// keeps its own.
+const BARE_POINT_LINE = /^(.+?)\s+(\d+)$/;
+
+// `Name N` is loose enough to swallow a prose sentence that happens to end in a
+// number, so it is only honored inside a paragraph whose every non-empty line
+// is itself a point line. Konami's prose paragraphs are single sentences ending
+// in punctuation, so they never qualify, and one prose neighbour disarms the
+// bare form for the whole block instead of promoting the sentence to a card.
+const acceptsBareLines = (lines) =>
+	lines.some((line) => BARE_POINT_LINE.test(line)) &&
+	lines.every(
+		(line) =>
+			ADJUSTMENT_LINE.test(line) || NEW_CARD_LINE.test(line) || BARE_POINT_LINE.test(line),
+	);
+
 /**
  * Parses a Konami blog post into point deltas. Point lines live in paragraph
  * blocks separated by `<br>`; prose lines in the same paragraph are ignored.
- * `oldPoints` is null for new-card lines that carry no previous cost.
+ * `oldPoints` is null for lines that carry no previous cost (`Name -> N` and
+ * the arrowless `Name N` of initial-points posts).
  *
  * @param {string} html
  * @returns {Array<{ name: string, oldPoints: number | null, newPoints: number }>}
@@ -59,8 +77,14 @@ export function parseGenesysBlogPost(html) {
 	const deltas = [];
 
 	$("p").each((_, el) => {
-		for (const raw of $(el).text().split("\n")) {
-			const line = raw.trim();
+		const lines = $(el)
+			.text()
+			.split("\n")
+			.map((raw) => raw.trim())
+			.filter((line) => line !== "");
+		const bareAllowed = acceptsBareLines(lines);
+
+		for (const line of lines) {
 			const adjustment = line.match(ADJUSTMENT_LINE);
 
 			if (adjustment) {
@@ -76,6 +100,13 @@ export function parseGenesysBlogPost(html) {
 
 			if (fresh) {
 				deltas.push({ name: fresh[1].trim(), oldPoints: null, newPoints: Number(fresh[2]) });
+				continue;
+			}
+
+			const bare = bareAllowed ? line.match(BARE_POINT_LINE) : null;
+
+			if (bare) {
+				deltas.push({ name: bare[1].trim(), oldPoints: null, newPoints: Number(bare[2]) });
 			}
 		}
 	});
