@@ -1,20 +1,28 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-19T10:29:04.730Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35437510855",
+  "generatedAt": "2026-09-23T10:58:53.410Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35851836155",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120109068",
-          "title": "Lostream Nereides"
+          "id": "120309051",
+          "title": "Liliputian Friends"
         },
         {
-          "id": "120309050",
-          "title": "In a Corner of the Underground City"
+          "id": "120309052",
+          "title": "The Very Kind Human"
+        },
+        {
+          "id": "120309053",
+          "title": "The Connected Liliputians"
+        },
+        {
+          "id": "120309054",
+          "title": "The Nomnom Liliputian"
         }
       ],
       "unresolved": {
@@ -43,7 +51,7 @@
         ]
       },
       "noBlock": {
-        "count": 49,
+        "count": 50,
         "sample": [
           "120000000",
           "120000001",
@@ -73,18 +81,20 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120109068",
-        "120309050"
+        "120309051",
+        "120309052",
+        "120309053",
+        "120309054"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3319,
+      "entries": 3323,
       "coverage": {
-        "en": 3319,
-        "en_lore": 3313,
-        "en_req": 2892,
+        "en": 3323,
+        "en_lore": 3317,
+        "en_req": 2896,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -101,39 +111,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 78
+            "rows": 83
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3486
+        "total": 3491
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3319
+            "en": 3323
           },
           "desc": {
-            "en": 3313
+            "en": 3317
           },
           "requirement": {
-            "en": 2892
+            "en": 2896
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2465
+            "en": 2469
           },
           "desc": {
             "es": 523,
-            "en": 2790
+            "en": 2794
           },
           "requirement": {
             "es": 301,
-            "en": 2586
+            "en": 2590
           }
         }
       },
@@ -146,14 +156,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4521,
+        "total": 4527,
         "en": {
-          "replaced": 3615,
-          "nonChinese": 3615
+          "replaced": 3619,
+          "nonChinese": 3619
         },
         "es": {
-          "replaced": 3603,
-          "nonChinese": 3603
+          "replaced": 3607,
+          "nonChinese": 3607
         }
       }
     },
@@ -170,15 +180,33 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120109068",
-        "zh": "云海龙 棘颊双锯龙",
-        "en": "Lostream Nereides",
+        "id": "120000011",
+        "zh": "不可思议的小人",
+        "en": null,
         "es": null
       },
       {
-        "id": "120309050",
-        "zh": "地下街的一角",
-        "en": "In a Corner of the Underground City",
+        "id": "120309051",
+        "zh": "小人的伙伴们",
+        "en": "Liliputian Friends",
+        "es": null
+      },
+      {
+        "id": "120309052",
+        "zh": "温柔的人类小姐",
+        "en": "The Very Kind Human",
+        "es": null
+      },
+      {
+        "id": "120309053",
+        "zh": "相连的小人",
+        "en": "The Connected Liliputians",
+        "es": null
+      },
+      {
+        "id": "120309054",
+        "zh": "啃食的小人",
+        "en": "The Nomnom Liliputian",
         "es": null
       }
     ],
@@ -210,7 +238,7 @@
       ]
     },
     "noBlock": {
-      "count": 49,
+      "count": 50,
       "sample": [
         "120000000",
         "120000001",

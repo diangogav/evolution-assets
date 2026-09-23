@@ -26527,6 +26527,38 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309051": {
+    "en": "Liliputian Friends",
+    "en_lore": "Excavate the top 4 cards of your Deck. This card gains ATK equal to [the total number of excavated Level 1 monsters and \"The Connected Liliputians\"] x 700 until the end of your opponent's next turn. Place the excavated cards on the bottom of your Deck in any order.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309052": {
+    "en": "The Very Kind Human",
+    "en_lore": "Add up to 2 \"The Mysterious Liliputians\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"The Very Kind Human\".",
+    "en_req": "Show 1 other card on your field, and place it on top of the owner's Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309053": {
+    "en": "The Connected Liliputians",
+    "en_lore": "Place 1 \"The Mysterious Liluputians\" from your Graveyard and this card from your field on top of the owner's Deck in any order.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309054": {
+    "en": "The Nomnom Liliputian",
+    "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can place 1 \"The Very Kind Human\" from your Graveyard on top of the Deck. If you do, gain 600 LP.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card, change this Attack Position card to face-up Defense Position.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309060": {
     "en": "Grand Legendary Party",
     "en_lore": "Special Summon 1 Legend monster from either Graveyard face-up to your field. This turn, you cannot activate the effect of \"Grand Legendary Party\".",
