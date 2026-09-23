@@ -54,6 +54,10 @@ const CARD_NAME_OVERRIDES = new Map([
 	["Artmage Vandalism - Assault -", 1122030],
 	// Artmage Varnish -Alteration- (the blog spaces the inner dashes)
 	["Artmage Varnish - Alteration -", 74011784],
+	// Ashtrashen - Gateway to the Worlds Beyond (the blog drops the "way")
+	["Ashtrashen - Gate to the Worlds Beyond", 2906939],
+	// Mikumari the Banisher Ashtra (preliminary blog translation)
+	["Mikumari the Barrier Ashtra", 38114652],
 ]);
 
 /**

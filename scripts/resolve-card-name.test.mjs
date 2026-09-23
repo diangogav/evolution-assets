@@ -51,6 +51,11 @@ test("maps blog typos and renamings to their ids, including curly-quoted input",
 	assert.equal(overrideCardCode("Artmage Varnish – Alteration –"), 74011784);
 });
 
+test("maps Beyond the Brave preliminary blog names to their ids", () => {
+	assert.equal(overrideCardCode("Ashtrashen – Gate to the Worlds Beyond"), 2906939);
+	assert.equal(overrideCardCode("Mikumari the Barrier Ashtra"), 38114652);
+});
+
 test("returns null for names without an override", () => {
 	assert.equal(overrideCardCode("Abyss Dweller"), null);
 });
