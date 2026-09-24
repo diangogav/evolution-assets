@@ -26359,10 +26359,26 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309026": {
+    "en": "Dimension Pramma",
+    "en_lore": "Send the top 3 cards of your Deck to the Graveyard. Then, if you have 3 or more different Types in your Graveyard, you can add 1 Level 8 LIGHT Attribute Cyberse Type monster from your Graveyard to your hand. This turn, you can only attack with Level 8 or higher Cyberse Type monsters.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309027": {
     "en": "Dimension Channel",
     "en_lore": "Increase this card's Level by 4 until the end of this turn. Then, if you shuffled an EARTH Attribute Cyberse Type Ritual Monster to meet the requirement, you can destroy 1 Spell/Trap Card on your opponent's field.",
     "en_req": "Shuffle 2 monsters from your Graveyard into the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309028": {
+    "en": "Reifu the Dimensional Sworn Ally",
+    "en_lore": "Make 1 face-up monster on your opponent's field lose 400 ATK until the end of this turn. Then, you can add 1 \"Fuden Issen\" from your Graveyard to your hand.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card, reveal 1 Cyberse Type monster in your hand.",
     "es": "",
     "es_lore": "",
     "es_req": ""

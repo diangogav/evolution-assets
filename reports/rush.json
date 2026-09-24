@@ -1,28 +1,20 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-23T10:58:53.410Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35851836155",
+  "generatedAt": "2026-09-24T11:18:15.306Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35992194671",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120309051",
-          "title": "Liliputian Friends"
+          "id": "120309026",
+          "title": "Dimension Pramma"
         },
         {
-          "id": "120309052",
-          "title": "The Very Kind Human"
-        },
-        {
-          "id": "120309053",
-          "title": "The Connected Liliputians"
-        },
-        {
-          "id": "120309054",
-          "title": "The Nomnom Liliputian"
+          "id": "120309028",
+          "title": "Reifu the Dimensional Sworn Ally"
         }
       ],
       "unresolved": {
@@ -81,20 +73,18 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120309051",
-        "120309052",
-        "120309053",
-        "120309054"
+        "120309026",
+        "120309028"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3323,
+      "entries": 3325,
       "coverage": {
-        "en": 3323,
-        "en_lore": 3317,
-        "en_req": 2896,
+        "en": 3325,
+        "en_lore": 3319,
+        "en_req": 2898,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -111,39 +101,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 83
+            "rows": 85
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3491
+        "total": 3493
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3323
+            "en": 3325
           },
           "desc": {
-            "en": 3317
+            "en": 3319
           },
           "requirement": {
-            "en": 2896
+            "en": 2898
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2469
+            "en": 2471
           },
           "desc": {
             "es": 523,
-            "en": 2794
+            "en": 2796
           },
           "requirement": {
             "es": 301,
-            "en": 2590
+            "en": 2592
           }
         }
       },
@@ -156,14 +146,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4527,
+        "total": 4533,
         "en": {
-          "replaced": 3619,
-          "nonChinese": 3619
+          "replaced": 3622,
+          "nonChinese": 3622
         },
         "es": {
-          "replaced": 3607,
-          "nonChinese": 3607
+          "replaced": 3610,
+          "nonChinese": 3610
         }
       }
     },
@@ -180,33 +170,15 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120000011",
-        "zh": "不可思议的小人",
-        "en": null,
+        "id": "120309026",
+        "zh": "次元离子员",
+        "en": "Dimension Pramma",
         "es": null
       },
       {
-        "id": "120309051",
-        "zh": "小人的伙伴们",
-        "en": "Liliputian Friends",
-        "es": null
-      },
-      {
-        "id": "120309052",
-        "zh": "温柔的人类小姐",
-        "en": "The Very Kind Human",
-        "es": null
-      },
-      {
-        "id": "120309053",
-        "zh": "相连的小人",
-        "en": "The Connected Liliputians",
-        "es": null
-      },
-      {
-        "id": "120309054",
-        "zh": "啃食的小人",
-        "en": "The Nomnom Liliputian",
+        "id": "120309028",
+        "zh": "次元的盟友 灵符",
+        "en": "Reifu the Dimensional Sworn Ally",
         "es": null
       }
     ],

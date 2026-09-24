@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24T11:18:06.784Z",
+  "generatedAt": "2026-09-24T11:18:15.213Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -144,33 +144,33 @@
     },
     "cdb:rush": {
       "path": "cdb/rush.cdb.gz",
-      "sha256": "8868ce6c2e17efa8cb177c34a7155f36c9035e820da4c99ca28981a3933c4d83",
-      "bytes": 1458176,
-      "upstreamUrl": null,
-      "upstreamLastModified": null,
-      "mirroredAt": "2026-09-23T10:58:53.330Z",
-      "commitSha": "5e2a0c787d383ce3d09d2def9cba5e50a4ce1e05",
-      "commitDate": "2026-09-19T10:29:04Z"
-    },
-    "cdb:rush:en": {
-      "path": "cdb/rush.en.cdb.gz",
-      "sha256": "b9e873cfac5fcfdf7a3b14e2726fececdce53574e5ac6409888bbcb4951e331d",
+      "sha256": "69bab1896314c0b99f884f2f9091dca0a0f0c0b0f541496043e00c7a0e72b241",
       "bytes": 1462272,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-23T10:58:53.330Z",
-      "commitSha": "5e2a0c787d383ce3d09d2def9cba5e50a4ce1e05",
-      "commitDate": "2026-09-19T10:29:04Z"
+      "mirroredAt": "2026-09-24T11:18:15.213Z",
+      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
+      "commitDate": "2026-09-23T10:58:53Z"
+    },
+    "cdb:rush:en": {
+      "path": "cdb/rush.en.cdb.gz",
+      "sha256": "742456049d62a1279d1ace5778685b746ba01bc7dc118f41d2687929ccd344c9",
+      "bytes": 1466368,
+      "upstreamUrl": null,
+      "upstreamLastModified": null,
+      "mirroredAt": "2026-09-24T11:18:15.213Z",
+      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
+      "commitDate": "2026-09-23T10:58:53Z"
     },
     "cdb:rush:es": {
       "path": "cdb/rush.es.cdb.gz",
-      "sha256": "0e9ac752b0fb6aa1b3df94c27c7465eb61866aa0aa26674399d1d12ca1b9b19d",
-      "bytes": 1495040,
+      "sha256": "189478403ac04414512dc923c3eda21a8fc760df637670c3bfa66b85720629b3",
+      "bytes": 1499136,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-23T10:58:53.330Z",
-      "commitSha": "5e2a0c787d383ce3d09d2def9cba5e50a4ce1e05",
-      "commitDate": "2026-09-19T10:29:04Z"
+      "mirroredAt": "2026-09-24T11:18:15.213Z",
+      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
+      "commitDate": "2026-09-23T10:58:53Z"
     },
     "lflist:evolution:rush": {
       "path": "rush/lflist.conf",
