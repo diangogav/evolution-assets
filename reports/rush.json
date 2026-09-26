@@ -1,20 +1,24 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-24T11:18:15.306Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/35992194671",
+  "generatedAt": "2026-09-26T16:48:33.314Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/36256756979",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120309026",
-          "title": "Dimension Pramma"
+          "id": "120309011",
+          "title": "Koumori Dragon the Magical Dragon"
         },
         {
-          "id": "120309028",
-          "title": "Reifu the Dimensional Sworn Ally"
+          "id": "120309039",
+          "title": "Lostream Shell"
+        },
+        {
+          "id": "120309043",
+          "title": "Lostream Reading"
         }
       ],
       "unresolved": {
@@ -73,18 +77,19 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120309026",
-        "120309028"
+        "120309011",
+        "120309039",
+        "120309043"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3325,
+      "entries": 3328,
       "coverage": {
-        "en": 3325,
-        "en_lore": 3319,
-        "en_req": 2898,
+        "en": 3328,
+        "en_lore": 3322,
+        "en_req": 2901,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -101,39 +106,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 85
+            "rows": 88
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3493
+        "total": 3496
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3325
+            "en": 3328
           },
           "desc": {
-            "en": 3319
+            "en": 3322
           },
           "requirement": {
-            "en": 2898
+            "en": 2901
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2471
+            "en": 2474
           },
           "desc": {
             "es": 523,
-            "en": 2796
+            "en": 2799
           },
           "requirement": {
             "es": 301,
-            "en": 2592
+            "en": 2595
           }
         }
       },
@@ -146,14 +151,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4533,
+        "total": 4539,
         "en": {
-          "replaced": 3622,
-          "nonChinese": 3622
+          "replaced": 3624,
+          "nonChinese": 3624
         },
         "es": {
-          "replaced": 3610,
-          "nonChinese": 3610
+          "replaced": 3612,
+          "nonChinese": 3612
         }
       }
     },
@@ -170,15 +175,21 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309026",
-        "zh": "次元离子员",
-        "en": "Dimension Pramma",
+        "id": "120309011",
+        "zh": "魔龙恶魔龙",
+        "en": "Koumori Dragon the Magical Dragon",
         "es": null
       },
       {
-        "id": "120309028",
-        "zh": "次元的盟友 灵符",
-        "en": "Reifu the Dimensional Sworn Ally",
+        "id": "120309039",
+        "zh": "云海龙 谢尔",
+        "en": "Lostream Shell",
+        "es": null
+      },
+      {
+        "id": "120309043",
+        "zh": "风之相册",
+        "en": "Lostream Reading",
         "es": null
       }
     ],

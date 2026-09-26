@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-26T12:18:09.050Z",
+  "generatedAt": "2026-09-26T16:48:33.198Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -144,33 +144,33 @@
     },
     "cdb:rush": {
       "path": "cdb/rush.cdb.gz",
-      "sha256": "69bab1896314c0b99f884f2f9091dca0a0f0c0b0f541496043e00c7a0e72b241",
+      "sha256": "61ca6e4eba0fc8ebab11b0d5bd67477abc587d80324bcd6ab6409ce7c1f90c8d",
       "bytes": 1462272,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-24T11:18:15.213Z",
-      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
-      "commitDate": "2026-09-23T10:58:53Z"
+      "mirroredAt": "2026-09-26T16:48:33.198Z",
+      "commitSha": "ac8ed5bbd266503f70a166edb28b7e1ab686565d",
+      "commitDate": "2026-09-24T11:18:15Z"
     },
     "cdb:rush:en": {
       "path": "cdb/rush.en.cdb.gz",
-      "sha256": "742456049d62a1279d1ace5778685b746ba01bc7dc118f41d2687929ccd344c9",
+      "sha256": "c80eb336aaba51dbcfc6a3e4ba2b95c6af6e1eedbe526fdabb36b8fa5271ba4c",
       "bytes": 1466368,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-24T11:18:15.213Z",
-      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
-      "commitDate": "2026-09-23T10:58:53Z"
+      "mirroredAt": "2026-09-26T16:48:33.198Z",
+      "commitSha": "ac8ed5bbd266503f70a166edb28b7e1ab686565d",
+      "commitDate": "2026-09-24T11:18:15Z"
     },
     "cdb:rush:es": {
       "path": "cdb/rush.es.cdb.gz",
-      "sha256": "189478403ac04414512dc923c3eda21a8fc760df637670c3bfa66b85720629b3",
+      "sha256": "87389fb107bf1c1c4231a867f9c79ab736b9bd587c9dc0ebd9f2f8ae27e33d41",
       "bytes": 1499136,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-24T11:18:15.213Z",
-      "commitSha": "de4755dd257bf653705ce3c952d921e212d5a1e2",
-      "commitDate": "2026-09-23T10:58:53Z"
+      "mirroredAt": "2026-09-26T16:48:33.198Z",
+      "commitSha": "ac8ed5bbd266503f70a166edb28b7e1ab686565d",
+      "commitDate": "2026-09-24T11:18:15Z"
     },
     "lflist:evolution:rush": {
       "path": "rush/lflist.conf",

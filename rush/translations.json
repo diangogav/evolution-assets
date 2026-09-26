@@ -26279,6 +26279,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309011": {
+    "en": "Koumori Dragon the Magical Dragon",
+    "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can Special Summon 1 Level 4 Dragon Type Effect Monster with 1500 ATK from your Graveyard to your field in face-up Defense Position. This turn, you can only attack with DARK Attribute monsters.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309012": {
     "en": "Blackland Magic Dragon",
     "en_lore": "Destroy 1 Spell/Trap Card on your opponent's field. This turn, you can only attack with DARK Attribute monsters.",
@@ -26463,6 +26471,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309039": {
+    "en": "Lostream Shell",
+    "en_lore": "Draw 1 card. Then, you can equip 1 WIND Attribute Sea Serpent Type Union monster from your Graveyard to 1 face-up monster on your field that can equip to it as an Equip Spell Card as if it were equipped by that monster's effect.",
+    "en_req": "Send 1 WIND Attribute Sea Serpent Type monster from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309040": {
     "en": "Lostream Polka",
     "en_lore": "Equip this card to 1 face-up WIND Attribute Sea Serpent Type monster on your field as an Equip Spell Card with the following effect. Then, you can add 1 Level 5 or higher WIND Attribute Sea Serpent Type monster from your Graveyard to your hand. ●While the equipped monster is face-up on your field, your opponent cannot declare an attack on monsters that are not equipped with an Equip Spell Card.",
@@ -26483,6 +26499,14 @@
     "en": "Lostream Gift",
     "en_lore": "Draw 2 cards. Then, you can Special Summon 1 WIND Attribute Sea Serpent Type monster from your hand face-up to your field. This turn, you can only attack with WIND Attribute Sea Serpent Type monsters.",
     "en_req": "Send 1 other face-up Spell Card from your field to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309043": {
+    "en": "Lostream Reading",
+    "en_lore": "Add up to 2 face-up Union Monster Cards from your Spell & Trap Zone to the hand. This turn, you can only attack with WIND Attribute Sea Serpent Type monsters.",
+    "en_req": "During a turn you have not activated \"Lostream Reading\", place 2 Sea Serpent Type monsters from your Graveyard on the bottom of the Deck in any order.",
     "es": "",
     "es_lore": "",
     "es_req": ""
