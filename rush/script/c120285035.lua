@@ -23,7 +23,7 @@ end
 function cm.operation1(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
-		local atk=Duel.GetMatchingGroupCount(cm.atkfilter,tp,0,LOCATION_GRAVE,nil)*400
+		local atk=Duel.GetMatchingGroupCount(cm.atkfilter,tp,LOCATION_GRAVE,0,nil)*400
 		RD.AttachAtkDef(e,c,atk,0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 	end
 end
