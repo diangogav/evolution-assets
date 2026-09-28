@@ -111,4 +111,4 @@ dropped duplicates: 0
 `npm test`: 325 tests, 321 pass, 0 fail, 4 skipped (baseline 315/311/0/4; the
 +10 is the new test file).
 
-Not pushed. Landing the branch is the user's call.
+Landed on `main` as `66c74f6` (T1) and `cf25567` (T2).
