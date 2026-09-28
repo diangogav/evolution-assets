@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,11 +12,17 @@ import {
 	extractPostDate,
 	parseGenesysBlogPost,
 } from "./parse-genesys-blog.mjs";
+import { correctCardIdentities, readCardIdentity } from "./resolve-card-identity.mjs";
 import { normalizeCardName, overrideCardCode } from "./resolve-card-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "lflist", "genesys.lflist.conf");
 const STATE_PATH = join(__dirname, "..", "lflist", "genesys-blog-state.json");
+
+// The repo tracks only the gzipped database; the raw file exists solely on a
+// machine that has decompressed it itself (e.g. after build-rush-cdb.mjs).
+const CDB_RAW_PATH = join(__dirname, "..", "cdb", "base.en.cdb");
+const CDB_PATH = existsSync(CDB_RAW_PATH) ? CDB_RAW_PATH : `${CDB_RAW_PATH}.gz`;
 
 const SOURCE_URL = "https://www.yugioh-card.com/en/genesys/";
 const BLOG_CATEGORY_URL = "https://yugiohblog.konami.com/category/genesys/";
@@ -175,6 +182,42 @@ async function applyBlogOverlay(cards) {
 	}
 }
 
+// Corrects alternate-art codes to their base card against the repo's own
+// database — the operative identity authority, see
+// odd/tasks/genesys-cdb-identity-validation.md. Any failure to read the
+// database falls back to the uncorrected list, the same way applyBlogOverlay
+// falls back to the table-only list: a generator that dies on a missing
+// database is worse than one that lags.
+function applyIdentityCorrections(cards) {
+	let identity;
+
+	try {
+		identity = readCardIdentity(CDB_PATH);
+	} catch (error) {
+		console.warn("Card identity lookup failed; keeping codes uncorrected:", error);
+
+		return cards;
+	}
+
+	const { cards: corrected, corrections, unknown, dropped } = correctCardIdentities(cards, identity);
+
+	for (const correction of corrections) {
+		console.log(`Card identity corrected: ${correction.name} ${correction.from} -> ${correction.to}`);
+	}
+	if (unknown.length > 0) {
+		console.warn(
+			`${unknown.length} card codes are not in the database yet: ${unknown.map((card) => card.code).join(", ")}`,
+		);
+	}
+	for (const duplicate of dropped) {
+		console.warn(
+			`Card identity correction dropped (duplicate): ${duplicate.name} ${duplicate.from} -> ${duplicate.to}`,
+		);
+	}
+
+	return corrected;
+}
+
 async function generate() {
 	console.log("Starting Genesys lflist generation...");
 
@@ -209,10 +252,11 @@ async function generate() {
 	}
 
 	const merged = await applyBlogOverlay(cards);
+	const identified = applyIdentityCorrections(merged);
 
-	await writeFile(OUTPUT_PATH, formatGenesysLflist(merged), "utf-8");
+	await writeFile(OUTPUT_PATH, formatGenesysLflist(identified), "utf-8");
 
-	const pointed = merged.filter((card) => card.points > 0).length;
+	const pointed = identified.filter((card) => card.points > 0).length;
 	console.log(`Wrote ${pointed} pointed cards to ${OUTPUT_PATH}`);
 	if (notFound.length > 0) {
 		console.warn(`${notFound.length} cards could not be resolved: ${notFound.join(", ")}`);
