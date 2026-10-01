@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30T13:57:58.757Z",
+  "generatedAt": "2026-10-01T12:39:04.172Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -144,31 +144,31 @@
     },
     "cdb:rush": {
       "path": "cdb/rush.cdb.gz",
-      "sha256": "61ca6e4eba0fc8ebab11b0d5bd67477abc587d80324bcd6ab6409ce7c1f90c8d",
+      "sha256": "a0d77a272bc9f2a8ffcec9d21b6326c1234c2eb9a861fb3af267d7d36307627f",
       "bytes": 1462272,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-27T11:36:48.277Z",
+      "mirroredAt": "2026-10-01T12:39:04.172Z",
       "commitSha": "06bc78c65d4cb953916e6de93c48a4047571d4b6",
       "commitDate": "2026-09-26T16:48:33Z"
     },
     "cdb:rush:en": {
       "path": "cdb/rush.en.cdb.gz",
-      "sha256": "c80eb336aaba51dbcfc6a3e4ba2b95c6af6e1eedbe526fdabb36b8fa5271ba4c",
+      "sha256": "5ce0141383c58b32356a75883025559f2c696f1f6cc7f227cac8c079612717e8",
       "bytes": 1466368,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-27T11:36:48.277Z",
+      "mirroredAt": "2026-10-01T12:39:04.172Z",
       "commitSha": "06bc78c65d4cb953916e6de93c48a4047571d4b6",
       "commitDate": "2026-09-26T16:48:33Z"
     },
     "cdb:rush:es": {
       "path": "cdb/rush.es.cdb.gz",
-      "sha256": "87389fb107bf1c1c4231a867f9c79ab736b9bd587c9dc0ebd9f2f8ae27e33d41",
+      "sha256": "b24bf234bf345a325e5a70fe07e2009c529812cd3c695df9656b53a7f6e97c9e",
       "bytes": 1499136,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-27T11:36:48.277Z",
+      "mirroredAt": "2026-10-01T12:39:04.172Z",
       "commitSha": "06bc78c65d4cb953916e6de93c48a4047571d4b6",
       "commitDate": "2026-09-26T16:48:33Z"
     },

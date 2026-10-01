@@ -1,28 +1,15 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-09-26T16:48:33.314Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/36256756979",
+  "generatedAt": "2026-10-01T12:39:04.262Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/36863134965",
   "steps": [
     {
       "step": "resolve-pages",
-      "status": "changed",
-      "mapped": [
-        {
-          "id": "120309011",
-          "title": "Koumori Dragon the Magical Dragon"
-        },
-        {
-          "id": "120309039",
-          "title": "Lostream Shell"
-        },
-        {
-          "id": "120309043",
-          "title": "Lostream Reading"
-        }
-      ],
+      "status": "unchanged",
+      "mapped": [],
       "unresolved": {
-        "count": 116,
+        "count": 119,
         "sample": [
           "120181011",
           "120195004",
@@ -75,12 +62,8 @@
     },
     {
       "step": "fetch-translations",
-      "status": "changed",
-      "gained": [
-        "120309011",
-        "120309039",
-        "120309043"
-      ],
+      "status": "unchanged",
+      "gained": [],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
@@ -106,14 +89,14 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 88
+            "rows": 91
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3496
+        "total": 3499
       },
       "variants": {
         "en": {
@@ -151,14 +134,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4539,
+        "total": 4543,
         "en": {
-          "replaced": 3624,
-          "nonChinese": 3624
+          "replaced": 3627,
+          "nonChinese": 3627
         },
         "es": {
-          "replaced": 3612,
-          "nonChinese": 3612
+          "replaced": 3615,
+          "nonChinese": 3615
         }
       }
     },
@@ -175,28 +158,28 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309011",
-        "zh": "魔龙恶魔龙",
-        "en": "Koumori Dragon the Magical Dragon",
+        "id": "120309055",
+        "zh": "游乐园挂饰 夜场",
+        "en": null,
         "es": null
       },
       {
-        "id": "120309039",
-        "zh": "云海龙 谢尔",
-        "en": "Lostream Shell",
+        "id": "120309056",
+        "zh": "游乐园挂饰 日场",
+        "en": null,
         "es": null
       },
       {
-        "id": "120309043",
-        "zh": "风之相册",
-        "en": "Lostream Reading",
+        "id": "120309057",
+        "zh": "游乐园挂饰纪念品",
+        "en": null,
         "es": null
       }
     ],
     "cardsRemoved": [],
     "translationsAdded": [],
     "unresolved": {
-      "count": 116,
+      "count": 119,
       "sample": [
         "120181011",
         "120195004",
