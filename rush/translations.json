@@ -26599,6 +26599,22 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309055": {
+    "en": "Attrac Charm Sowaru",
+    "en_lore": "Equip this card to 1 face-up monster on your field as an Equip Spell Card with the following effect. Then, if you equipped this card to \"Attrac Charm Midi\", you can destroy 1 face-down card in your opponent's Spell & Trap Zone. ●The equipped monster gains 500 ATK.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309056": {
+    "en": "Attrac Charm Midi",
+    "en_lore": "Equip this card to 1 face-up monster on your field as an Equip Spell Card with the following effect. ●The equipped monster inflicts piercing battle damage.",
+    "en_req": "Send the bottom 2 cards of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309060": {
     "en": "Grand Legendary Party",
     "en_lore": "Special Summon 1 Legend monster from either Graveyard face-up to your field. This turn, you cannot activate the effect of \"Grand Legendary Party\".",
