@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T16:13:45.115Z",
+  "generatedAt": "2026-10-05T23:32:45.153Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -84,11 +84,11 @@
     },
     "lflist:evolution:genesys": {
       "path": "lflist/genesys.lflist.conf",
-      "sha256": "64fdc27a2d7d5eab203c35c64551ca3556927d639968b4cf1ca04c6ee66bcfdb",
-      "bytes": 32525,
+      "sha256": "af224627cf0dc93313dc48e1d586bfe414dcd9280757fd62596672a449ccef79",
+      "bytes": 50802,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-09-28T22:55:00.557Z",
+      "mirroredAt": "2026-10-05T23:32:45.153Z",
       "commitSha": "ac644e8422f363abca38e1cdefc575751762c20c",
       "commitDate": "2026-09-28T17:40:28Z"
     },
