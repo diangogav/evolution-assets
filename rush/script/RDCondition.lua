@@ -317,6 +317,26 @@ function RushDuel.IsCanAttachEffectIndes(card, player, value)
     local effects = RushDuel.GetAttachEffects(card, EFFECT_INDESTRUCTABLE_EFFECT)
     return RushDuel.CheckValueEffectIndesType(player, effects, value)
 end
+-- 条件: 可否赋予效果 - 不会因效果回到手卡
+function RushDuel.IsCanAttachCannotToHandEffect(card, value)
+    local values = RushDuel.GetEffectValues(card, EFFECT_CANNOT_TO_HAND_EFFECT)
+    for _, val in ipairs(values) do
+        if val == 1 then
+            return false
+        end
+    end
+    return true
+end
+-- 条件: 可否赋予效果 - 不会因效果回到手卡
+function RushDuel.IsCanAttachCannotToDeckEffect(card, value)
+    local values = RushDuel.GetEffectValues(card, EFFECT_CANNOT_TO_DECK_EFFECT)
+    for _, val in ipairs(values) do
+        if val == 1 then
+            return false
+        end
+    end
+    return true
+end
 -- 条件: 可否赋予效果 - 攻击宣言时, 对方不能把陷阱卡发动
 function RushDuel.IsCanAttachAttackNotChainTrap(card)
     local player = 1 - card:GetControler()

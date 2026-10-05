@@ -87,6 +87,14 @@ function RushDuel.AttachIndesCount(e, card, count, value, desc, reset, forced)
     e1:SetCountLimit(count)
     return e1
 end
+-- 赋予: 不会因效果回到手卡
+function RushDuel.AttachCannotToHandEffect(e, card, value, desc, reset, forced)
+    return RushDuel.CreateSingleEffect(e, desc, card, EFFECT_CANNOT_TO_HAND_EFFECT, value, reset, forced)
+end
+-- 赋予: 不会因效果回到手卡
+function RushDuel.AttachCannotToDeckEffect(e, card, value, desc, reset, forced)
+    return RushDuel.CreateSingleEffect(e, desc, card, EFFECT_CANNOT_TO_DECK_EFFECT, value, reset, forced)
+end
 -- 赋予: 战斗不会让自己受到伤害
 function RushDuel.AttachAvoidBattleDamage(e, card, desc, reset, forced)
     local e1 =  RushDuel.CreateSingleEffect(e, desc, card, EFFECT_AVOID_BATTLE_DAMAGE, 1, reset, forced)
