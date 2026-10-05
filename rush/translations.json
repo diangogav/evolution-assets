@@ -26615,6 +26615,30 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120309057": {
+    "en": "Attrac Charm Souvenir",
+    "en_lore": "Special Summon 1 Level 4 Beast-Warrior Type Union monster from your Graveyard face-up to your field. Then, if you have a face-up \"Attrac Charm Sowaru\" and \"Attrac Charm Midi\" on your field, you can destroy 1 face-up Level 8 or lower monster on your opponent's field.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309058": {
+    "en": "Micha the Symbol of the Angels",
+    "en_lore": "Draw 1 card. Then, if you have \"Lufer the Symbol of the Devils\" in your Graveyard, you can Special Summon 1 Level 4 monster from your opponent's Graveyard face-up to your field.",
+    "en_req": "There are 2 or more different Types among the face-up monsters on the field during a turn you have not activated \"Micha the Symbol of the Angels\".",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120309059": {
+    "en": "Lufer the Symbol of the Devils",
+    "en_lore": "Choose 2 Attack Position monsters on your field with 2500 or less ATK and different Types. This turn, those monsters cannot be destroyed by card effects or returned to the hand, Deck, or Extra Deck by card effects. Then, if you have \"Micha the Symbol of the Angels\" in your Graveyard, you can return 1 face-up Level 8 or lower monster from your opponent's field to the owner's hand.",
+    "en_req": "When your opponent Normal or Special Summons a monster.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120309060": {
     "en": "Grand Legendary Party",
     "en_lore": "Special Summon 1 Legend monster from either Graveyard face-up to your field. This turn, you cannot activate the effect of \"Grand Legendary Party\".",

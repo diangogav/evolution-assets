@@ -1,24 +1,28 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-04T11:57:05.619Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/37200419929",
+  "generatedAt": "2026-10-05T13:54:19.345Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/37320370453",
   "steps": [
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120309055",
-          "title": "Attrac Charm Sowaru"
+          "id": "120309057",
+          "title": "Attrac Charm Souvenir"
         },
         {
-          "id": "120309056",
-          "title": "Attrac Charm Midi"
+          "id": "120309058",
+          "title": "Micha the Symbol of the Angels"
+        },
+        {
+          "id": "120309059",
+          "title": "Lufer the Symbol of the Devils"
         }
       ],
       "unresolved": {
-        "count": 117,
+        "count": 116,
         "sample": [
           "120181011",
           "120195004",
@@ -73,18 +77,19 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120309055",
-        "120309056"
+        "120309057",
+        "120309058",
+        "120309059"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3330,
+      "entries": 3333,
       "coverage": {
-        "en": 3330,
-        "en_lore": 3324,
-        "en_req": 2903,
+        "en": 3333,
+        "en_lore": 3327,
+        "en_req": 2906,
         "es": 527,
         "es_lore": 418,
         "es_req": 301
@@ -101,39 +106,39 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 91
+            "rows": 93
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3499
+        "total": 3501
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3330
+            "en": 3333
           },
           "desc": {
-            "en": 3324
+            "en": 3327
           },
           "requirement": {
-            "en": 2903
+            "en": 2906
           }
         },
         "es": {
           "name": {
             "es": 854,
-            "en": 2476
+            "en": 2479
           },
           "desc": {
             "es": 523,
-            "en": 2801
+            "en": 2804
           },
           "requirement": {
             "es": 301,
-            "en": 2597
+            "en": 2600
           }
         }
       },
@@ -146,14 +151,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4543,
+        "total": 4549,
         "en": {
-          "replaced": 3627,
-          "nonChinese": 3627
+          "replaced": 3629,
+          "nonChinese": 3629
         },
         "es": {
-          "replaced": 3615,
-          "nonChinese": 3615
+          "replaced": 3617,
+          "nonChinese": 3617
         }
       }
     },
@@ -168,24 +173,31 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
-    "cardsRemoved": [],
-    "translationsAdded": [
+    "cardsAdded": [
       {
-        "id": "120309055",
-        "zh": "游乐园挂饰 夜场",
-        "en": "Attrac Charm Sowaru",
+        "id": "120309058",
+        "zh": "天使之印 米卡",
+        "en": "Micha the Symbol of the Angels",
         "es": null
       },
       {
-        "id": "120309056",
-        "zh": "游乐园挂饰 日场",
-        "en": "Attrac Charm Midi",
+        "id": "120309059",
+        "zh": "恶魔之印 卢法",
+        "en": "Lufer the Symbol of the Devils",
+        "es": null
+      }
+    ],
+    "cardsRemoved": [],
+    "translationsAdded": [
+      {
+        "id": "120309057",
+        "zh": "游乐园挂饰纪念品",
+        "en": "Attrac Charm Souvenir",
         "es": null
       }
     ],
     "unresolved": {
-      "count": 117,
+      "count": 116,
       "sample": [
         "120181011",
         "120195004",
