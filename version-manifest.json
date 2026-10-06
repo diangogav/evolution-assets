@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T23:32:45.153Z",
+  "generatedAt": "2026-10-06T12:56:51.281Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -148,9 +148,9 @@
       "bytes": 1466368,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-05T13:54:19.226Z",
-      "commitSha": "9ef620f2e1e62cde7e237cad650bfd33e7039b3a",
-      "commitDate": "2026-10-01T12:39:04Z"
+      "mirroredAt": "2026-10-06T12:56:51.281Z",
+      "commitSha": "35aca85fa36ff5a5ed7d71ccd5a06ff5e6e73c08",
+      "commitDate": "2026-10-05T13:54:19Z"
     },
     "cdb:rush:en": {
       "path": "cdb/rush.en.cdb.gz",
@@ -158,9 +158,9 @@
       "bytes": 1470464,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-05T13:54:19.226Z",
-      "commitSha": "d2a6208b555a04bf2c1c771fe7bcb01aa3db6196",
-      "commitDate": "2026-10-04T11:57:05Z"
+      "mirroredAt": "2026-10-06T12:56:51.281Z",
+      "commitSha": "35aca85fa36ff5a5ed7d71ccd5a06ff5e6e73c08",
+      "commitDate": "2026-10-05T13:54:19Z"
     },
     "cdb:rush:es": {
       "path": "cdb/rush.es.cdb.gz",
@@ -168,9 +168,9 @@
       "bytes": 1503232,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-05T13:54:19.226Z",
-      "commitSha": "d2a6208b555a04bf2c1c771fe7bcb01aa3db6196",
-      "commitDate": "2026-10-04T11:57:05Z"
+      "mirroredAt": "2026-10-06T12:56:51.281Z",
+      "commitSha": "35aca85fa36ff5a5ed7d71ccd5a06ff5e6e73c08",
+      "commitDate": "2026-10-05T13:54:19Z"
     },
     "lflist:evolution:rush": {
       "path": "rush/lflist.conf",
