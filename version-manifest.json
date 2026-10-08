@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08T04:01:11.128Z",
+  "generatedAt": "2026-10-08T14:42:59.403Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -54,33 +54,33 @@
     },
     "cdb:prerelease": {
       "path": "cdb/prerelease.cdb.gz",
-      "sha256": "f4d80c11b50b4ad075b2e5d275ddb54f92c0bda97ed97e4ee5b83f8488f6c338",
+      "sha256": "e77451a71e14dd2cb3faa03148c9a7060eccc8f66c27a9f814a917338cb221cc",
       "bytes": 90112,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-07T14:36:50.196Z",
-      "commitSha": "bb03a2e419298593c60437bca6280eb819c09680",
-      "commitDate": "2026-10-04T13:19:14Z"
+      "mirroredAt": "2026-10-08T14:42:59.403Z",
+      "commitSha": "1009ba1d74214d4609b387052a97bc8e5142524f",
+      "commitDate": "2026-10-07T14:36:50Z"
     },
     "cdb:prerelease:en": {
       "path": "cdb/prerelease.en.cdb.gz",
-      "sha256": "fbd8641abc720f2bff19979a4b31aad89cc8ca2a4ec060bd5727437b94b34306",
+      "sha256": "ec6bbcba4e6bd5e7c13fff894a2fff7b60ba245787b79a2c81dbfc7ba8ae3c45",
       "bytes": 90112,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-07T14:36:50.196Z",
-      "commitSha": "08080644d45749e330531e0f8815bcf6c58fcf3b",
-      "commitDate": "2026-10-05T16:13:45Z"
+      "mirroredAt": "2026-10-08T14:42:59.403Z",
+      "commitSha": "1009ba1d74214d4609b387052a97bc8e5142524f",
+      "commitDate": "2026-10-07T14:36:50Z"
     },
     "cdb:prerelease:es": {
       "path": "cdb/prerelease.es.cdb.gz",
-      "sha256": "9f8e832eec88e233d32a1a0414093c5aef991e1df469723d2168004e161c0315",
-      "bytes": 98304,
+      "sha256": "80b9c287200112a63fc331b434f0beb613dfa6e0ea60eb1c9c243cb6883ec0b6",
+      "bytes": 102400,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-07T14:36:50.196Z",
-      "commitSha": "bb03a2e419298593c60437bca6280eb819c09680",
-      "commitDate": "2026-10-04T13:19:14Z"
+      "mirroredAt": "2026-10-08T14:42:59.403Z",
+      "commitSha": "1009ba1d74214d4609b387052a97bc8e5142524f",
+      "commitDate": "2026-10-07T14:36:50Z"
     },
     "lflist:evolution:genesys": {
       "path": "lflist/genesys.lflist.conf",
