@@ -4,7 +4,7 @@ cm.name="漆黑魔导遂行者"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Special Summon Procedure
-	RD.AddHandSpecialSummonProcedure(c,aux.Stringid(m,0),cm.spcon,nil,cm.spop)
+	RD.AddHandSpecialSummonProcedure(c,aux.Stringid(m,0),cm.spcon,nil,cm.spop,nil,POS_FACEUP_DEFENSE)
 	--Change Code
 	RD.EnableChangeCode(c,list[1],LOCATION_GRAVE)
 	--Condition
