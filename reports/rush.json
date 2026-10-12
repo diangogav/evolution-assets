@@ -1,28 +1,15 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-05T13:54:19.345Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/37320370453",
+  "generatedAt": "2026-10-12T14:42:55.090Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/38264883630",
   "steps": [
     {
       "step": "resolve-pages",
-      "status": "changed",
-      "mapped": [
-        {
-          "id": "120309057",
-          "title": "Attrac Charm Souvenir"
-        },
-        {
-          "id": "120309058",
-          "title": "Micha the Symbol of the Angels"
-        },
-        {
-          "id": "120309059",
-          "title": "Lufer the Symbol of the Devils"
-        }
-      ],
+      "status": "unchanged",
+      "mapped": [],
       "unresolved": {
-        "count": 116,
+        "count": 135,
         "sample": [
           "120181011",
           "120195004",
@@ -53,6 +40,7 @@
           "120000001",
           "120000002",
           "120000010",
+          "120000011",
           "120112007",
           "120165001",
           "120218001",
@@ -67,20 +55,15 @@
           "120218010",
           "120218011",
           "120218012",
-          "120218013",
-          "120218014"
+          "120218013"
         ]
       },
       "ambiguous": []
     },
     {
       "step": "fetch-translations",
-      "status": "changed",
-      "gained": [
-        "120309057",
-        "120309058",
-        "120309059"
-      ],
+      "status": "unchanged",
+      "gained": [],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
@@ -102,18 +85,18 @@
         "perSource": [
           {
             "name": "RD Standard.cdb",
-            "rows": 3324
+            "rows": 3379
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 93
+            "rows": 57
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 84
           }
         ],
-        "total": 3501
+        "total": 3520
       },
       "variants": {
         "en": {
@@ -151,14 +134,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4549,
+        "total": 4608,
         "en": {
-          "replaced": 3629,
-          "nonChinese": 3629
+          "replaced": 3654,
+          "nonChinese": 3654
         },
         "es": {
-          "replaced": 3617,
-          "nonChinese": 3617
+          "replaced": 3642,
+          "nonChinese": 3642
         }
       }
     },
@@ -175,29 +158,124 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120309058",
-        "zh": "天使之印 米卡",
-        "en": "Micha the Symbol of the Angels",
+        "id": "120310004",
+        "zh": "接合科技P打孔机",
+        "en": null,
         "es": null
       },
       {
-        "id": "120309059",
-        "zh": "恶魔之印 卢法",
-        "en": "Lufer the Symbol of the Devils",
+        "id": "120310005",
+        "zh": "接合科技B赛车",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310006",
+        "zh": "接合科技王牌备品",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310007",
+        "zh": "接合科技守护者",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310013",
+        "zh": "疯狂犯罪者·兔女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310014",
+        "zh": "疯狂犯罪者·松鼠女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310015",
+        "zh": "疯狂犯罪者·羊驼女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310016",
+        "zh": "疯狂犯罪者·净洁女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310017",
+        "zh": "疯狂犯罪者·鱼女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310018",
+        "zh": "疯狂犯罪者·猴女",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310019",
+        "zh": "疯狂犯罪者·华丽女士",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310037",
+        "zh": "接合科技无双英雄",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310038",
+        "zh": "接合科技究极战士",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310045",
+        "zh": "凭依装着-奥丝",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310048",
+        "zh": "接合科技再接合",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310052",
+        "zh": "超自然保护机关 疯狂犯罪",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310061",
+        "zh": "接合科技弹射装置",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310062",
+        "zh": "疯狂犯罪者干扰",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310063",
+        "zh": "疯狂犯罪者骇入",
+        "en": null,
         "es": null
       }
     ],
     "cardsRemoved": [],
-    "translationsAdded": [
-      {
-        "id": "120309057",
-        "zh": "游乐园挂饰纪念品",
-        "en": "Attrac Charm Souvenir",
-        "es": null
-      }
-    ],
+    "translationsAdded": [],
     "unresolved": {
-      "count": 116,
+      "count": 135,
       "sample": [
         "120181011",
         "120195004",
@@ -228,6 +306,7 @@
         "120000001",
         "120000002",
         "120000010",
+        "120000011",
         "120112007",
         "120165001",
         "120218001",
@@ -242,8 +321,7 @@
         "120218010",
         "120218011",
         "120218012",
-        "120218013",
-        "120218014"
+        "120218013"
       ]
     },
     "ambiguous": []
