@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="云海龙 缪拉"
+cm.name="云海龙 海牛龙"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Union

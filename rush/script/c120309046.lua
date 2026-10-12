@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="离别之风"
+cm.name="告别之风"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

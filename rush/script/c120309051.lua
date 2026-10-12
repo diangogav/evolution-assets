@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={CARD_CODE_FuSiGiNaKoBiTo,120309053}
-cm.name="小人的伙伴们"
+cm.name="小人同伴们"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Change Code

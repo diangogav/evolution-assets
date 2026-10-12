@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309048,120309049}
-cm.name="到临神殿之黑魔女"
+cm.name="身临神殿的黑魔女"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Special Summon Once

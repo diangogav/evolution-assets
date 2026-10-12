@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309058,120309059}
-cm.name="天使之印 米卡"
+cm.name="天使之印 米迦"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Activate

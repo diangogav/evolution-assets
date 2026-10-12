@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="云海龙 波尔卡"
+cm.name="云海龙 海马龙"
 function cm.initial_effect(c)
 	--Union
 	local e1=RD.RegisterUnionEffect(c,cm.filter,nil,nil,cm.operation)

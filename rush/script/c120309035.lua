@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309036}
-cm.name="云海翔龙 青绿龙"
+cm.name="云海翔龙 虎鲸龙"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Atk Up

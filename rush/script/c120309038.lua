@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309037}
-cm.name="云海龙 内佩拉"
+cm.name="云海龙 海葵鱼龙"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Special Summon Counter

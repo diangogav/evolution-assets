@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="在风中飘荡的飞来物"
+cm.name="风中摇荡的飞来物"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

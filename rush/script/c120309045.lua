@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="失落气流—循环的云海"
+cm.name="云海龙流-巡游的云海"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

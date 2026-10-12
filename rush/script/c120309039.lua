@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="云海龙 谢尔"
+cm.name="云海龙 寄居蟹龙"
 function cm.initial_effect(c)
 	--Draw
 	local e1=Effect.CreateEffect(c)

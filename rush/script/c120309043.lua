@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309043}
-cm.name="风之相册"
+cm.name="风之回忆集"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Activate

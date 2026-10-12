@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="魔龙恶魔龙"
+cm.name="魔龙 恶魔龙"
 function cm.initial_effect(c)
 	--Discard Deck
 	local e1=Effect.CreateEffect(c)

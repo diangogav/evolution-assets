@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309029,120309030,120309031}
-cm.name="次元的盟友 音姬"
+cm.name="次元的盟友 根姬"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Set

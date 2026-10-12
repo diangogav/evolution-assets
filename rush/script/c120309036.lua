@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="云海抱龙 旋律龙"
+cm.name="云海抱龙 水母龙"
 function cm.initial_effect(c)
 	--Special Summon Procedure
 	RD.AddHandSpecialSummonProcedure(c,aux.Stringid(m,0),cm.spcon,nil,nil,nil,POS_FACEUP_DEFENSE)

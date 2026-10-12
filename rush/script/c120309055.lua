@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309056}
-cm.name="游乐园挂饰 夜场"
+cm.name="游乐设施小挂件·晚晚"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Union

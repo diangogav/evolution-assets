@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="次元离子员"
+cm.name="次元程序员"
 function cm.initial_effect(c)
 	--Discard Deck
 	local e1=Effect.CreateEffect(c)

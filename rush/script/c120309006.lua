@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120309017}
-cm.name="黑魔术师族骑士"
+cm.name="黑魔术骑士"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Destroy

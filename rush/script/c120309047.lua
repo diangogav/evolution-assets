@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="巢食神殿之炎龙"
+cm.name="筑巢于神殿的炎龙"
 function cm.initial_effect(c)
 	--Special Summon Procedure
 	RD.AddHandSpecialSummonProcedure(c,aux.Stringid(m,0),cm.spcon,cm.sptg,cm.spop)

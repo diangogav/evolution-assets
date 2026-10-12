@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="云海龙 棘颊双锯龙"
+cm.name="云海龙 龙虾龙"
 function cm.initial_effect(c)
 	--Summon Procedure
 	RD.AddSummonProcedureOne(c,aux.Stringid(m,0),nil,cm.sumfilter)
