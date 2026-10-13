@@ -195,6 +195,16 @@ function RushDuel.GetBaseAttackOnDestroy(c)
     end
     return math.max(0, atk)
 end
+-- 获取被破坏时的基础守备力
+function RushDuel.GetBaseDefenseOnDestroy(c)
+    local def
+    if RushDuel.IsPreviousMaximumMode(c) and c:IsReason(REASON_DESTROY) then
+        def = 0
+    else
+        def = c:GetTextDefense()
+    end
+    return math.max(0, def)
+end
 
 -- 让玩家从多个卡名中宣言一个
 function RushDuel.AnnounceCodes(player, codes)

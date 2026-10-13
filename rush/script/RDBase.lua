@@ -98,6 +98,18 @@ function RushDuel.OnlyFusionSummon(card)
     card:RegisterEffect(e2)
     return e1, e2
 end
+-- 创建效果: 这张卡不用某个效果不能特殊召唤
+function RushDuel.OnlySpecialSummonByEffect(card, filter)
+    local e1 = Effect.CreateEffect(card)
+    e1:SetType(EFFECT_TYPE_SINGLE)
+    e1:SetCode(EFFECT_SPSUMMON_CONDITION)
+    e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE + EFFECT_FLAG_UNCOPYABLE)
+    e1:SetValue(function (e, se, sp, st)
+        return se and filter(e, se, sp, st)
+    end)
+    card:RegisterEffect(e1)
+    return e1
+end
 -- 创建效果: 这个卡名1回合只能有1次表侧表示的特殊召唤
 function RushDuel.SetFaceupSpSummonOnce(code, hint)
     local filter = function (c, p)

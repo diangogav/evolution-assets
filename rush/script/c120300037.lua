@@ -5,12 +5,7 @@ function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	RD.AddRitualProcedure(c)
 	--Special Summon Condition
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetValue(cm.splimit)
-	c:RegisterEffect(e1)
+	RD.OnlySpecialSummonByEffect(c,cm.splimit)
 	--Indes
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_SINGLE)
@@ -47,7 +42,7 @@ function cm.initial_effect(c)
 end
 --Special Summon Limit
 function cm.splimit(e,se,sp,st)
-	return se and se:GetHandler():IsCode(list[1])
+	return se:GetHandler():IsCode(list[1])
 end
 --Indes
 cm.indval=RD.ValueEffectIndesType(TYPE_MONSTER+TYPE_SPELL+TYPE_TRAP,TYPE_MONSTER+TYPE_SPELL+TYPE_TRAP,true)

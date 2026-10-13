@@ -6,12 +6,7 @@ function cm.initial_effect(c)
 	--Fusion Material
 	RD.AddFusionProcedure(c,cm.matfilter1,cm.matfilter2)
 	--Special Summon Condition
-	local e1=Effect.CreateEffect(c)
-	e1:SetType(EFFECT_TYPE_SINGLE)
-	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
-	e1:SetValue(cm.splimit)
-	c:RegisterEffect(e1)
+	RD.OnlySpecialSummonByEffect(c,cm.splimit)
 	--Cannot To Hand & Deck & Extra
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
@@ -39,7 +34,7 @@ function cm.matfilter2(c)
 end
 --Special Summon Condition
 function cm.splimit(e,se,sp,st)
-	return se and se:GetHandler():IsCode(list[1],list[2])
+	return se:GetHandler():IsCode(list[1],list[2])
 end
 --Cannot To Hand & Deck & Extra
 function cm.condition(e)
