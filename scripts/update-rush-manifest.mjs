@@ -11,6 +11,12 @@
 // The builder never leaves a raw unified cdb on disk (only the gzips are
 // published), so both values are derived by gunzipping the published gz in
 // memory and hashing the result.
+//
+// Each entry also names the ElderLich/MDPro4_Data commit its texts and
+// alternate arts came from (`upstreamCommits`), read from the SOURCE_COMMIT
+// the mirror writes next to the copied inputs. The cdb bytes alone cannot say
+// which snapshot fed them, and that is the first question when a text looks
+// wrong.
 
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -24,6 +30,8 @@ import {
 import { reportFragment } from "./run-report.mjs";
 
 const MANIFEST_PATH = "version-manifest.json";
+const MDPRO4_REPO = "ElderLich/MDPro4_Data";
+const MDPRO4_SOURCE_COMMIT_PATH = "rush/mdpro4/SOURCE_COMMIT";
 
 export const RUSH_VARIANTS = [
 	{ id: "cdb:rush", gzPath: "cdb/rush.cdb.gz" },
@@ -37,10 +45,23 @@ export function rawContentStats(gzBytes) {
 	return { sha256: createHash("sha256").update(raw).digest("hex"), bytes: raw.length };
 }
 
+/** The full sha a SOURCE_COMMIT file holds; anything else is a broken mirror. */
+export function parseSourceCommit(text) {
+	const sha = text.trim();
+	if (!/^[0-9a-f]{40}$/.test(sha)) {
+		throw new Error(`${MDPRO4_SOURCE_COMMIT_PATH} does not hold a full commit sha: "${sha}"`);
+	}
+	return sha;
+}
+
 const FS_RESOLVER = {
 	exists: existsSync,
 	rawStats: (gzPath) => rawContentStats(readFileSync(gzPath)),
 	commit: gitCommitInfo,
+	upstreamCommits: () =>
+		existsSync(MDPRO4_SOURCE_COMMIT_PATH)
+			? { [MDPRO4_REPO]: parseSourceCommit(readFileSync(MDPRO4_SOURCE_COMMIT_PATH, "utf8")) }
+			: null,
 };
 
 /**
@@ -51,6 +72,7 @@ const FS_RESOLVER = {
 export function applyRushEntries(manifest, variants, now, resolver = FS_RESOLVER) {
 	let updated = { ...manifest, generatedAt: now };
 	const applied = [];
+	const upstreamCommits = resolver.upstreamCommits?.() ?? null;
 
 	for (const variant of variants) {
 		if (!resolver.exists(variant.gzPath)) {
@@ -68,6 +90,7 @@ export function applyRushEntries(manifest, variants, now, resolver = FS_RESOLVER
 			mirroredAt: now,
 			commitSha: commit.commitSha,
 			commitDate: commit.commitDate,
+			...(upstreamCommits ? { upstreamCommits } : {}),
 		});
 		applied.push(variant.id);
 	}

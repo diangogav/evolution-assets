@@ -92,15 +92,19 @@ jobs:
       - name: Replace the mirrored copy
         run: |
           set -euo pipefail
-          # Remove only the mirrored entries: script/, the cdbs, lflist.conf and
-          # sets.md are upstream's to replace, but rush/pages.json and
-          # rush/translations.json are our incremental caches and must survive
-          # the refresh.
-          rm -rf rush/script rush/*.cdb rush/lflist.conf rush/sets.md
+          # Remove only the mirrored entries: script/, the cdbs, mycard's ban
+          # list and sets.md are upstream's to replace, but rush/pages.json,
+          # rush/translations.json and rush/mdpro4/ are ours and must survive
+          # the refresh (the glob below does not reach into rush/mdpro4/).
+          rm -rf rush/script rush/*.cdb rush/lflist.mycard.conf rush/sets.md
           mkdir -p rush
           cp -r /tmp/rush-src/script rush/script
           cp /tmp/rush-src/*.cdb rush/
-          cp /tmp/rush-src/lflist.conf rush/
+          # mycard's ban list is kept under its own name: rush/lflist.conf is
+          # built below from the official regulation plus this file's Legend
+          # lines, and those lines must still be at hand on a run where only
+          # the regulation moved.
+          cp /tmp/rush-src/lflist.conf rush/lflist.mycard.conf
           cp /tmp/rush-src/sets.md rush/
           # Everything else upstream ships (CI config, packaging scripts, its own
           # README) is theirs, not ours to carry.
@@ -118,6 +122,96 @@ jobs:
             echo "No Rush pack changes."
           fi
 
+      # ElderLich/MDPro4_Data supplies the complete en/es card texts, the
+      # alternate-art rows and the official Rush regulation the fused outputs
+      # are built from. It is mirrored after the mycard commit so a refused
+      # snapshot never holds back mycard's own refresh.
+      #
+      # These steps run with continue-on-error: when MDPro4 is unreachable or
+      # its snapshot is refused, everything below still runs on the copy
+      # already committed under rush/mdpro4/, and the last step of the job
+      # fails the run so the refusal is not missed.
+      - name: Clone the MDPro4 data
+        id: mdpro4_clone
+        continue-on-error: true
+        # The repository ships hundreds of MB of card art and packs; a sparse,
+        # blobless clone fetches only the three files the fusion reads.
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/mdpro4-src"
+          rm -rf "$src"
+          git clone --depth=1 --single-branch --branch main --filter=blob:none --sparse \
+            https://github.com/ElderLich/MDPro4_Data.git "$src"
+          git -C "$src" sparse-checkout set --no-cone \
+            /Data/locales/en-US/rush_cards.cdb \
+            /Data/locales/es-ES/rush_cards.cdb \
+            /Data/Banlists/Rush_lflist.conf
+
+      - name: Check the MDPro4 data before replacing ours
+        id: mdpro4_check
+        continue-on-error: true
+        # Refuses a non-SQLite file, a shrunken table, a malformed regulation
+        # and any card whose mechanics differ from mycard's for the same id.
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/mdpro4-src"
+          node scripts/check-mdpro4-data.mjs "$src/Data" "$(git -C "$src" rev-parse HEAD)"
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/check-mdpro4.json
+
+      - name: Replace the mirrored MDPro4 data
+        if: steps.mdpro4_check.outcome == 'success'
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/mdpro4-src"
+          mkdir -p rush/mdpro4
+          cp "$src/Data/locales/en-US/rush_cards.cdb" rush/mdpro4/rush_cards.en.cdb
+          cp "$src/Data/locales/es-ES/rush_cards.cdb" rush/mdpro4/rush_cards.es.cdb
+          cp "$src/Data/Banlists/Rush_lflist.conf" rush/mdpro4/Rush_lflist.conf
+          git -C "$src" rev-parse HEAD > rush/mdpro4/SOURCE_COMMIT
+
+      - name: Commit if the MDPro4 data changed
+        if: steps.mdpro4_check.outcome == 'success'
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain rush/mdpro4)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add rush/mdpro4
+            git commit -m "chore(rush): refresh mirrored MDPro4 data"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No MDPro4 data changes."
+          fi
+
+      # Built here rather than after the translation pipeline so a wiki outage
+      # never holds back a regulation change. The ids are checked against the
+      # fused card pool derived from the same inputs build-rush-cdb.mjs reads;
+      # a missing id leaves the committed list in place and fails the run at
+      # the end, like a refused MDPro4 snapshot.
+      - name: Build the fused Rush ban list
+        id: rush_lflist
+        continue-on-error: true
+        run: node scripts/build-rush-lflist.mjs
+        env:
+          REPORT_PATH: ${{ runner.temp }}/report/build-lflist.json
+
+      - name: Commit if the ban list changed
+        if: steps.rush_lflist.outcome == 'success'
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain rush/lflist.conf)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add rush/lflist.conf
+            git commit -m "chore(rush): rebuild the fused Rush ban list"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No ban list changes."
+          fi
+
       # `rush/lflist.conf` is a published client asset, and the client can only
       # see an update through version-manifest.json — raw.githubusercontent.com
       # exposes no CORS-readable validator. Its entry used to be refreshed by
@@ -131,9 +225,9 @@ jobs:
       # Placed BEFORE the translation pipeline on purpose — those steps talk to
       # a wiki and may fail, and the manifest must not be left describing bytes
       # nobody has until the next successful run.
-      - name: Refresh the mirrored lflist entry in the version manifest
-        # Runs after the commit above so the entry's commitSha/commitDate name
-        # the commit that actually carried the new bytes.
+      - name: Refresh the Rush lflist entry in the version manifest
+        # Runs after the ban list commit above so the entry's
+        # commitSha/commitDate name the commit that actually carried the bytes.
         run: node scripts/update-repo-assets-manifest.mjs
 
       - name: Commit if the version manifest changed
@@ -168,6 +262,11 @@ jobs:
         env:
           REPORT_PATH: ${{ runner.temp }}/report/build-cdb.json
 
+      - name: Check the ban list against the built database
+        # The published list and the published cdb must agree: a listed card
+        # the database lacks is a restriction no deck check can enforce.
+        run: node scripts/build-rush-lflist.mjs --verify cdb/rush.cdb.gz
+
       - name: Update version manifest
         run: node scripts/update-rush-manifest.mjs
         env:
@@ -198,3 +297,14 @@ jobs:
           else
             echo "No translated database changes."
           fi
+
+      - name: Fail the run if the MDPro4 mirror or the ban list was refused
+        # Those steps run with continue-on-error so the rest of the pipeline
+        # keeps working on the committed copies; this is where their failure
+        # becomes the run's.
+        if: always() && (steps.mdpro4_clone.outcome == 'failure' || steps.mdpro4_check.outcome == 'failure' || steps.rush_lflist.outcome == 'failure')
+        run: |
+          echo "MDPro4 clone: ${{ steps.mdpro4_clone.outcome }}"
+          echo "MDPro4 check: ${{ steps.mdpro4_check.outcome }}"
+          echo "Rush ban list build: ${{ steps.rush_lflist.outcome }}"
+          exit 1

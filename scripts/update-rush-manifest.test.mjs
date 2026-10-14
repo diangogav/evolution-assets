@@ -6,6 +6,7 @@ import { gzipSync } from "node:zlib";
 import {
 	RUSH_VARIANTS,
 	applyRushEntries,
+	parseSourceCommit,
 	rawContentStats,
 	updateManifestFragment,
 } from "./update-rush-manifest.mjs";
@@ -22,11 +23,12 @@ function baseManifest() {
 	};
 }
 
-function resolver(stats) {
+function resolver(stats, upstreamCommits = null) {
 	return {
 		exists: (gzPath) => gzPath in stats,
 		rawStats: (gzPath) => stats[gzPath],
 		commit: () => ({ commitSha: "c0ffee", commitDate: NOW }),
+		upstreamCommits: () => upstreamCommits,
 	};
 }
 
@@ -97,6 +99,37 @@ test("skips a variant whose gz is absent instead of failing the run", () => {
 	for (const variant of rest) {
 		assert.ok(manifest.assets[variant.id]);
 	}
+});
+
+// --- upstreamCommits: the MDPro4 snapshot the fused databases were built from ---
+
+test("records the upstream commits the databases were fused from on every variant", () => {
+	const commits = { "ElderLich/MDPro4_Data": "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2" };
+	const { manifest } = applyRushEntries(
+		baseManifest(),
+		RUSH_VARIANTS,
+		NOW,
+		resolver(statsFor(RUSH_VARIANTS), commits),
+	);
+
+	for (const variant of RUSH_VARIANTS) {
+		assert.deepEqual(manifest.assets[variant.id].upstreamCommits, commits);
+	}
+});
+
+test("omits upstreamCommits when no snapshot is recorded", () => {
+	const { manifest } = applyRushEntries(baseManifest(), RUSH_VARIANTS, NOW, resolver(statsFor(RUSH_VARIANTS)));
+
+	for (const variant of RUSH_VARIANTS) {
+		assert.equal("upstreamCommits" in manifest.assets[variant.id], false);
+	}
+});
+
+test("parseSourceCommit accepts one full sha and rejects anything else", () => {
+	const sha = "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2";
+	assert.equal(parseSourceCommit(`${sha}\n`), sha);
+	assert.throws(() => parseSourceCommit("6b277cc"), /SOURCE_COMMIT/);
+	assert.throws(() => parseSourceCommit(""), /SOURCE_COMMIT/);
 });
 
 // --- updateManifestFragment: the run-report fragment for this step ---

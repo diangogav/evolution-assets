@@ -10,19 +10,21 @@ import { gunzipSync } from "node:zlib";
 import {
 	buildCdbFragment,
 	buildEffectStringUpdates,
-	buildMaximumAtkUpdates,
 	buildRushCdbs,
 	buildVariantUpdates,
 	classifyMaximumRows,
+	cleanMdpro4Text,
 	composeDesc,
 	countStrCoverage,
 	findDuplicateIds,
+	hasMachineTranslationTelltale,
 	isMaximumSidePiece,
 	mergeEffectStrings,
-	mergeTranslations,
 	parseMaximumAtk,
-	resolveVariantTexts,
+	resolveCardTexts,
+	selectAliasRows,
 	termsForLanguage,
+	withMaximumLine,
 } from "./build-rush-cdb.mjs";
 
 const SCHEMA =
@@ -34,10 +36,10 @@ const SCHEMA =
 
 function makeCdb(path, cards) {
 	execFileSync("sqlite3", [path], { input: SCHEMA, encoding: "utf8" });
-	for (const { id, ot, type, name, desc, str1 } of cards) {
+	for (const { id, ot, alias, type, name, desc, str1 } of cards) {
 		execFileSync("sqlite3", [
 			path,
-			`INSERT INTO datas(id,ot,type) VALUES(${id},${ot ?? 1},${type ?? 1});` +
+			`INSERT INTO datas(id,ot,alias,type) VALUES(${id},${ot ?? 1},${alias ?? 0},${type ?? 1});` +
 				`INSERT INTO texts(id,name,desc,str1) VALUES(${id},'${name}','${desc ?? ""}','${str1 ?? ""}');`,
 		]);
 	}
@@ -92,82 +94,250 @@ test("composeDesc labels both blocks when the card has a requirement", () => {
 	);
 });
 
+test("composeDesc labels the Spanish blocks in Spanish", () => {
+	assert.equal(
+		composeDesc("Manda 1 monstruo de tu mano al Cementerio.", "Roba 1 carta.", "es"),
+		"[REQUISITO]\nManda 1 monstruo de tu mano al Cementerio.\n\n[EFECTO]\nRoba 1 carta.",
+	);
+});
+
+test("hasMachineTranslationTelltale needs the coin-flip words as labels, not substrings", () => {
+	assert.equal(hasMachineTranslationTelltale("Cabezas: destruye todos monstruos"), true);
+	assert.equal(hasMachineTranslationTelltale("Tails: destruye"), true);
+	assert.equal(hasMachineTranslationTelltale("Las cabezas de la hidra"), false);
+	assert.equal(hasMachineTranslationTelltale("Cocktails en la fiesta"), false);
+});
+
 test("composeDesc leaves a card with no requirement as its bare effect", () => {
 	const effect = "A fast and lethal creature with very dangerous claws.";
 	assert.equal(composeDesc("", effect), effect);
 	assert.equal(composeDesc(undefined, effect), effect);
 });
 
-test("resolveVariantTexts en: en/en_lore apply only when non-empty", () => {
-	const full = resolveVariantTexts({ en: "Alpha", en_lore: "Lore", es: "x", es_lore: "y" }, "en");
+// --- resolveCardTexts: the per-locale fallback chain for one card ---
+
+// A card as buildRushCdbs hands it over: translation entries in precedence
+// order (its own id first, then the base card an alternate art aliases) and
+// the MDPro4 rows for its own id.
+function card({ translations = [], bases = [], mdpro4En, mdpro4Es } = {}) {
+	return { translations, bases, mdpro4En, mdpro4Es };
+}
+
+test("resolveCardTexts en: translations.json fields apply only when non-empty", () => {
+	const full = resolveCardTexts(card({ translations: [{ en: "Alpha", en_lore: "Lore", es: "x", es_lore: "y" }] }), "en");
 	assert.deepEqual(full, {
-		name: { text: "Alpha", source: "en" },
-		desc: { text: "Lore", source: "en" },
+		name: { text: "Alpha", source: "translations" },
+		desc: { text: "Lore", source: "translations" },
 	});
 
-	const empty = resolveVariantTexts({ en: "", en_lore: "", es: "x", es_lore: "y" }, "en");
+	const empty = resolveCardTexts(card({ translations: [{ en: "", en_lore: "", es: "x", es_lore: "y" }] }), "en");
 	assert.deepEqual(empty, { name: null, desc: null });
 });
 
-test("resolveVariantTexts es: per-field fallback es → en → null", () => {
-	const es = resolveVariantTexts(
-		{ en: "Alpha", en_lore: "Lore", es: "Alfa", es_lore: "" },
+test("resolveCardTexts en: MDPro4 English fills what translations.json lacks", () => {
+	const texts = resolveCardTexts(
+		card({
+			translations: [{ en: "Alpha", en_lore: "" }],
+			mdpro4En: { name: "Alpha MD", desc: "[REQUIREMENT]\t\nNone\t\n[EFFECT]\t\nDraw 1." },
+		}),
+		"en",
+	);
+	assert.deepEqual(texts, {
+		name: { text: "Alpha", source: "translations" },
+		// The MDPro4 line ends are tab+LF; the tab is dropped.
+		desc: { text: "[REQUIREMENT]\nNone\n[EFFECT]\nDraw 1.", source: "mdpro4" },
+	});
+});
+
+test("resolveCardTexts es: per-field fallback through the English chain, null at the end", () => {
+	const es = resolveCardTexts(
+		card({ translations: [{ en: "Alpha", en_lore: "Lore", es: "Alfa", es_lore: "" }] }),
 		"es",
 	);
 	assert.deepEqual(es, {
-		name: { text: "Alfa", source: "es" },
-		desc: { text: "Lore", source: "en" },
+		name: { text: "Alfa", source: "translations" },
+		desc: { text: "Lore", source: "en.translations" },
 	});
 
-	const none = resolveVariantTexts({ en: "", en_lore: "", es: "", es_lore: "" }, "es");
+	const none = resolveCardTexts(card({ translations: [{ en: "", en_lore: "", es: "", es_lore: "" }] }), "es");
 	assert.deepEqual(none, { name: null, desc: null });
 });
 
-test("resolveVariantTexts en: the requirement leads the desc", () => {
-	const { desc } = resolveVariantTexts(
-		{ en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "", es_lore: "", es_req: "" },
+test("resolveCardTexts es: translations.json, then the mined base, then MDPro4, then English", () => {
+	const mdpro4En = { name: "Alpha MD", desc: "Effect MD." };
+	const mdpro4Es = { name: "Alfa MD", desc: "Efecto MD." };
+
+	// The fetched Spanish wins over the mined one.
+	assert.deepEqual(
+		resolveCardTexts(card({ translations: [{ es: "Alfa" }], bases: [{ es: "Alfa minada" }], mdpro4En, mdpro4Es }), "es").name,
+		{ text: "Alfa", source: "translations" },
+	);
+	// An empty fetched field is a gap, so the mined value shows through.
+	assert.deepEqual(
+		resolveCardTexts(card({ translations: [{ es: "", es_lore: "" }], bases: [{ es: "Alfa minada", es_lore: "Efecto minado." }], mdpro4En, mdpro4Es }), "es"),
+		{
+			name: { text: "Alfa minada", source: "base" },
+			desc: { text: "Efecto minado.", source: "base" },
+		},
+	);
+	// MDPro4 Spanish outranks every English source.
+	assert.deepEqual(
+		resolveCardTexts(card({ translations: [{ en: "Alpha", en_lore: "Effect." }], mdpro4En, mdpro4Es }), "es"),
+		{
+			name: { text: "Alfa MD", source: "mdpro4" },
+			desc: { text: "Efecto MD.", source: "mdpro4" },
+		},
+	);
+});
+
+test("resolveCardTexts es: a MDPro4 Spanish text identical to its English one is untranslated", () => {
+	const texts = resolveCardTexts(
+		card({
+			mdpro4En: { name: "Alpha MD", desc: "Effect MD." },
+			mdpro4Es: { name: "Alpha MD", desc: "" },
+		}),
+		"es",
+	);
+	assert.deepEqual(texts, {
+		name: { text: "Alpha MD", source: "en.mdpro4" },
+		desc: { text: "Effect MD.", source: "en.mdpro4" },
+	});
+});
+
+test("resolveCardTexts unescapes &quot; in MDPro4 text", () => {
+	const texts = resolveCardTexts(
+		card({
+			mdpro4En: { name: 'Harpie Lady 1 & 2', desc: "x" },
+			mdpro4Es: { name: "Harpie Lady 1 &quot; 2", desc: "y" },
+		}),
+		"es",
+	);
+	assert.equal(texts.name.text, 'Harpie Lady 1 " 2');
+});
+
+test("resolveCardTexts falls back to the aliased base card's translations, own id first", () => {
+	const own = { en: "Alt Name", en_lore: "" };
+	const aliased = { en: "Base Name", en_lore: "Base effect.", es: "Nombre base", es_lore: "Efecto base." };
+	const texts = resolveCardTexts(
+		card({
+			translations: [own, aliased],
+			bases: [undefined, { es: "Minado" }],
+			mdpro4En: { name: "MD", desc: "MD effect." },
+		}),
+		"en",
+	);
+	assert.deepEqual(texts, {
+		name: { text: "Alt Name", source: "translations" },
+		desc: { text: "Base effect.", source: "translations" },
+	});
+	assert.deepEqual(resolveCardTexts(card({ translations: [undefined, aliased] }), "es").name, {
+		text: "Nombre base",
+		source: "translations",
+	});
+});
+
+test("resolveCardTexts en: the requirement leads the desc", () => {
+	const { desc } = resolveCardTexts(
+		card({ translations: [{ en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "", es_lore: "", es_req: "" }] }),
 		"en",
 	);
 	assert.deepEqual(desc, {
 		text: "[REQUIREMENT]\nRequirement.\n\n[EFFECT]\nEffect.",
-		source: "en",
+		source: "translations",
 	});
 });
 
-test("resolveVariantTexts es: the desc takes both blocks from one language", () => {
-	const both = resolveVariantTexts(
-		{
-			en: "Alpha",
-			en_lore: "Effect.",
-			en_req: "Requirement.",
-			es: "Alfa",
-			es_lore: "Efecto.",
-			es_req: "Requisito.",
-		},
+test("resolveCardTexts es: the desc takes both blocks from one language", () => {
+	const both = resolveCardTexts(
+		card({
+			translations: [
+				{ en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "Alfa", es_lore: "Efecto.", es_req: "Requisito." },
+			],
+		}),
 		"es",
 	);
 	assert.deepEqual(both.desc, {
-		text: "[REQUIREMENT]\nRequisito.\n\n[EFFECT]\nEfecto.",
-		source: "es",
+		text: "[REQUISITO]\nRequisito.\n\n[EFECTO]\nEfecto.",
+		source: "translations",
 	});
 
 	// No Spanish effect: the desc falls back to English whole, requirement
 	// included — a Spanish half glued to an English half is not a card text.
-	const fallback = resolveVariantTexts(
-		{
-			en: "Alpha",
-			en_lore: "Effect.",
-			en_req: "Requirement.",
-			es: "Alfa",
-			es_lore: "",
-			es_req: "Requisito.",
-		},
+	const fallback = resolveCardTexts(
+		card({
+			translations: [
+				{ en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "Alfa", es_lore: "", es_req: "Requisito." },
+			],
+		}),
 		"es",
 	);
 	assert.deepEqual(fallback.desc, {
 		text: "[REQUIREMENT]\nRequirement.\n\n[EFFECT]\nEffect.",
-		source: "en",
+		source: "en.translations",
 	});
+});
+
+// --- MDPro4 text hygiene ---
+
+test("cleanMdpro4Text unescapes &quot; and drops the tab before each line end", () => {
+	assert.equal(cleanMdpro4Text('Maximum ATK 3500\t\n"A" &quot;B&quot;'), 'Maximum ATK 3500\n"A" "B"');
+	assert.equal(cleanMdpro4Text(""), "");
+	assert.equal(cleanMdpro4Text(null), "");
+});
+
+test("hasMachineTranslationTelltale matches the known telltales case-insensitively", () => {
+	for (const text of [
+		"Invoca de Modo Especial 1 monstruo.",
+		"no puedes seleccionar",
+		"Puedes tomar el daño",
+		"Destruye todos monstruos",
+		"Lanza una moneda. Tails: destruye",
+		"CABEZAS: roba 1 carta",
+		"Harpie Lady 1 &quot; 2",
+	]) {
+		assert.equal(hasMachineTranslationTelltale(text), true, text);
+	}
+	assert.equal(hasMachineTranslationTelltale("Invoca de Forma Especial 1 monstruo."), false);
+	assert.equal(hasMachineTranslationTelltale(""), false);
+	assert.equal(hasMachineTranslationTelltale(undefined), false);
+});
+
+// --- withMaximumLine: the Maximum ATK line appears exactly once ---
+
+test("withMaximumLine prepends the line only when the desc does not lead with one", () => {
+	assert.equal(withMaximumLine("Effect.", 3500), "Maximum ATK 3500\nEffect.");
+	assert.equal(withMaximumLine("Maximum ATK 3500\nEfecto.", 3500), "Maximum ATK 3500\nEfecto.");
+	assert.equal(withMaximumLine("\nMaximum ATK 3500\nEfecto.", 3500), "\nMaximum ATK 3500\nEfecto.");
+	assert.equal(withMaximumLine("Effect.", null), "Effect.");
+	assert.equal(withMaximumLine("Effect.", undefined), "Effect.");
+});
+
+// --- selectAliasRows: which MDPro4 alternate arts join the union ---
+
+test("selectAliasRows admits alternate arts of union cards, never of anime customs", () => {
+	const union = new Set([1001, 2001]);
+	const rows = [
+		{ id: 1001, ot: 1, alias: 0 },
+		{ id: 128000001, ot: 4, alias: 0 },
+		{ id: 1500, ot: 4, alias: 0 },
+		{ id: 129000003, ot: 4, alias: 2001 },
+		{ id: 129000001, ot: 4, alias: 1001 },
+		// The alias of an anime custom, whatever range the custom sits in.
+		{ id: 129000002, ot: 4, alias: 128000001 },
+		{ id: 129000005, ot: 4, alias: 1500 },
+		// Its base card is not in the union.
+		{ id: 129000004, ot: 4, alias: 5555 },
+		// No alias at all.
+		{ id: 129000006, ot: 4, alias: 0 },
+		// Below the alternate-art range.
+		{ id: 120000009, ot: 4, alias: 1001 },
+	];
+	assert.deepEqual(selectAliasRows(rows, union), [
+		{ id: 129000001, alias: 1001 },
+		{ id: 129000003, alias: 2001 },
+	]);
+	// A custom that somehow sits in the union by id range is still excluded.
+	assert.deepEqual(selectAliasRows(rows, new Set([128000001])), []);
 });
 
 function fixture(dir) {
@@ -252,50 +422,61 @@ test("buildRushCdbs variants apply translations with per-field fallback, zh othe
 
 		// 9999 is not shipped, so it never counts nor appears.
 		assert.deepEqual(stats.variants.en, {
-			name: { en: 3 },
-			desc: { en: 2 },
-			requirement: { en: 0 },
+			name: { translations: 3, mdpro4: 0, zh: 1 },
+			desc: { translations: 2, mdpro4: 0, zh: 2 },
 		});
 		assert.deepEqual(stats.variants.es, {
-			name: { es: 1, en: 2 },
-			desc: { es: 0, en: 2 },
-			requirement: { es: 0, en: 0 },
+			name: { translations: 1, base: 0, mdpro4: 0, "en.translations": 2, "en.mdpro4": 0, zh: 1 },
+			desc: { translations: 0, base: 0, mdpro4: 0, "en.translations": 2, "en.mdpro4": 0, zh: 2 },
+			telltales: { count: 0, sample: [] },
 		});
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
 });
 
-// The requirement is counted against the language the desc was taken from, so
-// the run output says how many cards actually print both blocks.
-test("buildVariantUpdates counts the descs that carry a requirement", () => {
-	const translations = {
-		1001: { en: "Alpha", en_lore: "Effect.", en_req: "Requirement.", es: "", es_lore: "", es_req: "" },
-		1002: { en: "Beta", en_lore: "Effect.", en_req: "", es: "", es_lore: "", es_req: "" },
-		1003: {
-			en: "Gamma",
-			en_lore: "Effect.",
-			en_req: "Requirement.",
-			es: "Gama",
-			es_lore: "Efecto.",
-			es_req: "Requisito.",
-		},
-	};
-	const present = new Set([1001, 1002, 1003]);
+// Per source, how many names and descs a variant took, zh included, so the
+// counts always add up to the cards shipped.
+test("buildVariantUpdates counts every card against the source its text came from", () => {
+	const cards = [
+		{ id: 1001, ...card({ translations: [{ en: "Alpha", en_lore: "Effect.", es: "", es_lore: "" }] }) },
+		{ id: 1002, ...card({ mdpro4En: { name: "Beta", desc: "Effect." }, mdpro4Es: { name: "Beta", desc: "Efecto Invoca de Modo." } }) },
+		{ id: 1003, ...card() },
+	];
 
-	assert.deepEqual(buildVariantUpdates(translations, "en", present).stats, {
-		name: { en: 3 },
-		desc: { en: 3 },
-		requirement: { en: 2 },
+	const en = buildVariantUpdates(cards, "en");
+	assert.deepEqual(en.stats, {
+		name: { translations: 1, mdpro4: 1, zh: 1 },
+		desc: { translations: 1, mdpro4: 1, zh: 1 },
 	});
+	assert.deepEqual(en.telltales, []);
 
-	// 1001 and 1002 have no Spanish effect and fall back to English whole, so
-	// their requirement counts as English too; only 1003 is Spanish throughout.
-	assert.deepEqual(buildVariantUpdates(translations, "es", present).stats, {
-		name: { es: 1, en: 2 },
-		desc: { es: 1, en: 2 },
-		requirement: { es: 1, en: 1 },
+	const es = buildVariantUpdates(cards, "es");
+	assert.deepEqual(es.stats, {
+		name: { translations: 0, base: 0, mdpro4: 0, "en.translations": 1, "en.mdpro4": 1, zh: 1 },
+		desc: { translations: 0, base: 0, mdpro4: 1, "en.translations": 1, "en.mdpro4": 0, zh: 1 },
 	});
+	// Only MDPro4 Spanish actually used is screened.
+	assert.deepEqual(es.telltales, [1002]);
+	assert.equal(es.sql.includes("WHERE id=1003"), false);
+});
+
+test("buildVariantUpdates prepends the Maximum ATK line once, whatever the desc source", () => {
+	const cards = [
+		{ id: 1, maximumAtk: 3500, ...card({ translations: [{ en: "A", en_lore: "Effect." }] }) },
+		{ id: 2, maximumAtk: 3000, ...card({ mdpro4En: { name: "B", desc: "Maximum ATK 3000\t\nEffect." } }) },
+		{ id: 3, maximumAtk: 4000, ...card() },
+	];
+	const { sql } = buildVariantUpdates(cards, "en");
+	assert.equal(
+		sql,
+		[
+			`UPDATE texts SET name='A',"desc"='Maximum ATK 3500\nEffect.' WHERE id=1;`,
+			`UPDATE texts SET name='B',"desc"='Maximum ATK 3000\nEffect.' WHERE id=2;`,
+			// No text resolved: the line goes on top of the Chinese desc.
+			`UPDATE texts SET "desc"='Maximum ATK 4000' || char(10) || "desc" WHERE id=3;`,
+		].join("\n"),
+	);
 });
 
 test("buildRushCdbs fails loudly on a duplicated id and writes nothing", () => {
@@ -356,7 +537,7 @@ test("buildRushCdbs is deterministic: two runs produce byte-identical gz files",
 
 test("carries the merge and variant stats with the changed verdict", () => {
 	const stats = {
-		merged: { perSource: [{ name: "RD Standard.cdb", rows: 2 }], total: 2 },
+		merged: { perSource: [{ name: "RD Standard.cdb", rows: 2 }], aliasRows: 1, total: 3 },
 		variants: {
 			en: { name: { en: 1 }, desc: { en: 0 } },
 			es: { name: { es: 0, en: 1 }, desc: { es: 0, en: 0 } },
@@ -421,20 +602,6 @@ test("classifyMaximumRows splits side pieces, valued centres and valueless centr
 		sidePieces: [2],
 		centreWithoutValue: [4],
 	});
-});
-
-test("buildMaximumAtkUpdates prepends the English line, one statement per id", () => {
-	assert.equal(
-		buildMaximumAtkUpdates([
-			{ id: 1, atk: 3500 },
-			{ id: 3, atk: 4000 },
-		]),
-		[
-			`UPDATE texts SET "desc"='Maximum ATK 3500' || char(10) || "desc" WHERE id=1;`,
-			`UPDATE texts SET "desc"='Maximum ATK 4000' || char(10) || "desc" WHERE id=3;`,
-		].join("\n"),
-	);
-	assert.equal(buildMaximumAtkUpdates([]), "");
 });
 
 // Maximum cards, mixed: a valued centre, its [L] half, and a centre with no
@@ -529,7 +696,7 @@ test("buildRushCdbs keeps Maximum ATK first on a card that also has a requiremen
 		);
 		assert.equal(
 			desc("rush.es.cdb.gz"),
-			"Maximum ATK 3500\n[REQUIREMENT]\nRequisito.\n\n[EFFECT]\nEfecto.",
+			"Maximum ATK 3500\n[REQUISITO]\nRequisito.\n\n[EFECTO]\nEfecto.",
 		);
 		assert.equal(desc("rush.en.cdb.gz").split("\n")[0], "Maximum ATK 3500");
 	} finally {
@@ -696,63 +863,132 @@ test("mergeEffectStrings keeps a hand-written language the mined entry lacks", (
 	assert.deepEqual(merged, { 破坏: { en: "Destroy", es: "Destruir" } });
 });
 
-// --- mergeTranslations: the wiki's own Spanish outranks the mined Spanish ---
+// --- MDPro4: alias rows and the extra text tiers, end to end ---
 
-test("mergeTranslations lets the fetched entry overrule the mined one", () => {
-	// The fetched Spanish is off the Rush card's own wiki page; the mined
-	// Spanish comes from a different card that merely shares an English name.
-	const merged = mergeTranslations(
-		{ 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } },
-		{ 1201: { es: "Mago del Tiempo" } },
-	);
+// A union with a plain card and a Maximum centre piece, and MDPro4 copies
+// holding the same two cards plus an anime custom and four alternate arts:
+// two of union cards, one of the custom, one of a card the union lacks.
+function mdpro4Fixture(dir) {
+	const srcDir = join(dir, "md-src");
+	mkdirSync(srcDir);
+	const source = join(srcDir, "U.cdb");
+	makeCdb(source, [
+		{ id: 1001, name: "中文一", desc: "中说明一" },
+		{ id: 2001, type: 0x8000 | 1, name: "极大一", desc: "RD/A-JP001\r\n极大攻击 3500\r\n中说明\r\n" },
+	]);
+	const en = join(srcDir, "md.en.cdb");
+	const es = join(srcDir, "md.es.cdb");
+	makeCdb(en, [
+		{ id: 1001, name: "One MD", desc: "One effect.", str1: "S1" },
+		{ id: 2001, type: 0x8000 | 1, name: "Max MD", desc: "Maximum ATK 3500\t\nMax effect." },
+		{ id: 128000001, ot: 4, name: "Anime", desc: "Anime effect." },
+		{ id: 129000001, ot: 4, alias: 1001, name: "One MD", desc: "One effect.", str1: "Alt S1" },
+		{ id: 129000002, ot: 4, alias: 128000001, name: "Anime", desc: "Anime effect." },
+		{ id: 129000003, ot: 4, alias: 2001, type: 0x8000 | 1, name: "Max MD", desc: "Maximum ATK 3500\t\nMax effect." },
+		{ id: 129000004, ot: 4, alias: 5555, name: "Stray", desc: "Stray effect." },
+	]);
+	makeCdb(es, [
+		// Identical to the English row: untranslated.
+		{ id: 1001, name: "One MD", desc: "One effect." },
+		{ id: 2001, type: 0x8000 | 1, name: "Max ES", desc: "Maximum ATK 3500\t\nInvoca de Modo Especial." },
+		{ id: 128000001, ot: 4, name: "Anime ES", desc: "Efecto anime." },
+		{ id: 129000001, ot: 4, alias: 1001, name: "One MD", desc: "One effect." },
+		{ id: 129000002, ot: 4, alias: 128000001, name: "Anime ES", desc: "Efecto anime." },
+		{ id: 129000003, ot: 4, alias: 2001, type: 0x8000 | 1, name: "Max ES", desc: "Maximum ATK 3500\t\nInvoca de Modo Especial." },
+		{ id: 129000004, ot: 4, alias: 5555, name: "Stray ES", desc: "Efecto." },
+	]);
+	const translations = {
+		1001: { en: "One", en_lore: "One lore.", es: "", es_lore: "" },
+		2001: { en: "Max One", en_lore: "Max lore.", es: "", es_lore: "" },
+	};
+	const translationsBase = { 1001: { es: "Uno" } };
+	return { sources: [source], translations, translationsBase, mdpro4: { en, es } };
+}
 
-	assert.deepEqual(merged, { 1201: { en: "Time Wizard", es: "Brujo del Tiempo" } });
+test("buildRushCdbs appends the admitted MDPro4 alternate arts and resolves their texts", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-md-"));
+	try {
+		const inputs = mdpro4Fixture(dir);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({ ...inputs, outDir, workDir });
+		const q = (gz, sql) => queryGz(dir, join(outDir, gz), sql);
+		const texts = (gz) => q(gz, 'SELECT id, name, "desc", str1 FROM texts ORDER BY id;');
+
+		// datas copied verbatim, alias included, identical across variants.
+		const datas = q("rush.cdb.gz", "SELECT id, ot, alias FROM datas ORDER BY id;");
+		assert.equal(datas, ["1001\t1\t0", "2001\t1\t0", "129000001\t4\t1001", "129000003\t4\t2001"].join("\n"));
+		const allDatas = (gz) => q(gz, "SELECT * FROM datas ORDER BY id;");
+		assert.equal(allDatas("rush.en.cdb.gz"), allDatas("rush.cdb.gz"));
+		assert.equal(allDatas("rush.es.cdb.gz"), allDatas("rush.cdb.gz"));
+
+		// The plain variant has no Chinese for the alternate arts: MDPro4 English.
+		assert.equal(
+			texts("rush.cdb.gz"),
+			[
+				"1001\t中文一\t中说明一\t",
+				"2001\t极大一\tRD/A-JP001\r\n极大攻击 3500\r\n中说明\r\n\t",
+				"129000001\tOne MD\tOne effect.\tAlt S1",
+				"129000003\tMax MD\tMaximum ATK 3500\nMax effect.\t",
+			].join("\n"),
+		);
+		// An alternate art reads its base card's translation.
+		assert.equal(
+			texts("rush.en.cdb.gz"),
+			[
+				"1001\tOne\tOne lore.\t",
+				"2001\tMax One\tMaximum ATK 3500\nMax lore.\t",
+				"129000001\tOne\tOne lore.\tAlt S1",
+				"129000003\tMax One\tMaximum ATK 3500\nMax lore.\t",
+			].join("\n"),
+		);
+		assert.equal(
+			texts("rush.es.cdb.gz"),
+			[
+				"1001\tUno\tOne lore.\t",
+				"2001\tMax ES\tMaximum ATK 3500\nInvoca de Modo Especial.\t",
+				"129000001\tUno\tOne lore.\tAlt S1",
+				"129000003\tMax ES\tMaximum ATK 3500\nInvoca de Modo Especial.\t",
+			].join("\n"),
+		);
+
+		assert.equal(stats.merged.total, 4);
+		assert.deepEqual(stats.merged.aliasRows, 2);
+		assert.deepEqual(stats.variants.es.telltales, { count: 2, sample: [2001, 129000003] });
+		assert.deepEqual(stats.variants.es.desc, {
+			translations: 0,
+			base: 0,
+			mdpro4: 2,
+			"en.translations": 2,
+			"en.mdpro4": 0,
+			zh: 0,
+		});
+		assert.deepEqual(stats.maximumAtk, { withValue: 1, sidePieces: 0, centreWithoutValue: [] });
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
 });
 
-test("mergeTranslations fills a field the fetched entry lacks", () => {
-	const merged = mergeTranslations(
-		{ 1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card." } },
-		{ 1201: { es: "Mago del Tiempo" } },
-	);
+test("buildRushCdbs aborts when a MDPro4 alternate art id is already in the union", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-md-dup-"));
+	try {
+		const inputs = mdpro4Fixture(dir);
+		const clash = join(dir, "md-src", "Clash.cdb");
+		makeCdb(clash, [{ id: 129000001, name: "冲突" }]);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
 
-	assert.deepEqual(merged, {
-		1201: { en: "Time Wizard", en_lore: "[EFFECT] Draw 1 card.", es: "Mago del Tiempo" },
-	});
-});
-
-test("mergeTranslations treats an empty fetched field as the gap it is", () => {
-	// fetch-rush-translations.mjs writes "" for a field the wiki page did not
-	// carry, so an empty override must not blank a mined value.
-	const merged = mergeTranslations(
-		{ 1201: { en: "Time Wizard", es: "", es_lore: "" } },
-		{ 1201: { es: "Mago del Tiempo" } },
-	);
-
-	assert.deepEqual(merged, {
-		1201: { en: "Time Wizard", es: "Mago del Tiempo", es_lore: "" },
-	});
-});
-
-test("mergeTranslations keeps cards only one of the two files knows", () => {
-	const merged = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1202: { es: "Dragón Milenario" } });
-
-	assert.deepEqual(merged, { 1201: { en: "Time Wizard" }, 1202: { es: "Dragón Milenario" } });
-});
-
-test("mergeTranslations does not mutate either input", () => {
-	const fetched = { 1201: { en: "Time Wizard" } };
-	const base = { 1201: { es: "Mago del Tiempo" } };
-	mergeTranslations(fetched, base);
-
-	assert.deepEqual(fetched, { 1201: { en: "Time Wizard" } });
-	assert.deepEqual(base, { 1201: { es: "Mago del Tiempo" } });
-});
-
-test("a mined Spanish name reaches the es variant through the merge", () => {
-	const entry = mergeTranslations({ 1201: { en: "Time Wizard" } }, { 1201: { es: "Mago del Tiempo" } })[1201];
-
-	assert.deepEqual(resolveVariantTexts(entry, "es").name, {
-		text: "Mago del Tiempo",
-		source: "es",
-	});
+		assert.throws(
+			() => buildRushCdbs({ ...inputs, sources: [...inputs.sources, clash], outDir, workDir }),
+			/duplicate.*129000001/,
+		);
+		assert.deepEqual(readdirSync(outDir), []);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
 });

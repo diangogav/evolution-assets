@@ -3,18 +3,35 @@
 // identical `datas`/`texts` schemas). The per-origin files are consumed
 // read-only — the game server assembles its card pool from them directly.
 //
+// mycard stays the source of mechanics. ElderLich/MDPro4_Data, mirrored in
+// rush/mdpro4/ with the same schema, contributes two things on top:
+//   - Alternate artwork rows (ids 129xxxxxx) whose `alias` is a card of the
+//     union. Their `datas` are copied verbatim; their text is their base
+//     card's wherever ours is keyed by the base id (see below). Alternate arts
+//     of MDPro4's anime customs are left out — those customs have no mycard
+//     script, so the art would point at a card nobody can play.
+//   - Complete English and Spanish card texts, used as a tier below ours.
+//
 // Three variants ship, gzipped only (like the prerelease family, no raw
 // unified .cdb is kept):
 //   rush.cdb.gz    — the plain union, untranslated (zh-CN, as upstream ships).
-//   rush.en.cdb.gz — texts.name/desc overridden from rush/translations.json
-//                    (`en`, and `en_req` + `en_lore` composed into the two
-//                    blocks a Rush card prints) where non-empty; zh otherwise.
-//                    Cards the wiki does not document yet ship in Chinese by
-//                    design and pick up English on a later daily run.
-//   rush.es.cdb.gz — per-field fallback chain es → en → zh. Its Spanish comes
-//                    from rush/translations.json first and rush/
-//                    translations.base.json — official names mined off the base
-//                    databases, see mine-spanish-names.mjs — only in the gaps.
+//                    The alternate-art rows have no Chinese source at all, so
+//                    they carry MDPro4's English text here.
+//   rush.en.cdb.gz — per field: rush/translations.json (`en`, and `en_req` +
+//                    `en_lore` composed into the two blocks a Rush card
+//                    prints) → MDPro4 English → zh.
+//   rush.es.cdb.gz — per field: rush/translations.json Spanish → rush/
+//                    translations.base.json (official names mined off the base
+//                    databases, see mine-spanish-names.mjs) → MDPro4 Spanish →
+//                    the whole en chain. MDPro4's Spanish is partly machine
+//                    translated, which is why our wiki-sourced text outranks
+//                    it; a MDPro4 Spanish text identical to its English one is
+//                    an untranslated copy and is skipped. The run report lists
+//                    the MDPro4 Spanish texts used that carry known
+//                    machine-translation telltales.
+// An alternate-art row looks up translations.json and translations.base.json
+// by its own id first and its alias second: an alternate art prints its base
+// card's text. MDPro4 text is always taken by the row's own id.
 // In the en/es variants texts.str1..str16 — the duel-time UI prompts a card
 // shows when it asks the player to choose — are additionally run through
 // rush/effect-strings.json (see build-effect-strings.mjs). A prompt is
@@ -22,15 +39,16 @@
 // never blanked. `datas` stays byte-identical across variants (translation
 // only ever UPDATEs texts rows in a file copy).
 //
-// The en/es variants additionally gain a leading `Maximum ATK <n>` line on the
-// Maximum monsters that declare one, sourced from the Chinese original — see
-// TYPE_MAXIMUM below.
+// The en/es variants lead the desc of every Maximum monster that declares a
+// value with a `Maximum ATK <n>` line, sourced from the Chinese original — see
+// TYPE_MAXIMUM below. MDPro4 descs already carry that line, so it is added only
+// to a desc that does not lead with one.
 //
-// A card id present in more than one source cdb aborts the run before anything
-// is written: precedence between origins is a human decision, not a merge
-// default. Output is deterministic — rows are inserted in global id order and
-// the gzip carries no mtime/name (gzip -9 -n semantics) — so two runs over the
-// same inputs are byte-identical.
+// A card id present in more than one source cdb, alternate-art rows included,
+// aborts the run before anything is written: precedence between origins is a
+// human decision, not a merge default. Output is deterministic — rows are
+// inserted in global id order and the gzip carries no mtime/name (gzip -9 -n
+// semantics) — so two runs over the same inputs are byte-identical.
 
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -40,11 +58,13 @@ import { basename, join } from "node:path";
 import { gzipSync } from "node:zlib";
 
 import { readStrRows, STR_NAMES } from "./build-effect-strings.mjs";
-import { reportFragment } from "./run-report.mjs";
+import { reportFragment, sampled } from "./run-report.mjs";
 
 const RUSH_CDBS = ["rush/RD Standard.cdb", "rush/RD Patch.cdb", "rush/RD Alternate.cdb"];
 const TRANSLATIONS_PATH = "rush/translations.json";
 const TRANSLATIONS_BASE_PATH = "rush/translations.base.json";
+const MDPRO4_EN_PATH = "rush/mdpro4/rush_cards.en.cdb";
+const MDPRO4_ES_PATH = "rush/mdpro4/rush_cards.es.cdb";
 const EFFECT_STRINGS_PATH = "rush/effect-strings.json";
 const EFFECT_STRINGS_MANUAL_PATH = "rush/effect-strings.manual.json";
 
@@ -64,32 +84,14 @@ export function mergeEffectStrings(mined, manual) {
 	return merged;
 }
 
-/**
- * The scraped translations, with the mined ones filling their gaps.
- *
- * Fetched entries win: their Spanish is off that Rush card's own wiki page,
- * about the card in hand. A mined value comes from a DIFFERENT base card that
- * merely shares an English name (see mine-spanish-names.mjs), so it is only
- * ever evidence where the wiki says nothing.
- */
-export function mergeTranslations(fetched, base) {
-	const merged = {};
-	for (const id of new Set([...Object.keys(base), ...Object.keys(fetched)])) {
-		const entry = { ...base[id], ...fetched[id] };
-		// fetch-rush-translations.mjs writes "" for a field its wiki page did not
-		// carry; that empty is a gap, not a value, and must not blank a mined one.
-		for (const [field, text] of Object.entries(base[id] ?? {})) {
-			if (!entry[field]) entry[field] = text;
-		}
-		merged[id] = entry;
-	}
-	return merged;
-}
-
 const OUT_DIR = "cdb";
 
+// Whole-table JSON reads (the MDPro4 texts) outgrow execFileSync's 1 MiB
+// default output buffer.
+const SQLITE_MAX_BUFFER = 256 * 1024 * 1024;
+
 function sqlite(dbPath, sql) {
-	return execFileSync("sqlite3", [dbPath, sql], { encoding: "utf8" });
+	return execFileSync("sqlite3", [dbPath, sql], { encoding: "utf8", maxBuffer: SQLITE_MAX_BUFFER });
 }
 
 /** Ids that appear in more than one source id list, sorted. */
@@ -104,62 +106,140 @@ export function findDuplicateIds(idLists) {
 		.sort((a, b) => a - b);
 }
 
-// --- Requirement + effect ---
-//
-// A Rush card is printed as two blocks: what you must do or have before the
-// card can be activated, and what then happens. The Chinese original ships
-// both, each under a label on a line of its own with a blank line between
-// them (【条件】 / 【效果】); Yugipedia keeps them in two properties, so
-// rush/translations.json stores them as two fields.
-//
-// The composed text mirrors that layout with Konami's own printed English
-// labels. They stay English in the Spanish variant too: Rush Duel has no
-// official Spanish printing to take a wording from, so a translated label
-// would be ours rather than the game's — the same reason the Maximum ATK line
-// below is English in both variants.
-const REQUIREMENT_LABEL = "[REQUIREMENT]";
-const EFFECT_LABEL = "[EFFECT]";
-
+// The two blocks a Rush card prints are labelled per language. English
+// labels follow the Asian-English print; Spanish has no official Rush
+// printing, so the Spanish labels follow the convention the MDPro4 texts
+// already use, which keeps one style across the whole Spanish variant.
+const BLOCK_LABELS = {
+	en: { requirement: "[REQUIREMENT]", effect: "[EFFECT]" },
+	es: { requirement: "[REQUISITO]", effect: "[EFECTO]" },
+};
 /**
  * The desc one language's two blocks make. A card with no requirement keeps
  * its bare effect: labelling a single block would add a heading the printed
  * card does not have.
  */
-export function composeDesc(requirement, effect) {
+export function composeDesc(requirement, effect, language = "en") {
 	if (!requirement) return effect;
-	return `${REQUIREMENT_LABEL}\n${requirement}\n\n${EFFECT_LABEL}\n${effect}`;
+	const labels = BLOCK_LABELS[language] ?? BLOCK_LABELS.en;
+	return `${labels.requirement}\n${requirement}\n\n${labels.effect}\n${effect}`;
 }
 
-// Per language, the entry fields one variant is built from.
-const VARIANT_FIELDS = {
+// Per language, the translation-entry fields one tier is read from.
+const ENTRY_FIELDS = {
 	en: { name: "en", effect: "en_lore", requirement: "en_req" },
 	es: { name: "es", effect: "es_lore", requirement: "es_req" },
 };
 
 /**
- * The name/desc override one translation entry yields for a variant, per
- * field: `en` takes the English fields when non-empty; `es` falls back per
- * field through es → en. A null field keeps the Chinese original.
+ * The name/desc one translation file offers for a language, each null when
+ * absent. `entries` is the card's own entry followed by its alias's (for an
+ * alternate art); the first entry that has a field wins that field.
  *
- * The effect anchors the desc in both languages: a language that has one
- * contributes its own requirement too, and a language that has none is skipped
- * whole. A Spanish requirement glued to an English effect would read as one
- * card text while being two.
+ * The effect anchors the desc: an entry with no effect is skipped whole, so a
+ * requirement never gets glued to another entry's or language's effect.
  */
-export function resolveVariantTexts(entry, variant) {
-	const pick = (read) => {
-		for (const source of variant === "es" ? ["es", "en"] : ["en"]) {
-			const text = read(VARIANT_FIELDS[source]);
-			if (text) return { text, source };
+function translationTier(entries, language) {
+	const fields = ENTRY_FIELDS[language];
+	const first = (read) => {
+		for (const entry of entries) {
+			const text = entry ? read(entry) : "";
+			if (text) return text;
 		}
 		return null;
 	};
 	return {
-		name: pick((fields) => entry[fields.name]),
-		desc: pick((fields) =>
-			entry[fields.effect] ? composeDesc(entry[fields.requirement], entry[fields.effect]) : "",
+		name: first((entry) => entry[fields.name]),
+		desc: first((entry) =>
+			entry[fields.effect]
+				? composeDesc(entry[fields.requirement], entry[fields.effect], language)
+				: "",
 		),
 	};
+}
+
+// --- MDPro4 text ---
+//
+// MDPro4 ends every desc line with a tab before the LF and escapes a few
+// double quotes as `&quot;`. Neither belongs in a card text: the tab would
+// trail the `Maximum ATK <n>` line MDPro3 parses, and the entity would print
+// literally.
+
+/** A MDPro4 text as it should ship: entities unescaped, tab-free line ends. */
+export function cleanMdpro4Text(text) {
+	return (text ?? "").replaceAll("&quot;", '"').replaceAll("\t\n", "\n");
+}
+
+// Substrings that betray MDPro4's machine-translated Spanish. Matched on the
+// raw text, before `&quot;` is unescaped, and only ever reported: a telltale
+// is a lead for a human, not proof a text is wrong.
+const MACHINE_TRANSLATION_TELLTALES = [
+	"invoca de modo",
+	"no puedes se",
+	"tomar el daño",
+	"destruye todos monstruos",
+	"tails:",
+	"cabezas:",
+	"&quot;",
+];
+
+/** Whether a text contains any machine-translation telltale, ignoring case. */
+export function hasMachineTranslationTelltale(text) {
+	const lower = (text ?? "").toLowerCase();
+	return MACHINE_TRANSLATION_TELLTALES.some((telltale) => lower.includes(telltale));
+}
+
+function mdpro4Tier(row) {
+	return { name: cleanMdpro4Text(row?.name) || null, desc: cleanMdpro4Text(row?.desc) || null };
+}
+
+// MDPro4 ships its English text in the Spanish file wherever it has no
+// translation, so a Spanish field equal to the English one is no Spanish.
+function mdpro4SpanishTier(esRow, enRow) {
+	const es = mdpro4Tier(esRow);
+	const en = mdpro4Tier(enRow);
+	return {
+		name: es.name !== en.name ? es.name : null,
+		desc: es.desc !== en.desc ? es.desc : null,
+	};
+}
+
+// Every source label a variant can report, in chain order; `zh` is the
+// Chinese original a card keeps when no tier has the field.
+const VARIANT_SOURCES = {
+	en: ["translations", "mdpro4", "zh"],
+	es: ["translations", "base", "mdpro4", "en.translations", "en.mdpro4", "zh"],
+};
+
+/**
+ * The name/desc override one card yields for a variant, per field, as
+ * `{ text, source }`, or null to keep the Chinese original.
+ *
+ * `card` carries `translations` and `bases` — entry lists from
+ * translations.json and translations.base.json, own id first then alias —
+ * and `mdpro4En`/`mdpro4Es`, the MDPro4 rows for the card's own id.
+ */
+export function resolveCardTexts(card, variant) {
+	const english = [
+		["translations", translationTier(card.translations ?? [], "en")],
+		["mdpro4", mdpro4Tier(card.mdpro4En)],
+	];
+	const chain =
+		variant === "es"
+			? [
+					["translations", translationTier(card.translations ?? [], "es")],
+					["base", translationTier(card.bases ?? [], "es")],
+					["mdpro4", mdpro4SpanishTier(card.mdpro4Es, card.mdpro4En)],
+					...english.map(([source, tier]) => [`en.${source}`, tier]),
+				]
+			: english;
+	const pick = (field) => {
+		for (const [source, tier] of chain) {
+			if (tier[field]) return { text: tier[field], source };
+		}
+		return null;
+	};
+	return { name: pick("name"), desc: pick("desc") };
 }
 
 // --- Maximum ATK ---
@@ -227,19 +307,21 @@ export function classifyMaximumRows(rows) {
 	return { withValue, sidePieces, centreWithoutValue };
 }
 
+// Whether a desc already leads with the line, as MDPro4's descs do: the
+// client only reads the first non-empty line, so a second one would print.
+const LEADING_MAXIMUM_LINE = /^Maximum ATK\s+\d+/;
+
 /**
- * UPDATEs that put the English line first in `desc`. Prepended, never inserted
- * after a print code: MDPro3 skips the first line only for zh-CN/zh-TW, so a
- * print code carried into en/es would show up as visible body text.
+ * A desc led by `Maximum ATK <atk>`. Prepended, never inserted after a print
+ * code: MDPro3 skips the first line only for zh-CN/zh-TW, so a print code
+ * carried into en/es would show up as visible body text. A desc that already
+ * leads with the line, or a card with no value, is returned as is.
  */
-export function buildMaximumAtkUpdates(withValue) {
-	return withValue
-		.map(
-			({ id, atk }) =>
-				`UPDATE texts SET "desc"=${sqlQuote(`Maximum ATK ${atk}`)} || char(10) || "desc" ` +
-				`WHERE id=${id};`,
-		)
-		.join("\n");
+export function withMaximumLine(desc, atk) {
+	if (atk === null || atk === undefined) return desc;
+	const firstLine = desc.split("\n").find((line) => line.trim() !== "") ?? "";
+	if (LEADING_MAXIMUM_LINE.test(firstLine.trim())) return desc;
+	return `Maximum ATK ${atk}\n${desc}`;
 }
 
 // SQL single-quote escaping — the sqlite3 CLI has no parameter binding.
@@ -248,37 +330,72 @@ function sqlQuote(text) {
 }
 
 /**
- * UPDATE script + per-source counts for one variant, restricted to ids the
- * merged db actually ships — translation rows for cards we don't ship are
- * silently dropped, never added.
+ * UPDATE script, per-source counts and machine-translation suspects for one
+ * variant. `cards` are the shipped cards in id order, each a resolveCardTexts
+ * input plus its `id` and, on a Maximum monster that declares one, its
+ * `maximumAtk`.
  *
- * `requirement` counts the descs that print both blocks, against the language
- * the desc itself was taken from — a fallback carries its own requirement.
+ * Every card counts once per field, `zh` included, so a variant's counts add
+ * up to the cards shipped. `telltales` lists the ids whose MDPro4 Spanish was
+ * used and looks machine translated (always empty for en).
  */
-export function buildVariantUpdates(translations, variant, presentIds) {
-	const stats =
-		variant === "es"
-			? { name: { es: 0, en: 0 }, desc: { es: 0, en: 0 }, requirement: { es: 0, en: 0 } }
-			: { name: { en: 0 }, desc: { en: 0 }, requirement: { en: 0 } };
+export function buildVariantUpdates(cards, variant) {
+	const counts = () => Object.fromEntries(VARIANT_SOURCES[variant].map((source) => [source, 0]));
+	const stats = { name: counts(), desc: counts() };
 	const statements = [];
+	const telltales = [];
 
-	for (const [id, entry] of Object.entries(translations)) {
-		if (!presentIds.has(Number(id))) continue;
-		const { name, desc } = resolveVariantTexts(entry, variant);
+	for (const card of cards) {
+		const { name, desc } = resolveCardTexts(card, variant);
 		const sets = [];
-		if (name) {
-			sets.push(`name=${sqlQuote(name.text)}`);
-			stats.name[name.source]++;
-		}
+		stats.name[name?.source ?? "zh"]++;
+		stats.desc[desc?.source ?? "zh"]++;
+		if (name) sets.push(`name=${sqlQuote(name.text)}`);
 		if (desc) {
-			sets.push(`"desc"=${sqlQuote(desc.text)}`);
-			stats.desc[desc.source]++;
-			if (entry[VARIANT_FIELDS[desc.source].requirement]) stats.requirement[desc.source]++;
+			sets.push(`"desc"=${sqlQuote(withMaximumLine(desc.text, card.maximumAtk))}`);
+		} else if (card.maximumAtk !== undefined && card.maximumAtk !== null) {
+			// The Chinese desc stays, so the line goes on top of it in SQL.
+			sets.push(`"desc"=${sqlQuote(`Maximum ATK ${card.maximumAtk}`)} || char(10) || "desc"`);
 		}
-		if (sets.length > 0) statements.push(`UPDATE texts SET ${sets.join(",")} WHERE id=${id};`);
+		if (sets.length > 0) statements.push(`UPDATE texts SET ${sets.join(",")} WHERE id=${card.id};`);
+
+		const fromMdpro4 = [
+			name?.source === "mdpro4" && card.mdpro4Es?.name,
+			desc?.source === "mdpro4" && card.mdpro4Es?.desc,
+		];
+		if (variant === "es" && fromMdpro4.some((text) => text && hasMachineTranslationTelltale(text))) {
+			telltales.push(card.id);
+		}
 	}
 
-	return { sql: statements.join("\n"), stats };
+	return { sql: statements.join("\n"), stats, telltales };
+}
+
+// --- Alternate artwork ---
+//
+// MDPro4 numbers its alternate arts from 129000000 up, each aliasing the card
+// it reprints. Its anime customs sit in 128000000..128999999, flagged ot & 4,
+// and have no mycard row or script.
+const ALTERNATE_ART_MIN_ID = 129000000;
+const ANIME_CUSTOM_MIN_ID = 128000000;
+const ANIME_CUSTOM_MAX_ID = 128999999;
+const OT_CUSTOM = 4;
+
+/**
+ * The MDPro4 alternate-art rows the union gains, in id order, as
+ * `{ id, alias }`. `rows` are MDPro4's `datas` rows (`id`, `ot`, `alias`);
+ * an alias must be a union card and not an anime custom. Alternate arts carry
+ * ot & 4 themselves, so the flag only marks a custom on a card mycard lacks.
+ */
+export function selectAliasRows(rows, unionIds) {
+	const otById = new Map(rows.map(({ id, ot }) => [id, ot]));
+	const isAnimeCustom = (id) =>
+		(id >= ANIME_CUSTOM_MIN_ID && id <= ANIME_CUSTOM_MAX_ID) ||
+		((otById.get(id) ?? 0) & OT_CUSTOM && !unionIds.has(id));
+	return rows
+		.filter(({ id, alias }) => id >= ALTERNATE_ART_MIN_ID && unionIds.has(alias) && !isAnimeCustom(alias))
+		.map(({ id, alias }) => ({ id, alias }))
+		.sort((a, b) => a.id - b.id);
 }
 
 // --- Effect strings ---
@@ -381,6 +498,19 @@ function readIds(cdbPath) {
 	return out === "" ? [] : out.split("\n").map(Number);
 }
 
+// One table of a cdb as JSON rows — descs are multi-line, which the CLI's
+// default row format cannot round-trip.
+function readJsonRows(cdbPath, columns, table) {
+	const fields = columns.map((column) => `'${column}',"${column}"`).join(",");
+	const out = sqlite(cdbPath, `SELECT json_group_array(json_object(${fields})) FROM ${table};`).trim();
+	return JSON.parse(out);
+}
+
+/** id → { name, desc } over one MDPro4 cdb. */
+function readMdpro4Texts(cdbPath) {
+	return new Map(readJsonRows(cdbPath, ["id", "name", "desc"], "texts").map((row) => [row.id, row]));
+}
+
 // Deterministic gzip of a raw cdb: node's zlib writes a zero mtime and no
 // name, matching the `gzip -9 -n` the other cdb pipelines use.
 function gzipTo(rawPath, gzPath) {
@@ -388,13 +518,29 @@ function gzipTo(rawPath, gzPath) {
 }
 
 /**
- * Merge the source cdbs into workDir and gzip the three variants into outDir.
- * Throws before anything lands in outDir when a card id appears in more than
- * one source. Returns the merge and per-variant translation stats.
+ * Merge the source cdbs, plus the admitted MDPro4 alternate arts, into workDir
+ * and gzip the three variants into outDir. Throws before anything lands in
+ * outDir when a card id appears in more than one source. Returns the merge and
+ * per-variant translation stats.
+ *
+ * `mdpro4` is `{ en, es }`, the paths of the MDPro4 cdbs; without it the build
+ * is the plain mycard union with our translations only.
  */
-export function buildRushCdbs({ sources, translations, effectStrings = {}, outDir, workDir }) {
+export function buildRushCdbs({
+	sources,
+	translations,
+	translationsBase = {},
+	mdpro4 = null,
+	effectStrings = {},
+	outDir,
+	workDir,
+}) {
 	const idLists = sources.map(readIds);
-	const duplicates = findDuplicateIds(idLists);
+	const unionIds = new Set(idLists.flat());
+	const aliasRows = mdpro4
+		? selectAliasRows(readJsonRows(mdpro4.en, ["id", "ot", "alias"], "datas"), unionIds)
+		: [];
+	const duplicates = findDuplicateIds([...idLists, aliasRows.map(({ id }) => id)]);
 	if (duplicates.length > 0) {
 		throw new Error(
 			`duplicate card ids across source cdbs (precedence needs a human decision): ${duplicates.join(", ")}`,
@@ -408,45 +554,80 @@ export function buildRushCdbs({ sources, translations, effectStrings = {}, outDi
 	execFileSync("sqlite3", [rawPath], { input: schema, encoding: "utf8" });
 
 	const attaches = sources.map((src, i) => `ATTACH ${sqlQuote(src)} AS s${i};`).join("");
-	const union = (table) => sources.map((_, i) => `SELECT * FROM s${i}.${table}`).join(" UNION ALL ");
+	const selects = (table) => sources.map((_, i) => `SELECT * FROM s${i}.${table}`);
+	// The alternate arts join the same ordered INSERT. Their texts are MDPro4's
+	// English, cleaned the way cleanMdpro4Text cleans it: there is no Chinese
+	// for them, and the translated variants overwrite name/desc anyway.
+	const aliasIdList = aliasRows.map(({ id }) => id).join(",");
+	const strColumns = STR_NAMES.join(",");
+	const aliasSelects = aliasRows.length
+		? {
+				datas: [`SELECT * FROM m.datas WHERE id IN (${aliasIdList})`],
+				texts: [
+					`SELECT id, replace(name,'&quot;','"'), ` +
+						`replace(replace("desc",'&quot;','"'),char(9)||char(10),char(10)), ${strColumns} ` +
+						`FROM m.texts WHERE id IN (${aliasIdList})`,
+				],
+			}
+		: { datas: [], texts: [] };
+	const mdpro4Attach = aliasRows.length ? `ATTACH ${sqlQuote(mdpro4.en)} AS m;` : "";
+	const union = (table) => [...selects(table), ...aliasSelects[table]].join(" UNION ALL ");
 	// Plain INSERT (never OR REPLACE): a conflict the id pre-check missed must
 	// still abort, not silently pick a winner.
 	sqlite(
 		rawPath,
 		attaches +
+			mdpro4Attach +
 			`INSERT INTO datas SELECT * FROM (${union("datas")}) ORDER BY id;` +
 			`INSERT INTO texts SELECT * FROM (${union("texts")}) ORDER BY id;`,
 	);
 
-	const presentIds = new Set(idLists.flat());
-	// Read off the merged Chinese db: the value only ever exists there, and both
-	// translated variants take the same 30-odd ids from it.
-	const maximumAtk = classifyMaximumRows(readMaximumRows(rawPath));
-	const maximumSql = buildMaximumAtkUpdates(maximumAtk.withValue);
+	const aliasById = new Map(aliasRows.map(({ id, alias }) => [id, alias]));
+	// Read off the merged Chinese rows: the value only ever exists there. An
+	// alternate art has no Chinese text and inherits its base card's value.
+	const maximumAtk = classifyMaximumRows(
+		readMaximumRows(rawPath).filter(({ id }) => !aliasById.has(id)),
+	);
+	const maximumById = new Map(maximumAtk.withValue.map(({ id, atk }) => [id, atk]));
 	const strRows = readStrRows(rawPath);
+
+	const mdpro4En = mdpro4 ? readMdpro4Texts(mdpro4.en) : new Map();
+	const mdpro4Es = mdpro4 ? readMdpro4Texts(mdpro4.es) : new Map();
+	const cards = [...unionIds, ...aliasById.keys()]
+		.sort((a, b) => a - b)
+		.map((id) => {
+			const alias = aliasById.get(id);
+			const keys = alias === undefined ? [id] : [id, alias];
+			return {
+				id,
+				translations: keys.map((key) => translations[key]),
+				bases: keys.map((key) => translationsBase[key]),
+				mdpro4En: mdpro4En.get(id),
+				mdpro4Es: mdpro4Es.get(id),
+				maximumAtk: maximumById.get(alias ?? id),
+			};
+		});
 
 	const variants = {};
 	const strCoverage = {};
 	for (const variant of ["en", "es"]) {
 		const variantPath = join(workDir, `rush.${variant}.cdb`);
 		copyFileSync(rawPath, variantPath);
-		const { sql, stats } = buildVariantUpdates(translations, variant, presentIds);
+		const { sql, stats, telltales } = buildVariantUpdates(cards, variant);
 		const terms = termsForLanguage(effectStrings, variant);
 		const effectSql = buildEffectStringUpdates(strRows, terms);
 		strCoverage[variant] = {
 			replaced: effectSql.replaced,
 			nonChinese: countStrCoverage(strRows, terms).nonChinese,
 		};
-		// Translation first: it REPLACES `desc`, so a line prepended before it would
-		// be overwritten on every card the wiki documents.
-		const script = [sql, maximumSql, effectSql.sql].filter((part) => part !== "").join("\n");
+		const script = [sql, effectSql.sql].filter((part) => part !== "").join("\n");
 		if (script !== "") {
 			execFileSync("sqlite3", [variantPath], {
 				input: `BEGIN;\n${script}\nCOMMIT;\n`,
 				encoding: "utf8",
 			});
 		}
-		variants[variant] = stats;
+		variants[variant] = variant === "es" ? { ...stats, telltales: sampled(telltales, 10) } : stats;
 	}
 
 	gzipTo(rawPath, join(outDir, "rush.cdb.gz"));
@@ -456,7 +637,8 @@ export function buildRushCdbs({ sources, translations, effectStrings = {}, outDi
 	return {
 		merged: {
 			perSource: sources.map((src, i) => ({ name: basename(src), rows: idLists[i].length })),
-			total: presentIds.size,
+			aliasRows: aliasRows.length,
+			total: cards.length,
 		},
 		variants,
 		maximumAtk: {
@@ -502,12 +684,18 @@ function gzDigests() {
 }
 
 function main() {
-	const translations = mergeTranslations(
-		JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8")),
-		existsSync(TRANSLATIONS_BASE_PATH)
-			? JSON.parse(readFileSync(TRANSLATIONS_BASE_PATH, "utf8"))
-			: {},
-	);
+	const translations = JSON.parse(readFileSync(TRANSLATIONS_PATH, "utf8"));
+	const translationsBase = existsSync(TRANSLATIONS_BASE_PATH)
+		? JSON.parse(readFileSync(TRANSLATIONS_BASE_PATH, "utf8"))
+		: {};
+	// Checked up front: the sqlite3 CLI would silently create an empty db for a
+	// missing path, and the build would then ship without the MDPro4 tiers.
+	for (const path of [MDPRO4_EN_PATH, MDPRO4_ES_PATH]) {
+		if (!existsSync(path)) {
+			console.error(`aborted, ${OUT_DIR}/ untouched: missing ${path}`);
+			process.exit(1);
+		}
+	}
 	const effectStrings = mergeEffectStrings(
 		JSON.parse(readFileSync(EFFECT_STRINGS_PATH, "utf8")),
 		JSON.parse(readFileSync(EFFECT_STRINGS_MANUAL_PATH, "utf8")),
@@ -520,6 +708,8 @@ function main() {
 		stats = buildRushCdbs({
 			sources: RUSH_CDBS,
 			translations,
+			translationsBase,
+			mdpro4: { en: MDPRO4_EN_PATH, es: MDPRO4_ES_PATH },
 			effectStrings,
 			outDir: OUT_DIR,
 			workDir,
@@ -532,25 +722,29 @@ function main() {
 	}
 
 	for (const { name, rows } of stats.merged.perSource) console.error(`merged ${name}: ${rows} rows`);
+	console.error(`MDPro4 alternate arts: ${stats.merged.aliasRows} rows`);
 	console.error(`total: ${stats.merged.total} rows`);
-	const { en, es } = stats.variants;
-	console.error(
-		`en: ${en.name.en} names, ${en.desc.en} descs translated ` +
-			`(${en.requirement.en} carry a requirement)`,
-	);
-	// Spanish coverage is counted against every card shipped, not against the
-	// cards a translation entry exists for: an untranslated card is the gap.
-	const cards = stats.merged.total;
-	const coverage = (count) => (cards === 0 ? "0%" : `${((100 * count) / cards).toFixed(1)}%`);
-	console.error(
-		`es: ${es.name.es}/${cards} names (${coverage(es.name.es)}, +${es.name.en} en fallback), ` +
-			`${es.desc.es}/${cards} descs (${coverage(es.desc.es)}, +${es.desc.en} en fallback), ` +
-			`${es.requirement.es} descs carry a requirement (+${es.requirement.en} en fallback)`,
-	);
+	// Counted against every card shipped, so the zh count is the gap left.
+	const sourceCounts = (counts) =>
+		Object.entries(counts)
+			.map(([source, count]) => `${source} ${count}`)
+			.join(", ");
+	for (const variant of ["en", "es"]) {
+		const { name, desc } = stats.variants[variant];
+		console.error(`${variant} names: ${sourceCounts(name)}`);
+		console.error(`${variant} descs: ${sourceCounts(desc)}`);
+	}
+	const { telltales } = stats.variants.es;
+	if (telltales.count > 0) {
+		console.error(
+			`es: ${telltales.count} MDPro4 Spanish texts look machine translated ` +
+				`(e.g. ${telltales.sample.join(", ")})`,
+		);
+	}
 
 	const { withValue, sidePieces, centreWithoutValue } = stats.maximumAtk;
 	console.error(
-		`Maximum ATK: ${withValue} lines added to en/es ` +
+		`Maximum ATK: ${withValue} centre pieces lead en/es with the line ` +
 			`(${sidePieces} [L]/[R] halves, ${centreWithoutValue.length} centre pieces declare none)`,
 	);
 
