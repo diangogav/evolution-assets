@@ -27,12 +27,14 @@ function compose(overrides = {}) {
 
 // --- composeReport: steps ---
 
-test("covers the four pipeline steps in order, absent fragments as missing", () => {
+test("covers the pipeline steps in order, absent fragments as missing", () => {
 	const report = compose({
 		fragments: { "build-cdb": { step: "build-cdb", status: "changed" } },
 	});
 
 	assert.deepEqual(PIPELINE_STEPS, [
+		"check-mdpro4",
+		"build-lflist",
 		"resolve-pages",
 		"fetch-translations",
 		"build-cdb",
@@ -41,6 +43,8 @@ test("covers the four pipeline steps in order, absent fragments as missing", () 
 	assert.deepEqual(
 		report.steps.map(({ step, status }) => [step, status]),
 		[
+			["check-mdpro4", "missing"],
+			["build-lflist", "missing"],
 			["resolve-pages", "missing"],
 			["fetch-translations", "missing"],
 			["build-cdb", "changed"],

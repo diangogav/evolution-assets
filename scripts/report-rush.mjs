@@ -26,6 +26,8 @@ const TRANSLATIONS_PATH = "rush/translations.json";
 const REPORT_PATH = "reports/rush.json";
 
 export const PIPELINE_STEPS = [
+	"check-mdpro4",
+	"build-lflist",
 	"resolve-pages",
 	"fetch-translations",
 	"build-cdb",

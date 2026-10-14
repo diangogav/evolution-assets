@@ -43,6 +43,8 @@ scheduled no-op runs never produce a timestamp-only commit.
   "generatedAt": "2026-08-26T06:04:00.000Z",
   "runUrl": "https://github.com/<owner>/<repo>/actions/runs/<id>",
   "steps": [
+    { "step": "check-mdpro4", "status": "unchanged", "upstreamCommit": "<sha>", "...": "counts, ids added/removed" },
+    { "step": "build-lflist", "status": "unchanged", "regulation": "2026.10 Rush Duel", "counts": { "...": 0 } },
     { "step": "resolve-pages", "status": "changed", "...": "step-specific data" },
     { "step": "fetch-translations", "status": "unchanged" },
     { "step": "build-cdb", "status": "unchanged" },
