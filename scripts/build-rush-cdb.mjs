@@ -3,6 +3,13 @@
 // identical `datas`/`texts` schemas). The per-origin files are consumed
 // read-only — the game server assembles its card pool from them directly.
 //
+// A fourth output, rush/RD MDPro4 Alternate.cdb, carries the admitted MDPro4
+// alternate-art rows (below) on their own, raw and with the same schema. The
+// duel server loads rush/*.cdb and never reads the unified cdbs, so without
+// this file it would not know those ids; it loads it like RD Alternate.cdb.
+// It is an output only: RUSH_CDBS must never list it, or the rows would be
+// merged twice and the duplicate-id check would abort.
+//
 // mycard stays the source of mechanics. ElderLich/MDPro4_Data, mirrored in
 // rush/mdpro4/ with the same schema, contributes two things on top:
 //   - Alternate artwork rows (ids 129xxxxxx) whose `alias` is a card of the
@@ -52,7 +59,15 @@
 
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+	copyFileSync,
+	existsSync,
+	mkdtempSync,
+	readFileSync,
+	renameSync,
+	rmSync,
+	writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import { gzipSync } from "node:zlib";
@@ -85,6 +100,8 @@ export function mergeEffectStrings(mined, manual) {
 }
 
 const OUT_DIR = "cdb";
+const ALTERNATE_CDB_NAME = "RD MDPro4 Alternate.cdb";
+const ALTERNATE_CDB_PATH = `rush/${ALTERNATE_CDB_NAME}`;
 
 // Whole-table JSON reads (the MDPro4 texts) outgrow execFileSync's 1 MiB
 // default output buffer.
@@ -518,6 +535,42 @@ function gzipTo(rawPath, gzPath) {
 }
 
 /**
+ * Put the file at `builtPath` in place at `targetPath` unless the bytes are
+ * already there. Returns "changed" or "unchanged". Leaving an identical file
+ * alone keeps its mtime and the git status clean on a no-op run.
+ */
+export function installIfChanged(builtPath, targetPath) {
+	const built = readFileSync(builtPath);
+	if (existsSync(targetPath) && built.equals(readFileSync(targetPath))) return "unchanged";
+	// Written beside the target and renamed over it, so an interrupted run
+	// never leaves a half-written database where the server loads it from.
+	const staging = `${targetPath}.tmp`;
+	writeFileSync(staging, built);
+	renameSync(staging, targetPath);
+	return "changed";
+}
+
+/**
+ * Write the admitted alternate-art rows as a stand-alone cdb: `datas` verbatim
+ * and `texts` cleaned like the plain unified cdb's, in id order so the bytes
+ * depend only on the rows. The schema is the first source's, which keeps it
+ * loadable exactly like the per-origin files.
+ */
+function writeAlternateCdb(path, schemaSource, mdpro4EnPath, aliasRows) {
+	const ids = aliasRows.map(({ id }) => id).join(",");
+	const schema = execFileSync("sqlite3", [schemaSource, ".schema"], { encoding: "utf8" });
+	execFileSync("sqlite3", [path], { input: schema, encoding: "utf8" });
+	sqlite(
+		path,
+		`ATTACH ${sqlQuote(mdpro4EnPath)} AS m;` +
+			`INSERT INTO datas SELECT * FROM m.datas WHERE id IN (${ids}) ORDER BY id;` +
+			`INSERT INTO texts SELECT id, replace(name,'&quot;','"'), ` +
+			`replace(replace("desc",'&quot;','"'),char(9)||char(10),char(10)), ${STR_NAMES.join(",")} ` +
+			`FROM m.texts WHERE id IN (${ids}) ORDER BY id;`,
+	);
+}
+
+/**
  * Merge the source cdbs, plus the admitted MDPro4 alternate arts, into workDir
  * and gzip the three variants into outDir. Throws before anything lands in
  * outDir when a card id appears in more than one source. Returns the merge and
@@ -525,6 +578,9 @@ function gzipTo(rawPath, gzPath) {
  *
  * `mdpro4` is `{ en, es }`, the paths of the MDPro4 cdbs; without it the build
  * is the plain mycard union with our translations only.
+ *
+ * With alternate arts admitted, the stand-alone alternate cdb is also written
+ * into workDir (`stats.alternate.path`); placing it is the caller's job.
  */
 export function buildRushCdbs({
 	sources,
@@ -630,6 +686,13 @@ export function buildRushCdbs({
 		variants[variant] = variant === "es" ? { ...stats, telltales: sampled(telltales, 10) } : stats;
 	}
 
+	let alternate = { rows: 0, path: null };
+	if (aliasRows.length > 0) {
+		const path = join(workDir, ALTERNATE_CDB_NAME);
+		writeAlternateCdb(path, sources[0], mdpro4.en, aliasRows);
+		alternate = { rows: aliasRows.length, path };
+	}
+
 	gzipTo(rawPath, join(outDir, "rush.cdb.gz"));
 	gzipTo(join(workDir, "rush.en.cdb"), join(outDir, "rush.en.cdb.gz"));
 	gzipTo(join(workDir, "rush.es.cdb"), join(outDir, "rush.es.cdb.gz"));
@@ -641,6 +704,7 @@ export function buildRushCdbs({
 			total: cards.length,
 		},
 		variants,
+		alternate,
 		maximumAtk: {
 			withValue: maximumAtk.withValue.length,
 			sidePieces: maximumAtk.sidePieces.length,
@@ -660,13 +724,15 @@ export function buildRushCdbs({
  * taken before against one taken after the build.
  */
 export function buildCdbFragment(stats, changed) {
+	const alternateChanged = stats.alternate?.status === "changed";
 	return {
 		step: "build-cdb",
-		status: changed ? "changed" : "unchanged",
+		status: changed || alternateChanged ? "changed" : "unchanged",
 		merged: stats.merged,
 		variants: stats.variants,
 		maximumAtk: stats.maximumAtk,
 		effectStrings: stats.effectStrings,
+		...(stats.alternate ? { alternate: stats.alternate } : {}),
 	};
 }
 
@@ -714,6 +780,14 @@ function main() {
 			outDir: OUT_DIR,
 			workDir,
 		});
+		if (stats.alternate.path) {
+			stats.alternate = {
+				rows: stats.alternate.rows,
+				status: installIfChanged(stats.alternate.path, ALTERNATE_CDB_PATH),
+			};
+		} else {
+			stats.alternate = { rows: 0, status: "unchanged" };
+		}
 	} catch (err) {
 		console.error(`aborted, ${OUT_DIR}/ untouched: ${err.message}`);
 		process.exit(1);
@@ -724,6 +798,9 @@ function main() {
 	for (const { name, rows } of stats.merged.perSource) console.error(`merged ${name}: ${rows} rows`);
 	console.error(`MDPro4 alternate arts: ${stats.merged.aliasRows} rows`);
 	console.error(`total: ${stats.merged.total} rows`);
+	console.error(
+		`${ALTERNATE_CDB_PATH}: ${stats.alternate.rows} rows, ${stats.alternate.status}`,
+	);
 	// Counted against every card shipped, so the zh count is the gap left.
 	const sourceCounts = (counts) =>
 		Object.entries(counts)
