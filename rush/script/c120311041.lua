@@ -21,6 +21,9 @@ end
 function cm.confilter2(c)
 	return c:IsType(TYPE_MONSTER) and not cm.confilter1(c)
 end
+function cm.filter(c)
+	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsAbleToGrave()
+end
 function cm.spfilter(c,e,tp)
 	return not c:IsType(TYPE_FUSION) and c:IsLevel(8) and c:IsAttribute(ATTRIBUTE_LIGHT)
 		and c:IsAttack(2500) and RD.IsCanBeSpecialSummoned(c,e,tp,POS_FACEUP)
@@ -30,10 +33,10 @@ function cm.condition(e,tp,eg,ep,ev,re,r,rp)
 		and not Duel.IsExistingMatchingCard(cm.confilter2,tp,LOCATION_GRAVE,0,1,nil)
 end
 function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(Card.IsAbleToGrave,tp,LOCATION_MZONE,0,2,nil) end
+	if chk==0 then return Duel.IsExistingMatchingCard(cm.filter,tp,LOCATION_MZONE,0,2,nil) end
 end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
-	RD.SelectAndDoAction(HINTMSG_TOGRAVE,Card.IsAbleToGrave,tp,LOCATION_MZONE,0,2,2,nil,function(g)
+	RD.SelectAndDoAction(HINTMSG_TOGRAVE,cm.filter,tp,LOCATION_MZONE,0,2,2,nil,function(g)
 		if Duel.SendtoGrave(g,REASON_EFFECT)~=0 then
 			RD.CanSelectAndSpecialSummon(aux.Stringid(m,1),aux.NecroValleyFilter(cm.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,POS_FACEUP,true)
 		end
