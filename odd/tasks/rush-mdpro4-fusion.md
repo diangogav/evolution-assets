@@ -34,3 +34,4 @@ T2/T3 (commit f22f4a6): RED 4 failures (missing modules/exports) → GREEN `npm 
 T4: RED (missing export installIfChanged) → GREEN `npm test` 369 tests, 365 pass. rush/RD MDPro4 Alternate.cdb: 675 datas/texts, ids 129016375..129024005, schema identical to RD Alternate.cdb, second build reports unchanged. Mirror step deletes only the three mycard cdbs by name; final commit paths carry the new file (bash array because of the spaces). Rebuilt client gz files differ only in sqlite page layout across sqlite versions (dumps identical), so the committed ones were kept.
 T5: RED (missing export selectRenumberedRows) → GREEN `npm test` 374 tests, 370 pass. Server cdb 679 rows (675 alt arts + 4 renumbered aliases); unified cdbs differ from HEAD by exactly those 4 rows (sqlite .dump compare). Report: 4 admitted, 0 skipped.
 
+T5 review assessment (committed range from main, untracked excluded): risk medium, review_due false, reason under_budget (230 lines).
