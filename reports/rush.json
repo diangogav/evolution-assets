@@ -1,92 +1,219 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-13T13:45:59.539Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/38407594834",
+  "generatedAt": "2026-10-14T02:39:02.579Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/38502097366",
   "steps": [
+    {
+      "step": "check-mdpro4",
+      "status": "unchanged",
+      "upstreamCommit": "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2",
+      "previousCommit": "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2",
+      "counts": {
+        "en": {
+          "datas": 4076,
+          "texts": 4076
+        },
+        "es": {
+          "datas": 4076,
+          "texts": 4076
+        }
+      },
+      "idsAdded": {
+        "count": 0,
+        "sample": []
+      },
+      "idsRemoved": {
+        "count": 0,
+        "sample": []
+      }
+    },
+    {
+      "step": "build-lflist",
+      "status": "unchanged",
+      "regulation": "2026.10 Rush Duel",
+      "counts": {
+        "forbidden": 3,
+        "limited": 15,
+        "semiLimited": 18,
+        "legend": 125
+      }
+    },
     {
       "step": "resolve-pages",
       "status": "changed",
       "mapped": [
         {
-          "id": "120310004",
-          "title": "Jointech Passion Puncher"
+          "id": "120311001",
+          "title": "Princess Cosmos the Trickster"
         },
         {
-          "id": "120310005",
-          "title": "Jointech Brave Racer"
+          "id": "120311002",
+          "title": "Evil HERO Dark Gaia (Rush Duel)"
         },
         {
-          "id": "120310006",
-          "title": "Jointech Ace Spare"
+          "id": "120311004",
+          "title": "Dendrovenus the Planetairy"
         },
         {
-          "id": "120310007",
-          "title": "Jointech Guardian"
+          "id": "120311006",
+          "title": "Marsphlox the Planetairy"
         },
         {
-          "id": "120310013",
-          "title": "Mad Rare Rappid"
+          "id": "120311007",
+          "title": "Osmanjupiter the Planetairy"
         },
         {
-          "id": "120310014",
-          "title": "Mad Rare Amy"
+          "id": "120311008",
+          "title": "Saturnchamomile the Planetairy"
         },
         {
-          "id": "120310015",
-          "title": "Mad Rare Beeko"
+          "id": "120311010",
+          "title": "Pluamone the Planetairy"
         },
         {
-          "id": "120310016",
-          "title": "Mad Rare Chreia"
+          "id": "120311011",
+          "title": "Cosmostar the Luminous Polairy"
         },
         {
-          "id": "120310017",
-          "title": "Mad Rare Fitz"
+          "id": "120311012",
+          "title": "Cosmostar the Black Hole Polairy"
         },
         {
-          "id": "120310018",
-          "title": "Mad Rare Maqui"
+          "id": "120311013",
+          "title": "Cosmostar the Hypernova Polairy"
         },
         {
-          "id": "120310019",
-          "title": "Mad Rare Gramma"
+          "id": "120311018",
+          "title": "Princess Cosmos' Change of Clothes"
         },
         {
-          "id": "120310037",
-          "title": "Jointech Matchless Hero"
+          "id": "120311020",
+          "title": "Princess Cosmos' Beauty Sleep"
         },
         {
-          "id": "120310038",
-          "title": "Jointech Ultimate Warrior"
+          "id": "120311022",
+          "title": "Evil HERO Inferno Wing (Rush Duel)"
         },
         {
-          "id": "120310045",
-          "title": "Familiar-Possessed - Aussa (Rush Duel)"
+          "id": "120311023",
+          "title": "Evil HERO Lightning Golem (Rush Duel)"
         },
         {
-          "id": "120310048",
-          "title": "Jointech Rejoin"
+          "id": "120311026",
+          "title": "Dark Fusion (Rush Duel)"
         },
         {
-          "id": "120310052",
-          "title": "Occult Preservation Agency Mad Rare"
+          "id": "120311027",
+          "title": "Elemental HERO Clayman (Rush Duel)"
         },
         {
-          "id": "120310061",
-          "title": "Jointech Catapult"
+          "id": "120311029",
+          "title": "Elemental HERO Bubbleman (Rush Duel)"
         },
         {
-          "id": "120310062",
-          "title": "Mad Rare Disturb"
+          "id": "120311030",
+          "title": "Elemental HERO Wildheart (Rush Duel)"
         },
         {
-          "id": "120310063",
-          "title": "Mad Rare Hack"
+          "id": "120311031",
+          "title": "Elemental HERO Voltic Wingman"
+        },
+        {
+          "id": "120311032",
+          "title": "Elemental HERO Burst Wingman"
+        },
+        {
+          "id": "120311033",
+          "title": "Elemental HERO Flame Wingman (Rush Duel)"
+        },
+        {
+          "id": "120311034",
+          "title": "Elemental HERO Thunder Giant (Rush Duel)"
+        },
+        {
+          "id": "120311035",
+          "title": "Elemental HERO Wild Wingman (Rush Duel)"
+        },
+        {
+          "id": "120311036",
+          "title": "Elemental HERO Tempest (Rush Duel)"
+        },
+        {
+          "id": "120311041",
+          "title": "Praime Stock"
+        },
+        {
+          "id": "120311042",
+          "title": "Praime Requiem"
+        },
+        {
+          "id": "120311044",
+          "title": "Transam Praime Master Nova"
+        },
+        {
+          "id": "120311047",
+          "title": "Praime Nova"
+        },
+        {
+          "id": "120311048",
+          "title": "Prophecy Phrase the Colors of the Wind"
+        },
+        {
+          "id": "120311049",
+          "title": "Mahavaio the Melody Maker"
+        },
+        {
+          "id": "120311050",
+          "title": "Pirate of the Apport Winds"
+        },
+        {
+          "id": "120311051",
+          "title": "Plectcrime of the Deadly Dirge"
+        },
+        {
+          "id": "120311052",
+          "title": "Bandijo the Battle Ballad"
+        },
+        {
+          "id": "120311053",
+          "title": "Mokey Mokey (Rush Duel)"
+        },
+        {
+          "id": "120311054",
+          "title": "Sparks (Rush Duel)"
+        },
+        {
+          "id": "120311055",
+          "title": "Lair Wire (Rush Duel)"
+        },
+        {
+          "id": "120311056",
+          "title": "Reshef the Dark Being (Rush Duel)"
+        },
+        {
+          "id": "120311057",
+          "title": "Elemental HERO Avian (Rush Duel)"
+        },
+        {
+          "id": "120311058",
+          "title": "Elemental HERO Burstinatrix (Rush Duel)"
+        },
+        {
+          "id": "120311059",
+          "title": "Elemental HERO Sparkman (Rush Duel)"
+        },
+        {
+          "id": "120311061",
+          "title": "Transam Linac"
+        },
+        {
+          "id": "120311062",
+          "title": "Transam Praime Armor Nova"
         }
       ],
       "unresolved": {
-        "count": 158,
+        "count": 116,
         "sample": [
           "120181011",
           "120195004",
@@ -141,38 +268,34 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310004",
-        "120310005",
-        "120310006",
-        "120310007",
-        "120310013",
-        "120310014",
-        "120310015",
-        "120310016",
-        "120310017",
-        "120310018",
-        "120310019",
-        "120310037",
-        "120310038",
-        "120310045",
-        "120310048",
-        "120310052",
-        "120310061",
-        "120310062",
-        "120310063"
+        "120311002",
+        "120311010",
+        "120311011",
+        "120311013",
+        "120311018",
+        "120311022",
+        "120311023",
+        "120311026",
+        "120311030",
+        "120311035",
+        "120311036",
+        "120311041",
+        "120311042",
+        "120311044",
+        "120311047"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3352,
+      "entries": 3394,
       "coverage": {
-        "en": 3352,
-        "en_lore": 3346,
-        "en_req": 2925,
-        "es": 527,
-        "es_lore": 418,
-        "es_req": 301
+        "en": 3394,
+        "en_lore": 3388,
+        "en_req": 2961,
+        "es": 529,
+        "es_lore": 419,
+        "es_req": 302
       }
     },
     {
@@ -193,32 +316,53 @@
             "rows": 84
           }
         ],
-        "total": 3562
+        "aliasRows": 675,
+        "total": 4237
       },
       "variants": {
         "en": {
           "name": {
-            "en": 3352
+            "translations": 4054,
+            "mdpro4": 89,
+            "zh": 94
           },
           "desc": {
-            "en": 3346
-          },
-          "requirement": {
-            "en": 2925
+            "translations": 4046,
+            "mdpro4": 87,
+            "zh": 104
           }
         },
         "es": {
           "name": {
-            "es": 854,
-            "en": 2498
+            "translations": 582,
+            "base": 413,
+            "mdpro4": 2055,
+            "en.translations": 1064,
+            "en.mdpro4": 29,
+            "zh": 94
           },
           "desc": {
-            "es": 523,
-            "en": 2823
+            "translations": 462,
+            "base": 116,
+            "mdpro4": 3483,
+            "en.translations": 72,
+            "en.mdpro4": 0,
+            "zh": 104
           },
-          "requirement": {
-            "es": 301,
-            "en": 2619
+          "telltales": {
+            "count": 719,
+            "sample": [
+              120102002,
+              120102010,
+              120109018,
+              120109022,
+              120109023,
+              120109030,
+              120109037,
+              120109043,
+              120109049,
+              120109050
+            ]
           }
         }
       },
@@ -231,14 +375,14 @@
         ]
       },
       "effectStrings": {
-        "total": 4662,
+        "total": 5738,
         "en": {
           "replaced": 3695,
-          "nonChinese": 3695
+          "nonChinese": 4771
         },
         "es": {
           "replaced": 3682,
-          "nonChinese": 3682
+          "nonChinese": 4758
         }
       }
     },
@@ -253,379 +397,102 @@
     }
   ],
   "events": {
-    "cardsAdded": [
-      {
-        "id": "120311001",
-        "zh": "谐谑之宇宙姬",
-        "en": null,
-        "es": null
-      },
+    "cardsAdded": [],
+    "cardsRemoved": [],
+    "translationsAdded": [
       {
         "id": "120311002",
         "zh": "邪心英雄 暗黑地魔",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311004",
-        "zh": "惑精 石斛金星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311006",
-        "zh": "惑精 福禄考火星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311007",
-        "zh": "惑精 木樨木星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311008",
-        "zh": "惑精 母菊土星",
-        "en": null,
+        "en": "Evil HERO Dark Gaia",
         "es": null
       },
       {
         "id": "120311010",
         "zh": "惑精 银莲冥王星",
-        "en": null,
+        "en": "Pluamone the Planetairy",
         "es": null
       },
       {
         "id": "120311011",
         "zh": "辉极精 秋英宇宙星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311012",
-        "zh": "黑极精 秋英宇宙星",
-        "en": null,
+        "en": "Cosmostar the Luminous Polairy",
         "es": null
       },
       {
         "id": "120311013",
         "zh": "澄极精 秋英宇宙星",
-        "en": null,
+        "en": "Cosmostar the Hypernova Polairy",
         "es": null
       },
       {
         "id": "120311018",
         "zh": "宇宙姬的更衣",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311020",
-        "zh": "宇宙姬的就寝",
-        "en": null,
+        "en": "Princess Cosmos' Change of Clothes",
         "es": null
       },
       {
         "id": "120311022",
         "zh": "邪心英雄 业火翼魔",
-        "en": null,
+        "en": "Evil HERO Inferno Wing",
         "es": null
       },
       {
         "id": "120311023",
         "zh": "邪心英雄 闪电巨魔",
-        "en": null,
+        "en": "Evil HERO Lightning Golem",
         "es": null
       },
       {
         "id": "120311026",
         "zh": "暗黑融合",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311027",
-        "zh": "元素英雄 黏土侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311029",
-        "zh": "元素英雄 水泡侠",
-        "en": null,
+        "en": "Dark Fusion",
         "es": null
       },
       {
         "id": "120311030",
         "zh": "元素英雄 荒野侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311031",
-        "zh": "元素英雄 电流翼侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311032",
-        "zh": "元素英雄 爆热翼侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311033",
-        "zh": "元素英雄 火焰翼侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311034",
-        "zh": "元素英雄 雷霆巨人",
-        "en": null,
+        "en": "Elemental HERO Wildheart",
         "es": null
       },
       {
         "id": "120311035",
         "zh": "元素英雄 荒野翼侠",
-        "en": null,
+        "en": "Elemental HERO Wild Wingman",
         "es": null
       },
       {
         "id": "120311036",
         "zh": "元素英雄 暴风侠",
-        "en": null,
+        "en": "Elemental HERO Tempest",
         "es": null
       },
       {
         "id": "120311041",
         "zh": "高天喷燃超硬面",
-        "en": null,
+        "en": "Praime Stock",
         "es": null
       },
       {
         "id": "120311042",
         "zh": "高天镇魂鹰巨人",
-        "en": null,
+        "en": "Praime Requiem",
         "es": null
       },
       {
         "id": "120311044",
         "zh": "穿越侍·高天海牛侍 主宰新星",
-        "en": null,
+        "en": "Transam Praime Master Nova",
         "es": null
       },
       {
         "id": "120311047",
         "zh": "高天新星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311048",
-        "zh": "风彩之预言乐句盗贼",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311049",
-        "zh": "极奏之小提琴马赫毗奥",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311050",
-        "zh": "风碎之消物哨管海盗",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311051",
-        "zh": "斩奏之琴拨罪犯",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311052",
-        "zh": "斗奏之班卓琴盗贼",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311053",
-        "zh": "悠悠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311054",
-        "zh": "火星",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311055",
-        "zh": "蛛穴丝网",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311056",
-        "zh": "大邪神 雷瑟夫",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311057",
-        "zh": "元素英雄 羽翼侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311058",
-        "zh": "元素英雄 爆热女郎",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311059",
-        "zh": "元素英雄 电光侠",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311061",
-        "zh": "穿越侍·线性海牛侍",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120311062",
-        "zh": "穿越侍·高天海牛侍 铠天原新星",
-        "en": null,
-        "es": null
-      }
-    ],
-    "cardsRemoved": [],
-    "translationsAdded": [
-      {
-        "id": "120310004",
-        "zh": "接合科技P打孔机",
-        "en": "Jointech Passion Puncher",
-        "es": null
-      },
-      {
-        "id": "120310005",
-        "zh": "接合科技B赛车",
-        "en": "Jointech Brave Racer",
-        "es": null
-      },
-      {
-        "id": "120310006",
-        "zh": "接合科技王牌备品",
-        "en": "Jointech Ace Spare",
-        "es": null
-      },
-      {
-        "id": "120310007",
-        "zh": "接合科技守护者",
-        "en": "Jointech Guardian",
-        "es": null
-      },
-      {
-        "id": "120310013",
-        "zh": "疯狂犯罪者·兔女",
-        "en": "Mad Rare Rappid",
-        "es": null
-      },
-      {
-        "id": "120310014",
-        "zh": "疯狂犯罪者·松鼠女",
-        "en": "Mad Rare Amy",
-        "es": null
-      },
-      {
-        "id": "120310015",
-        "zh": "疯狂犯罪者·羊驼女",
-        "en": "Mad Rare Beeko",
-        "es": null
-      },
-      {
-        "id": "120310016",
-        "zh": "疯狂犯罪者·净洁女",
-        "en": "Mad Rare Chreia",
-        "es": null
-      },
-      {
-        "id": "120310017",
-        "zh": "疯狂犯罪者·鱼女",
-        "en": "Mad Rare Fitz",
-        "es": null
-      },
-      {
-        "id": "120310018",
-        "zh": "疯狂犯罪者·猴女",
-        "en": "Mad Rare Maqui",
-        "es": null
-      },
-      {
-        "id": "120310019",
-        "zh": "疯狂犯罪者·华丽女士",
-        "en": "Mad Rare Gramma",
-        "es": null
-      },
-      {
-        "id": "120310037",
-        "zh": "接合科技无双英雄",
-        "en": "Jointech Matchless Hero",
-        "es": null
-      },
-      {
-        "id": "120310038",
-        "zh": "接合科技究极战士",
-        "en": "Jointech Ultimate Warrior",
-        "es": null
-      },
-      {
-        "id": "120310045",
-        "zh": "凭依装着-奥丝",
-        "en": "Familiar-Possessed - Aussa",
-        "es": null
-      },
-      {
-        "id": "120310048",
-        "zh": "接合科技再接合",
-        "en": "Jointech Rejoin",
-        "es": null
-      },
-      {
-        "id": "120310052",
-        "zh": "超自然保护机关 疯狂犯罪",
-        "en": "Occult Preservation Agency Mad Rare",
-        "es": null
-      },
-      {
-        "id": "120310061",
-        "zh": "接合科技弹射装置",
-        "en": "Jointech Catapult",
-        "es": null
-      },
-      {
-        "id": "120310062",
-        "zh": "疯狂犯罪者干扰",
-        "en": "Mad Rare Disturb",
-        "es": null
-      },
-      {
-        "id": "120310063",
-        "zh": "疯狂犯罪者骇入",
-        "en": "Mad Rare Hack",
+        "en": "Praime Nova",
         "es": null
       }
     ],
     "unresolved": {
-      "count": 158,
+      "count": 116,
       "sample": [
         "120181011",
         "120195004",

@@ -26814,5 +26814,341 @@
     "es": "",
     "es_lore": "",
     "es_req": ""
+  },
+  "120311001": {
+    "en": "Princess Cosmos the Trickster",
+    "en_lore": "Destroy up to 3 monsters on your field. Then, you can Fusion Summon a Galaxy Type monster with 1900 or 2600 DEF by shuffling up to 9 Galaxy Type monsters from your Graveyard into the Deck as material. This turn, you cannot activate the effect of \"Princess Cosmos the Trickster\".",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311002": {
+    "en": "Evil HERO Dark Gaia",
+    "en_lore": "Change up to 3 Defense Position monsters on your opponent's field to face-up Attack Position.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311004": {
+    "en": "Dendrovenus the Planetairy",
+    "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can destroy this card on your field.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311006": {
+    "en": "Marsphlox the Planetairy",
+    "en_lore": "Destroy 1 card on your field. Then, you can change the battle position of 1 monster on your opponent's field. You cannot activate the effects of non-Galaxy Type monsters until the end of this turn.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311007": {
+    "en": "Osmanjupiter the Planetairy",
+    "en_lore": "Destroy this card on your field. Then, you can Special Summon 1 Level 6 or higher Galaxy Type monster with 900 ATK from your Graveyard to your field in face-up Defense Position.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311008": {
+    "en": "Saturnchamomile the Planetairy",
+    "en_lore": "Fusion Summon a Galaxy Type monster with 1900 or 2600 DEF by sending face-up Galaxy Type monsters from your field to the Graveyard as material.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311010": {
+    "en": "Pluamone the Planetairy",
+    "en_lore": "Fusion Summon a Galaxy Type monster with 1900 DEF by sending 2 monsters from your hand and/or field to the Graveyard as material.",
+    "en_req": "During your Main Phase that a card on your field was destroyed by a card effect.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311011": {
+    "en": "Cosmostar the Luminous Polairy",
+    "en_lore": "Place 1 face-up monster from your opponent's field on the bottom of the owner's Deck. Then, you can add 1 \"Dendrovenus the Planetairy\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Cosmostar the Luminous Polairy\".",
+    "en_req": "During your Main Phase that you Special Summoned this card, send 1 card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311012": {
+    "en": "Cosmostar the Black Hole Polairy",
+    "en_lore": "This card inflicts piercing battle damage. During your turn, face-up monsters on your opponent's field lose 1000 ATK/DEF.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311013": {
+    "en": "Cosmostar the Hypernova Polairy",
+    "en_lore": "Until the end of your opponent's next turn, this card gains 400 ATK, and cannot be destroyed by card effects. Then, you can add 1 \"Mercissus the Planetairy\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Cosmostar the Hypernova Polairy\".",
+    "en_req": "During your Main Phase that you Special Summoned this card, send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311018": {
+    "en": "Princess Cosmos' Change of Clothes",
+    "en_lore": "Destroy 1 face-up Galaxy Type monster with 900 original ATK on your field. Then, if you have not drawn a card by the effect of \"Princess Cosmos' Change of Clothes\" this turn, you can draw 2 cards.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311020": {
+    "en": "Princess Cosmos' Beauty Sleep",
+    "en_lore": "Destroy that Normal Summoned monster. Then, you can draw 2 cards.",
+    "en_req": "When a player Normal Summons a monster, send 1 card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311022": {
+    "en": "Evil HERO Inferno Wing",
+    "en_lore": "This card inflicts piercing battle damage. If this card destroys a monster by battle and sends it to the Graveyard, inflict damage to your opponent equal to [that monster's original ATK or DEF (whichever is higher)].",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311023": {
+    "en": "Evil HERO Lightning Golem",
+    "en_lore": "Destroy 1 monster on the field.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311026": {
+    "en": "Dark Fusion",
+    "en_lore": "Fusion Summon a Fiend Type monster by sending monsters from your hand or field to the Graveyard as material. If you Special Summoned a monster that mentions \"Dark Fusion\" by this effect, it cannot be destroyed by card effects this turn.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311027": {
+    "en": "Elemental HERO Clayman",
+    "en_lore": "An Elemental HERO with a clay body built-to-last. He'll preserve his Elemental HERO colleagues at any cost.",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311029": {
+    "en": "Elemental HERO Bubbleman",
+    "en_lore": "Draw 2 cards.",
+    "en_req": "You have no other cards in your hand or on your field during your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311030": {
+    "en": "Elemental HERO Wildheart",
+    "en_lore": "This card cannot be destroyed by Trap Card effects, and cannot be returned to the hand/Deck/Extra Deck by Trap Card effects. During your turn, if \"Skyscraper\" is face-up on the field, this card gains 1000 ATK.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311031": {
+    "en": "Elemental HERO Voltic Wingman",
+    "en_lore": "Fusion Summon a Level 6-8 Warrior Type monster that can only be Fusion Summoned, by shuffling monsters from your Graveyard into the Deck as material.",
+    "en_req": "During your Main Phase that you Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311032": {
+    "en": "Elemental HERO Burst Wingman",
+    "en_lore": "1 face-up Warrior Type monster on your field gains 1000 ATK until the end of your opponent's next turn. Then, you can destroy 1 Spell/Trap Card on your opponent's field.",
+    "en_req": "Send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311033": {
+    "en": "Elemental HERO Flame Wingman",
+    "en_lore": "If this card destroys a monster by battle and sends it to the Graveyard, inflict damage to your opponent equal to [that monster's original ATK].",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311034": {
+    "en": "Elemental HERO Thunder Giant",
+    "en_lore": "Destroy 1 face-up monster with a lower original ATK than this card on either field.",
+    "en_req": "Send 1 card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311035": {
+    "en": "Elemental HERO Wild Wingman",
+    "en_lore": "Destroy Spell/Trap Cards on your opponent's field equal to [the number of cards sent to the Graveyard to meet the requirement].",
+    "en_req": "Send up to 4 cards from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311036": {
+    "en": "Elemental HERO Tempest",
+    "en_lore": "Choose 1 face-up monster on your field. That monster cannot be destroyed by battle until the end of your opponent's next turn.",
+    "en_req": "Send 1 other card from your field to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311041": {
+    "en": "Praime Stock",
+    "en_lore": "Send 2 face-up LIGHT Attribute monsters from your field to the Graveyard. Then, you can Special Summon 1 Level 8 LIGHT Attribute non-Fusion Monster with 2500 ATK from your Graveyard face-up to your field. This turn, you cannot activate the effect of \"Praime Stock\".",
+    "en_req": "The only monsters in your Graveyard are LIGHT Attribute monsters.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311042": {
+    "en": "Praime Requiem",
+    "en_lore": "This card gains ATK equal to [the number of face-up LIGHT Attribute monsters on your field] x 300 until the end of this turn. Then, you can add 1 \"Praime Call\" from your Graveyard to your hand.",
+    "en_req": "Send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311044": {
+    "en": "Transam Praime Master Nova",
+    "en_lore": "Monsters on your field cannot be returned to the hand/Deck/Extra Deck by card effects. Face-up monsters on your opponent's field become LIGHT Attribute.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311047": {
+    "en": "Praime Nova",
+    "en_lore": "Make 1 face-up monster on your opponent's field lose 1600 ATK until the end of this turn.",
+    "en_req": "When a player Normal or Special Summons a monster while the only monsters in your Graveyard are LIGHT Attribute monsters.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311048": {
+    "en": "Prophecy Phrase the Colors of the Wind",
+    "en_lore": "Each player with cards in their hand sends their entire hand to the Graveyard. Then, inflict damage to your opponent equal to [the number of cards sent to the Graveyard by this effect] x 200. Then, you can make all face-up monsters on your opponent's field lose ATK equal to [the damage inflicted to your opponent by this effect] until the end of this turn.",
+    "en_req": "If the only face-up monsters on your field are WIND Attribute Psychic Type monsters, pay 1000 LP.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311049": {
+    "en": "Mahavaio the Melody Maker",
+    "en_lore": "This card gains ATK equal to [the total number of Equip Spell Cards equipped to this card and face-up Normal Monsters on your opponent's field] x 500.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311050": {
+    "en": "Pirate of the Apport Winds",
+    "en_lore": "Add Level 4 or lower monsters from your opponent's Graveyard to their hand, up to [the number of face-up monsters on their field]. Then, this card gains ATK equal to [the total number of cards in both players' hands] x 100 until the end of this turn.",
+    "en_req": "If you have 3 or more Psychic Type monsters in your Graveyard, pay 1000 LP.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311051": {
+    "en": "Plectcrime of the Deadly Dirge",
+    "en_lore": "Add 1 Equip Spell Card from your Graveyard to your hand. Then, this card gains 400 ATK until the end of this turn.",
+    "en_req": "During the turn you Normal Summoned this card, pay 1000 LP.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311052": {
+    "en": "Bandijo the Battle Ballad",
+    "en_lore": "Add 1 Level 2 or lower Psychic Type Normal Monster from your Graveyard to your hand. Then, this card gains ATK equal to [the total number of cards in both players' hands] x 300 until the end of this turn.",
+    "en_req": "During the turn you Normal Summoned this card, pay 1000 LP.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311053": {
+    "en": "Mokey Mokey",
+    "en_lore": "An outcast angel. Nobody knows what he is thinking at all. Sometimes he gets mad and that is dreadful.",
+    "en_req": "",
+    "es": "Mokey Mokey",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311054": {
+    "en": "Sparks",
+    "en_lore": "Inflict 200 damage to your opponent.",
+    "en_req": "None",
+    "es": "Chispas",
+    "es_lore": "Inflige 200 puntos de daño a tu adversario.",
+    "es_req": "Ninguno"
+  },
+  "120311055": {
+    "en": "Lair Wire",
+    "en_lore": "Destroy that Normal Summoned monster.",
+    "en_req": "When your opponent Normal Summons a monster, place 1 Insect Type monster from your Graveyard on the bottom of the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311056": {
+    "en": "Reshef the Dark Being",
+    "en_lore": "Take control of 1 face-up Level 8 or lower monster on your opponent's field that is not in Maximum Mode until the End Phase. This turn, you cannot activate that monster's effects.",
+    "en_req": "During your Main Phase that you Ritual Summoned this card, send 1 Spell Card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311057": {
+    "en": "Elemental HERO Avian",
+    "en_lore": "A winged Elemental HERO who wheels through the sky and manipulates the wind. His signature move, Featherbreak, gives villainy a blow from sky-high.",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311058": {
+    "en": "Elemental HERO Burstinatrix",
+    "en_lore": "A flame manipulator who was the first Elemental HERO woman. Her Burstfire burns away villainy.",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311059": {
+    "en": "Elemental HERO Sparkman",
+    "en_lore": "An Elemental HERO and a warrior of light who proficiently wields many kinds of armaments. His Static Shockwave cuts off the path of villainy.",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311061": {
+    "en": "Transam Linac",
+    "en_lore": "Fight for the Light! Pure Finish!",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311062": {
+    "en": "Transam Praime Armor Nova",
+    "en_lore": "This card that was Normal Summoned by Tributing 3 monsters gains ATK equal to [the total original Levels of the monsters Tributed when Normal Summoning this card] x 100.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
   }
 }
