@@ -92,11 +92,13 @@ jobs:
       - name: Replace the mirrored copy
         run: |
           set -euo pipefail
-          # Remove only the mirrored entries: script/, the cdbs, mycard's ban
-          # list and sets.md are upstream's to replace, but rush/pages.json,
-          # rush/translations.json and rush/mdpro4/ are ours and must survive
-          # the refresh (the glob below does not reach into rush/mdpro4/).
-          rm -rf rush/script rush/*.cdb rush/lflist.mycard.conf rush/sets.md
+          # Remove only the mirrored entries: script/, the three mycard cdbs,
+          # mycard's ban list and sets.md are upstream's to replace, but
+          # rush/pages.json, rush/translations.json, rush/mdpro4/ and the
+          # generated rush/RD MDPro4 Alternate.cdb are ours and must survive
+          # the refresh. The cdbs are therefore named, not globbed.
+          rm -rf rush/script "rush/RD Standard.cdb" "rush/RD Patch.cdb" "rush/RD Alternate.cdb" \
+            rush/lflist.mycard.conf rush/sets.md
           mkdir -p rush
           cp -r /tmp/rush-src/script rush/script
           cp /tmp/rush-src/*.cdb rush/
@@ -283,14 +285,15 @@ jobs:
 
       - name: Commit if the translated databases changed
         run: |
-          paths="rush/pages.json rush/translations.json cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json"
+          # An array, because one of the paths contains a space.
+          paths=(rush/pages.json rush/translations.json "rush/RD MDPro4 Alternate.cdb" cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json)
           # The report only exists once a run produced notable events, and
           # `git add` aborts on a pathspec with nothing behind it.
-          if [ -f reports/rush.json ]; then paths="$paths reports/rush.json"; fi
-          if [ -n "$(git status --porcelain $paths)" ]; then
+          if [ -f reports/rush.json ]; then paths+=(reports/rush.json); fi
+          if [ -n "$(git status --porcelain -- "${paths[@]}")" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add $paths
+            git add -- "${paths[@]}"
             git commit -m "chore(rush): refresh translated databases"
             git pull --rebase --autostash origin main || true
             git push

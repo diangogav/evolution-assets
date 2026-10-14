@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -12,6 +12,7 @@ import {
 	buildEffectStringUpdates,
 	buildRushCdbs,
 	buildVariantUpdates,
+	installIfChanged,
 	classifyMaximumRows,
 	cleanMdpro4Text,
 	composeDesc,
@@ -991,4 +992,94 @@ test("buildRushCdbs aborts when a MDPro4 alternate art id is already in the unio
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
+});
+
+// --- The alternate-art cdb the duel server loads ---
+
+const ALTERNATE_CDB = "RD MDPro4 Alternate.cdb";
+
+test("buildRushCdbs writes the admitted alternate arts as a raw cdb in the per-origin schema", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-alt-"));
+	try {
+		const inputs = mdpro4Fixture(dir);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({ ...inputs, outDir, workDir });
+		const alt = join(workDir, ALTERNATE_CDB);
+		const q = (sql) =>
+			execFileSync("sqlite3", ["-separator", "\t", alt, sql], { encoding: "utf8" }).replace(/\n$/, "");
+
+		assert.equal(stats.alternate.path, alt);
+		assert.equal(stats.alternate.rows, 2);
+		assert.equal(q("SELECT id, ot, alias FROM datas ORDER BY id;"), "129000001\t4\t1001\n129000003\t4\t2001");
+		assert.equal(
+			q('SELECT id, name, "desc", str1 FROM texts ORDER BY id;'),
+			"129000001\tOne MD\tOne effect.\tAlt S1\n129000003\tMax MD\tMaximum ATK 3500\nMax effect.\t",
+		);
+		const schemaOf = (path) =>
+			execFileSync("sqlite3", [path, ".schema"], { encoding: "utf8" });
+		assert.equal(schemaOf(alt), schemaOf(inputs.sources[0]));
+		// An output of the build, never one of its inputs: nothing in outDir.
+		assert.deepEqual(readdirSync(outDir).sort(), ["rush.cdb.gz", "rush.en.cdb.gz", "rush.es.cdb.gz"]);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("buildRushCdbs writes no alternate cdb without MDPro4 rows, and the same bytes twice", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-alt-det-"));
+	try {
+		const inputs = mdpro4Fixture(dir);
+		const run = (name, withMdpro4) => {
+			const outDir = join(dir, `out-${name}`);
+			const workDir = join(dir, `work-${name}`);
+			mkdirSync(outDir);
+			mkdirSync(workDir);
+			buildRushCdbs({ ...inputs, mdpro4: withMdpro4 ? inputs.mdpro4 : null, outDir, workDir });
+			return join(workDir, ALTERNATE_CDB);
+		};
+		assert.equal(existsSync(run("none", false)), false);
+		assert.equal(sha256(readFileSync(run("a", true))), sha256(readFileSync(run("b", true))));
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("installIfChanged replaces the target only when the bytes differ", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-install-"));
+	try {
+		const built = join(dir, "built.cdb");
+		const target = join(dir, "target.cdb");
+		writeFileSync(built, "one");
+
+		assert.equal(installIfChanged(built, target), "changed");
+		assert.equal(readFileSync(target, "utf8"), "one");
+
+		assert.equal(installIfChanged(built, target), "unchanged");
+
+		writeFileSync(built, "two");
+		assert.equal(installIfChanged(built, target), "changed");
+		assert.equal(readFileSync(target, "utf8"), "two");
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("the fragment reports the alternate cdb and counts it in the changed verdict", () => {
+	const stats = {
+		merged: { perSource: [], aliasRows: 1, total: 1 },
+		variants: {},
+		maximumAtk: { withValue: 0, sidePieces: 0, centreWithoutValue: [] },
+		effectStrings: { total: 0, en: { replaced: 0, nonChinese: 0 }, es: { replaced: 0, nonChinese: 0 } },
+		alternate: { rows: 1, status: "unchanged" },
+	};
+	assert.deepEqual(buildCdbFragment(stats, false).alternate, { rows: 1, status: "unchanged" });
+	assert.equal(buildCdbFragment(stats, false).status, "unchanged");
+	assert.equal(
+		buildCdbFragment({ ...stats, alternate: { rows: 1, status: "changed" } }, false).status,
+		"changed",
+	);
 });
