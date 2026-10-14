@@ -24,6 +24,7 @@ import {
 	parseMaximumAtk,
 	resolveCardTexts,
 	selectAliasRows,
+	selectRenumberedRows,
 	termsForLanguage,
 	withMaximumLine,
 } from "./build-rush-cdb.mjs";
@@ -37,10 +38,10 @@ const SCHEMA =
 
 function makeCdb(path, cards) {
 	execFileSync("sqlite3", [path], { input: SCHEMA, encoding: "utf8" });
-	for (const { id, ot, alias, type, name, desc, str1 } of cards) {
+	for (const { id, ot, alias, type, atk, name, desc, str1 } of cards) {
 		execFileSync("sqlite3", [
 			path,
-			`INSERT INTO datas(id,ot,alias,type) VALUES(${id},${ot ?? 1},${alias ?? 0},${type ?? 1});` +
+			`INSERT INTO datas(id,ot,alias,type,atk) VALUES(${id},${ot ?? 1},${alias ?? 0},${type ?? 1},${atk ?? 0});` +
 				`INSERT INTO texts(id,name,desc,str1) VALUES(${id},'${name}','${desc ?? ""}','${str1 ?? ""}');`,
 		]);
 	}
@@ -1082,4 +1083,100 @@ test("the fragment reports the alternate cdb and counts it in the changed verdic
 		buildCdbFragment({ ...stats, alternate: { rows: 1, status: "changed" } }, false).status,
 		"changed",
 	);
+});
+
+// --- selectRenumberedRows: MDPro4 cards mycard renumbered ---
+
+const MECHANICS = { type: 1, atk: 1000, def: 0, level: 4, race: 2, attribute: 8, setcode: 0 };
+const renumCard = (id, name, extra = {}) => ({ id, alias: 0, name, ...MECHANICS, ...extra });
+
+test("selectRenumberedRows admits a card whose English name has one mycard match with equal mechanics", () => {
+	const union = [renumCard(120100001, "Road Magic - Explosion"), renumCard(120100002, "Other")];
+	const rows = [renumCard(120109001, "  road magic - explosion ")];
+	assert.deepEqual(selectRenumberedRows(rows, union), {
+		admitted: [{ id: 120109001, alias: 120100001 }],
+		skipped: [],
+	});
+});
+
+test("selectRenumberedRows skips an ambiguous name and a name without a match", () => {
+	const union = [renumCard(120100001, "Twin"), renumCard(120100002, "Twin")];
+	const rows = [renumCard(120109001, "Twin"), renumCard(120109002, "Nobody")];
+	assert.deepEqual(selectRenumberedRows(rows, union), {
+		admitted: [],
+		skipped: [
+			{ id: 120109001, reason: "ambiguous name" },
+			{ id: 120109002, reason: "no mycard card with this name" },
+		],
+	});
+});
+
+test("selectRenumberedRows skips a name match whose mechanics differ", () => {
+	const union = [renumCard(120100001, "Road")];
+	for (const column of Object.keys(MECHANICS)) {
+		const rows = [renumCard(120109001, "Road", { [column]: MECHANICS[column] + 1 })];
+		assert.deepEqual(selectRenumberedRows(rows, union), {
+			admitted: [],
+			skipped: [{ id: 120109001, reason: "mechanics differ" }],
+		});
+	}
+});
+
+test("selectRenumberedRows ignores aliased rows, ids already in mycard and anime-custom ids", () => {
+	const union = [renumCard(120100001, "Road"), renumCard(120109005, "Present")];
+	const rows = [
+		renumCard(120109001, "Road", { alias: 120100001 }),
+		renumCard(120109005, "Road"),
+		renumCard(128000001, "Road"),
+		renumCard(129000001, "Road"),
+	];
+	assert.deepEqual(selectRenumberedRows(rows, union), { admitted: [], skipped: [] });
+});
+
+test("buildRushCdbs ships a renumbered MDPro4 row as an alias of its mycard id", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-renum-"));
+	try {
+		const srcDir = join(dir, "src");
+		mkdirSync(srcDir);
+		const source = join(srcDir, "U.cdb");
+		makeCdb(source, [{ id: 120100001, atk: 1000, name: "中文", desc: "中说明" }]);
+		const en = join(srcDir, "md.en.cdb");
+		const es = join(srcDir, "md.es.cdb");
+		makeCdb(en, [
+			{ id: 120109001, atk: 1000, name: "Road Magic - Explosion", desc: "Old id effect." },
+			{ id: 120109002, atk: 1000, name: "Unmatched", desc: "Stays out." },
+		]);
+		makeCdb(es, [
+			{ id: 120109001, name: "Magia de Camino - Explosión", desc: "Efecto." },
+			{ id: 120109002, name: "Sin pareja", desc: "Fuera." },
+		]);
+		const translations = {
+			120100001: { en: "Road Magic - Explosion", en_lore: "Lore.", es: "", es_lore: "" },
+		};
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({ sources: [source], translations, mdpro4: { en, es }, outDir, workDir });
+		const q = (gz, sql) => queryGz(dir, join(outDir, gz), sql);
+		for (const gz of ["rush.cdb.gz", "rush.en.cdb.gz", "rush.es.cdb.gz"]) {
+			assert.equal(q(gz, "SELECT id, alias, atk FROM datas ORDER BY id;"), "120100001\t0\t1000\n120109001\t120100001\t1000");
+		}
+		// Own id first, then the alias id's translation.
+		assert.equal(q("rush.en.cdb.gz", "SELECT id, name, \"desc\" FROM texts ORDER BY id;"), "120100001\tRoad Magic - Explosion\tLore.\n120109001\tRoad Magic - Explosion\tLore.");
+		const alt = join(workDir, "RD MDPro4 Alternate.cdb");
+		assert.equal(
+			execFileSync("sqlite3", [alt, "SELECT id, alias FROM datas;"], { encoding: "utf8" }).trim(),
+			"120109001|120100001",
+		);
+		assert.equal(stats.alternate.rows, 1);
+		assert.deepEqual(stats.renumbered, {
+			admitted: [{ id: 120109001, alias: 120100001 }],
+			skipped: [{ id: 120109002, reason: "no mycard card with this name" }],
+		});
+		assert.deepEqual(buildCdbFragment({ ...stats, alternate: { rows: 1, status: "unchanged" } }, false).renumbered, stats.renumbered);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
 });

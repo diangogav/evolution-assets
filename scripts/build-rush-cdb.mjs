@@ -17,6 +17,15 @@
 //     card's wherever ours is keyed by the base id (see below). Alternate arts
 //     of MDPro4's anime customs are left out — those customs have no mycard
 //     script, so the art would point at a card nobody can play.
+//   - Renumbered cards: MDPro4 still uses ids mycard has since moved to new
+//     ones, so decks built there would name a card the duel server does not
+//     know, and mycard ships scripts only under the new id. A MDPro4 row below
+//     the anime range, with no alias and no mycard row of its own, whose
+//     English name matches exactly one mycard card (by rush/translations.json)
+//     with identical type, atk, def, level, race, attribute and setcode, is
+//     emitted like an alternate art with `alias` set to that mycard id. Rows
+//     with no match, several matches or different mechanics stay out and are
+//     listed in the run report.
 //   - Complete English and Spanish card texts, used as a tier below ours.
 //
 // Three variants ship, gzipped only (like the prerelease family, no raw
@@ -415,6 +424,46 @@ export function selectAliasRows(rows, unionIds) {
 		.sort((a, b) => a.id - b.id);
 }
 
+const MECHANICS_COLUMNS = ["type", "atk", "def", "level", "race", "attribute", "setcode"];
+
+/**
+ * Which MDPro4 cards are mycard cards under an old id. `rows` are MDPro4's
+ * `datas` rows with its English `name`; `unionCards` are every mycard card with
+ * its English `name` (empty or absent when untranslated). A candidate has no
+ * alias, an id below the anime customs and none in the union. It is admitted
+ * only when its trimmed, case-insensitive name matches exactly one union card
+ * whose mechanics are identical; anything else is skipped with a reason.
+ * Returns `{ admitted: [{ id, alias }], skipped: [{ id, reason }] }` in id order.
+ */
+export function selectRenumberedRows(rows, unionCards) {
+	const normalise = (name) => (name ?? "").trim().toLowerCase();
+	const unionIds = new Set(unionCards.map(({ id }) => id));
+	const byName = new Map();
+	for (const union of unionCards) {
+		const name = normalise(union.name);
+		if (name === "") continue;
+		byName.set(name, [...(byName.get(name) ?? []), union]);
+	}
+	const admitted = [];
+	const skipped = [];
+	const candidates = rows
+		.filter((row) => row.id < ANIME_CUSTOM_MIN_ID && row.alias === 0 && !unionIds.has(row.id))
+		.sort((a, b) => a.id - b.id);
+	for (const row of candidates) {
+		const matches = byName.get(normalise(row.name)) ?? [];
+		if (matches.length === 0) {
+			skipped.push({ id: row.id, reason: "no mycard card with this name" });
+		} else if (matches.length > 1) {
+			skipped.push({ id: row.id, reason: "ambiguous name" });
+		} else if (MECHANICS_COLUMNS.some((column) => row[column] !== matches[0][column])) {
+			skipped.push({ id: row.id, reason: "mechanics differ" });
+		} else {
+			admitted.push({ id: row.id, alias: matches[0].id });
+		}
+	}
+	return { admitted, skipped };
+}
+
 // --- Effect strings ---
 //
 // texts.str1..str16 are not card text: they are the prompts the duel client
@@ -550,13 +599,22 @@ export function installIfChanged(builtPath, targetPath) {
 	return "changed";
 }
 
+// MDPro4 ships a renumbered card with alias 0; the copied row must point at
+// the mycard id it stands for. Alternate arts already carry their alias.
+function aliasFixSql(renumbered) {
+	if (renumbered.length === 0) return "";
+	const cases = renumbered.map(({ id, alias }) => `WHEN ${id} THEN ${alias}`).join(" ");
+	const ids = renumbered.map(({ id }) => id).join(",");
+	return `UPDATE datas SET alias = CASE id ${cases} END WHERE id IN (${ids});`;
+}
+
 /**
  * Write the admitted alternate-art rows as a stand-alone cdb: `datas` verbatim
  * and `texts` cleaned like the plain unified cdb's, in id order so the bytes
  * depend only on the rows. The schema is the first source's, which keeps it
  * loadable exactly like the per-origin files.
  */
-function writeAlternateCdb(path, schemaSource, mdpro4EnPath, aliasRows) {
+function writeAlternateCdb(path, schemaSource, mdpro4EnPath, aliasRows, renumbered) {
 	const ids = aliasRows.map(({ id }) => id).join(",");
 	const schema = execFileSync("sqlite3", [schemaSource, ".schema"], { encoding: "utf8" });
 	execFileSync("sqlite3", [path], { input: schema, encoding: "utf8" });
@@ -566,7 +624,8 @@ function writeAlternateCdb(path, schemaSource, mdpro4EnPath, aliasRows) {
 			`INSERT INTO datas SELECT * FROM m.datas WHERE id IN (${ids}) ORDER BY id;` +
 			`INSERT INTO texts SELECT id, replace(name,'&quot;','"'), ` +
 			`replace(replace("desc",'&quot;','"'),char(9)||char(10),char(10)), ${STR_NAMES.join(",")} ` +
-			`FROM m.texts WHERE id IN (${ids}) ORDER BY id;`,
+			`FROM m.texts WHERE id IN (${ids}) ORDER BY id;` +
+			aliasFixSql(renumbered),
 	);
 }
 
@@ -593,9 +652,25 @@ export function buildRushCdbs({
 }) {
 	const idLists = sources.map(readIds);
 	const unionIds = new Set(idLists.flat());
-	const aliasRows = mdpro4
-		? selectAliasRows(readJsonRows(mdpro4.en, ["id", "ot", "alias"], "datas"), unionIds)
+	const mdpro4Datas = mdpro4
+		? readJsonRows(mdpro4.en, ["id", "ot", "alias", ...MECHANICS_COLUMNS], "datas")
 		: [];
+	const mdpro4En = mdpro4 ? readMdpro4Texts(mdpro4.en) : new Map();
+	const renumbered = mdpro4
+		? selectRenumberedRows(
+				mdpro4Datas.map((row) => ({
+					...row,
+					name: cleanMdpro4Text(mdpro4En.get(row.id)?.name),
+				})),
+				sources.flatMap((src) =>
+					readJsonRows(src, ["id", ...MECHANICS_COLUMNS], "datas").map((row) => ({
+						...row,
+						name: translations[row.id]?.en,
+					})),
+				),
+			)
+		: { admitted: [], skipped: [] };
+	const aliasRows = [...(mdpro4 ? selectAliasRows(mdpro4Datas, unionIds) : []), ...renumbered.admitted];
 	const duplicates = findDuplicateIds([...idLists, aliasRows.map(({ id }) => id)]);
 	if (duplicates.length > 0) {
 		throw new Error(
@@ -635,7 +710,8 @@ export function buildRushCdbs({
 		attaches +
 			mdpro4Attach +
 			`INSERT INTO datas SELECT * FROM (${union("datas")}) ORDER BY id;` +
-			`INSERT INTO texts SELECT * FROM (${union("texts")}) ORDER BY id;`,
+			`INSERT INTO texts SELECT * FROM (${union("texts")}) ORDER BY id;` +
+			aliasFixSql(renumbered.admitted),
 	);
 
 	const aliasById = new Map(aliasRows.map(({ id, alias }) => [id, alias]));
@@ -647,7 +723,6 @@ export function buildRushCdbs({
 	const maximumById = new Map(maximumAtk.withValue.map(({ id, atk }) => [id, atk]));
 	const strRows = readStrRows(rawPath);
 
-	const mdpro4En = mdpro4 ? readMdpro4Texts(mdpro4.en) : new Map();
 	const mdpro4Es = mdpro4 ? readMdpro4Texts(mdpro4.es) : new Map();
 	const cards = [...unionIds, ...aliasById.keys()]
 		.sort((a, b) => a - b)
@@ -689,7 +764,7 @@ export function buildRushCdbs({
 	let alternate = { rows: 0, path: null };
 	if (aliasRows.length > 0) {
 		const path = join(workDir, ALTERNATE_CDB_NAME);
-		writeAlternateCdb(path, sources[0], mdpro4.en, aliasRows);
+		writeAlternateCdb(path, sources[0], mdpro4.en, aliasRows, renumbered.admitted);
 		alternate = { rows: aliasRows.length, path };
 	}
 
@@ -705,6 +780,7 @@ export function buildRushCdbs({
 		},
 		variants,
 		alternate,
+		renumbered,
 		maximumAtk: {
 			withValue: maximumAtk.withValue.length,
 			sidePieces: maximumAtk.sidePieces.length,
@@ -733,6 +809,7 @@ export function buildCdbFragment(stats, changed) {
 		maximumAtk: stats.maximumAtk,
 		effectStrings: stats.effectStrings,
 		...(stats.alternate ? { alternate: stats.alternate } : {}),
+		...(stats.renumbered ? { renumbered: stats.renumbered } : {}),
 	};
 }
 
@@ -796,7 +873,8 @@ function main() {
 	}
 
 	for (const { name, rows } of stats.merged.perSource) console.error(`merged ${name}: ${rows} rows`);
-	console.error(`MDPro4 alternate arts: ${stats.merged.aliasRows} rows`);
+	console.error(`MDPro4 alternate arts and renumbered cards: ${stats.merged.aliasRows} rows`);
+	for (const { id, reason } of stats.renumbered.skipped) console.error(`not renumbered ${id}: ${reason}`);
 	console.error(`total: ${stats.merged.total} rows`);
 	console.error(
 		`${ALTERNATE_CDB_PATH}: ${stats.alternate.rows} rows, ${stats.alternate.status}`,
