@@ -120,9 +120,9 @@ test("composeDesc leaves a card with no requirement as its bare effect", () => {
 
 // A card as buildRushCdbs hands it over: translation entries in precedence
 // order (its own id first, then the base card an alternate art aliases) and
-// the MDPro4 rows for its own id.
-function card({ translations = [], bases = [], mdpro4En, mdpro4Es } = {}) {
-	return { translations, bases, mdpro4En, mdpro4Es };
+// the MDPro4 rows for its own id and for its alias.
+function card({ translations = [], bases = [], mdpro4En, mdpro4Es, aliasMdpro4En, aliasMdpro4Es } = {}) {
+	return { translations, bases, mdpro4En, mdpro4Es, aliasMdpro4En, aliasMdpro4Es };
 }
 
 test("resolveCardTexts en: translations.json fields apply only when non-empty", () => {
@@ -236,6 +236,62 @@ test("resolveCardTexts falls back to the aliased base card's translations, own i
 		text: "Nombre base",
 		source: "translations",
 	});
+});
+
+test("resolveCardTexts es: the alias's MDPro4 Spanish sits right after the card's own and above every English tier", () => {
+	const reprint = {
+		translations: [{ en: "Wiki Name", en_lore: "Wiki effect." }],
+		mdpro4En: { name: "Own EN", desc: "Own effect." },
+		mdpro4Es: { name: "Own EN", desc: "Own effect." },
+		aliasMdpro4En: { name: "Base EN", desc: "Base effect." },
+		aliasMdpro4Es: { name: "Base ES", desc: "Efecto base." },
+	};
+	assert.deepEqual(resolveCardTexts(card(reprint), "es"), {
+		name: { text: "Base ES", source: "alias.mdpro4" },
+		desc: { text: "Efecto base.", source: "alias.mdpro4" },
+	});
+
+	// The card's own MDPro4 Spanish stays first.
+	const own = { ...reprint, mdpro4Es: { name: "Propio", desc: "Efecto propio." } };
+	assert.deepEqual(resolveCardTexts(card(own), "es"), {
+		name: { text: "Propio", source: "mdpro4" },
+		desc: { text: "Efecto propio.", source: "mdpro4" },
+	});
+
+	// An alias Spanish text equal to the alias English one is no Spanish.
+	const untranslated = { ...reprint, aliasMdpro4Es: { name: "Base EN", desc: "Base effect." } };
+	assert.deepEqual(resolveCardTexts(card(untranslated), "es"), {
+		name: { text: "Wiki Name", source: "en.translations" },
+		desc: { text: "Wiki effect.", source: "en.translations" },
+	});
+});
+
+test("resolveCardTexts es: the alias's MDPro4 English closes the English chain", () => {
+	const texts = resolveCardTexts(
+		card({
+			mdpro4En: { name: "", desc: "" },
+			aliasMdpro4En: { name: "Base EN", desc: "Base effect." },
+			aliasMdpro4Es: { name: "Base EN", desc: "Base effect." },
+		}),
+		"es",
+	);
+	assert.deepEqual(texts, {
+		name: { text: "Base EN", source: "en.alias.mdpro4" },
+		desc: { text: "Base effect.", source: "en.alias.mdpro4" },
+	});
+});
+
+test("resolveCardTexts en: the alias's MDPro4 English follows the card's own and precedes zh", () => {
+	const alias = { aliasMdpro4En: { name: "Base EN", desc: "Base effect." } };
+	assert.deepEqual(resolveCardTexts(card(alias), "en"), {
+		name: { text: "Base EN", source: "alias.mdpro4" },
+		desc: { text: "Base effect.", source: "alias.mdpro4" },
+	});
+	assert.deepEqual(
+		resolveCardTexts(card({ ...alias, mdpro4En: { name: "Own EN", desc: "Own effect." } }), "en").name,
+		{ text: "Own EN", source: "mdpro4" },
+	);
+	assert.equal(resolveCardTexts(card(), "en").name, null);
 });
 
 test("resolveCardTexts en: the requirement leads the desc", () => {
@@ -424,12 +480,12 @@ test("buildRushCdbs variants apply translations with per-field fallback, zh othe
 
 		// 9999 is not shipped, so it never counts nor appears.
 		assert.deepEqual(stats.variants.en, {
-			name: { translations: 3, mdpro4: 0, zh: 1 },
-			desc: { translations: 2, mdpro4: 0, zh: 2 },
+			name: { translations: 3, mdpro4: 0, "alias.mdpro4": 0, zh: 1 },
+			desc: { translations: 2, mdpro4: 0, "alias.mdpro4": 0, zh: 2 },
 		});
 		assert.deepEqual(stats.variants.es, {
-			name: { translations: 1, base: 0, mdpro4: 0, "en.translations": 2, "en.mdpro4": 0, zh: 1 },
-			desc: { translations: 0, base: 0, mdpro4: 0, "en.translations": 2, "en.mdpro4": 0, zh: 2 },
+			name: { translations: 1, base: 0, mdpro4: 0, "alias.mdpro4": 0, "en.translations": 2, "en.mdpro4": 0, "en.alias.mdpro4": 0, zh: 1 },
+			desc: { translations: 0, base: 0, mdpro4: 0, "alias.mdpro4": 0, "en.translations": 2, "en.mdpro4": 0, "en.alias.mdpro4": 0, zh: 2 },
 			telltales: { count: 0, sample: [] },
 		});
 	} finally {
@@ -448,15 +504,15 @@ test("buildVariantUpdates counts every card against the source its text came fro
 
 	const en = buildVariantUpdates(cards, "en");
 	assert.deepEqual(en.stats, {
-		name: { translations: 1, mdpro4: 1, zh: 1 },
-		desc: { translations: 1, mdpro4: 1, zh: 1 },
+		name: { translations: 1, mdpro4: 1, "alias.mdpro4": 0, zh: 1 },
+		desc: { translations: 1, mdpro4: 1, "alias.mdpro4": 0, zh: 1 },
 	});
 	assert.deepEqual(en.telltales, []);
 
 	const es = buildVariantUpdates(cards, "es");
 	assert.deepEqual(es.stats, {
-		name: { translations: 0, base: 0, mdpro4: 0, "en.translations": 1, "en.mdpro4": 1, zh: 1 },
-		desc: { translations: 0, base: 0, mdpro4: 1, "en.translations": 1, "en.mdpro4": 0, zh: 1 },
+		name: { translations: 0, base: 0, mdpro4: 0, "alias.mdpro4": 0, "en.translations": 1, "en.mdpro4": 1, "en.alias.mdpro4": 0, zh: 1 },
+		desc: { translations: 0, base: 0, mdpro4: 1, "alias.mdpro4": 0, "en.translations": 1, "en.mdpro4": 0, "en.alias.mdpro4": 0, zh: 1 },
 	});
 	// Only MDPro4 Spanish actually used is screened.
 	assert.deepEqual(es.telltales, [1002]);
@@ -776,11 +832,86 @@ test("countStrCoverage counts non-empty str fields and how many end up non-Chine
 	];
 
 	// Nothing translated: only the field that was never Chinese counts.
-	assert.deepEqual(countStrCoverage(rows, {}), { total: 4, nonChinese: 1 });
+	assert.deepEqual(countStrCoverage(rows, {}), {
+		total: 4,
+		nonChinese: 1,
+		sources: { dictionary: 0, mdpro4: 0, "mdpro4.en": 0, original: 1, zh: 3 },
+	});
 	assert.deepEqual(countStrCoverage(rows, { 特殊召唤: "Special Summon", 破坏: "Destroy" }), {
 		total: 4,
 		nonChinese: 3,
+		sources: { dictionary: 2, mdpro4: 0, "mdpro4.en": 0, original: 1, zh: 1 },
 	});
+});
+
+// A row as buildRushCdbs hands it over: its Chinese prompts plus the MDPro4
+// rows to fall back on, the card's own first and its alias's after.
+const promptRow = (strs, mdpro4) => ({ id: 1, ...strs, mdpro4 });
+
+test("buildEffectStringUpdates falls back to MDPro4's prompt of the same slot after a dictionary miss", () => {
+	const rows = [
+		promptRow(
+			{ str1: "特殊召唤", str2: "未知一", str3: "未知二", str4: "未知三", str5: "1000", str6: "未知四" },
+			[
+				{
+					en: { str1: "MD SS", str2: "Unknown EN", str3: "Other EN", str4: "未知英", str6: "" },
+					es: { str1: "MD Inv", str2: "Desconocido", str3: "Other EN", str4: "", str6: "Otra" },
+				},
+			],
+		),
+	];
+	const terms = { 特殊召唤: "Special Summon" };
+
+	const es = buildEffectStringUpdates(rows, terms, "es");
+	// Dictionary first; Spanish where it differs from English; English where
+	// it does not; a Chinese or empty MDPro4 prompt never lands; a prompt that
+	// was never Chinese is left alone.
+	assert.equal(
+		es.sql,
+		"UPDATE texts SET str1='Special Summon',str2='Desconocido',str3='Other EN',str6='Otra' WHERE id=1;",
+	);
+	assert.equal(es.replaced, 4);
+	assert.deepEqual(countStrCoverage(rows, terms, "es"), {
+		total: 6,
+		nonChinese: 5,
+		sources: { dictionary: 1, mdpro4: 2, "mdpro4.en": 1, original: 1, zh: 1 },
+	});
+
+	const en = buildEffectStringUpdates(rows, terms, "en");
+	assert.equal(
+		en.sql,
+		"UPDATE texts SET str1='Special Summon',str2='Unknown EN',str3='Other EN' WHERE id=1;",
+	);
+	assert.deepEqual(countStrCoverage(rows, terms, "en").sources, {
+		dictionary: 1,
+		mdpro4: 2,
+		"mdpro4.en": 0,
+		original: 1,
+		zh: 2,
+	});
+});
+
+test("buildEffectStringUpdates tries the alias's MDPro4 prompts after the card's own", () => {
+	const rows = [
+		promptRow({ str1: "未知一", str2: "未知二", str3: "未知三" }, [
+			{ en: { str1: "Own EN" }, es: { str1: "Own EN" } },
+			{ en: { str1: "Alias EN", str2: "Alias EN 2" }, es: { str1: "Alias ES", str2: "Alias ES 2" } },
+		]),
+	];
+	assert.equal(
+		buildEffectStringUpdates(rows, {}, "es").sql,
+		"UPDATE texts SET str1='Alias ES',str2='Alias ES 2' WHERE id=1;",
+	);
+	assert.equal(
+		buildEffectStringUpdates(rows, {}, "en").sql,
+		"UPDATE texts SET str1='Own EN',str2='Alias EN 2' WHERE id=1;",
+	);
+});
+
+test("buildEffectStringUpdates never blanks a prompt when MDPro4 offers nothing", () => {
+	const rows = [promptRow({ str1: "未知一" }, [{ en: { str1: "" }, es: {} }, undefined])];
+	assert.equal(buildEffectStringUpdates(rows, {}, "es").sql, "");
+	assert.equal(countStrCoverage(rows, {}, "es").sources.zh, 1);
 });
 
 // A merged db whose prompts are partly covered by the dictionary, so the
@@ -837,8 +968,16 @@ test("buildRushCdbs translates str columns in en/es and leaves the base variant 
 
 		assert.deepEqual(stats.effectStrings, {
 			total: 3,
-			en: { replaced: 2, nonChinese: 2 },
-			es: { replaced: 1, nonChinese: 1 },
+			en: {
+				replaced: 2,
+				nonChinese: 2,
+				sources: { dictionary: 2, mdpro4: 0, "mdpro4.en": 0, original: 0, zh: 1 },
+			},
+			es: {
+				replaced: 1,
+				nonChinese: 1,
+				sources: { dictionary: 1, mdpro4: 0, "mdpro4.en": 0, original: 0, zh: 2 },
+			},
 		});
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
@@ -964,8 +1103,10 @@ test("buildRushCdbs appends the admitted MDPro4 alternate arts and resolves thei
 			translations: 0,
 			base: 0,
 			mdpro4: 2,
+			"alias.mdpro4": 0,
 			"en.translations": 2,
 			"en.mdpro4": 0,
+			"en.alias.mdpro4": 0,
 			zh: 0,
 		});
 		assert.deepEqual(stats.maximumAtk, { withValue: 1, sidePieces: 0, centreWithoutValue: [] });
@@ -1176,6 +1317,86 @@ test("buildRushCdbs ships a renumbered MDPro4 row as an alias of its mycard id",
 			skipped: [{ id: 120109002, reason: "no mycard card with this name" }],
 		});
 		assert.deepEqual(buildCdbFragment({ ...stats, alternate: { rows: 1, status: "unchanged" } }, false).renumbered, stats.renumbered);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+// Two reprints of one card: 3002 aliases 3001 in the source cdb, and MDPro4
+// only has rows for 3001. The prompts miss the dictionary on purpose.
+function promptFallbackFixture(dir) {
+	const srcDir = join(dir, "pf-src");
+	mkdirSync(srcDir);
+	const source = join(srcDir, "P.cdb");
+	execFileSync("sqlite3", [source], { input: SCHEMA, encoding: "utf8" });
+	execFileSync("sqlite3", [
+		source,
+		"INSERT INTO datas(id,ot,alias,type) VALUES(3001,1,0,1),(3002,1,3001,1);" +
+			"INSERT INTO texts(id,name,desc,str1,str2,str3,str4) VALUES" +
+			"(3001,'中文一','中说明一','特殊召唤','未知二','未知三','未知四')," +
+			"(3002,'中文二','中说明二','特殊召唤','未知二','未知三','未知四');",
+	]);
+	const en = join(srcDir, "md.en.cdb");
+	const es = join(srcDir, "md.es.cdb");
+	for (const path of [en, es]) execFileSync("sqlite3", [path], { input: SCHEMA, encoding: "utf8" });
+	execFileSync("sqlite3", [
+		en,
+		"INSERT INTO datas(id,ot) VALUES(3001,1);" +
+			"INSERT INTO texts(id,name,desc,str2,str3) VALUES(3001,'Base EN','Base effect.','Two EN','Three EN');",
+	]);
+	execFileSync("sqlite3", [
+		es,
+		"INSERT INTO datas(id,ot) VALUES(3001,1);" +
+			"INSERT INTO texts(id,name,desc,str2,str3) VALUES(3001,'Base ES','Efecto base.','Dos ES','Three EN');",
+	]);
+	const effectStrings = { 特殊召唤: { en: "Special Summon", es: "Invocación Especial" } };
+	return { sources: [source], translations: {}, mdpro4: { en, es }, effectStrings };
+}
+
+test("buildRushCdbs fills prompts and reprint texts from MDPro4, by slot and through the alias", () => {
+	const dir = mkdtempSync(join(tmpdir(), "rush-pf-"));
+	try {
+		const inputs = promptFallbackFixture(dir);
+		const outDir = join(dir, "out");
+		const workDir = join(dir, "work");
+		mkdirSync(outDir);
+		mkdirSync(workDir);
+
+		const stats = buildRushCdbs({ ...inputs, outDir, workDir });
+		const q = (gz, sql) => queryGz(dir, join(outDir, gz), sql);
+		const rows = (gz) => q(gz, "SELECT id, name, str1, str2, str3, str4 FROM texts ORDER BY id;");
+
+		assert.equal(
+			rows("rush.cdb.gz"),
+			["3001\t中文一\t特殊召唤\t未知二\t未知三\t未知四", "3002\t中文二\t特殊召唤\t未知二\t未知三\t未知四"].join("\n"),
+		);
+		assert.equal(
+			rows("rush.en.cdb.gz"),
+			[
+				"3001\tBase EN\tSpecial Summon\tTwo EN\tThree EN\t未知四",
+				"3002\tBase EN\tSpecial Summon\tTwo EN\tThree EN\t未知四",
+			].join("\n"),
+		);
+		// Slot 3 has no Spanish of its own: MDPro4's English copy fills it.
+		assert.equal(
+			rows("rush.es.cdb.gz"),
+			[
+				"3001\tBase ES\tInvocación Especial\tDos ES\tThree EN\t未知四",
+				"3002\tBase ES\tInvocación Especial\tDos ES\tThree EN\t未知四",
+			].join("\n"),
+		);
+
+		const datas = (gz) => q(gz, "SELECT * FROM datas ORDER BY id;");
+		assert.equal(datas("rush.en.cdb.gz"), datas("rush.cdb.gz"));
+		assert.equal(datas("rush.es.cdb.gz"), datas("rush.cdb.gz"));
+
+		assert.deepEqual(stats.effectStrings.es, {
+			replaced: 6,
+			nonChinese: 6,
+			sources: { dictionary: 2, mdpro4: 2, "mdpro4.en": 2, original: 0, zh: 2 },
+		});
+		assert.equal(stats.variants.es.name["alias.mdpro4"], 1);
+		assert.equal(stats.variants.en.desc["alias.mdpro4"], 1);
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}

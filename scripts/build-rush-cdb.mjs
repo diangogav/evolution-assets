@@ -47,13 +47,22 @@
 //                    machine-translation telltales.
 // An alternate-art row looks up translations.json and translations.base.json
 // by its own id first and its alias second: an alternate art prints its base
-// card's text. MDPro4 text is always taken by the row's own id.
+// card's text. MDPro4 text is taken by the row's own id first; the MDPro4 rows
+// of the card's `datas` alias (a reprint of another card, mycard's own or an
+// admitted MDPro4 art) follow in a tier of their own, right after the row's
+// own MDPro4 tier of the same language and above the next language in the
+// chain.
 // In the en/es variants texts.str1..str16 — the duel-time UI prompts a card
 // shows when it asks the player to choose — are additionally run through
 // rush/effect-strings.json (see build-effect-strings.mjs). A prompt is
-// replaced only on an exact dictionary hit, and a miss keeps its Chinese —
-// never blanked. `datas` stays byte-identical across variants (translation
-// only ever UPDATEs texts rows in a file copy).
+// replaced on an exact dictionary hit first. On a miss, a prompt that is
+// still Chinese takes MDPro4's prompt for the same card id and slot (the
+// alias's rows after the card's own): in es MDPro4's Spanish when it is
+// non-empty, free of Chinese and differs from its English, else its English
+// when that is free of Chinese; in en MDPro4's English. When nothing applies
+// the Chinese stays — a prompt is never blanked. The run report counts the
+// prompts per source. `datas` stays byte-identical across variants
+// (translation only ever UPDATEs texts rows in a file copy).
 //
 // The en/es variants lead the desc of every Maximum monster that declares a
 // value with a `Maximum ATK <n>` line, sourced from the Chinese original — see
@@ -233,8 +242,17 @@ function mdpro4SpanishTier(esRow, enRow) {
 // Every source label a variant can report, in chain order; `zh` is the
 // Chinese original a card keeps when no tier has the field.
 const VARIANT_SOURCES = {
-	en: ["translations", "mdpro4", "zh"],
-	es: ["translations", "base", "mdpro4", "en.translations", "en.mdpro4", "zh"],
+	en: ["translations", "mdpro4", "alias.mdpro4", "zh"],
+	es: [
+		"translations",
+		"base",
+		"mdpro4",
+		"alias.mdpro4",
+		"en.translations",
+		"en.mdpro4",
+		"en.alias.mdpro4",
+		"zh",
+	],
 };
 
 /**
@@ -243,12 +261,14 @@ const VARIANT_SOURCES = {
  *
  * `card` carries `translations` and `bases` — entry lists from
  * translations.json and translations.base.json, own id first then alias —
- * and `mdpro4En`/`mdpro4Es`, the MDPro4 rows for the card's own id.
+ * and `mdpro4En`/`mdpro4Es`, the MDPro4 rows for the card's own id, with
+ * `aliasMdpro4En`/`aliasMdpro4Es` the rows of the card it aliases.
  */
 export function resolveCardTexts(card, variant) {
 	const english = [
 		["translations", translationTier(card.translations ?? [], "en")],
 		["mdpro4", mdpro4Tier(card.mdpro4En)],
+		["alias.mdpro4", mdpro4Tier(card.aliasMdpro4En)],
 	];
 	const chain =
 		variant === "es"
@@ -256,6 +276,7 @@ export function resolveCardTexts(card, variant) {
 					["translations", translationTier(card.translations ?? [], "es")],
 					["base", translationTier(card.bases ?? [], "es")],
 					["mdpro4", mdpro4SpanishTier(card.mdpro4Es, card.mdpro4En)],
+					["alias.mdpro4", mdpro4SpanishTier(card.aliasMdpro4Es, card.aliasMdpro4En)],
 					...english.map(([source, tier]) => [`en.${source}`, tier]),
 				]
 			: english;
@@ -385,9 +406,11 @@ export function buildVariantUpdates(cards, variant) {
 		}
 		if (sets.length > 0) statements.push(`UPDATE texts SET ${sets.join(",")} WHERE id=${card.id};`);
 
+		const spanishRow = (source) =>
+			source === "mdpro4" ? card.mdpro4Es : source === "alias.mdpro4" ? card.aliasMdpro4Es : null;
 		const fromMdpro4 = [
-			name?.source === "mdpro4" && card.mdpro4Es?.name,
-			desc?.source === "mdpro4" && card.mdpro4Es?.desc,
+			spanishRow(name?.source)?.name,
+			spanishRow(desc?.source)?.desc,
 		];
 		if (variant === "es" && fromMdpro4.some((text) => text && hasMachineTranslationTelltale(text))) {
 			telltales.push(card.id);
@@ -475,7 +498,9 @@ export function selectRenumberedRows(rows, unionCards) {
 // The dictionary is mined, not translated — see build-effect-strings.mjs. Only
 // an exact whole-string hit is replaced: a prompt that merely CONTAINS a known
 // term is a sentence of its own and substituting inside it would produce
-// half-translated prose. A miss keeps its Chinese; a prompt is never blanked.
+// half-translated prose. A miss falls back to MDPro4's prompt for the same
+// card and slot; with none to offer the Chinese stays, and a prompt is never
+// blanked.
 
 // CJK ideographs only. Fullwidth punctuation survives translation in some
 // prompts, so it is not evidence that a field is still untranslated.
@@ -490,33 +515,71 @@ export function termsForLanguage(effectStrings, language) {
 	return terms;
 }
 
-/** The str columns of one row a dictionary hit changes, as column → text. */
-function translateStrRow(row, terms) {
-	const changes = {};
+// Every source label a prompt can report. `original` is a prompt that was
+// never Chinese (a bare number) and ships as is; `zh` is a Chinese prompt no
+// source could replace.
+const STR_SOURCES = ["dictionary", "mdpro4", "mdpro4.en", "original", "zh"];
+
+const readablePrompt = (text) => Boolean(text) && !CHINESE_CHARACTER.test(text);
+
+/**
+ * MDPro4's prompt for one slot, as `{ text, source }` or null. `candidates`
+ * are `{ en, es }` pairs of MDPro4 str rows, the card's own first and its
+ * alias's after. In es a Spanish prompt (readable, and not a copy of the
+ * English one) outranks the English one across all candidates.
+ */
+function mdpro4Prompt(candidates, name, variant) {
+	const pairs = candidates
+		.filter(Boolean)
+		.map(({ en, es }) => ({ en: en?.[name], es: es?.[name] }));
+	const english = pairs.map(({ en }) => en).find(readablePrompt);
+	if (variant !== "es") return english ? { text: english, source: "mdpro4" } : null;
+	const spanish = pairs.find(({ en, es }) => readablePrompt(es) && es !== en)?.es;
+	if (spanish) return { text: spanish, source: "mdpro4" };
+	return english ? { text: english, source: "mdpro4.en" } : null;
+}
+
+/**
+ * Every non-empty str field of one row with the text it ships and where that
+ * came from: the dictionary, else — for a prompt still Chinese — MDPro4's
+ * (`row.mdpro4`, the `{ en, es }` pairs for the card and its alias), else the
+ * original.
+ */
+function resolveStrRow(row, terms, variant) {
+	const prompts = [];
 	for (const name of STR_NAMES) {
 		const chinese = row[name];
 		if (!chinese) continue;
 		const translated = terms[chinese];
-		if (translated !== undefined && translated !== chinese) changes[name] = translated;
+		let resolved;
+		if (translated !== undefined && translated !== chinese) {
+			resolved = { text: translated, source: "dictionary" };
+		} else if (!CHINESE_CHARACTER.test(chinese)) {
+			resolved = { text: chinese, source: "original" };
+		} else {
+			resolved = mdpro4Prompt(row.mdpro4 ?? [], name, variant) ?? { text: chinese, source: "zh" };
+		}
+		prompts.push({ name, ...resolved });
 	}
-	return changes;
+	return prompts;
 }
 
+const isReplacement = ({ source }) => source !== "original" && source !== "zh";
+
 /**
- * UPDATEs replacing every prompt the dictionary knows, one statement per row
- * that has at least one hit, plus the number of str fields replaced.
+ * UPDATEs replacing every prompt a source can translate, one statement per row
+ * that has at least one, plus the number of str fields replaced.
  */
-export function buildEffectStringUpdates(rows, terms) {
+export function buildEffectStringUpdates(rows, terms, variant = "en") {
 	const statements = [];
 	let replaced = 0;
 
 	for (const row of rows) {
-		const changes = translateStrRow(row, terms);
-		const columns = Object.keys(changes);
-		if (columns.length === 0) continue;
-		replaced += columns.length;
+		const changes = resolveStrRow(row, terms, variant).filter(isReplacement);
+		if (changes.length === 0) continue;
+		replaced += changes.length;
 		statements.push(
-			`UPDATE texts SET ${columns.map((name) => `${name}=${sqlQuote(changes[name])}`).join(",")} ` +
+			`UPDATE texts SET ${changes.map(({ name, text }) => `${name}=${sqlQuote(text)}`).join(",")} ` +
 				`WHERE id=${row.id};`,
 		);
 	}
@@ -525,26 +588,26 @@ export function buildEffectStringUpdates(rows, terms) {
 }
 
 /**
- * How many non-empty str fields the merged db holds and how many of them a
- * player would read in their own language once `terms` is applied. Counted on
- * the resulting text rather than on the replacements: a field that was never
- * Chinese to begin with (a bare number) already reads fine.
+ * How many non-empty str fields the merged db holds, how many of them a
+ * player would read in their own language once the prompts are resolved, and
+ * how many fields each source supplied. Counted on the resulting text rather
+ * than on the replacements: a field that was never Chinese to begin with (a
+ * bare number) already reads fine.
  */
-export function countStrCoverage(rows, terms) {
+export function countStrCoverage(rows, terms, variant = "en") {
 	let total = 0;
 	let nonChinese = 0;
+	const sources = Object.fromEntries(STR_SOURCES.map((source) => [source, 0]));
 
 	for (const row of rows) {
-		const changes = translateStrRow(row, terms);
-		for (const name of STR_NAMES) {
-			const chinese = row[name];
-			if (!chinese) continue;
+		for (const { text, source } of resolveStrRow(row, terms, variant)) {
 			total++;
-			if (!CHINESE_CHARACTER.test(changes[name] ?? chinese)) nonChinese++;
+			sources[source]++;
+			if (!CHINESE_CHARACTER.test(text)) nonChinese++;
 		}
 	}
 
-	return { total, nonChinese };
+	return { total, nonChinese, sources };
 }
 
 // The TYPE_MAXIMUM texts rows, as JSON — descs are multi-line, which the CLI's
@@ -572,9 +635,11 @@ function readJsonRows(cdbPath, columns, table) {
 	return JSON.parse(out);
 }
 
-/** id → { name, desc } over one MDPro4 cdb. */
+/** id → { name, desc, str1..str16 } over one MDPro4 cdb. */
 function readMdpro4Texts(cdbPath) {
-	return new Map(readJsonRows(cdbPath, ["id", "name", "desc"], "texts").map((row) => [row.id, row]));
+	return new Map(
+		readJsonRows(cdbPath, ["id", "name", "desc", ...STR_NAMES], "texts").map((row) => [row.id, row]),
+	);
 }
 
 // Deterministic gzip of a raw cdb: node's zlib writes a zero mtime and no
@@ -724,20 +789,36 @@ export function buildRushCdbs({
 	const strRows = readStrRows(rawPath);
 
 	const mdpro4Es = mdpro4 ? readMdpro4Texts(mdpro4.es) : new Map();
+	// The card each row reprints, from the merged `datas`: mycard's own alias
+	// column as much as the MDPro4 arts'.
+	const reprintOf = new Map(
+		readJsonRows(rawPath, ["id", "alias"], "datas")
+			.filter(({ id, alias }) => alias !== 0 && alias !== id)
+			.map(({ id, alias }) => [id, alias]),
+	);
 	const cards = [...unionIds, ...aliasById.keys()]
 		.sort((a, b) => a - b)
 		.map((id) => {
 			const alias = aliasById.get(id);
 			const keys = alias === undefined ? [id] : [id, alias];
+			const reprint = reprintOf.get(id);
 			return {
 				id,
 				translations: keys.map((key) => translations[key]),
 				bases: keys.map((key) => translationsBase[key]),
 				mdpro4En: mdpro4En.get(id),
 				mdpro4Es: mdpro4Es.get(id),
+				aliasMdpro4En: mdpro4En.get(reprint),
+				aliasMdpro4Es: mdpro4Es.get(reprint),
 				maximumAtk: maximumById.get(alias ?? id),
 			};
 		});
+	// The MDPro4 rows each prompt can fall back on: the card's own, then the
+	// card it reprints.
+	const promptRows = strRows.map((row) => ({
+		...row,
+		mdpro4: [row.id, reprintOf.get(row.id)].map((id) => ({ en: mdpro4En.get(id), es: mdpro4Es.get(id) })),
+	}));
 
 	const variants = {};
 	const strCoverage = {};
@@ -746,10 +827,12 @@ export function buildRushCdbs({
 		copyFileSync(rawPath, variantPath);
 		const { sql, stats, telltales } = buildVariantUpdates(cards, variant);
 		const terms = termsForLanguage(effectStrings, variant);
-		const effectSql = buildEffectStringUpdates(strRows, terms);
+		const effectSql = buildEffectStringUpdates(promptRows, terms, variant);
+		const coverage = countStrCoverage(promptRows, terms, variant);
 		strCoverage[variant] = {
 			replaced: effectSql.replaced,
-			nonChinese: countStrCoverage(strRows, terms).nonChinese,
+			nonChinese: coverage.nonChinese,
+			sources: coverage.sources,
 		};
 		const script = [sql, effectSql.sql].filter((part) => part !== "").join("\n");
 		if (script !== "") {
@@ -910,6 +993,8 @@ function main() {
 			`en ${enStr.nonChinese} readable (${share(enStr.nonChinese)}, ${enStr.replaced} replaced), ` +
 			`es ${esStr.nonChinese} readable (${share(esStr.nonChinese)}, ${esStr.replaced} replaced)`,
 	);
+	console.error(`effect strings en: ${sourceCounts(enStr.sources)}`);
+	console.error(`effect strings es: ${sourceCounts(esStr.sources)}`);
 
 	const changed = JSON.stringify(gzDigests()) !== JSON.stringify(before);
 	reportFragment(process.env, buildCdbFragment(stats, changed));
