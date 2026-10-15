@@ -252,8 +252,9 @@ async function generate() {
 	}
 
 	const merged = await applyBlogOverlay(cards);
-	const identified = applyIdentityCorrections(merged);
-
+	//const identified = applyIdentityCorrections(merged); //-->  this is overwriting cards that have aliases example fallen of albaz and fallen of the white dragon become one and are not different in DB
+	const identified = merged;
+	
 	await writeFile(OUTPUT_PATH, formatGenesysLflist(identified), "utf-8");
 
 	const pointed = identified.filter((card) => card.points > 0).length;
