@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
@@ -132,16 +134,16 @@ test("an empty identity map treats every card as unknown and corrects nothing", 
 	]);
 });
 
-// The four real wrong identities the 2026-08-25 audit found against
-// cdb/base.en.cdb (see odd/tasks/genesys-cdb-identity-validation.md).
+// Real alternate-art pairs from the 2026-08-25 audit against cdb/base.en.cdb
+// (see odd/tasks/genesys-cdb-identity-validation.md). White Dragon and Crimson
+// Blade Dragon were in that audit but are "always treated as" cards, not
+// alternate art; readCardIdentity now keeps them out of the identity map.
 const REAL_ALTERNATE_ART_CASES = [
-	{ from: 3294539, to: 80321197, name: "Crimson Blade Dragon" },
 	{ from: 18144507, to: 18144506, name: "Harpie's Feather Duster" },
-	{ from: 73819701, to: 68468459, name: "Fallen of the White Dragon" },
 	{ from: 83764719, to: 83764718, name: "Monster Reborn" },
 ];
 
-test("corrects the four real alternate-art codes from the audit", () => {
+test("corrects the real alternate-art codes from the audit", () => {
 	const cards = REAL_ALTERNATE_ART_CASES.map(({ from, name }) => ({ code: from, points: 1, name }));
 	const identity = new Map(REAL_ALTERNATE_ART_CASES.map(({ from, to }) => [from, to]));
 
@@ -171,5 +173,77 @@ test(
 
 		assert.equal(identity.get(83764719), 83764718);
 		assert.equal(identity.get(83764718), 0);
+	},
+);
+
+// -- readCardIdentity, against a synthetic database ---------------------------
+
+function buildCdb(rows) {
+	const dir = mkdtempSync(join(tmpdir(), "identity-test-"));
+	const path = join(dir, "test.cdb");
+	const statements = [
+		"CREATE TABLE datas (id integer primary key, alias integer);",
+		"CREATE TABLE texts (id integer primary key, name text);",
+		...rows.flatMap(({ id, alias, name }) => [
+			`INSERT INTO datas VALUES (${id}, ${alias});`,
+			`INSERT INTO texts VALUES (${id}, '${name}');`,
+		]),
+	];
+
+	execFileSync("sqlite3", [path], { input: statements.join("\n") });
+
+	return { dir, path };
+}
+
+test("readCardIdentity keeps a same-name alias as alternate art", () => {
+	const { dir, path } = buildCdb([
+		{ id: 83764718, alias: 0, name: "Monster Reborn" },
+		{ id: 83764719, alias: 83764718, name: "Monster Reborn" },
+	]);
+
+	try {
+		const identity = readCardIdentity(path);
+
+		assert.equal(identity.get(83764719), 83764718);
+		assert.equal(identity.get(83764718), 0);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("readCardIdentity treats a different-name alias as its own base card", () => {
+	const { dir, path } = buildCdb([
+		{ id: 68468459, alias: 0, name: "Fallen of Albaz" },
+		{ id: 73819701, alias: 68468459, name: "Fallen of the White Dragon" },
+	]);
+
+	try {
+		const identity = readCardIdentity(path);
+
+		assert.equal(identity.get(73819701), 0);
+		assert.equal(identity.get(68468459), 0);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("readCardIdentity treats an alias whose base has no texts row as its own base card", () => {
+	const { dir, path } = buildCdb([{ id: 500, alias: 400, name: "Orphan" }]);
+
+	try {
+		assert.equal(readCardIdentity(path).get(500), 0);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test(
+	"reads the real card database and keeps 'always treated as' cards as their own base",
+	{ skip: !existsSync(REAL_CDB) },
+	() => {
+		const identity = readCardIdentity(REAL_CDB);
+
+		assert.equal(identity.get(73819701), 0);
+		assert.equal(identity.get(3294539), 0);
 	},
 );
