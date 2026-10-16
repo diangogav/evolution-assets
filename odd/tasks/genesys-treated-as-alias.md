@@ -87,3 +87,9 @@ Route: delegated direct, one writer per repo (2+ non-trivial files each).
   npm run genesys` (the blog serves no intermediate cert; CI sets this var).
   Diff vs origin/main is exactly the 4 lines (73819701, 3294539 in; 68468459,
   80321197 out). npm test 381 pass 0 fail. Backup: backup/genesys-treated-as-identity.
+- PRs: diangogav/evolution-assets#33 (bc91f47, a5f168d);
+  evolutionygo/genesys-card-generator#6 (rebuilt on origin/main as 08edb40 fix
+  + 716e253 resync; old history in backup/genesys-treated-as-alias). Generator
+  review receipt covered the pre-rebase tree; code files are identical.
+- Remaining: close #31/#32 after #33 merges; badges for 73819701/3294539 come
+  from the next scheduled publish run (or `generate.py --code`).
