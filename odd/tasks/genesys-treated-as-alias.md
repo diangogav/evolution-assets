@@ -49,7 +49,7 @@ Strict TDD: enabled (source: user global config). Runners: `npm test`
 - [x] T1 (delegated writer) evolution-assets: name-aware identity in
   `resolve-card-identity.mjs`, tests, regenerate the point list. Branch
   `fix/genesys-treated-as-identity`.
-- [ ] T2 (delegated writer) genesys-card-generator: name-aware filter in
+- [x] T2 (delegated writer) genesys-card-generator: name-aware filter in
   `sync_alias.py`, tests, regenerate `alias.json` and affected images. Branch
   `fix/genesys-treated-as-alias`.
 
@@ -67,3 +67,23 @@ Route: delegated direct, one writer per repo (2+ non-trivial files each).
 - Community PRs #31 (data-only, overwritten on regen) and #32 (disables identity
   correction, regresses alt-art fixes) are superseded by this fix.
 - Follow-up: after T1 lands, `python3 generate.py --code 73819701,3294539`.
+
+- T2 final: commits 68875dc, a51befd, fcf0b27, fdd6218 (revert qualifier
+  tolerance), 64c51bd (skip non-official printings, ot & ~0x103), 06f89a8
+  (resync). pytest 157 passed (parent re-ran). alias.json 151 -> 70 ids:
+  2 treated-as + 79 anime/manga removed; 82 images pruned. 170000116 resolved
+  by scope filter (anime), no allowlist.
+- Review assess: evolution-assets medium/under_budget (no review due);
+  genesys-card-generator high/high_risk -> consent requested from user.
+- Generator review: granted, 4 lenses, approved and acknowledged (authority
+  burned, lineage review-01bac13b3b1ae5bd). Non-blocking follow-ups: alias
+  silently dropped when a name is missing/renamed (sync_alias.py:107-114),
+  duplicated overlay readers (266-330), small comment/test-name nits.
+- Next: push both branches and open PRs (user decision); close #31/#32 as
+  superseded; after T1 lands run `python3 generate.py --code 73819701,3294539`.
+- Branch rebased onto origin/main (local main was 4 commits behind; CI had
+  refreshed the list in 8ee64c5). Manual list commit 4ad57f5 dropped; list
+  regenerated with `NODE_EXTRA_CA_CERTS=scripts/certs/geotrust-tls-rsa-ca-g1.pem
+  npm run genesys` (the blog serves no intermediate cert; CI sets this var).
+  Diff vs origin/main is exactly the 4 lines (73819701, 3294539 in; 68468459,
+  80321197 out). npm test 381 pass 0 fail. Backup: backup/genesys-treated-as-identity.
