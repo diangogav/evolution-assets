@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run script tests
         run: npm test
 
