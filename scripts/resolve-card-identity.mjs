@@ -1,6 +1,9 @@
 // The repo's own card database is the identity authority for point lists:
 // `datas.alias` states outright when a printing is alternate art of a base
-// card, which a name-resolving API cannot always tell apart. See
+// card, which a name-resolving API cannot always tell apart. `alias` is also
+// how EDOPro encodes "This card is always treated as X" — a different card
+// with its own name — so a row only counts as alternate art when its name
+// equals the base card's name. See
 // odd/tasks/genesys-cdb-identity-validation.md for the audit that motivated
 // this and the decisions below.
 
@@ -17,7 +20,10 @@ function sqlite(dbPath, sql) {
 /**
  * Reads `(id, alias)` pairs from a card database and returns them as a
  * `Map<number, number>`. An alias of 0 means the row is itself a base card;
- * a non-zero alias names the base card's id. Accepts either a raw `.cdb` or a
+ * a non-zero alias names the base card's id and is reported only when the row
+ * has the same name as that base card (alternate art). A row aliased to a
+ * differently named card ("always treated as X") or to a card with no `texts`
+ * row is its own base card, so it maps to 0. Accepts either a raw `.cdb` or a
  * gzip-compressed one (decompressed to a scratch file under `os.tmpdir()` and
  * cleaned up before returning). Throws on any failure — the caller decides
  * the fallback.
@@ -43,7 +49,13 @@ export function readCardIdentity(cdbPath) {
 }
 
 function queryIdentity(dbPath) {
-	const output = sqlite(dbPath, "SELECT id, alias FROM datas;");
+	const output = sqlite(
+		dbPath,
+		`SELECT d.id, CASE WHEN d.alias <> 0 AND t.name = b.name THEN d.alias ELSE 0 END
+FROM datas d
+LEFT JOIN texts t ON t.id = d.id
+LEFT JOIN texts b ON b.id = d.alias;`,
+	);
 	const identity = new Map();
 
 	for (const line of output.split("\n")) {
@@ -62,7 +74,8 @@ function queryIdentity(dbPath) {
  * Corrects a card list against the database's identity map. Pure: takes no
  * database dependency, so every rule is testable without one.
  *
- * - A code with a non-zero alias is alternate art: its `code` is rewritten to
+ * - A code with a non-zero alias is alternate art (`readCardIdentity` only
+ *   emits one for same-name rows): its `code` is rewritten to
  *   the base code and the rewrite is reported in `corrections`.
  * - A code absent from `identity` is left unchanged and reported in
  *   `unknown` — absence means the database mirror has not caught up yet, not
