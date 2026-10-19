@@ -19,17 +19,21 @@ end
 function cm.costfilter(c)
 	return c:IsAttribute(ATTRIBUTE_WIND) and c:IsAbleToGraveAsCost()
 end
+function cm.posfilter(c,e,tp)
+	return RD.IsCanChangePosition(c,e,tp,REASON_EFFECT)
+end
 function cm.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(cm.confilter,tp,LOCATION_MZONE,0,1,nil)
 end
 cm.cost=RD.CostSendHandToGrave(cm.costfilter,1,1)
 function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(RD.IsCanChangePosition,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(RD.IsCanChangePosition,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(cm.posfilter,tp,0,LOCATION_MZONE,1,nil,e,tp) end
+	local g=Duel.GetMatchingGroup(cm.posfilter,tp,0,LOCATION_MZONE,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function cm.activate(e,tp,eg,ep,ev,re,r,rp)
-	RD.SelectAndDoAction(HINTMSG_POSCHANGE,RD.IsCanChangePosition,tp,0,LOCATION_MZONE,1,3,nil,function(g)
+	local filter=RD.Filter(cm.posfilter,e,tp)
+	RD.SelectAndDoAction(HINTMSG_POSCHANGE,filter,tp,0,LOCATION_MZONE,1,3,nil,function(g)
 		RD.ChangePosition(g,e,tp,REASON_EFFECT)
 	end)
 end

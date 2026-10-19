@@ -43,15 +43,16 @@ function RushDuel.AddRitualProcedure(card)
 end
 
 -- 创建效果: 仪式术/仪式 召唤
-function RushDuel.CreateRitualEffect(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, target_action, operation_action, limit_action, including_self, self_leave)
+function RushDuel.CreateRitualEffect(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, target_action, operation_action, limit_action, sum_pos, including_self, self_leave)
     local self_range = s_range or 0
     local opponent_range = o_range or 0
     local move = mat_move or RushDuel.RitualToGrave
     local include = including_self or false
     local leave = self_leave or false
+    local pos = sum_pos or POS_FACEUP
     local e = Effect.CreateEffect(card)
-    e:SetTarget(RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, self_range, opponent_range, mat_check, include, leave, target_action))
-    e:SetOperation(RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, self_range, opponent_range, mat_check, move, include, leave, operation_action, limit_action))
+    e:SetTarget(RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, self_range, opponent_range, mat_check, include, leave, pos, target_action))
+    e:SetOperation(RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, self_range, opponent_range, mat_check, move, include, leave, pos, operation_action, limit_action))
     return e
 end
 -- 仪式召唤 - 类型素材过滤
@@ -129,7 +130,7 @@ function RushDuel.RitualMaterialFilter(c, type, filter, e)
     return RushDuel.RitualTypeFilter(c, type) and (not filter or filter(c)) and (not e or not c:IsImmuneToEffect(e))
 end
 -- 仪式召唤 - 仪式召唤的怪兽过滤
-function RushDuel.RitualSpecialSummonFilter(c, e, tp, type, mat, f, gc, chkf, filter)
+function RushDuel.RitualSpecialSummonFilter(c, e, tp, pos, type, mat, f, gc, chkf, filter)
     RushDuel.CurrentRitualEffect = e
     local mg = mat
     if RushDuel.RitualExtraMaterialFilter then
@@ -137,7 +138,7 @@ function RushDuel.RitualSpecialSummonFilter(c, e, tp, type, mat, f, gc, chkf, fi
     end
     local res = c:GetType() & 0x81 == 0x81 and (not filter or filter(c, e, tp, mg, f, chkf)) and (not f or f(c))
         and RushDuel.GetRitualTypeValue(c, type) > 0
-        and c:IsCanBeSpecialSummoned(e, SUMMON_TYPE_RITUAL, tp, false, false)
+        and c:IsCanBeSpecialSummoned(e, SUMMON_TYPE_RITUAL, tp, false, false, pos)
         and RushDuel.CheckRitualMaterial(tp, c, type, mg, gc)
     RushDuel.CurrentRitualEffect = nil
     return res
@@ -220,7 +221,7 @@ function RushDuel.ConfirmCardFilter(c)
     return c:IsLocation(LOCATION_HAND) or (c:IsLocation(LOCATION_MZONE) and c:IsFacedown())
 end
 -- 仪式召唤 - 获取仪式素材与仪式怪兽
-function RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, except, effect)
+function RushDuel.GetRitualSummonData(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, except, effect)
     local chkf = tp
     if except and self_leave then
         except:AddCard(e:GetHandler())
@@ -236,7 +237,7 @@ function RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter
     if including_self then
         gc = e:GetHandler()
     end
-    local sg = Duel.GetMatchingGroup(RushDuel.RitualSpecialSummonFilter, tp, LOCATION_EXTRA, 0, nil, e, tp, type, mg, nil, gc, chkf, spfilter)
+    local sg = Duel.GetMatchingGroup(RushDuel.RitualSpecialSummonFilter, tp, LOCATION_EXTRA, 0, nil, e, tp, pos, type, mg, nil, gc, chkf, spfilter)
     local list = {}
     local ritualable = false
     if #sg > 0 then
@@ -249,7 +250,7 @@ function RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter
         local mg2 = target(effect, e, tp, mg)
         if #mg2 > 0 then
             local mf = effect:GetValue()
-            local sg2 = Duel.GetMatchingGroup(RushDuel.RitualSpecialSummonFilter, tp, LOCATION_EXTRA, 0, nil, e, tp, type, mg2, mf, gc, chkf, spfilter)
+            local sg2 = Duel.GetMatchingGroup(RushDuel.RitualSpecialSummonFilter, tp, LOCATION_EXTRA, 0, nil, e, tp, pos, type, mg2, mf, gc, chkf, spfilter)
             if #sg2 > 0 then
                 table.insert(list, {effect, mg2, sg2})
                 ritualable = true
@@ -259,7 +260,7 @@ function RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter
     return ritualable, list, chkf, gc
 end
 -- 仪式召唤 - 进行仪式召唤
-function RushDuel.ExecuteRitualSummon(e, tp, type, list, chkf, gc, mat_move, cancelable)
+function RushDuel.ExecuteRitualSummon(e, tp, pos, type, list, chkf, gc, mat_move, cancelable)
     local sg = Group.CreateGroup()
     for _, data in ipairs(list) do
         sg:Merge(data[3])
@@ -312,7 +313,7 @@ function RushDuel.ExecuteRitualSummon(e, tp, type, list, chkf, gc, mat_move, can
         mat_move(tp, mat, e)
     end
     Duel.BreakEffect()
-    Duel.SpecialSummon(rc, SUMMON_TYPE_RITUAL, tp, tp, false, false, POS_FACEUP)
+    Duel.SpecialSummon(rc, SUMMON_TYPE_RITUAL, tp, tp, false, false, pos)
     rc:CompleteProcedure()
     return rc, mat
 end
@@ -336,14 +337,14 @@ function RushDuel.RitualCheckLocation(e, self_leave, extra)
     end
 end
 -- 判断条件: 是否可以进行仪式召唤
-function RushDuel.IsCanRitualSummon(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, except)
+function RushDuel.IsCanRitualSummon(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, except)
     RushDuel.RitualExtraChecker = RushDuel.RitualCheckLocation(e, self_leave, mat_check)
-    local ritualable = RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, except)
+    local ritualable = RushDuel.GetRitualSummonData(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, except)
     RushDuel.RitualExtraChecker = nil
     return ritualable
 end
 -- 仪式召唤 - 目标
-function RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, action)
+function RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, pos, action)
     return function(e, tp, eg, ep, ev, re, r, rp, chk)
         if chk == 0 then
             if e:IsHasProperty(EFFECT_FLAG_SPSUM_PARAM) then
@@ -352,7 +353,7 @@ function RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, s_rang
                 RushDuel.MaxRitualMaterialCount = max
             end
             RushDuel.RitualExtraMaterialFilter = card.ritual_mat_filter
-            local res = RushDuel.IsCanRitualSummon(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, nil)
+            local res = RushDuel.IsCanRitualSummon(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, including_self, self_leave, nil)
             RushDuel.RitualExtraMaterialFilter = nil
             RushDuel.MinRitualMaterialCount = nil
             RushDuel.MaxRitualMaterialCount = nil
@@ -365,7 +366,7 @@ function RushDuel.RitualTarget(card, type, matfilter, spfilter, exfilter, s_rang
     end
 end
 -- 仪式召唤 - 处理
-function RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, including_self, self_leave, action, limit)
+function RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, including_self, self_leave, pos, action, limit)
     return function(e, tp, eg, ep, ev, re, r, rp)
         if e:IsHasProperty(EFFECT_FLAG_SPSUM_PARAM) then
             local min, max = e:GetLabel()
@@ -374,9 +375,9 @@ function RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, s_r
         end
         RushDuel.RitualExtraMaterialFilter = card.ritual_mat_filter
         RushDuel.RitualExtraChecker = RushDuel.RitualCheckLocation(e, self_leave, mat_check)
-        local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, nil, e)
+        local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, including_self, self_leave, nil, e)
         if ritualable then
-            local fc, mat = RushDuel.ExecuteRitualSummon(e, tp, type, list, chkf, gc, mat_move)
+            local fc, mat = RushDuel.ExecuteRitualSummon(e, tp, pos, type, list, chkf, gc, mat_move)
             if action ~= nil then
                 action(e, tp, eg, ep, ev, re, r, rp, mat, fc)
             end
@@ -392,18 +393,18 @@ function RushDuel.RitualOperation(card, type, matfilter, spfilter, exfilter, s_r
 end
 
 -- 强制进行仪式召唤
-function RushDuel.RitualSummon(type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, e, tp, break_effect, including_self, self_leave)
+function RushDuel.RitualSummon(type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, e, tp, pos, break_effect, including_self, self_leave)
     local include = including_self or false
     local leave = self_leave or false
-    RushDuel.RitualExtraMaterialFilter = card.ritual_mat_filter
+    RushDuel.RitualExtraMaterialFilter = nil
     RushDuel.RitualExtraChecker = RushDuel.RitualCheckLocation(e, self_leave, mat_check)
-    local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, include, leave, nil, e)
+    local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, include, leave, nil, e)
     local rc = nil
     if ritualable then
         if break_effect then
             Duel.BreakEffect()
         end
-        rc = RushDuel.ExecuteRitualSummon(e, tp, type, list, chkf, gc, mat_move)
+        rc = RushDuel.ExecuteRitualSummon(e, tp, pos, type, list, chkf, gc, mat_move)
     end
     RushDuel.RitualExtraMaterialFilter = nil
     RushDuel.RitualExtraChecker = nil
@@ -413,19 +414,19 @@ function RushDuel.RitualSummon(type, matfilter, spfilter, exfilter, s_range, o_r
 end
 
 -- 可以进行仪式召唤
-function RushDuel.CanRitualSummon(desc, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, e, tp, break_effect, including_self, self_leave)
+function RushDuel.CanRitualSummon(desc, type, matfilter, spfilter, exfilter, s_range, o_range, mat_check, mat_move, e, tp, pos, break_effect, including_self, self_leave)
     local include = including_self or false
     local leave = self_leave or false
-    RushDuel.RitualExtraMaterialFilter = card.ritual_mat_filter
+    RushDuel.RitualExtraMaterialFilter = nil
     RushDuel.RitualExtraChecker = RushDuel.RitualCheckLocation(e, self_leave, mat_check)
-    local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, type, matfilter, spfilter, exfilter, s_range, o_range, include, leave, nil, e)
+    local ritualable, list, chkf, gc = RushDuel.GetRitualSummonData(e, tp, pos, type, matfilter, spfilter, exfilter, s_range, o_range, include, leave, nil, e)
     local rc = nil
     ::cancel::
     if ritualable and Duel.SelectYesNo(tp, desc) then
         if break_effect then
             Duel.BreakEffect()
         end
-        rc = RushDuel.ExecuteRitualSummon(e, tp, type, list, chkf, gc, mat_move, true)
+        rc = RushDuel.ExecuteRitualSummon(e, tp, pos, type, list, chkf, gc, mat_move, true)
         if not rc then
             goto cancel
         end

@@ -15,6 +15,9 @@ end
 function cm.confilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_NORMAL) and c:IsRace(RACE_ZOMBIE)
 end
+function cm.posfilter(c,e,tp)
+	return RD.IsCanChangePosition(c,e,tp,REASON_EFFECT)
+end
 function cm.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_ZOMBIE)
 end
@@ -25,12 +28,13 @@ function cm.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(cm.confilter,tp,LOCATION_MZONE,0,2,nil)
 end
 function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(RD.IsCanChangePosition,tp,0,LOCATION_MZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(RD.IsCanChangePosition,tp,0,LOCATION_MZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(cm.posfilter,tp,0,LOCATION_MZONE,1,nil,e,tp) end
+	local g=Duel.GetMatchingGroup(cm.posfilter,tp,0,LOCATION_MZONE,nil,e,tp)
 	Duel.SetOperationInfo(0,CATEGORY_POSITION,g,1,0,0)
 end
 function cm.activate(e,tp,eg,ep,ev,re,r,rp)
-	RD.SelectAndDoAction(HINTMSG_POSCHANGE,RD.IsCanChangePosition,tp,0,LOCATION_MZONE,1,3,nil,function(g)
+	local filter=RD.Filter(cm.posfilter,e,tp)
+	RD.SelectAndDoAction(HINTMSG_POSCHANGE,filter,tp,0,LOCATION_MZONE,1,3,nil,function(g)
 		local sg=Duel.GetMatchingGroup(cm.filter,tp,LOCATION_MZONE,0,nil)
 		local atk=Duel.GetMatchingGroupCount(cm.atkfilter,tp,LOCATION_GRAVE,0,nil)*100
 		if RD.ChangePosition(g,e,tp,REASON_EFFECT)~=0 and sg:GetCount()>0 and atk~=0 and Duel.SelectYesNo(tp,aux.Stringid(m,1)) then

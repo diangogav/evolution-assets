@@ -23,13 +23,13 @@ function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>3 end
 end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<4 then return end
-	Duel.ConfirmDecktop(tp,5)
-	local atk=Duel.GetDecktopGroup(tp,5):FilterCount(cm.filter,nil)*700
+	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<3 then return end
+	Duel.ConfirmDecktop(tp,4)
+	local atk=Duel.GetDecktopGroup(tp,4):FilterCount(cm.filter,nil)*700
 	local c=e:GetHandler()
 	if c:IsFaceup() and c:IsRelateToEffect(e) then
 		RD.AttachAtkDef(e,c,atk,0,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN)
 	end
-	Duel.SortDecktop(tp,tp,5)
-	RD.SendDeckTopToBottom(tp,5)
+	Duel.SortDecktop(tp,tp,4)
+	RD.SendDeckTopToBottom(tp,4)
 end
