@@ -111,6 +111,12 @@ jobs:
           # Everything else upstream ships (CI config, packaging scripts, its own
           # README) is theirs, not ours to carry.
 
+      - name: Regenerate the alternate-art script stubs
+        # The refresh above deleted rush/script wholesale, stubs included. They
+        # are rebuilt from the committed rush/RD MDPro4 Alternate.cdb before the
+        # mirror commit so that commit never records their removal.
+        run: node scripts/build-rush-alternate-scripts.mjs
+
       - name: Commit if the pack changed
         run: |
           if [ -n "$(git status --porcelain rush)" ]; then
@@ -264,6 +270,11 @@ jobs:
         env:
           REPORT_PATH: ${{ runner.temp }}/report/build-cdb.json
 
+      - name: Regenerate the alternate-art script stubs for new rows
+        # build-rush-cdb.mjs may have admitted new rows into the MDPro4
+        # alternate cdb; give them their stubs in the same run.
+        run: node scripts/build-rush-alternate-scripts.mjs
+
       - name: Check the ban list against the built database
         # The published list and the published cdb must agree: a listed card
         # the database lacks is a restriction no deck check can enforce.
@@ -286,7 +297,7 @@ jobs:
       - name: Commit if the translated databases changed
         run: |
           # An array, because one of the paths contains a space.
-          paths=(rush/pages.json rush/translations.json "rush/RD MDPro4 Alternate.cdb" cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json)
+          paths=(rush/pages.json rush/translations.json "rush/RD MDPro4 Alternate.cdb" rush/script cdb/rush.cdb.gz cdb/rush.en.cdb.gz cdb/rush.es.cdb.gz version-manifest.json)
           # The report only exists once a run produced notable events, and
           # `git add` aborts on a pathspec with nothing behind it.
           if [ -f reports/rush.json ]; then paths+=(reports/rush.json); fi
