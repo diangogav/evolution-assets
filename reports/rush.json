@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-14T02:39:02.579Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/38502097366",
+  "generatedAt": "2026-10-19T12:27:56.967Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39252164888",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2",
-      "previousCommit": "6b277cc6df9217280ee5311bcdb7e87a27d0a1b2",
+      "upstreamCommit": "cede7c78bb5de4c9f6085eeeceb6ab799144c8ff",
+      "previousCommit": "58f995b1ce18dc79402cfb572e47977d47719a4b",
       "counts": {
         "en": {
           "datas": 4076,
@@ -44,176 +44,64 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120311001",
-          "title": "Princess Cosmos the Trickster"
+          "id": "120109069",
+          "title": "Jointech Ace Rex"
         },
         {
-          "id": "120311002",
-          "title": "Evil HERO Dark Gaia (Rush Duel)"
+          "id": "120310001",
+          "title": "Mad Rare Aquila"
         },
         {
-          "id": "120311004",
-          "title": "Dendrovenus the Planetairy"
+          "id": "120310002",
+          "title": "Magical Stone Excavation (Rush Duel)"
         },
         {
-          "id": "120311006",
-          "title": "Marsphlox the Planetairy"
+          "id": "120310020",
+          "title": "Worshiper of the Blightblaze"
         },
         {
-          "id": "120311007",
-          "title": "Osmanjupiter the Planetairy"
+          "id": "120310021",
+          "title": "The Royal Crown of Zeil"
         },
         {
-          "id": "120311008",
-          "title": "Saturnchamomile the Planetairy"
+          "id": "120310022",
+          "title": "The Royal Sword of Zeil"
         },
         {
-          "id": "120311010",
-          "title": "Pluamone the Planetairy"
+          "id": "120310023",
+          "title": "Assailant of the Hollowed Grounds"
         },
         {
-          "id": "120311011",
-          "title": "Cosmostar the Luminous Polairy"
+          "id": "120310025",
+          "title": "Knight of the Hollowed Grounds"
         },
         {
-          "id": "120311012",
-          "title": "Cosmostar the Black Hole Polairy"
+          "id": "120310036",
+          "title": "Rocktusk Beast Babirusaite"
         },
         {
-          "id": "120311013",
-          "title": "Cosmostar the Hypernova Polairy"
+          "id": "120310041",
+          "title": "Zeil the King of the Hollowed Grounds"
         },
         {
-          "id": "120311018",
-          "title": "Princess Cosmos' Change of Clothes"
+          "id": "120310046",
+          "title": "What Little the Blightblaze Leaves Behind"
         },
         {
-          "id": "120311020",
-          "title": "Princess Cosmos' Beauty Sleep"
+          "id": "120310054",
+          "title": "The Crossroads of the Blackblight"
         },
         {
-          "id": "120311022",
-          "title": "Evil HERO Inferno Wing (Rush Duel)"
+          "id": "120310055",
+          "title": "Lena's Mushroom Soup"
         },
         {
-          "id": "120311023",
-          "title": "Evil HERO Lightning Golem (Rush Duel)"
-        },
-        {
-          "id": "120311026",
-          "title": "Dark Fusion (Rush Duel)"
-        },
-        {
-          "id": "120311027",
-          "title": "Elemental HERO Clayman (Rush Duel)"
-        },
-        {
-          "id": "120311029",
-          "title": "Elemental HERO Bubbleman (Rush Duel)"
-        },
-        {
-          "id": "120311030",
-          "title": "Elemental HERO Wildheart (Rush Duel)"
-        },
-        {
-          "id": "120311031",
-          "title": "Elemental HERO Voltic Wingman"
-        },
-        {
-          "id": "120311032",
-          "title": "Elemental HERO Burst Wingman"
-        },
-        {
-          "id": "120311033",
-          "title": "Elemental HERO Flame Wingman (Rush Duel)"
-        },
-        {
-          "id": "120311034",
-          "title": "Elemental HERO Thunder Giant (Rush Duel)"
-        },
-        {
-          "id": "120311035",
-          "title": "Elemental HERO Wild Wingman (Rush Duel)"
-        },
-        {
-          "id": "120311036",
-          "title": "Elemental HERO Tempest (Rush Duel)"
-        },
-        {
-          "id": "120311041",
-          "title": "Praime Stock"
-        },
-        {
-          "id": "120311042",
-          "title": "Praime Requiem"
-        },
-        {
-          "id": "120311044",
-          "title": "Transam Praime Master Nova"
-        },
-        {
-          "id": "120311047",
-          "title": "Praime Nova"
-        },
-        {
-          "id": "120311048",
-          "title": "Prophecy Phrase the Colors of the Wind"
-        },
-        {
-          "id": "120311049",
-          "title": "Mahavaio the Melody Maker"
-        },
-        {
-          "id": "120311050",
-          "title": "Pirate of the Apport Winds"
-        },
-        {
-          "id": "120311051",
-          "title": "Plectcrime of the Deadly Dirge"
-        },
-        {
-          "id": "120311052",
-          "title": "Bandijo the Battle Ballad"
-        },
-        {
-          "id": "120311053",
-          "title": "Mokey Mokey (Rush Duel)"
-        },
-        {
-          "id": "120311054",
-          "title": "Sparks (Rush Duel)"
-        },
-        {
-          "id": "120311055",
-          "title": "Lair Wire (Rush Duel)"
-        },
-        {
-          "id": "120311056",
-          "title": "Reshef the Dark Being (Rush Duel)"
-        },
-        {
-          "id": "120311057",
-          "title": "Elemental HERO Avian (Rush Duel)"
-        },
-        {
-          "id": "120311058",
-          "title": "Elemental HERO Burstinatrix (Rush Duel)"
-        },
-        {
-          "id": "120311059",
-          "title": "Elemental HERO Sparkman (Rush Duel)"
-        },
-        {
-          "id": "120311061",
-          "title": "Transam Linac"
-        },
-        {
-          "id": "120311062",
-          "title": "Transam Praime Armor Nova"
+          "id": "120310066",
+          "title": "Doomed by the Blackblight"
         }
       ],
       "unresolved": {
-        "count": 116,
+        "count": 129,
         "sample": [
           "120181011",
           "120195004",
@@ -238,7 +126,7 @@
         ]
       },
       "noBlock": {
-        "count": 50,
+        "count": 51,
         "sample": [
           "120000000",
           "120000001",
@@ -268,31 +156,28 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120311002",
-        "120311010",
-        "120311011",
-        "120311013",
-        "120311018",
-        "120311022",
-        "120311023",
-        "120311026",
-        "120311030",
-        "120311035",
-        "120311036",
-        "120311041",
-        "120311042",
-        "120311044",
-        "120311047"
+        "120109069",
+        "120310020",
+        "120310021",
+        "120310022",
+        "120310023",
+        "120310025",
+        "120310036",
+        "120310041",
+        "120310046",
+        "120310054",
+        "120310055",
+        "120310066"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3394,
+      "entries": 3408,
       "coverage": {
-        "en": 3394,
-        "en_lore": 3388,
-        "en_req": 2961,
+        "en": 3408,
+        "en_lore": 3402,
+        "en_req": 2974,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -305,52 +190,58 @@
         "perSource": [
           {
             "name": "RD Standard.cdb",
-            "rows": 3379
+            "rows": 3417
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 99
+            "rows": 88
           },
           {
             "name": "RD Alternate.cdb",
-            "rows": 84
+            "rows": 85
           }
         ],
-        "aliasRows": 675,
-        "total": 4237
+        "aliasRows": 679,
+        "total": 4269
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4054,
+            "translations": 4072,
             "mdpro4": 89,
-            "zh": 94
+            "alias.mdpro4": 95,
+            "zh": 13
           },
           "desc": {
-            "translations": 4046,
+            "translations": 4064,
             "mdpro4": 87,
-            "zh": 104
+            "alias.mdpro4": 95,
+            "zh": 23
           }
         },
         "es": {
           "name": {
-            "translations": 582,
+            "translations": 586,
             "base": 413,
             "mdpro4": 2055,
-            "en.translations": 1064,
+            "alias.mdpro4": 94,
+            "en.translations": 1048,
             "en.mdpro4": 29,
-            "zh": 94
+            "en.alias.mdpro4": 31,
+            "zh": 13
           },
           "desc": {
-            "translations": 462,
+            "translations": 466,
             "base": 116,
             "mdpro4": 3483,
-            "en.translations": 72,
+            "alias.mdpro4": 134,
+            "en.translations": 47,
             "en.mdpro4": 0,
-            "zh": 104
+            "en.alias.mdpro4": 0,
+            "zh": 23
           },
           "telltales": {
-            "count": 719,
+            "count": 748,
             "sample": [
               120102002,
               120102010,
@@ -375,15 +266,54 @@
         ]
       },
       "effectStrings": {
-        "total": 5738,
+        "total": 5775,
         "en": {
-          "replaced": 3695,
-          "nonChinese": 4771
+          "replaced": 4650,
+          "nonChinese": 5729,
+          "sources": {
+            "dictionary": 3725,
+            "mdpro4": 925,
+            "mdpro4.en": 0,
+            "original": 1079,
+            "zh": 46
+          }
         },
         "es": {
-          "replaced": 3682,
-          "nonChinese": 4758
+          "replaced": 4649,
+          "nonChinese": 5728,
+          "sources": {
+            "dictionary": 3712,
+            "mdpro4": 937,
+            "mdpro4.en": 0,
+            "original": 1079,
+            "zh": 47
+          }
         }
+      },
+      "alternate": {
+        "rows": 679,
+        "status": "unchanged"
+      },
+      "renumbered": {
+        "admitted": [
+          {
+            "id": 120109001,
+            "alias": 120100001
+          },
+          {
+            "id": 120109002,
+            "alias": 120135002
+          },
+          {
+            "id": 120109003,
+            "alias": 120186029
+          },
+          {
+            "id": 120109006,
+            "alias": 120186007
+          }
+        ],
+        "skipped": []
       }
     },
     {
@@ -397,102 +327,180 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
-    "cardsRemoved": [],
-    "translationsAdded": [
+    "cardsAdded": [
       {
-        "id": "120311002",
-        "zh": "邪心英雄 暗黑地魔",
-        "en": "Evil HERO Dark Gaia",
+        "id": "120000012",
+        "zh": "绳之遗物",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311010",
-        "zh": "惑精 银莲冥王星",
-        "en": "Pluamone the Planetairy",
+        "id": "120109069",
+        "zh": "接合科技王牌霸王龙",
+        "en": "Jointech Ace Rex",
         "es": null
       },
       {
-        "id": "120311011",
-        "zh": "辉极精 秋英宇宙星",
-        "en": "Cosmostar the Luminous Polairy",
+        "id": "120305101",
+        "zh": "混沌帝龙 -终焉的使者-",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311013",
-        "zh": "澄极精 秋英宇宙星",
-        "en": "Cosmostar the Hypernova Polairy",
+        "id": "120310001",
+        "zh": "疯狂犯罪者·空鹰女",
+        "en": "Mad Rare Aquila",
         "es": null
       },
       {
-        "id": "120311018",
-        "zh": "宇宙姬的更衣",
-        "en": "Princess Cosmos' Change of Clothes",
+        "id": "120310002",
+        "zh": "魔法石采掘",
+        "en": "Magical Stone Excavation",
         "es": null
       },
       {
-        "id": "120311022",
-        "zh": "邪心英雄 业火翼魔",
-        "en": "Evil HERO Inferno Wing",
+        "id": "120310003",
+        "zh": "α计数龙",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311023",
-        "zh": "邪心英雄 闪电巨魔",
-        "en": "Evil HERO Lightning Golem",
+        "id": "120310008",
+        "zh": "α版重建龙",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311026",
-        "zh": "暗黑融合",
-        "en": "Dark Fusion",
+        "id": "120310009",
+        "zh": "α版SSD",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311030",
-        "zh": "元素英雄 荒野侠",
-        "en": "Elemental HERO Wildheart",
+        "id": "120310010",
+        "zh": "α版飞龙",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311035",
-        "zh": "元素英雄 荒野翼侠",
-        "en": "Elemental HERO Wild Wingman",
+        "id": "120310011",
+        "zh": "真红动初速龙",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311036",
-        "zh": "元素英雄 暴风侠",
-        "en": "Elemental HERO Tempest",
+        "id": "120310012",
+        "zh": "碧牙试速龙",
+        "en": null,
         "es": null
       },
       {
-        "id": "120311041",
-        "zh": "高天喷燃超硬面",
-        "en": "Praime Stock",
+        "id": "120310020",
+        "zh": "腐灼的崇拜者",
+        "en": "Worshiper of the Blightblaze",
         "es": null
       },
       {
-        "id": "120311042",
-        "zh": "高天镇魂鹰巨人",
-        "en": "Praime Requiem",
+        "id": "120310021",
+        "zh": "绳之王冠",
+        "en": "The Royal Crown of Zeil",
         "es": null
       },
       {
-        "id": "120311044",
-        "zh": "穿越侍·高天海牛侍 主宰新星",
-        "en": "Transam Praime Master Nova",
+        "id": "120310022",
+        "zh": "绳之王剑",
+        "en": "The Royal Sword of Zeil",
         "es": null
       },
       {
-        "id": "120311047",
-        "zh": "高天新星",
-        "en": "Praime Nova",
+        "id": "120310023",
+        "zh": "黑刹的暗杀者",
+        "en": "Assailant of the Hollowed Grounds",
+        "es": null
+      },
+      {
+        "id": "120310025",
+        "zh": "黑刹的骑士",
+        "en": "Knight of the Hollowed Grounds",
+        "es": null
+      },
+      {
+        "id": "120310026",
+        "zh": "迫击炮的石像",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310036",
+        "zh": "岩角兽 鹿豚本我",
+        "en": "Rocktusk Beast Babirusaite",
+        "es": null
+      },
+      {
+        "id": "120310039",
+        "zh": "Eα版燃龙兽",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310040",
+        "zh": "大师升级燃龙兽",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310041",
+        "zh": "黑刹的王 绳",
+        "en": "Zeil the King of the Hollowed Grounds",
+        "es": null
+      },
+      {
+        "id": "120310046",
+        "zh": "进行腐灼的恶果",
+        "en": "What Little the Blightblaze Leaves Behind",
+        "es": null
+      },
+      {
+        "id": "120310049",
+        "zh": "U·更新维护",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310050",
+        "zh": "T·传输维护",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310051",
+        "zh": "S·系统维护",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310054",
+        "zh": "黑腐的分歧点",
+        "en": "The Crossroads of the Blackblight",
+        "es": null
+      },
+      {
+        "id": "120310055",
+        "zh": "蕾娜的蘑菇汤",
+        "en": "Lena's Mushroom Soup",
+        "es": null
+      },
+      {
+        "id": "120310066",
+        "zh": "黑腐的亡者",
+        "en": "Doomed by the Blackblight",
         "es": null
       }
     ],
+    "cardsRemoved": [],
+    "translationsAdded": [],
     "unresolved": {
-      "count": 116,
+      "count": 129,
       "sample": [
         "120181011",
         "120195004",
@@ -517,7 +525,7 @@
       ]
     },
     "noBlock": {
-      "count": 50,
+      "count": 51,
       "sample": [
         "120000000",
         "120000001",

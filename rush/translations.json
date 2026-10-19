@@ -775,6 +775,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120109069": {
+    "en": "Jointech Ace Rex",
+    "en_lore": "Destroy 1 Spell/Trap Card on the field. Then, this card can attack twice this turn.",
+    "en_req": "Place 1 monster from your Graveyard on the bottom of the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120110001": {
     "en": "Multistrike Dragon Dragias",
     "en_lore": "This turn, if this card destroyed a monster by battle, it can make a second attack during that Battle Phase.",
@@ -26663,6 +26671,22 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310001": {
+    "en": "Mad Rare Aquila",
+    "en_lore": "This turn, this card can attack twice. Then, you can destroy 1 face-up Level 6 Effect Monster on your opponent's field. Then, if you destroyed by this effect, this card gains 600 ATK until the end of this turn.",
+    "en_req": "If your opponent has 2 or more monsters on their field, send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310002": {
+    "en": "Magical Stone Excavation",
+    "en_lore": "Add 1 Spell Card from your Graveyard to your hand.",
+    "en_req": "Send 2 cards from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310004": {
     "en": "Jointech Passion Puncher",
     "en_lore": "Equip this card to 1 face-up EARTH Attribute Machine Type monster on your field as an Equip Spell Card with the following effect. ●The equipped monster gains 500 ATK, and it inflicts piercing battle damage.",
@@ -26751,6 +26775,54 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310020": {
+    "en": "Worshiper of the Blightblaze",
+    "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can add 1 \"Lena's Mushroom Soup\" or 1 \"Doomed by the Blackblight\" from your Graveyard to your hand.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310021": {
+    "en": "The Royal Crown of Zeil",
+    "en_lore": "Equip this card to 1 face-up DARK Attribute Warrior Type monster on your field that is not equipped with \"The Royal Crown of Zeil\" as an Equip Spell Card with the following effect. ●The equipped monster gains 500 DEF, and it cannot be returned to the hand/Deck/Extra Deck by card effects.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310022": {
+    "en": "The Royal Sword of Zeil",
+    "en_lore": "Equip this card to 1 face-up DARK Attribute Warrior Type monster on your field that is not equipped with \"The Royal Sword of Zeil\" as an Equip Spell Card with the following effect. ●The equipped monster gains 1000 ATK.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310023": {
+    "en": "Assailant of the Hollowed Grounds",
+    "en_lore": "Add 1 Level 7 DARK Attribute Warrior Type monster or 1 \"Doomed by the Blackblight\" from your Graveyard to your hand.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310025": {
+    "en": "Knight of the Hollowed Grounds",
+    "en_lore": "Add up to 2 \"The Legacy of Zeil\" from your Graveyard to your hand.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310036": {
+    "en": "Rocktusk Beast Babirusaite",
+    "en_lore": "Change the battle position of up to 2 monsters on your opponent's field. This turn, you can only attack with EARTH Attribute monsters.",
+    "en_req": "Send this face-up card from your field to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310037": {
     "en": "Jointech Matchless Hero",
     "en_lore": "Toss a coin 3 times. This card gains ATK equal to [the number of heads + 1] x 200 until the end of this turn. Then, you can destroy cards on your opponent's field, up to [the number of tails].",
@@ -26767,9 +26839,25 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310041": {
+    "en": "Zeil the King of the Hollowed Grounds",
+    "en_lore": "Face-up DARK Attribute Warrior Type monsters on your field cannot be destroyed by card effects, and they inflict piercing battle damage.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310045": {
     "en": "Familiar-Possessed - Aussa",
     "en_lore": "This card cannot be used as material for the Fusion Summon of \"Familiar-Possessed - Aussa\". Your EARTH Attribute monsters inflict piercing battle damage.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310046": {
+    "en": "What Little the Blightblaze Leaves Behind",
+    "en_lore": "Face-up monsters on the field lose 2000 ATK/DEF, except monsters with 1000 original DEF.",
     "en_req": "None",
     "es": "",
     "es_lore": "",
@@ -26787,6 +26875,22 @@
     "en": "Occult Preservation Agency Mad Rare",
     "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can add 1 DARK Attribute monster with 1100 DEF from your Graveyard to your hand. Until the end of this turn, you cannot Special Summon monsters, and you can only attack with DARK Attribute monsters with 1100 original DEF.",
     "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310054": {
+    "en": "The Crossroads of the Blackblight",
+    "en_lore": "Draw 2 cards. Then, you can add 1 \"Doomed by the Blackblight\" from your Graveyard to your hand.",
+    "en_req": "During a turn you have not activated \"The Crossroads of the Blackblight\", send 1 Level 1 DARK Attribute Warrior Type monster or 1 \"Lena's Mushroom Soup\" from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310055": {
+    "en": "Lena's Mushroom Soup",
+    "en_lore": "Choose 1 face-up monster on the field. While that monster is face-up, it loses 700 ATK. If you chose a \"Doomed by the Blackblight\" on your field by this effect, you can Ritual Summon a Level 1 DARK Attribute Warrior Type monster by sending the chosen monster to the Graveyard as material.",
+    "en_req": "You have a face-up DARK Attribute Warrior Type monster on your field.",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -26811,6 +26915,14 @@
     "en": "Mad Rare Hack",
     "en_lore": "Change 1 Attack Position monster on your opponent's field to face-up Defense Position. Then, if you activated this card during the Main Phase, you can change 1 Attack Position monster on your field to face-up Defense Position.",
     "en_req": "When your opponent Special Summons a monster(s) during their turn, or when an opponent's monster declares an attack.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310066": {
+    "en": "Doomed by the Blackblight",
+    "en_lore": "One day, the curse of the Blightblaze was unleashed. Some pray for the resurrection of the fallen king, while others pray to the Blightblaze itself. Will the land either know salvation or face Armageddon as a result of these various desires?",
+    "en_req": "",
     "es": "",
     "es_lore": "",
     "es_req": ""
