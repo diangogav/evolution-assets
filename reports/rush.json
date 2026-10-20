@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-19T12:27:56.967Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39252164888",
+  "generatedAt": "2026-10-20T11:04:40.749Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39412339242",
   "steps": [
     {
       "step": "check-mdpro4",
-      "status": "unchanged",
-      "upstreamCommit": "cede7c78bb5de4c9f6085eeeceb6ab799144c8ff",
-      "previousCommit": "58f995b1ce18dc79402cfb572e47977d47719a4b",
+      "status": "changed",
+      "upstreamCommit": "39c0913837ce3f6cc7da884163495aaa757ed4e5",
+      "previousCommit": "cede7c78bb5de4c9f6085eeeceb6ab799144c8ff",
       "counts": {
         "en": {
           "datas": 4076,
@@ -30,7 +30,7 @@
     },
     {
       "step": "build-lflist",
-      "status": "unchanged",
+      "status": "changed",
       "regulation": "2026.10 Rush Duel",
       "counts": {
         "forbidden": 3,
@@ -44,64 +44,56 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120109069",
-          "title": "Jointech Ace Rex"
+          "id": "120310003",
+          "title": "Alpha Count"
         },
         {
-          "id": "120310001",
-          "title": "Mad Rare Aquila"
+          "id": "120310008",
+          "title": "Alpha Burn Rebuildra"
         },
         {
-          "id": "120310002",
-          "title": "Magical Stone Excavation (Rush Duel)"
+          "id": "120310009",
+          "title": "Alpha Burn SSD"
         },
         {
-          "id": "120310020",
-          "title": "Worshiper of the Blightblaze"
+          "id": "120310010",
+          "title": "Alpha Burn Wyvern"
         },
         {
-          "id": "120310021",
-          "title": "The Royal Crown of Zeil"
+          "id": "120310011",
+          "title": "Red-Boot Launch Burn Dragon"
         },
         {
-          "id": "120310022",
-          "title": "The Royal Sword of Zeil"
+          "id": "120310012",
+          "title": "Blue-Fang Teaser Burn Dragon"
         },
         {
-          "id": "120310023",
-          "title": "Assailant of the Hollowed Grounds"
+          "id": "120310026",
+          "title": "Stone Statues of the Mortar Cannons"
         },
         {
-          "id": "120310025",
-          "title": "Knight of the Hollowed Grounds"
+          "id": "120310039",
+          "title": "Early Access Burn Drake"
         },
         {
-          "id": "120310036",
-          "title": "Rocktusk Beast Babirusaite"
+          "id": "120310040",
+          "title": "Master Up-Drake"
         },
         {
-          "id": "120310041",
-          "title": "Zeil the King of the Hollowed Grounds"
+          "id": "120310049",
+          "title": "Update Maintenance"
         },
         {
-          "id": "120310046",
-          "title": "What Little the Blightblaze Leaves Behind"
+          "id": "120310050",
+          "title": "Transfer Maintenance"
         },
         {
-          "id": "120310054",
-          "title": "The Crossroads of the Blackblight"
-        },
-        {
-          "id": "120310055",
-          "title": "Lena's Mushroom Soup"
-        },
-        {
-          "id": "120310066",
-          "title": "Doomed by the Blackblight"
+          "id": "120310051",
+          "title": "System Maintenance"
         }
       ],
       "unresolved": {
-        "count": 129,
+        "count": 117,
         "sample": [
           "120181011",
           "120195004",
@@ -156,28 +148,28 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120109069",
-        "120310020",
-        "120310021",
-        "120310022",
-        "120310023",
-        "120310025",
-        "120310036",
-        "120310041",
-        "120310046",
-        "120310054",
-        "120310055",
-        "120310066"
+        "120310003",
+        "120310008",
+        "120310009",
+        "120310010",
+        "120310011",
+        "120310012",
+        "120310026",
+        "120310039",
+        "120310040",
+        "120310049",
+        "120310050",
+        "120310051"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3408,
+      "entries": 3420,
       "coverage": {
-        "en": 3408,
-        "en_lore": 3402,
-        "en_req": 2974,
+        "en": 3420,
+        "en_lore": 3414,
+        "en_req": 2985,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -207,16 +199,16 @@
       "variants": {
         "en": {
           "name": {
-            "translations": 4072,
+            "translations": 4084,
             "mdpro4": 89,
             "alias.mdpro4": 95,
-            "zh": 13
+            "zh": 1
           },
           "desc": {
-            "translations": 4064,
+            "translations": 4076,
             "mdpro4": 87,
             "alias.mdpro4": 95,
-            "zh": 23
+            "zh": 11
           }
         },
         "es": {
@@ -225,20 +217,20 @@
             "base": 413,
             "mdpro4": 2055,
             "alias.mdpro4": 94,
-            "en.translations": 1048,
+            "en.translations": 1060,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 13
+            "zh": 1
           },
           "desc": {
             "translations": 466,
             "base": 116,
             "mdpro4": 3483,
             "alias.mdpro4": 134,
-            "en.translations": 47,
+            "en.translations": 59,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 23
+            "zh": 11
           },
           "telltales": {
             "count": 748,
@@ -327,180 +319,84 @@
     }
   ],
   "events": {
-    "cardsAdded": [
-      {
-        "id": "120000012",
-        "zh": "绳之遗物",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120109069",
-        "zh": "接合科技王牌霸王龙",
-        "en": "Jointech Ace Rex",
-        "es": null
-      },
-      {
-        "id": "120305101",
-        "zh": "混沌帝龙 -终焉的使者-",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120310001",
-        "zh": "疯狂犯罪者·空鹰女",
-        "en": "Mad Rare Aquila",
-        "es": null
-      },
-      {
-        "id": "120310002",
-        "zh": "魔法石采掘",
-        "en": "Magical Stone Excavation",
-        "es": null
-      },
+    "cardsAdded": [],
+    "cardsRemoved": [],
+    "translationsAdded": [
       {
         "id": "120310003",
         "zh": "α计数龙",
-        "en": null,
+        "en": "Alpha Count",
         "es": null
       },
       {
         "id": "120310008",
         "zh": "α版重建龙",
-        "en": null,
+        "en": "Alpha Burn Rebuildra",
         "es": null
       },
       {
         "id": "120310009",
         "zh": "α版SSD",
-        "en": null,
+        "en": "Alpha Burn SSD",
         "es": null
       },
       {
         "id": "120310010",
         "zh": "α版飞龙",
-        "en": null,
+        "en": "Alpha Burn Wyvern",
         "es": null
       },
       {
         "id": "120310011",
         "zh": "真红动初速龙",
-        "en": null,
+        "en": "Red-Boot Launch Burn Dragon",
         "es": null
       },
       {
         "id": "120310012",
         "zh": "碧牙试速龙",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120310020",
-        "zh": "腐灼的崇拜者",
-        "en": "Worshiper of the Blightblaze",
-        "es": null
-      },
-      {
-        "id": "120310021",
-        "zh": "绳之王冠",
-        "en": "The Royal Crown of Zeil",
-        "es": null
-      },
-      {
-        "id": "120310022",
-        "zh": "绳之王剑",
-        "en": "The Royal Sword of Zeil",
-        "es": null
-      },
-      {
-        "id": "120310023",
-        "zh": "黑刹的暗杀者",
-        "en": "Assailant of the Hollowed Grounds",
-        "es": null
-      },
-      {
-        "id": "120310025",
-        "zh": "黑刹的骑士",
-        "en": "Knight of the Hollowed Grounds",
+        "en": "Blue-Fang Teaser Burn Dragon",
         "es": null
       },
       {
         "id": "120310026",
         "zh": "迫击炮的石像",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120310036",
-        "zh": "岩角兽 鹿豚本我",
-        "en": "Rocktusk Beast Babirusaite",
+        "en": "Stone Statues of the Mortar Cannons",
         "es": null
       },
       {
         "id": "120310039",
         "zh": "Eα版燃龙兽",
-        "en": null,
+        "en": "Early Access Burn Drake",
         "es": null
       },
       {
         "id": "120310040",
         "zh": "大师升级燃龙兽",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120310041",
-        "zh": "黑刹的王 绳",
-        "en": "Zeil the King of the Hollowed Grounds",
-        "es": null
-      },
-      {
-        "id": "120310046",
-        "zh": "进行腐灼的恶果",
-        "en": "What Little the Blightblaze Leaves Behind",
+        "en": "Master Up-Drake",
         "es": null
       },
       {
         "id": "120310049",
         "zh": "U·更新维护",
-        "en": null,
+        "en": "Update Maintenance",
         "es": null
       },
       {
         "id": "120310050",
         "zh": "T·传输维护",
-        "en": null,
+        "en": "Transfer Maintenance",
         "es": null
       },
       {
         "id": "120310051",
         "zh": "S·系统维护",
-        "en": null,
-        "es": null
-      },
-      {
-        "id": "120310054",
-        "zh": "黑腐的分歧点",
-        "en": "The Crossroads of the Blackblight",
-        "es": null
-      },
-      {
-        "id": "120310055",
-        "zh": "蕾娜的蘑菇汤",
-        "en": "Lena's Mushroom Soup",
-        "es": null
-      },
-      {
-        "id": "120310066",
-        "zh": "黑腐的亡者",
-        "en": "Doomed by the Blackblight",
+        "en": "System Maintenance",
         "es": null
       }
     ],
-    "cardsRemoved": [],
-    "translationsAdded": [],
     "unresolved": {
-      "count": 129,
+      "count": 117,
       "sample": [
         "120181011",
         "120195004",

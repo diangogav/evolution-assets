@@ -26687,6 +26687,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310003": {
+    "en": "Alpha Count",
+    "en_lore": "A dragon egg with countless hidden account information. It dreams of connecting to a brand new world, counting down to the time it awakens.",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310004": {
     "en": "Jointech Passion Puncher",
     "en_lore": "Equip this card to 1 face-up EARTH Attribute Machine Type monster on your field as an Equip Spell Card with the following effect. ●The equipped monster gains 500 ATK, and it inflicts piercing battle damage.",
@@ -26715,6 +26723,46 @@
     "en": "Jointech Guardian",
     "en_lore": "Add 1 \"Jointech Ace\" or \"Jointech Rex\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Jointech Guardian\".",
     "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310008": {
+    "en": "Alpha Burn Rebuildra",
+    "en_lore": "Draw 1 card. Then, if you have \"Alpha Burn Drake\" in your Graveyard, you can draw 1 additional card. This turn, you cannot activate the effect of \"Alpha Burn Rebuildra\".",
+    "en_req": "During the turn you Normal Summoned this card, send 1 Dragon Type monster with 900 or 1000 DEF from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310009": {
+    "en": "Alpha Burn SSD",
+    "en_lore": "Special Summon 1 \"Alpha Count\" from your Graveyard face-up to your field.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310010": {
+    "en": "Alpha Burn Wyvern",
+    "en_lore": "Excavate the top 5 cards of your Deck. You can add up to 2 excavated Level 1 Dragon Type Normal Monsters with 1000 DEF to your hand. Place the other cards on the bottom of your Deck in any order.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310011": {
+    "en": "Red-Boot Launch Burn Dragon",
+    "en_lore": "Special Summon 1 Dragon Type Normal Monster with 1000 DEF from your Graveyard face-up to your field. Then, inflict 400 damage to your opponent.",
+    "en_req": "You have \"Blue-Fang Teaser Burn Dragon\" face-up on your field during the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310012": {
+    "en": "Blue-Fang Teaser Burn Dragon",
+    "en_lore": "Choose 1 \"Red-Boot Launch Burn Dragon\" or 1 Dragon Type Normal Monster in your Graveyard, and this card gains ATK equal to [the chosen monster's Level] x 100 until the end of this turn. Then, add the chosen monster to your hand.",
+    "en_req": "During the turn you Normal Summoned this card.",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -26815,6 +26863,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310026": {
+    "en": "Stone Statues of the Mortar Cannons",
+    "en_lore": "Special Summon 1 Level 4 Rock Type monster from your Graveyard to your field in face-up Defense Position. Then, you can change the battle position of 1 monster on your opponent's field. This turn, you can only attack with EARTH Attribute monsters.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310036": {
     "en": "Rocktusk Beast Babirusaite",
     "en_lore": "Change the battle position of up to 2 monsters on your opponent's field. This turn, you can only attack with EARTH Attribute monsters.",
@@ -26834,6 +26890,22 @@
   "120310038": {
     "en": "Jointech Ultimate Warrior",
     "en_lore": "This card inflicts piercing battle damage. This card that was Fusion Summoned using a Maximum Monster or Union monster as material cannot be destroyed by card effects.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310039": {
+    "en": "Early Access Burn Drake",
+    "en_lore": "Send the top 3 cards of your Deck to the Graveyard. Then, if you have \"Alpha Burn Drake\" in your Graveyard, you can add up to 2 \"Update Maintenance\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Early Access Burn Drake\".",
+    "en_req": "Send 1 card from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310040": {
+    "en": "Master Up-Drake",
+    "en_lore": "If you have \"Alpha Burn Drake\" in your Graveyard, this card gains 1000 ATK, and your opponent cannot activate Trap Cards when it declares an attack. If you have 3 or more \"Alpha Count\" in your Graveyard, this card gains an additional 500 ATK, and it inflicts piercing battle damage.",
     "en_req": "None",
     "es": "",
     "es_lore": "",
@@ -26866,6 +26938,30 @@
   "120310048": {
     "en": "Jointech Rejoin",
     "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can Fusion Summon a Level 9 or lower EARTH Attribute Machine Type monster that mentions \"Jointech Ace\" as material by sending monsters from your hand or field to the Graveyard as material.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310049": {
+    "en": "Update Maintenance",
+    "en_lore": "Fusion Summon a Level 6 or lower LIGHT Attribute Dragon Type monster with 2000 or less ATK by shuffling Dragon Type monsters from your field or Graveyard into the owner's Deck as material. This turn, you cannot attack with Level 7 or higher monsters.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310050": {
+    "en": "Transfer Maintenance",
+    "en_lore": "Change the battle position of up to 2 monsters on your opponent's field. Then, you can make 1 face-up monster on your field gain 900 ATK until the end of this turn. This turn, you cannot attack with Level 7 or higher monsters.",
+    "en_req": "Shuffle 2 Dragon Type monsters from your Graveyard into the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310051": {
+    "en": "System Maintenance",
+    "en_lore": "Send the top 3 cards of your Deck to the Graveyard. Then, if a Dragon Type Normal Monster(s) is among the cards sent, you can destroy 1 Spell/Trap Card on your opponent's field. This turn, you cannot attack with Level 7 or higher monsters.",
     "en_req": "None",
     "es": "",
     "es_lore": "",
