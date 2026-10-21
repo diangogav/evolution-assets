@@ -33,7 +33,7 @@ function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 		end)
 	end
 	if Duel.GetFlagEffect(tp,m)~=0 then return end
-	RD.CreateHintEffect(e,aux.Stringid(m,1),tp,1,0,RESET_PHASE+PHASE_END)
+	RD.CreateHintEffect(e,aux.Stringid(m,2),tp,1,0,RESET_PHASE+PHASE_END)
 	RD.CreateAttackLimitEffect(e,cm.atktg,tp,LOCATION_MZONE,0,RESET_PHASE+PHASE_END)
 	Duel.RegisterFlagEffect(tp,m,RESET_PHASE+PHASE_END,0,1)
 end

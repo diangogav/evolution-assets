@@ -21,17 +21,17 @@ function cm.costfilter(c)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToDeckOrExtraAsCost()
 end
 function cm.desfilter(c)
-	return c:IsType(TYPE_SPELL+TYPE_TRAP) and c:GetSequence()<5
+	return c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 cm.cost=RD.CostSendGraveToDeckBottom(cm.costfilter,1,1)
 function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.IsExistingMatchingCard(cm.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,nil) end
-	local g=Duel.GetMatchingGroup(cm.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
+	if chk==0 then return Duel.IsExistingMatchingCard(cm.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,nil) end
+	local g=Duel.GetMatchingGroup(cm.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,nil)
 	Duel.SetOperationInfo(0,CATEGORY_DESTROY,g,1,0,0)
 end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	RD.SelectAndDoAction(HINTMSG_DESTROY,cm.desfilter,tp,LOCATION_SZONE,LOCATION_SZONE,1,1,nil,function(g)
+	RD.SelectAndDoAction(HINTMSG_DESTROY,cm.desfilter,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,nil,function(g)
 		if Duel.Destroy(g,REASON_EFFECT)~=0 and c:IsFaceup() and c:IsRelateToEffect(e) then
 			RD.AttachExtraAttack(e,c,1,aux.Stringid(m,1),RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		end
