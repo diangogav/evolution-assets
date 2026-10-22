@@ -13,6 +13,7 @@ import {
 	parseGenesysBlogPost,
 } from "./parse-genesys-blog.mjs";
 import { correctCardIdentities, readCardIdentity } from "./resolve-card-identity.mjs";
+import { CardLookupUnavailableError, fetchCardId, parsePreviousCodes } from "./resolve-card-code.mjs";
 import { normalizeCardName, overrideCardCode } from "./resolve-card-name.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -26,21 +27,6 @@ const CDB_PATH = existsSync(CDB_RAW_PATH) ? CDB_RAW_PATH : `${CDB_RAW_PATH}.gz`;
 
 const SOURCE_URL = "https://www.yugioh-card.com/en/genesys/";
 const BLOG_CATEGORY_URL = "https://yugiohblog.konami.com/category/genesys/";
-
-async function fetchCardId(name) {
-	const apiUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${encodeURIComponent(name)}`;
-
-	try {
-		const response = await fetch(apiUrl);
-		const { data } = await response.json();
-
-		return data?.[0]?.id ?? null;
-	} catch (error) {
-		console.error(`Error fetching card info for ${name}:`, error);
-
-		return null;
-	}
-}
 
 // Konami's sources typeset some names differently from the card database
 // (en dashes, preliminary translations, mangled characters). Check the
@@ -61,6 +47,30 @@ async function resolveCardCode(name) {
 	const normalized = normalizeCardName(name);
 
 	return normalized === name ? null : fetchCardId(normalized);
+}
+
+// Blog deltas stay pending and are retried by healPendingPosts, so a lookup
+// outage is just "not resolved yet" for them.
+async function resolveCardCodeOrNull(name) {
+	try {
+		return await resolveCardCode(name);
+	} catch (error) {
+		if (error instanceof CardLookupUnavailableError) {
+			console.warn(error.message);
+
+			return null;
+		}
+
+		throw error;
+	}
+}
+
+async function readPreviousCodes() {
+	try {
+		return parsePreviousCodes(await readFile(OUTPUT_PATH, "utf-8"));
+	} catch {
+		return new Map();
+	}
 }
 
 async function readBlogState() {
@@ -98,7 +108,7 @@ async function syncBlogState(state) {
 		const deltas = [];
 
 		for (const delta of parsed) {
-			const code = await resolveCardCode(delta.name);
+			const code = await resolveCardCodeOrNull(delta.name);
 
 			if (code === null) {
 				console.warn(`Blog card not found in API: ${delta.name}`);
@@ -138,7 +148,7 @@ async function healPendingPosts(state) {
 				continue;
 			}
 
-			const code = await resolveCardCode(delta.name);
+			const code = await resolveCardCodeOrNull(delta.name);
 
 			if (code !== null) {
 				delta.code = code;
@@ -227,6 +237,7 @@ async function generate() {
 
 	const cards = [];
 	const notFound = [];
+	const previousCodes = await readPreviousCodes();
 
 	for (const el of rows) {
 		const name = $(el).find("td.column-1").text().trim();
@@ -236,7 +247,27 @@ async function generate() {
 			continue;
 		}
 
-		const code = await resolveCardCode(name);
+		let code;
+
+		try {
+			code = await resolveCardCode(name);
+		} catch (error) {
+			if (!(error instanceof CardLookupUnavailableError)) {
+				throw error;
+			}
+
+			// The table still lists the card; only the lookup is down. A code
+			// known from the previous list is still that card's code. Without
+			// one, abort rather than publish a list missing a table row.
+			const previous = previousCodes.get(name);
+
+			if (previous === undefined) {
+				throw new Error(`${error.message} and no previous code is known — refusing to drop a table card.`);
+			}
+
+			console.warn(`${error.message}; reusing previous code ${previous}`);
+			code = previous;
+		}
 
 		if (code === null) {
 			console.error(`Card not found in API: ${name}`);
