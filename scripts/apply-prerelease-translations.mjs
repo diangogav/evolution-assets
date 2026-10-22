@@ -1,4 +1,4 @@
-// CLI wrapper: applies a TransSuperpre per-language bundle onto a merged
+// CLI wrapper: applies a Pre-Release-Translations per-language bundle onto a merged
 // pre-release cdb (texts only; datas stay mycard-authoritative).
 import { applyTranslations } from "./build-prerelease-cdb.mjs";
 

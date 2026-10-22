@@ -42,24 +42,28 @@ jobs:
           # Fail loudly if the merge produced a non-SQLite file.
           head -c 15 /tmp/prerelease.cdb | grep -q "SQLite format 3" || { echo "merged file is not a SQLite db"; exit 1; }
 
-      - name: Build per-language overlays from TransSuperpre translations
+      - name: Build per-language overlays from Pre-Release-Translations
         # datas stay mycard-authoritative; only texts are replaced, per card,
         # with zh-CN as the fallback for anything not yet translated. A missing
-        # or invalid translation bundle skips that language (never fails the run).
+        # or invalid translation bundle skips that language so the merged cdb
+        # still ships, and the run is failed at the end so the gap is visible.
         run: |
           set -euo pipefail
+          missing=""
           for lang in en es; do
             upper=$(echo "$lang" | tr '[:lower:]' '[:upper:]')
             if curl -sSL --fail --max-time 120 \
-                 "https://raw.githubusercontent.com/ElderLich/TransSuperpre/main/${upper}/Workspace/test-release.cdb" \
+                 "https://raw.githubusercontent.com/ElderLich/Pre-Release-Translations/main/${upper}/Workspace/test-release.cdb" \
                  -o "/tmp/trans-${lang}.cdb" \
                && head -c 15 "/tmp/trans-${lang}.cdb" | grep -q "SQLite format 3"; then
               cp /tmp/prerelease.cdb "/tmp/prerelease.${lang}.cdb"
               node scripts/apply-prerelease-translations.mjs "/tmp/prerelease.${lang}.cdb" "/tmp/trans-${lang}.cdb"
             else
-              echo "TransSuperpre ${upper} bundle unavailable — skipping ${lang} overlay this run"
+              echo "::warning::Pre-Release-Translations ${upper} bundle unavailable — skipping ${lang} overlay this run"
+              missing="${missing} ${lang}"
             fi
           done
+          echo "MISSING_OVERLAYS=${missing# }" >> "$GITHUB_ENV"
 
       - name: Compress (deterministic gzip)
         # -n omits the mtime so identical content produces identical bytes.
@@ -87,3 +91,9 @@ jobs:
           else
             echo "No pre-release changes."
           fi
+
+      - name: Fail if a language overlay was skipped
+        if: env.MISSING_OVERLAYS != ''
+        run: |
+          echo "::error::Translated pre-release databases not refreshed for: ${MISSING_OVERLAYS}"
+          exit 1

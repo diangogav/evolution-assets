@@ -63,7 +63,7 @@ export function buildPrereleaseCdb(srcDir, outPath) {
 
 /**
  * Overwrites the texts of `cdbPath` with the rows from `translationCdbPath`
- * (TransSuperpre per-language bundle) for every card id present in BOTH files.
+ * (Pre-Release-Translations per-language bundle) for every card id present in BOTH files.
  *
  * Guarantees:
  *   - datas are never touched — mycard stays the authority for ids/stats.

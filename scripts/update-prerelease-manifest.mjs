@@ -3,7 +3,7 @@
 //
 // Three variants are published: the language-agnostic zh-CN overlay (kept for
 // clients that predate per-language overlays) and the en/es variants whose texts
-// come from TransSuperpre. The sha256 is taken over the RAW merged cdb (the bytes
+// come from Pre-Release-Translations. The sha256 is taken over the RAW merged cdb (the bytes
 // the client gets after decompressing the .gz), so the client's downloaded-content
 // hash matches directly.
 
