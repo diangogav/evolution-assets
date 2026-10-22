@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-20T11:04:40.749Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39412339242",
+  "generatedAt": "2026-10-22T11:21:39.577Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39769795520",
   "steps": [
     {
       "step": "check-mdpro4",
-      "status": "changed",
-      "upstreamCommit": "39c0913837ce3f6cc7da884163495aaa757ed4e5",
-      "previousCommit": "cede7c78bb5de4c9f6085eeeceb6ab799144c8ff",
+      "status": "unchanged",
+      "upstreamCommit": "6e011641321be4031c5688d044ca11551294b939",
+      "previousCommit": "1369afa88b5bb06d40ae80cbc3aec8d6aed3919f",
       "counts": {
         "en": {
           "datas": 4076,
@@ -30,7 +30,7 @@
     },
     {
       "step": "build-lflist",
-      "status": "changed",
+      "status": "unchanged",
       "regulation": "2026.10 Rush Duel",
       "counts": {
         "forbidden": 3,
@@ -41,59 +41,10 @@
     },
     {
       "step": "resolve-pages",
-      "status": "changed",
-      "mapped": [
-        {
-          "id": "120310003",
-          "title": "Alpha Count"
-        },
-        {
-          "id": "120310008",
-          "title": "Alpha Burn Rebuildra"
-        },
-        {
-          "id": "120310009",
-          "title": "Alpha Burn SSD"
-        },
-        {
-          "id": "120310010",
-          "title": "Alpha Burn Wyvern"
-        },
-        {
-          "id": "120310011",
-          "title": "Red-Boot Launch Burn Dragon"
-        },
-        {
-          "id": "120310012",
-          "title": "Blue-Fang Teaser Burn Dragon"
-        },
-        {
-          "id": "120310026",
-          "title": "Stone Statues of the Mortar Cannons"
-        },
-        {
-          "id": "120310039",
-          "title": "Early Access Burn Drake"
-        },
-        {
-          "id": "120310040",
-          "title": "Master Up-Drake"
-        },
-        {
-          "id": "120310049",
-          "title": "Update Maintenance"
-        },
-        {
-          "id": "120310050",
-          "title": "Transfer Maintenance"
-        },
-        {
-          "id": "120310051",
-          "title": "System Maintenance"
-        }
-      ],
+      "status": "unchanged",
+      "mapped": [],
       "unresolved": {
-        "count": 117,
+        "count": 126,
         "sample": [
           "120181011",
           "120195004",
@@ -146,21 +97,8 @@
     },
     {
       "step": "fetch-translations",
-      "status": "changed",
-      "gained": [
-        "120310003",
-        "120310008",
-        "120310009",
-        "120310010",
-        "120310011",
-        "120310012",
-        "120310026",
-        "120310039",
-        "120310040",
-        "120310049",
-        "120310050",
-        "120310051"
-      ],
+      "status": "unchanged",
+      "gained": [],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
@@ -186,7 +124,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 88
+            "rows": 97
           },
           {
             "name": "RD Alternate.cdb",
@@ -194,7 +132,7 @@
           }
         ],
         "aliasRows": 679,
-        "total": 4269
+        "total": 4278
       },
       "variants": {
         "en": {
@@ -202,13 +140,13 @@
             "translations": 4084,
             "mdpro4": 89,
             "alias.mdpro4": 95,
-            "zh": 1
+            "zh": 10
           },
           "desc": {
             "translations": 4076,
             "mdpro4": 87,
             "alias.mdpro4": 95,
-            "zh": 11
+            "zh": 20
           }
         },
         "es": {
@@ -220,7 +158,7 @@
             "en.translations": 1060,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 1
+            "zh": 10
           },
           "desc": {
             "translations": 466,
@@ -230,7 +168,7 @@
             "en.translations": 59,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 11
+            "zh": 20
           },
           "telltales": {
             "count": 748,
@@ -258,27 +196,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5775,
+        "total": 5785,
         "en": {
-          "replaced": 4650,
-          "nonChinese": 5729,
+          "replaced": 4657,
+          "nonChinese": 5736,
           "sources": {
-            "dictionary": 3725,
+            "dictionary": 3732,
             "mdpro4": 925,
             "mdpro4.en": 0,
             "original": 1079,
-            "zh": 46
+            "zh": 49
           }
         },
         "es": {
-          "replaced": 4649,
-          "nonChinese": 5728,
+          "replaced": 4656,
+          "nonChinese": 5735,
           "sources": {
-            "dictionary": 3712,
+            "dictionary": 3719,
             "mdpro4": 937,
             "mdpro4.en": 0,
             "original": 1079,
-            "zh": 47
+            "zh": 50
           }
         }
       },
@@ -321,82 +259,9 @@
   "events": {
     "cardsAdded": [],
     "cardsRemoved": [],
-    "translationsAdded": [
-      {
-        "id": "120310003",
-        "zh": "α计数龙",
-        "en": "Alpha Count",
-        "es": null
-      },
-      {
-        "id": "120310008",
-        "zh": "α版重建龙",
-        "en": "Alpha Burn Rebuildra",
-        "es": null
-      },
-      {
-        "id": "120310009",
-        "zh": "α版SSD",
-        "en": "Alpha Burn SSD",
-        "es": null
-      },
-      {
-        "id": "120310010",
-        "zh": "α版飞龙",
-        "en": "Alpha Burn Wyvern",
-        "es": null
-      },
-      {
-        "id": "120310011",
-        "zh": "真红动初速龙",
-        "en": "Red-Boot Launch Burn Dragon",
-        "es": null
-      },
-      {
-        "id": "120310012",
-        "zh": "碧牙试速龙",
-        "en": "Blue-Fang Teaser Burn Dragon",
-        "es": null
-      },
-      {
-        "id": "120310026",
-        "zh": "迫击炮的石像",
-        "en": "Stone Statues of the Mortar Cannons",
-        "es": null
-      },
-      {
-        "id": "120310039",
-        "zh": "Eα版燃龙兽",
-        "en": "Early Access Burn Drake",
-        "es": null
-      },
-      {
-        "id": "120310040",
-        "zh": "大师升级燃龙兽",
-        "en": "Master Up-Drake",
-        "es": null
-      },
-      {
-        "id": "120310049",
-        "zh": "U·更新维护",
-        "en": "Update Maintenance",
-        "es": null
-      },
-      {
-        "id": "120310050",
-        "zh": "T·传输维护",
-        "en": "Transfer Maintenance",
-        "es": null
-      },
-      {
-        "id": "120310051",
-        "zh": "S·系统维护",
-        "en": "System Maintenance",
-        "es": null
-      }
-    ],
+    "translationsAdded": [],
     "unresolved": {
-      "count": 117,
+      "count": 126,
       "sample": [
         "120181011",
         "120195004",
