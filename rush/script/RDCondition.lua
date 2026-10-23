@@ -153,6 +153,10 @@ function RushDuel.IsCanBeDoubleFusionMaterial(card, code)
     for i, effect in ipairs(effects) do
         local value = effect:GetValue()
         if value == code then
+            local target = effect:GetTarget()
+            if target then
+                return target(effect, card)
+            end
             return true
         end
     end

@@ -42,8 +42,12 @@ function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCode(EFFECT_DOUBLE_FUSION_MATERIAL)
 		e1:SetProperty(EFFECT_FLAG_CLIENT_HINT)
 		e1:SetRange(LOCATION_MZONE)
+		e1:SetTarget(cm.fustg)
 		e1:SetValue(list[2])
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		c:RegisterEffect(e1)
 	end
+end
+function cm.fustg(e,c)
+	return c:IsControler(e:GetHandlerPlayer())
 end

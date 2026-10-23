@@ -65,7 +65,24 @@ function RushDuel.AddMaximumProcedure(card, max_atk, left_code, right_code)
     e2:SetCondition(RushDuel.MaximumMode)
     e2:SetValue(1)
     card:RegisterEffect(e2)
+    -- 离场重定向时修正位置
+    local e3 = Effect.CreateEffect(card)
+    e3:SetType(EFFECT_TYPE_SINGLE + EFFECT_TYPE_CONTINUOUS)
+	e3:SetCode(EVENT_LEAVE_FIELD_P)
+    e3:SetProperty(EFFECT_FLAG_CANNOT_DISABLE + EFFECT_FLAG_UNCOPYABLE)
+    e3:SetCondition(RushDuel.MaximumMode)
+    e3:SetOperation(RushDuel.MaximumRedirectCheck)
+    card:RegisterEffect(e3)
+    local e4 = Effect.CreateEffect(card)
+	e4:SetType(EFFECT_TYPE_SINGLE + EFFECT_TYPE_CONTINUOUS)
+	e4:SetCode(EVENT_LEAVE_FIELD)
+    e4:SetProperty(EFFECT_FLAG_CANNOT_DISABLE + EFFECT_FLAG_UNCOPYABLE)
+    e4:SetLabelObject(e3)
+	e4:SetCondition(RushDuel.MaximumRedirectCondition)
+	e4:SetOperation(RushDuel.MaximumRedirectOperation)
+	card:RegisterEffect(e4)
 end
+-- 极大召唤手续
 function RushDuel.MaximumSummonFilter(c, e, tp, left_code, right_code)
     return c:IsCode(left_code, right_code)
 end
@@ -117,6 +134,39 @@ function RushDuel.MaximumSummonOperation(left_code, right_code)
 end
 function RushDuel.MaximumSummonValue(e, c)
     return SUMMON_TYPE_MAXIMUM, 0x4
+end
+-- 极大怪兽重定向
+function RushDuel.MaximumRedirectCheck(e, tp, eg, ep, ev, re, r, rp)
+    local c = e:GetHandler()
+    local bc = c:GetBattleTarget()
+    e:SetLabel(0)
+    if c:IsReason(REASON_BATTLE) and bc then
+        local effects = {bc:IsHasEffect(EFFECT_BATTLE_DESTROY_REDIRECT)}
+        for i, effect in ipairs(effects) do
+            local value = effect:GetValue()
+            local og = c:GetOverlayGroup()
+            og:KeepAlive()
+            e:SetLabel(value, 1 - tp)
+            e:SetLabelObject(og)
+        end
+    end
+end
+function RushDuel.MaximumRedirectCondition(e, tp, eg, ep, ev, re, r, rp)
+    return e:GetLabelObject():GetLabel() ~= 0
+end
+function RushDuel.MaximumRedirectOperation(e, tp, eg, ep, ev, re, r, rp)
+    local og = e:GetLabelObject():GetLabelObject()
+    local loc, p = e:GetLabelObject():GetLabel()
+    if loc == LOCATION_DECKBOT then
+        Duel.SendtoDeck(og, nil, SEQ_DECKTOP, REASON_BATTLE)
+	    Duel.MoveSequence(e:GetHandler(), SEQ_DECKTOP)
+        Duel.SortDecktop(p, tp, 3)
+        for i = 1, 3 do
+			local tc = Duel.GetDecktopGroup(tp, 1):GetFirst()
+			Duel.MoveSequence(tc,SEQ_DECKBOTTOM)
+		end
+    end
+    og:DeleteGroup()
 end
 
 -- 手动添加极大模式

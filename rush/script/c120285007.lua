@@ -9,8 +9,12 @@ function cm.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_DOUBLE_FUSION_MATERIAL)
 	e1:SetRange(LOCATION_MZONE)
+	e1:SetTarget(cm.fustg)
 	e1:SetValue(list[2])
 	c:RegisterEffect(e1)
 	--Continuous Effect
 	RD.AddContinuousEffect(c,e1,RD.EnableChangeCode(c,list[1],LOCATION_MZONE))
+end
+function cm.fustg(e,c)
+	return c:IsControler(e:GetHandlerPlayer())
 end
