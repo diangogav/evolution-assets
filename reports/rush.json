@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-22T11:21:39.577Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39769795520",
+  "generatedAt": "2026-10-23T11:11:17.107Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39944258374",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "6e011641321be4031c5688d044ca11551294b939",
-      "previousCommit": "1369afa88b5bb06d40ae80cbc3aec8d6aed3919f",
+      "upstreamCommit": "dbd324961a7080936728888937d8358d5b31f72d",
+      "previousCommit": "6e011641321be4031c5688d044ca11551294b939",
       "counts": {
         "en": {
           "datas": 4076,
@@ -41,10 +41,47 @@
     },
     {
       "step": "resolve-pages",
-      "status": "unchanged",
-      "mapped": [],
+      "status": "changed",
+      "mapped": [
+        {
+          "id": "120310027",
+          "title": "Strong-Armed Hitotsu-Me Giant"
+        },
+        {
+          "id": "120310028",
+          "title": "Keen and Nimble Tiger Axe"
+        },
+        {
+          "id": "120310029",
+          "title": "Crusher Golem"
+        },
+        {
+          "id": "120310042",
+          "title": "Invincible Millennium Golem"
+        },
+        {
+          "id": "120310047",
+          "title": "The Unstoppable Sengenjin"
+        },
+        {
+          "id": "120310056",
+          "title": "Ritual of Sennen Genjin"
+        },
+        {
+          "id": "120310057",
+          "title": "Revival of Sennen Genjin"
+        },
+        {
+          "id": "120310058",
+          "title": "Millennium Smasher"
+        },
+        {
+          "id": "120310069",
+          "title": "Sengenjin (Rush Duel)"
+        }
+      ],
       "unresolved": {
-        "count": 126,
+        "count": 117,
         "sample": [
           "120181011",
           "120195004",
@@ -97,17 +134,27 @@
     },
     {
       "step": "fetch-translations",
-      "status": "unchanged",
-      "gained": [],
+      "status": "changed",
+      "gained": [
+        "120310027",
+        "120310028",
+        "120310029",
+        "120310042",
+        "120310047",
+        "120310056",
+        "120310057",
+        "120310058",
+        "120310069"
+      ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3420,
+      "entries": 3429,
       "coverage": {
-        "en": 3420,
-        "en_lore": 3414,
-        "en_req": 2985,
+        "en": 3429,
+        "en_lore": 3422,
+        "en_req": 2993,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -137,16 +184,16 @@
       "variants": {
         "en": {
           "name": {
-            "translations": 4084,
+            "translations": 4093,
             "mdpro4": 89,
             "alias.mdpro4": 95,
-            "zh": 10
+            "zh": 1
           },
           "desc": {
-            "translations": 4076,
+            "translations": 4084,
             "mdpro4": 87,
             "alias.mdpro4": 95,
-            "zh": 20
+            "zh": 12
           }
         },
         "es": {
@@ -155,20 +202,20 @@
             "base": 413,
             "mdpro4": 2055,
             "alias.mdpro4": 94,
-            "en.translations": 1060,
+            "en.translations": 1069,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 10
+            "zh": 1
           },
           "desc": {
             "translations": 466,
             "base": 116,
             "mdpro4": 3483,
             "alias.mdpro4": 134,
-            "en.translations": 59,
+            "en.translations": 67,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 20
+            "zh": 12
           },
           "telltales": {
             "count": 748,
@@ -259,9 +306,64 @@
   "events": {
     "cardsAdded": [],
     "cardsRemoved": [],
-    "translationsAdded": [],
+    "translationsAdded": [
+      {
+        "id": "120310027",
+        "zh": "刚腕的独眼巨人",
+        "en": "Strong-Armed Hitotsu-Me Giant",
+        "es": null
+      },
+      {
+        "id": "120310028",
+        "zh": "灵敏的老虎斧战士",
+        "en": "Keen and Nimble Tiger Axe",
+        "es": null
+      },
+      {
+        "id": "120310029",
+        "zh": "压坏的石人",
+        "en": "Crusher Golem",
+        "es": null
+      },
+      {
+        "id": "120310042",
+        "zh": "坚守的千年石人",
+        "en": "Invincible Millennium Golem",
+        "es": null
+      },
+      {
+        "id": "120310047",
+        "zh": "贯彻到底的千年原人",
+        "en": "The Unstoppable Sengenjin",
+        "es": null
+      },
+      {
+        "id": "120310056",
+        "zh": "千年原人的仪式",
+        "en": "Ritual of Sennen Genjin",
+        "es": null
+      },
+      {
+        "id": "120310057",
+        "zh": "千年原人的复活",
+        "en": "Revival of Sennen Genjin",
+        "es": null
+      },
+      {
+        "id": "120310058",
+        "zh": "千年的粉碎者",
+        "en": "Millennium Smasher",
+        "es": null
+      },
+      {
+        "id": "120310069",
+        "zh": "千年原人",
+        "en": "Sengenjin",
+        "es": null
+      }
+    ],
     "unresolved": {
-      "count": 126,
+      "count": 117,
       "sample": [
         "120181011",
         "120195004",

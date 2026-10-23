@@ -26871,6 +26871,30 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310027": {
+    "en": "Strong-Armed Hitotsu-Me Giant",
+    "en_lore": "Set 1 \"Revival of Sennen Genjin\" from your Graveyard to your Spell & Trap Zone. Then, if you have 10 or more cards in your Deck, you can draw 1 card.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card, place 1 card from your hand on the bottom of the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310028": {
+    "en": "Keen and Nimble Tiger Axe",
+    "en_lore": "Destroy 1 Spell/Trap Card on your opponent's field.",
+    "en_req": "You have a face-up Level 8 Beast-Warrior Type monster on your field.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310029": {
+    "en": "Crusher Golem",
+    "en_lore": "This turn, this card's name becomes \"Destroyer Golem\". This turn, you can only attack with EARTH Attribute monsters.",
+    "en_req": "Send the top 2 cards of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310036": {
     "en": "Rocktusk Beast Babirusaite",
     "en_lore": "Change the battle position of up to 2 monsters on your opponent's field. This turn, you can only attack with EARTH Attribute monsters.",
@@ -26919,6 +26943,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310042": {
+    "en": "Invincible Millennium Golem",
+    "en_lore": "Add 1 \"Revival of Sennen Genjin\" from your Graveyard to your hand. Then, you can shuffle up to 2 cards from your opponent's Graveyard into the Deck. If you do, increase this card's Level by 2 until the end of this turn.",
+    "en_req": "During your Main Phase that you Fusion Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310045": {
     "en": "Familiar-Possessed - Aussa",
     "en_lore": "This card cannot be used as material for the Fusion Summon of \"Familiar-Possessed - Aussa\". Your EARTH Attribute monsters inflict piercing battle damage.",
@@ -26930,6 +26962,14 @@
   "120310046": {
     "en": "What Little the Blightblaze Leaves Behind",
     "en_lore": "Face-up monsters on the field lose 2000 ATK/DEF, except monsters with 1000 original DEF.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310047": {
+    "en": "The Unstoppable Sengenjin",
+    "en_lore": "If this card battles a monster, any battle damage it inflicts to your opponent is doubled. During your turn, if you have 10 or more monsters in your Graveyard, this card gains 500 ATK.",
     "en_req": "None",
     "es": "",
     "es_lore": "",
@@ -26991,6 +27031,30 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310056": {
+    "en": "Ritual of Sennen Genjin",
+    "en_lore": "Ritual Summon \"Sengenjin\" or \"The Unstoppable Sengenjin\" by sending face-up EARTH Attribute monsters from your field to the Graveyard whose total Levels equal 8 or more as material (you cannot use more monsters than necessary as material). This turn, you can only attack with EARTH Attribute monsters.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310057": {
+    "en": "Revival of Sennen Genjin",
+    "en_lore": "Ritual Summon \"Sengenjin\" by sending monsters from your hand or field to the Graveyard whose total Levels equal 8 or more as material (you cannot use more monsters than necessary as material).",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310058": {
+    "en": "Millennium Smasher",
+    "en_lore": "Special Summon 1 \"Sengenjin\" from your Graveyard face-up to your field. Then, you can destroy 1 card on your opponent's field. This turn, you can only attack with EARTH Attribute monsters.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310061": {
     "en": "Jointech Catapult",
     "en_lore": "Destroy 1 face-up Level 8 or lower monster on your opponent's field. Then, if you placed a Fusion Monster to meet the requirement, you can place 1 card from your opponent's field on the bottom of the owner's Deck.",
@@ -27018,6 +27082,14 @@
   "120310066": {
     "en": "Doomed by the Blackblight",
     "en_lore": "One day, the curse of the Blightblaze was unleashed. Some pray for the resurrection of the fallen king, while others pray to the Blightblaze itself. Will the land either know salvation or face Armageddon as a result of these various desires?",
+    "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310069": {
+    "en": "Sengenjin",
+    "en_lore": "",
     "en_req": "",
     "es": "",
     "es_lore": "",
