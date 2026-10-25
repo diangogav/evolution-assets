@@ -1,31 +1,67 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-23T11:11:17.107Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/39944258374",
+  "generatedAt": "2026-10-25T10:56:12.918Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40186763859",
   "steps": [
     {
       "step": "check-mdpro4",
-      "status": "unchanged",
-      "upstreamCommit": "dbd324961a7080936728888937d8358d5b31f72d",
-      "previousCommit": "6e011641321be4031c5688d044ca11551294b939",
+      "status": "changed",
+      "upstreamCommit": "e2e328479878c8c61bcf61776ffab2cc086fb47a",
+      "previousCommit": "dbd324961a7080936728888937d8358d5b31f72d",
       "counts": {
         "en": {
-          "datas": 4076,
-          "texts": 4076
+          "datas": 4223,
+          "texts": 4223
         },
         "es": {
-          "datas": 4076,
-          "texts": 4076
+          "datas": 4223,
+          "texts": 4223
         }
       },
       "idsAdded": {
-        "count": 0,
-        "sample": []
+        "count": 161,
+        "sample": [
+          120000012,
+          120109069,
+          120310001,
+          120310002,
+          120310003,
+          120310004,
+          120310005,
+          120310006,
+          120310007,
+          120310008,
+          120310009,
+          120310010,
+          120310011,
+          120310012,
+          120310013,
+          120310014,
+          120310015,
+          120310016,
+          120310017,
+          120310018
+        ]
       },
       "idsRemoved": {
-        "count": 0,
-        "sample": []
+        "count": 14,
+        "sample": [
+          129021243,
+          129022048,
+          129023279,
+          129023280,
+          129023294,
+          129023295,
+          129023809,
+          129023897,
+          129023898,
+          129023899,
+          129023900,
+          129023901,
+          129023955,
+          129023965
+        ]
       }
     },
     {
@@ -44,44 +80,16 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310027",
-          "title": "Strong-Armed Hitotsu-Me Giant"
+          "id": "120310024",
+          "title": "Sinner of the Blightblaze"
         },
         {
-          "id": "120310028",
-          "title": "Keen and Nimble Tiger Axe"
-        },
-        {
-          "id": "120310029",
-          "title": "Crusher Golem"
-        },
-        {
-          "id": "120310042",
-          "title": "Invincible Millennium Golem"
-        },
-        {
-          "id": "120310047",
-          "title": "The Unstoppable Sengenjin"
-        },
-        {
-          "id": "120310056",
-          "title": "Ritual of Sennen Genjin"
-        },
-        {
-          "id": "120310057",
-          "title": "Revival of Sennen Genjin"
-        },
-        {
-          "id": "120310058",
-          "title": "Millennium Smasher"
-        },
-        {
-          "id": "120310069",
-          "title": "Sengenjin (Rush Duel)"
+          "id": "120310033",
+          "title": "Marron Cat of Minori"
         }
       ],
       "unresolved": {
-        "count": 117,
+        "count": 118,
         "sample": [
           "120181011",
           "120195004",
@@ -136,25 +144,18 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310027",
-        "120310028",
-        "120310029",
-        "120310042",
-        "120310047",
-        "120310056",
-        "120310057",
-        "120310058",
-        "120310069"
+        "120310024",
+        "120310033"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3429,
+      "entries": 3431,
       "coverage": {
-        "en": 3429,
-        "en_lore": 3422,
-        "en_req": 2993,
+        "en": 3431,
+        "en_lore": 3424,
+        "en_req": 2995,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -171,54 +172,54 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 97
+            "rows": 100
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 85
           }
         ],
-        "aliasRows": 679,
-        "total": 4278
+        "aliasRows": 726,
+        "total": 4328
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4093,
-            "mdpro4": 89,
+            "translations": 4140,
+            "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 1
+            "zh": 0
           },
           "desc": {
-            "translations": 4084,
-            "mdpro4": 87,
+            "translations": 4131,
+            "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 12
+            "zh": 11
           }
         },
         "es": {
           "name": {
-            "translations": 586,
-            "base": 413,
-            "mdpro4": 2055,
-            "alias.mdpro4": 94,
-            "en.translations": 1069,
+            "translations": 603,
+            "base": 420,
+            "mdpro4": 2148,
+            "alias.mdpro4": 72,
+            "en.translations": 1025,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 1
+            "zh": 0
           },
           "desc": {
-            "translations": 466,
-            "base": 116,
-            "mdpro4": 3483,
-            "alias.mdpro4": 134,
-            "en.translations": 67,
+            "translations": 483,
+            "base": 120,
+            "mdpro4": 3607,
+            "alias.mdpro4": 106,
+            "en.translations": 1,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 12
+            "zh": 11
           },
           "telltales": {
-            "count": 748,
+            "count": 753,
             "sample": [
               120102002,
               120102010,
@@ -243,33 +244,33 @@
         ]
       },
       "effectStrings": {
-        "total": 5785,
+        "total": 5845,
         "en": {
-          "replaced": 4657,
-          "nonChinese": 5736,
+          "replaced": 4670,
+          "nonChinese": 5791,
           "sources": {
-            "dictionary": 3732,
-            "mdpro4": 925,
+            "dictionary": 3735,
+            "mdpro4": 935,
             "mdpro4.en": 0,
-            "original": 1079,
-            "zh": 49
+            "original": 1121,
+            "zh": 54
           }
         },
         "es": {
-          "replaced": 4656,
-          "nonChinese": 5735,
+          "replaced": 4724,
+          "nonChinese": 5845,
           "sources": {
-            "dictionary": 3719,
-            "mdpro4": 937,
+            "dictionary": 3722,
+            "mdpro4": 1002,
             "mdpro4.en": 0,
-            "original": 1079,
-            "zh": 50
+            "original": 1121,
+            "zh": 0
           }
         }
       },
       "alternate": {
-        "rows": 679,
-        "status": "unchanged"
+        "rows": 726,
+        "status": "changed"
       },
       "renumbered": {
         "admitted": [
@@ -304,66 +305,30 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
-    "cardsRemoved": [],
-    "translationsAdded": [
+    "cardsAdded": [
       {
-        "id": "120310027",
-        "zh": "刚腕的独眼巨人",
-        "en": "Strong-Armed Hitotsu-Me Giant",
+        "id": "120310024",
+        "zh": "腐灼的罪人",
+        "en": "Sinner of the Blightblaze",
         "es": null
       },
       {
-        "id": "120310028",
-        "zh": "灵敏的老虎斧战士",
-        "en": "Keen and Nimble Tiger Axe",
+        "id": "120310033",
+        "zh": "美之里的栗子猫",
+        "en": "Marron Cat of Minori",
         "es": null
       },
       {
-        "id": "120310029",
-        "zh": "压坏的石人",
-        "en": "Crusher Golem",
-        "es": null
-      },
-      {
-        "id": "120310042",
-        "zh": "坚守的千年石人",
-        "en": "Invincible Millennium Golem",
-        "es": null
-      },
-      {
-        "id": "120310047",
-        "zh": "贯彻到底的千年原人",
-        "en": "The Unstoppable Sengenjin",
-        "es": null
-      },
-      {
-        "id": "120310056",
-        "zh": "千年原人的仪式",
-        "en": "Ritual of Sennen Genjin",
-        "es": null
-      },
-      {
-        "id": "120310057",
-        "zh": "千年原人的复活",
-        "en": "Revival of Sennen Genjin",
-        "es": null
-      },
-      {
-        "id": "120310058",
-        "zh": "千年的粉碎者",
-        "en": "Millennium Smasher",
-        "es": null
-      },
-      {
-        "id": "120310069",
-        "zh": "千年原人",
-        "en": "Sengenjin",
+        "id": "120310100",
+        "zh": "墓地阴影",
+        "en": null,
         "es": null
       }
     ],
+    "cardsRemoved": [],
+    "translationsAdded": [],
     "unresolved": {
-      "count": 117,
+      "count": 118,
       "sample": [
         "120181011",
         "120195004",

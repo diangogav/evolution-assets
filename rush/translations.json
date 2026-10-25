@@ -26855,6 +26855,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310024": {
+    "en": "Sinner of the Blightblaze",
+    "en_lore": "This card cannot be destroyed by card effects.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310025": {
     "en": "Knight of the Hollowed Grounds",
     "en_lore": "Add up to 2 \"The Legacy of Zeil\" from your Graveyard to your hand.",
@@ -26891,6 +26899,14 @@
     "en": "Crusher Golem",
     "en_lore": "This turn, this card's name becomes \"Destroyer Golem\". This turn, you can only attack with EARTH Attribute monsters.",
     "en_req": "Send the top 2 cards of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310033": {
+    "en": "Marron Cat of Minori",
+    "en_lore": "Excavate the top 3 cards of your Deck. Place the excavated cards on top of your Deck in any order. Then, you can Set up to 2 \"Blazing Chestnut\" from your Graveyard to your Spell & Trap Zone. If you do, this turn, you take no damage from the effect of \"Blazing Chestnut\", and you cannot activate the effect of \"Marron Cat of Minori\".",
+    "en_req": "None",
     "es": "",
     "es_lore": "",
     "es_req": ""
