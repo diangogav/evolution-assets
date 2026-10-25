@@ -28,7 +28,7 @@ end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 	if RD.SelectAndSpecialSummon(aux.NecroValleyFilter(cm.spfilter),tp,LOCATION_GRAVE,0,1,1,nil,e,POS_FACEUP_DEFENSE)~=0 then
 		local filter=RD.Filter(cm.posfilter,e,tp)
-		RD.CanSelectAndDoAction(aux.Stringid(m,1),HINTMSG_POSCHANGE,filter,tp,0,LOCATION_MZONE,1,2,nil,function(g)
+		RD.CanSelectAndDoAction(aux.Stringid(m,1),HINTMSG_POSCHANGE,filter,tp,0,LOCATION_MZONE,1,1,nil,function(g)
 			RD.ChangePosition(g,e,tp,REASON_EFFECT)
 		end)
 	end
