@@ -27071,6 +27071,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310060": {
+    "en": "Forest of the Beautiful Dark Queen",
+    "en_lore": "While this card is face-up in the Field Zone, after you activate a monster effect, if you sent a Spell/Trap Card from the hand or field to the Graveyard to meet the requirement, draw 1 card.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310061": {
     "en": "Jointech Catapult",
     "en_lore": "Destroy 1 face-up Level 8 or lower monster on your opponent's field. Then, if you placed a Fusion Monster to meet the requirement, you can place 1 card from your opponent's field on the bottom of the owner's Deck.",

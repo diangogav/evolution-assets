@@ -1,67 +1,33 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-25T10:56:12.918Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40186763859",
+  "generatedAt": "2026-10-26T12:27:09.637Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40322554813",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "changed",
-      "upstreamCommit": "e2e328479878c8c61bcf61776ffab2cc086fb47a",
-      "previousCommit": "dbd324961a7080936728888937d8358d5b31f72d",
+      "upstreamCommit": "bdcab0aed1f7d10d4d1fd37efb45203065bc569a",
+      "previousCommit": "e2e328479878c8c61bcf61776ffab2cc086fb47a",
       "counts": {
         "en": {
-          "datas": 4223,
-          "texts": 4223
+          "datas": 4224,
+          "texts": 4224
         },
         "es": {
-          "datas": 4223,
-          "texts": 4223
+          "datas": 4224,
+          "texts": 4224
         }
       },
       "idsAdded": {
-        "count": 161,
+        "count": 1,
         "sample": [
-          120000012,
-          120109069,
-          120310001,
-          120310002,
-          120310003,
-          120310004,
-          120310005,
-          120310006,
-          120310007,
-          120310008,
-          120310009,
-          120310010,
-          120310011,
-          120310012,
-          120310013,
-          120310014,
-          120310015,
-          120310016,
-          120310017,
-          120310018
+          120310060
         ]
       },
       "idsRemoved": {
-        "count": 14,
-        "sample": [
-          129021243,
-          129022048,
-          129023279,
-          129023280,
-          129023294,
-          129023295,
-          129023809,
-          129023897,
-          129023898,
-          129023899,
-          129023900,
-          129023901,
-          129023955,
-          129023965
-        ]
+        "count": 0,
+        "sample": []
       }
     },
     {
@@ -80,16 +46,12 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310024",
-          "title": "Sinner of the Blightblaze"
-        },
-        {
-          "id": "120310033",
-          "title": "Marron Cat of Minori"
+          "id": "120310060",
+          "title": "Forest of the Beautiful Dark Queen"
         }
       ],
       "unresolved": {
-        "count": 118,
+        "count": 119,
         "sample": [
           "120181011",
           "120195004",
@@ -144,18 +106,17 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310024",
-        "120310033"
+        "120310060"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3431,
+      "entries": 3432,
       "coverage": {
-        "en": 3431,
-        "en_lore": 3424,
-        "en_req": 2995,
+        "en": 3432,
+        "en_lore": 3425,
+        "en_req": 2996,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -172,7 +133,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 100
+            "rows": 102
           },
           {
             "name": "RD Alternate.cdb",
@@ -180,43 +141,43 @@
           }
         ],
         "aliasRows": 726,
-        "total": 4328
+        "total": 4330
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4140,
+            "translations": 4141,
             "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 0
+            "zh": 1
           },
           "desc": {
-            "translations": 4131,
+            "translations": 4132,
             "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 11
+            "zh": 12
           }
         },
         "es": {
           "name": {
             "translations": 603,
             "base": 420,
-            "mdpro4": 2148,
+            "mdpro4": 2149,
             "alias.mdpro4": 72,
             "en.translations": 1025,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 0
+            "zh": 1
           },
           "desc": {
             "translations": 483,
             "base": 120,
-            "mdpro4": 3607,
+            "mdpro4": 3608,
             "alias.mdpro4": 106,
             "en.translations": 1,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 11
+            "zh": 12
           },
           "telltales": {
             "count": 753,
@@ -244,33 +205,33 @@
         ]
       },
       "effectStrings": {
-        "total": 5845,
+        "total": 5848,
         "en": {
-          "replaced": 4670,
-          "nonChinese": 5791,
+          "replaced": 4672,
+          "nonChinese": 5793,
           "sources": {
-            "dictionary": 3735,
+            "dictionary": 3737,
             "mdpro4": 935,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 54
+            "zh": 55
           }
         },
         "es": {
-          "replaced": 4724,
-          "nonChinese": 5845,
+          "replaced": 4726,
+          "nonChinese": 5847,
           "sources": {
-            "dictionary": 3722,
+            "dictionary": 3724,
             "mdpro4": 1002,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 0
+            "zh": 1
           }
         }
       },
       "alternate": {
         "rows": 726,
-        "status": "changed"
+        "status": "unchanged"
       },
       "renumbered": {
         "admitted": [
@@ -307,20 +268,14 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120310024",
-        "zh": "腐灼的罪人",
-        "en": "Sinner of the Blightblaze",
+        "id": "120310060",
+        "zh": "美丽的妖魔之森",
+        "en": "Forest of the Beautiful Dark Queen",
         "es": null
       },
       {
-        "id": "120310033",
-        "zh": "美之里的栗子猫",
-        "en": "Marron Cat of Minori",
-        "es": null
-      },
-      {
-        "id": "120310100",
-        "zh": "墓地阴影",
+        "id": "120310068",
+        "zh": "双子的见习魔女",
         "en": null,
         "es": null
       }
@@ -328,7 +283,7 @@
     "cardsRemoved": [],
     "translationsAdded": [],
     "unresolved": {
-      "count": 118,
+      "count": 119,
       "sample": [
         "120181011",
         "120195004",
