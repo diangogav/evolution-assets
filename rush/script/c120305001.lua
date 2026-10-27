@@ -5,7 +5,7 @@ function cm.initial_effect(c)
 	RD.AddHandSpecialSummonProcedure(c,aux.Stringid(m,0),cm.spcon,cm.sptg,cm.spop,SUMMON_VALUE_SELF)
 	--Counter
 	Duel.AddCustomActivityCounter(m,ACTIVITY_CHAIN,aux.FALSE)
-	--Destroy
+	--To Grave
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(m,1))
 	e1:SetCategory(CATEGORY_TOGRAVE+CATEGORY_DAMAGE)
@@ -43,7 +43,7 @@ function cm.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	RD.SendToDeckBottom(sg,e,tp,REASON_SPSUMMON)
 	sg:DeleteGroup()
 end
---Destroy
+--To Grave
 function cm.filter(c)
 	return c:IsAbleToGrave()
 end
