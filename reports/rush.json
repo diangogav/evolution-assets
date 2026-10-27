@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-26T12:27:09.637Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40322554813",
+  "generatedAt": "2026-10-27T11:45:40.603Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40498490826",
   "steps": [
     {
       "step": "check-mdpro4",
-      "status": "changed",
-      "upstreamCommit": "bdcab0aed1f7d10d4d1fd37efb45203065bc569a",
-      "previousCommit": "e2e328479878c8c61bcf61776ffab2cc086fb47a",
+      "status": "unchanged",
+      "upstreamCommit": "4f6b73215e5941694ad453def5d34f4b30e2f5f8",
+      "previousCommit": "bdcab0aed1f7d10d4d1fd37efb45203065bc569a",
       "counts": {
         "en": {
           "datas": 4224,
@@ -20,10 +20,8 @@
         }
       },
       "idsAdded": {
-        "count": 1,
-        "sample": [
-          120310060
-        ]
+        "count": 0,
+        "sample": []
       },
       "idsRemoved": {
         "count": 0,
@@ -46,12 +44,12 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310060",
-          "title": "Forest of the Beautiful Dark Queen"
+          "id": "120310068",
+          "title": "The Two Apprentice Witches"
         }
       ],
       "unresolved": {
-        "count": 119,
+        "count": 126,
         "sample": [
           "120181011",
           "120195004",
@@ -106,17 +104,17 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310060"
+        "120310068"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3432,
+      "entries": 3433,
       "coverage": {
-        "en": 3432,
-        "en_lore": 3425,
-        "en_req": 2996,
+        "en": 3433,
+        "en_lore": 3426,
+        "en_req": 2997,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -133,7 +131,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 102
+            "rows": 110
           },
           {
             "name": "RD Alternate.cdb",
@@ -141,21 +139,21 @@
           }
         ],
         "aliasRows": 726,
-        "total": 4330
+        "total": 4338
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4141,
+            "translations": 4142,
             "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 1
+            "zh": 8
           },
           "desc": {
-            "translations": 4132,
+            "translations": 4133,
             "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 12
+            "zh": 19
           }
         },
         "es": {
@@ -164,20 +162,20 @@
             "base": 420,
             "mdpro4": 2149,
             "alias.mdpro4": 72,
-            "en.translations": 1025,
+            "en.translations": 1026,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 1
+            "zh": 8
           },
           "desc": {
             "translations": 483,
             "base": 120,
             "mdpro4": 3608,
             "alias.mdpro4": 106,
-            "en.translations": 1,
+            "en.translations": 2,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 12
+            "zh": 19
           },
           "telltales": {
             "count": 753,
@@ -205,27 +203,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5848,
+        "total": 5865,
         "en": {
-          "replaced": 4672,
-          "nonChinese": 5793,
+          "replaced": 4679,
+          "nonChinese": 5800,
           "sources": {
-            "dictionary": 3737,
+            "dictionary": 3744,
             "mdpro4": 935,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 55
+            "zh": 65
           }
         },
         "es": {
-          "replaced": 4726,
-          "nonChinese": 5847,
+          "replaced": 4733,
+          "nonChinese": 5854,
           "sources": {
-            "dictionary": 3724,
+            "dictionary": 3731,
             "mdpro4": 1002,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 1
+            "zh": 11
           }
         }
       },
@@ -268,22 +266,65 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120310060",
-        "zh": "美丽的妖魔之森",
-        "en": "Forest of the Beautiful Dark Queen",
+        "id": "120310030",
+        "zh": "次元电波通讯器",
+        "en": null,
         "es": null
       },
       {
-        "id": "120310068",
-        "zh": "双子的见习魔女",
+        "id": "120310031",
+        "zh": "次元的盟友 可频",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310032",
+        "zh": "次元的盟友 露米娜",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310043",
+        "zh": "圣洁人 露米娜",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310044",
+        "zh": "圣洁人 连接者",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310059",
+        "zh": "圣洁人的朝圣",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310064",
+        "zh": "圣洁人的圣战",
+        "en": null,
+        "es": null
+      },
+      {
+        "id": "120310067",
+        "zh": "次元的盟友 莉天使",
         "en": null,
         "es": null
       }
     ],
     "cardsRemoved": [],
-    "translationsAdded": [],
+    "translationsAdded": [
+      {
+        "id": "120310068",
+        "zh": "双子的见习魔女",
+        "en": "The Two Apprentice Witches",
+        "es": null
+      }
+    ],
     "unresolved": {
-      "count": 119,
+      "count": 126,
       "sample": [
         "120181011",
         "120195004",
