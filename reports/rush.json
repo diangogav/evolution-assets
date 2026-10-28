@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-27T11:45:40.603Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40498490826",
+  "generatedAt": "2026-10-28T12:19:04.603Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40686710439",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "4f6b73215e5941694ad453def5d34f4b30e2f5f8",
-      "previousCommit": "bdcab0aed1f7d10d4d1fd37efb45203065bc569a",
+      "upstreamCommit": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c",
+      "previousCommit": "4f6b73215e5941694ad453def5d34f4b30e2f5f8",
       "counts": {
         "en": {
           "datas": 4224,
@@ -44,12 +44,40 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310068",
-          "title": "The Two Apprentice Witches"
+          "id": "120310030",
+          "title": "Dimension Wharve"
+        },
+        {
+          "id": "120310031",
+          "title": "Copin the Dimensional Sworn Ally"
+        },
+        {
+          "id": "120310032",
+          "title": "Lumina the Dimensional Sworn Ally"
+        },
+        {
+          "id": "120310043",
+          "title": "Saintick Lumina"
+        },
+        {
+          "id": "120310044",
+          "title": "Saintick Linker"
+        },
+        {
+          "id": "120310059",
+          "title": "Saintick Pilgrim"
+        },
+        {
+          "id": "120310064",
+          "title": "Saintick Crusade"
+        },
+        {
+          "id": "120310067",
+          "title": "Riel the Dimensional Sworn Ally"
         }
       ],
       "unresolved": {
-        "count": 126,
+        "count": 118,
         "sample": [
           "120181011",
           "120195004",
@@ -104,17 +132,24 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310068"
+        "120310030",
+        "120310031",
+        "120310032",
+        "120310043",
+        "120310044",
+        "120310059",
+        "120310064",
+        "120310067"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3433,
+      "entries": 3441,
       "coverage": {
-        "en": 3433,
-        "en_lore": 3426,
-        "en_req": 2997,
+        "en": 3441,
+        "en_lore": 3434,
+        "en_req": 3005,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -144,16 +179,16 @@
       "variants": {
         "en": {
           "name": {
-            "translations": 4142,
+            "translations": 4150,
             "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 8
+            "zh": 0
           },
           "desc": {
-            "translations": 4133,
+            "translations": 4141,
             "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 19
+            "zh": 11
           }
         },
         "es": {
@@ -162,20 +197,20 @@
             "base": 420,
             "mdpro4": 2149,
             "alias.mdpro4": 72,
-            "en.translations": 1026,
+            "en.translations": 1034,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 8
+            "zh": 0
           },
           "desc": {
             "translations": 483,
             "base": 120,
             "mdpro4": 3608,
             "alias.mdpro4": 106,
-            "en.translations": 2,
+            "en.translations": 10,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 19
+            "zh": 11
           },
           "telltales": {
             "count": 753,
@@ -264,67 +299,60 @@
     }
   ],
   "events": {
-    "cardsAdded": [
+    "cardsAdded": [],
+    "cardsRemoved": [],
+    "translationsAdded": [
       {
         "id": "120310030",
         "zh": "次元电波通讯器",
-        "en": null,
+        "en": "Dimension Wharve",
         "es": null
       },
       {
         "id": "120310031",
         "zh": "次元的盟友 可频",
-        "en": null,
+        "en": "Copin the Dimensional Sworn Ally",
         "es": null
       },
       {
         "id": "120310032",
         "zh": "次元的盟友 露米娜",
-        "en": null,
+        "en": "Lumina the Dimensional Sworn Ally",
         "es": null
       },
       {
         "id": "120310043",
         "zh": "圣洁人 露米娜",
-        "en": null,
+        "en": "Saintick Lumina",
         "es": null
       },
       {
         "id": "120310044",
         "zh": "圣洁人 连接者",
-        "en": null,
+        "en": "Saintick Linker",
         "es": null
       },
       {
         "id": "120310059",
         "zh": "圣洁人的朝圣",
-        "en": null,
+        "en": "Saintick Pilgrim",
         "es": null
       },
       {
         "id": "120310064",
         "zh": "圣洁人的圣战",
-        "en": null,
+        "en": "Saintick Crusade",
         "es": null
       },
       {
         "id": "120310067",
         "zh": "次元的盟友 莉天使",
-        "en": null,
-        "es": null
-      }
-    ],
-    "cardsRemoved": [],
-    "translationsAdded": [
-      {
-        "id": "120310068",
-        "zh": "双子的见习魔女",
-        "en": "The Two Apprentice Witches",
+        "en": "Riel the Dimensional Sworn Ally",
         "es": null
       }
     ],
     "unresolved": {
-      "count": 126,
+      "count": 118,
       "sample": [
         "120181011",
         "120195004",

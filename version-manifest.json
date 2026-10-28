@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-27T21:39:46.338Z",
+  "generatedAt": "2026-10-28T12:19:04.483Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -148,37 +148,37 @@
       "bytes": 1855488,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-27T11:45:40.520Z",
-      "commitSha": "b3c30890c9f8c3674b25bdca3d7f3b08824065cf",
-      "commitDate": "2026-10-26T12:27:09Z",
+      "mirroredAt": "2026-10-28T12:19:04.483Z",
+      "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
+      "commitDate": "2026-10-27T11:45:40Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "4f6b73215e5941694ad453def5d34f4b30e2f5f8"
+        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
       }
     },
     "cdb:rush:en": {
       "path": "cdb/rush.en.cdb.gz",
-      "sha256": "310affc3e7fa6ac1faed86bec9e40b36077a353dc26c743be822ed6ebbabfc5d",
+      "sha256": "32d0f1ba43798f5160e73d26c0251fbc5a3e345ca9dbdb2ed5af0eb2561faf71",
       "bytes": 1867776,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-27T11:45:40.520Z",
-      "commitSha": "b3c30890c9f8c3674b25bdca3d7f3b08824065cf",
-      "commitDate": "2026-10-26T12:27:09Z",
+      "mirroredAt": "2026-10-28T12:19:04.483Z",
+      "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
+      "commitDate": "2026-10-27T11:45:40Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "4f6b73215e5941694ad453def5d34f4b30e2f5f8"
+        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
       }
     },
     "cdb:rush:es": {
       "path": "cdb/rush.es.cdb.gz",
-      "sha256": "798006ee7c8edd797f1b71f3e4f63eba1d1ecf819656e2adcf3a0a39c869dd41",
+      "sha256": "7de17575cf3577b812dfb90dde21b779fe73a49b7d7f3544df8f7454616727e3",
       "bytes": 2187264,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-27T11:45:40.520Z",
-      "commitSha": "b3c30890c9f8c3674b25bdca3d7f3b08824065cf",
-      "commitDate": "2026-10-26T12:27:09Z",
+      "mirroredAt": "2026-10-28T12:19:04.483Z",
+      "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
+      "commitDate": "2026-10-27T11:45:40Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "4f6b73215e5941694ad453def5d34f4b30e2f5f8"
+        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
       }
     },
     "lflist:evolution:rush": {

@@ -26903,6 +26903,30 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310030": {
+    "en": "Dimension Wharve",
+    "en_lore": "Send all monsters from your field to the Graveyard. Then, you can Special Summon 1 \"Dimension Linker\" or 1 Level 9 WIND Attribute Cyberse Type Fusion Monster from your Graveyard face-up to your field. This turn, you cannot activate the effect of \"Dimension Wharve\".",
+    "en_req": "You have 2 or more monsters on your field.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310031": {
+    "en": "Copin the Dimensional Sworn Ally",
+    "en_lore": "Add 1 Level 4 WIND Attribute Fairy Type monster with 500 DEF from your Graveyard to your hand. This turn, you cannot activate the effect of \"Copin the Dimensional Sworn Ally\".",
+    "en_req": "Reveal 1 Cyberse Type monster in your hand.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310032": {
+    "en": "Lumina the Dimensional Sworn Ally",
+    "en_lore": "Fusion Summon \"Saintick Lumina\" by sending monsters from your hand or field to the Graveyard as material. Then, gain 300 LP. This turn, you can only attack with Level 8 or higher Cyberse Type monsters.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310033": {
     "en": "Marron Cat of Minori",
     "en_lore": "Excavate the top 3 cards of your Deck. Place the excavated cards on top of your Deck in any order. Then, you can Set up to 2 \"Blazing Chestnut\" from your Graveyard to your Spell & Trap Zone. If you do, this turn, you take no damage from the effect of \"Blazing Chestnut\", and you cannot activate the effect of \"Marron Cat of Minori\".",
@@ -26963,6 +26987,22 @@
     "en": "Invincible Millennium Golem",
     "en_lore": "Add 1 \"Revival of Sennen Genjin\" from your Graveyard to your hand. Then, you can shuffle up to 2 cards from your opponent's Graveyard into the Deck. If you do, increase this card's Level by 2 until the end of this turn.",
     "en_req": "During your Main Phase that you Fusion Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310043": {
+    "en": "Saintick Lumina",
+    "en_lore": "Face-up monsters on your field gain 400 ATK/DEF. If you have 3 or more different Types in your Graveyard, Spell/Trap Cards on your field cannot be destroyed by monster effects.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310044": {
+    "en": "Saintick Linker",
+    "en_lore": "Return 1 face-up card from your opponent's field to the owner's hand. Then, if you have 3 or more different Types in your Graveyard, this card inflicts piercing battle damage this turn. This turn, you cannot activate the effect of \"Saintick Linker\".",
+    "en_req": "During your Main Phase that you Special Summoned this card, send 1 card from your hand to the Graveyard.",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -27071,6 +27111,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310059": {
+    "en": "Saintick Pilgrim",
+    "en_lore": "Add 1 \"Lumina the Dimensional Sworn Ally\", \"Riel the Dimensional Sworn Ally\", or \"Saintick Crusade\" from your Graveyard to your hand. Then, you can shuffle 3 monsters from your Graveyard into the Deck. Then, if you shuffled a WIND Attribute monster by this effect, you can look at 1 face-down card in your opponent's Spell & Trap Zone. Then, if that card is a Trap Card, destroy it.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310060": {
     "en": "Forest of the Beautiful Dark Queen",
     "en_lore": "While this card is face-up in the Field Zone, after you activate a monster effect, if you sent a Spell/Trap Card from the hand or field to the Graveyard to meet the requirement, draw 1 card.",
@@ -27103,10 +27151,26 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310064": {
+    "en": "Saintick Crusade",
+    "en_lore": "Choose up to 2 face-up monsters on your field, and they gain 500 ATK until the end of this turn. Then, if you chose a WIND Attribute Cyberse Type Fusion Monster by this effect, you can destroy 1 face-up card on your opponent's field.",
+    "en_req": "When your opponent Normal or Special Summons a monster, shuffle 1 Cyberse Type monster and 1 non-Cyberse Type monster from your Graveyard into the Deck.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310066": {
     "en": "Doomed by the Blackblight",
     "en_lore": "One day, the curse of the Blightblaze was unleashed. Some pray for the resurrection of the fallen king, while others pray to the Blightblaze itself. Will the land either know salvation or face Armageddon as a result of these various desires?",
     "en_req": "",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120310067": {
+    "en": "Riel the Dimensional Sworn Ally",
+    "en_lore": "Fusion Summon \"Saintick Linker\" by sending monsters from your hand or field to the Graveyard as material. Then, you can add 1 \"Dimension Linker\" from your Graveyard to your hand. This turn, you can only attack with Level 8 or higher Cyberse Type monsters.",
+    "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
     "es": "",
     "es_lore": "",
     "es_req": ""
