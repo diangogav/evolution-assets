@@ -50,7 +50,8 @@ function cm.activate(e,tp,eg,ep,ev,re,r,rp)
 		end)
 		if ex then
 			RD.CanSelectAndDoAction(aux.Stringid(m,2),HINTMSG_DESTROY,Card.IsFaceup,tp,0,LOCATION_ONFIELD,1,1,nil,function(dg)
-			Duel.Destroy(dg,REASON_EFFECT)
-		end)
+				Duel.Destroy(dg,REASON_EFFECT)
+			end)
+		end
 	end)
 end

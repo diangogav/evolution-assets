@@ -16,7 +16,7 @@ function cm.initial_effect(c)
 end
 --Activate
 function cm.costfilter(c)
-	return (c:IsLocation(LOCATION_HAND) or c:IsFaceup())
+	return (c:IsLocation(LOCATION_HAND) or (c:IsFaceup() and c:IsLocation(LOCATION_MZONE)))
 		and c:IsRace(RACE_MACHINE) and c:IsAbleToGraveAsCost()
 end
 function cm.exfilter(c)
