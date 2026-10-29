@@ -7,7 +7,7 @@ ban lists), plus the generators that produce them.
 
 ```
 cdb/        card databases (.cdb)
-decks/      sample decks (.ydk)
+decks/      sample decks (.ydk) and index.json, the template list the client reads
 lflist/     ban lists (.lflist.conf) — including the generated genesys list
 scripts/    generators that produce assets
 ```
@@ -54,3 +54,15 @@ an earlier one. Cards whose value came from a blog post ahead of the table
 carry that post's URL in their `--name | url` comment; once the table
 converges, the entry reverts to a plain table-sourced line and the link
 disappears. Any blog failure falls back to the table-only list.
+
+## Deck templates
+
+The web client offers every `.ydk` in `decks/` as a template, named `[<Format>] <Name>.ydk`.
+It reads the list from `decks/index.json`, so after adding, renaming or removing a deck run:
+
+```
+npm run deck-index
+```
+
+and commit `decks/index.json` with the deck. `npm test` fails while the index is out of date.
+

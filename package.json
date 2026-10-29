@@ -8,6 +8,7 @@
     "genesys": "node scripts/generate-genesys-lflist.mjs",
     "pack": "node scripts/build-client-pack.mjs",
     "rush-pack": "node scripts/build-rush-pack.mjs",
+    "deck-index": "node scripts/build-deck-index.mjs",
     "test": "node --test \"scripts/*.test.mjs\""
   },
   "dependencies": {
