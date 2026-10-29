@@ -66,3 +66,16 @@ npm run deck-index
 
 and commit `decks/index.json` with the deck. `npm test` fails while the index is out of date.
 
+## Card alternates
+
+`cdb/alternates.json` maps a card's original passcode to the ids whose cdb `alias` points at it
+(pre-errata versions such as Edison's Armory Arm `29071332` → `910003009`). Consumers use it to
+swap a card a ban list does not allow for an alternate the list does allow. It is generated from
+every uncompressed `cdb/*.cdb`, so after adding, changing or removing any of them run:
+
+```
+npm run card-alternates
+```
+
+and commit `cdb/alternates.json` with the cdb. `npm test` fails while the map is out of date.
+
