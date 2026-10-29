@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-28T14:10:43.906Z",
+  "generatedAt": "2026-10-29T12:28:29.741Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -148,11 +148,11 @@
       "bytes": 1855488,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-28T12:19:04.483Z",
+      "mirroredAt": "2026-10-29T12:28:29.741Z",
       "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
       "commitDate": "2026-10-27T11:45:40Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
+        "ElderLich/MDPro4_Data": "220c03222ee02bc3850560ea76a06cfd67b97937"
       }
     },
     "cdb:rush:en": {
@@ -161,11 +161,11 @@
       "bytes": 1867776,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-28T12:19:04.483Z",
-      "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
-      "commitDate": "2026-10-27T11:45:40Z",
+      "mirroredAt": "2026-10-29T12:28:29.741Z",
+      "commitSha": "1c2b1839d620134299ed4b0080538199f1ff32fb",
+      "commitDate": "2026-10-28T12:19:04Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
+        "ElderLich/MDPro4_Data": "220c03222ee02bc3850560ea76a06cfd67b97937"
       }
     },
     "cdb:rush:es": {
@@ -174,11 +174,11 @@
       "bytes": 2187264,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-28T12:19:04.483Z",
-      "commitSha": "af6fbd74436ba49fc4ed8b3a24750759db557ac5",
-      "commitDate": "2026-10-27T11:45:40Z",
+      "mirroredAt": "2026-10-29T12:28:29.741Z",
+      "commitSha": "1c2b1839d620134299ed4b0080538199f1ff32fb",
+      "commitDate": "2026-10-28T12:19:04Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c"
+        "ElderLich/MDPro4_Data": "220c03222ee02bc3850560ea76a06cfd67b97937"
       }
     },
     "lflist:evolution:rush": {
