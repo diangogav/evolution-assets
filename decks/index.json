@@ -1,0 +1,21 @@
+{
+	"version": 1,
+	"decks": [
+		"[2010.3 Edison] Black Wings.ydk",
+		"[2010.3 Edison] Gladiator Beasts.ydk",
+		"[2010.3 Edison] Halloween - Cursed Garden.ydk",
+		"[2010.3 Edison] Halloween - Dark World.ydk",
+		"[2010.3 Edison] Halloween - Necromancer.ydk",
+		"[2010.3 Edison] Lightsworn.ydk",
+		"[2010.3 Edison] Quickdraw Dandywarrior.ydk",
+		"[2026.5 TCG] Mitsurugi.ydk",
+		"[2026.5 TCG] Toon.ydk",
+		"[JTP] Beatdown.ydk",
+		"[JTP] Cipher Soldier.ydk",
+		"[JTP] Exodia.ydk",
+		"[JTP] Fusion.ydk",
+		"[JTP] Hand Toss.ydk",
+		"[JTP] Mill.ydk",
+		"[JTP] Uber Beatdown.ydk"
+	]
+}
