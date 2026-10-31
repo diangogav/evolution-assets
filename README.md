@@ -12,6 +12,20 @@ lflist/     ban lists (.lflist.conf) — including the generated genesys list
 scripts/    generators that produce assets
 ```
 
+## TCG bridge list
+
+`lflist/tcg.lflist.conf` carries the current TCG list while the YGOPro database
+(MoeCube) has not shipped it yet. The server loads it from `formats/tcg` and its
+TCG rooms use the most recent dated TCG list, so this file takes over without
+moving any other list. Copy the block from a source whose hash matches the
+YGOPro-family clients (MDPro4's `Data/Banlists/lflist.conf`), so they recognize
+the room's list.
+
+`scripts/check-tcg-bridge.mjs` runs daily and fails once MoeCube declares the
+same list. Then remove the bridge: this file, its `REPO_ASSETS` entry, the
+`paths` entry in `repo-assets-manifest.yml`, and the server's `formats/tcg`
+assembly entry and `runtime.ygopro.standard` member.
+
 ## Genesys ban list
 
 `lflist/genesys.lflist.conf` is generated, not hand-edited. It encodes the

@@ -1,0 +1,24 @@
+name: Check TCG bridge list
+
+on:
+  schedule:
+    # Daily: turns red the day MoeCube ships the list lflist/tcg.lflist.conf
+    # bridges, which is when the bridge has to be removed.
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check whether MoeCube ships the bridged TCG list
+        run: node scripts/check-tcg-bridge.mjs

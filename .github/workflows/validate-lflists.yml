@@ -27,5 +27,5 @@ jobs:
       - name: Run script tests
         run: npm test
 
-      - name: Validate edison and jtp lflists
+      - name: Validate edison, jtp and tcg lflists
         run: node scripts/validate-lflist.mjs
