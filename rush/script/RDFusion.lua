@@ -616,13 +616,17 @@ function RushDuel.ResetFusionSummonMaterialCount(e)
     e:SetLabel(0)
 end
 
+-- 需要给对方确认的素材
+function RushDuel.FusionConfirmFilter(c)
+    return c:IsLocation(LOCATION_HAND) or (c:IsLocation(LOCATION_MZONE) and c:IsFacedown())
+end
 -- 素材去向: 墓地
 function RushDuel.FusionToGrave(tp, mat)
     Duel.SendtoGrave(mat, REASON_EFFECT + REASON_MATERIAL + REASON_FUSION)
 end
 -- 素材去向: 卡组
 function RushDuel.FusionToDeck(tp, mat)
-    local g = mat:Filter(Card.IsFacedown, nil)
+    local g = mat:Filter(RushDuel.FusionConfirmFilter, nil)
     if #g > 0 then
         Duel.ConfirmCards(1 - tp, g)
     end
@@ -630,7 +634,7 @@ function RushDuel.FusionToDeck(tp, mat)
 end
 -- 素材去向: 卡组下面
 function RushDuel.FusionToDeckBottom(tp, mat)
-    local g = mat:Filter(Card.IsFacedown, nil)
+    local g = mat:Filter(RushDuel.FusionConfirmFilter, nil)
     if #g > 0 then
         Duel.ConfirmCards(1 - tp, g)
     end

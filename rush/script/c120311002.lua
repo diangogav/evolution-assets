@@ -33,7 +33,7 @@ function cm.matfilter2(c)
 end
 --Special Summon Condition
 function cm.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(list[1],list[2])
+	return se:GetHandler():IsCode(list[1],list[2]) or se:GetValue()==SUMMON_VALUE_DARK_FUSION
 end
 --Base Atk
 function cm.atkval(e,c)

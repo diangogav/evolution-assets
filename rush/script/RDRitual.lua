@@ -438,6 +438,41 @@ function RushDuel.CanRitualSummon(desc, type, matfilter, spfilter, exfilter, s_r
     return rc
 end
 
+-- 可以进行仪式召唤, 使用指定的素材 (全部)
+function RushDuel.CanRitualSummonWithMaterial(desc, type, mat, spfilter, mat_move, e, tp, pos, break_effect)
+    RushDuel.RitualExtraMaterialFilter = nil
+    RushDuel.RitualExtraChecker = RushDuel.RitualCheckLocation(e, false, nil)
+    local chkf = tp
+    local mg = RushDuel.ToGroup(mat):Filter(RushDuel.RitualMaterialFilter, nil, type, nil, e)
+    local sg = Duel.GetMatchingGroup(RushDuel.RitualSpecialSummonFilter, tp, LOCATION_EXTRA, 0, nil, e, tp, pos, type, mg, nil, nil, chkf, spfilter)
+    local rc = nil
+    ::cancel::
+    if #sg > 0 and Duel.SelectYesNo(tp, desc) then
+        if break_effect then
+            Duel.BreakEffect()
+        end
+        Duel.Hint(HINT_SELECTMSG, tp, HINTMSG_SPSUMMON)
+        rc = sg:SelectUnselect(nil, tp, false, true, 1, 1)
+        if not rc then
+            goto cancel
+        end
+        local cg = mg:Filter(RushDuel.ConfirmCardFilter, nil)
+        if #cg > 0 then
+            Duel.ConfirmCards(1 - tp, cg)
+        end
+        rc:SetMaterial(mg)
+        mat_move(tp, mat, e)
+        Duel.BreakEffect()
+        Duel.SpecialSummon(rc, SUMMON_TYPE_RITUAL, tp, tp, false, false, pos)
+        rc:CompleteProcedure()
+    end
+    RushDuel.RitualExtraMaterialFilter = nil
+    RushDuel.RitualExtraChecker = nil
+    RushDuel.MinRitualMaterialCount = nil
+    RushDuel.MaxRitualMaterialCount = nil
+    return rc
+end
+
 -- 素材去向: 墓地
 function RushDuel.RitualToGrave(tp, mat)
     Duel.SendtoGrave(mat, REASON_EFFECT + REASON_MATERIAL + REASON_RITUAL)

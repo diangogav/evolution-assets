@@ -5,7 +5,7 @@ function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Activate
 	local e1=Effect.CreateEffect(c)
-	e1:SetCategory(CATEGORY_ATKCHANGE)
+	e1:SetCategory(CATEGORY_ATKCHANGE+CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_ACTIVATE)
 	e1:SetCode(EVENT_FREE_CHAIN)
 	e1:SetCondition(cm.condition)
@@ -31,10 +31,7 @@ function cm.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		RD.AttachAtkDef(e,tc,-700,0,RESET_EVENT+RESETS_STANDARD)
 		if tc:IsControler(tp) and tc:IsCode(list[1]) then
-			function filter(c)
-				return c==tc
-			end
-			RD.CanRitualSummon(aux.Stringid(m,2),RITUAL_ORIGINAL_LEVEL_GREATER,filter,cm.spfilter,nil,0,0,nil,RD.RitualToGrave,e,tp,POS_FACEUP,true)
+			RD.CanRitualSummonWithMaterial(aux.Stringid(m,2),RITUAL_ORIGINAL_LEVEL_GREATER,tc,cm.spfilter,RD.RitualToGrave,e,tp,POS_FACEUP,true)
 		end
 	end)
 end

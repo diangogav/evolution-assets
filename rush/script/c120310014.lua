@@ -27,8 +27,15 @@ function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function cm.operation(e,tp,eg,ep,ev,re,r,rp)
 	RD.SelectAndDoAction(aux.Stringid(m,1),cm.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,function(g)
-		Duel.Hint(HINT_SELECTMSG,tp,aux.Stringid(m,2))
-		local lv=Duel.AnnounceNumber(tp,-3,-2,-1,1,2,3)
+		local op=Duel.SelectOption(tp,
+			aux.Stringid(m,2),
+			aux.Stringid(m,3),
+			aux.Stringid(m,4),
+			aux.Stringid(m,5),
+			aux.Stringid(m,6),
+			aux.Stringid(m,7))
+		local lv=3-op
+		if op>2 then lv=lv-1 end
 		RD.AttachLevel(e,g:GetFirst(),lv,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END)
 		RD.CanSelectAndDoAction(aux.Stringid(m,8),HINTMSG_ATOHAND,aux.NecroValleyFilter(cm.thfilter),tp,LOCATION_GRAVE,0,1,1,nil,function(sg)
 			Duel.BreakEffect()

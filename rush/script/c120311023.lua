@@ -19,7 +19,7 @@ function cm.initial_effect(c)
 end
 --Special Summon Condition
 function cm.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(list[3],list[4])
+	return se:GetHandler():IsCode(list[3],list[4]) or se:GetValue()==SUMMON_VALUE_DARK_FUSION
 end
 --Destroy
 function cm.target(e,tp,eg,ep,ev,re,r,rp,chk)
