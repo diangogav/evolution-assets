@@ -1,4 +1,4 @@
-// Structural validation for the hand-maintained lflist files (edison, jtp).
+// Structural validation for the hand-maintained lflist files (edison, jtp, tcg).
 // These have no upstream machine source, so a typo can only be caught here — a bad
 // entry would otherwise ship and break the server's ban-list parsing at runtime.
 //
@@ -20,6 +20,7 @@ const LFLISTS = [
 	"lflist/edison.lflist.conf",
 	"lflist/jtp.lflist.conf",
 	"lflist/jtp-advanced-marzo-2007.lflist.conf",
+	"lflist/tcg.lflist.conf",
 ];
 
 // Pure: returns a list of human-readable error strings (empty = valid).
