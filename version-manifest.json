@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-31T11:51:21.468Z",
+  "generatedAt": "2026-10-31T12:11:23.005Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -98,7 +98,7 @@
       "bytes": 113019,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -108,7 +108,7 @@
       "bytes": 12121,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "f41474d92df913e54a198a8526b4d8756f14ad6e",
       "commitDate": "2026-05-25T18:33:30-04:00"
     },
@@ -118,7 +118,7 @@
       "bytes": 12458,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "2eb86ebcde58624ab408d74e6e484c404df4bd46",
       "commitDate": "2026-07-28T14:25:06-04:00"
     },
@@ -128,7 +128,7 @@
       "bytes": 24576,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "845e63366b1de33d908061882b8545cae7554553",
       "commitDate": "2026-08-18T09:16:46-04:00"
     },
@@ -138,7 +138,7 @@
       "bytes": 24576,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "845e63366b1de33d908061882b8545cae7554553",
       "commitDate": "2026-08-18T09:16:46-04:00"
     },
@@ -187,9 +187,19 @@
       "bytes": 7879,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-10-20T11:04:32.535Z",
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
       "commitSha": "bb1c1c5e8102410d2a0e3e71e88e478a8d023a40",
       "commitDate": "2026-10-20T11:04:30Z"
+    },
+    "lflist:evolution:tcg": {
+      "path": "lflist/tcg.lflist.conf",
+      "sha256": "d9264e263c3462164e5337b65a7c3f2dd7c304b0708af6150c5907bf90e65a15",
+      "bytes": 8627,
+      "upstreamUrl": null,
+      "upstreamLastModified": null,
+      "mirroredAt": "2026-10-31T12:11:23.005Z",
+      "commitSha": "178b721c7e1481624f2c0c1514231b597154e672",
+      "commitDate": "2026-10-31T08:11:12-04:00"
     }
   }
 }
