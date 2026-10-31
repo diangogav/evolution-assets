@@ -27071,6 +27071,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310053": {
+    "en": "Mad Rare Heart",
+    "en_lore": "Place 1 card from your opponent's field on the bottom of the owner's Deck. Until the end of this turn, you cannot Special Summon monsters, and you can only attack with DARK Attribute monsters with 1100 original DEF.",
+    "en_req": "Your opponent has a face-up Level 6 monster on their field.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310054": {
     "en": "The Crossroads of the Blackblight",
     "en_lore": "Draw 2 cards. Then, you can add 1 \"Doomed by the Blackblight\" from your Graveyard to your hand.",
@@ -27287,6 +27295,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120311021": {
+    "en": "Evil HERO Malicious Edge",
+    "en_lore": "This card inflicts piercing battle damage.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120311022": {
     "en": "Evil HERO Inferno Wing",
     "en_lore": "This card inflicts piercing battle damage. If this card destroys a monster by battle and sends it to the Graveyard, inflict damage to your opponent equal to [that monster's original ATK or DEF (whichever is higher)].",
@@ -27299,6 +27315,22 @@
     "en": "Evil HERO Lightning Golem",
     "en_lore": "Destroy 1 monster on the field.",
     "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311024": {
+    "en": "Evil HERO Malicious Fiend",
+    "en_lore": "During your opponent's Battle Phase, all your opponent's monsters that can attack must attack.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311025": {
+    "en": "Dark Calling",
+    "en_lore": "Fusion Summon a monster that mentions \"Dark Fusion\" by placing monsters from your hand or Graveyard on the bottom of the Deck in any order as material (this is treated as a Fusion Summon by the effect of \"Dark Fusion\").",
+    "en_req": "During a turn you have not activated \"Dark Calling\".",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -27511,6 +27543,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120311060": {
+    "en": "Card Trooper",
+    "en_lore": "This card gains ATK equal to [the number of cards sent to the Graveyard to meet the requirement] x 500 until the end of this turn. Then, you can send this card on your field to the Graveyard. If you sent it to the Graveyard by this effect, also draw 1 card.",
+    "en_req": "If you have 10 or more cards in your Deck, send the top 3 cards of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120311061": {
     "en": "Transam Linac",
     "en_lore": "Fight for the Light! Pure Finish!",
@@ -27523,6 +27563,22 @@
     "en": "Transam Praime Armor Nova",
     "en_lore": "This card that was Normal Summoned by Tributing 3 monsters gains ATK equal to [the total original Levels of the monsters Tributed when Normal Summoning this card] x 100.",
     "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311063": {
+    "en": "Souffraes the Defiant Soul",
+    "en_lore": "Change the battle position of 1 monster on your opponent's field. Then, if you have 5 or more monsters in your Graveyard, you can add 1 \"Gaigust the Defiant Soul\" from your Graveyard to your hand.",
+    "en_req": "Send 1 monster from your hand to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311064": {
+    "en": "Gaigust the Defiant Soul",
+    "en_lore": "Destroy 1 face-up Level 8 or lower monster on your opponent's field. You cannot Tribute this face-up card for a Tribute Summon this turn.",
+    "en_req": "If you have 5 or more monsters in your Graveyard, send 1 monster from your hand to the Graveyard.",
     "es": "",
     "es_lore": "",
     "es_req": ""

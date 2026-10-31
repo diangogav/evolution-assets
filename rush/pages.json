@@ -3385,6 +3385,7 @@
   "120310050": "Transfer Maintenance",
   "120310051": "System Maintenance",
   "120310052": "Occult Preservation Agency Mad Rare",
+  "120310053": "Mad Rare Heart",
   "120310054": "The Crossroads of the Blackblight",
   "120310055": "Lena's Mushroom Soup",
   "120310056": "Ritual of Sennen Genjin",
@@ -3412,8 +3413,11 @@
   "120311013": "Cosmostar the Hypernova Polairy",
   "120311018": "Princess Cosmos' Change of Clothes",
   "120311020": "Princess Cosmos' Beauty Sleep",
+  "120311021": "Evil HERO Malicious Edge (Rush Duel)",
   "120311022": "Evil HERO Inferno Wing (Rush Duel)",
   "120311023": "Evil HERO Lightning Golem (Rush Duel)",
+  "120311024": "Evil HERO Malicious Fiend (Rush Duel)",
+  "120311025": "Dark Calling (Rush Duel)",
   "120311026": "Dark Fusion (Rush Duel)",
   "120311027": "Elemental HERO Clayman (Rush Duel)",
   "120311029": "Elemental HERO Bubbleman (Rush Duel)",
@@ -3440,6 +3444,9 @@
   "120311057": "Elemental HERO Avian (Rush Duel)",
   "120311058": "Elemental HERO Burstinatrix (Rush Duel)",
   "120311059": "Elemental HERO Sparkman (Rush Duel)",
+  "120311060": "Card Trooper (Rush Duel)",
   "120311061": "Transam Linac",
-  "120311062": "Transam Praime Armor Nova"
+  "120311062": "Transam Praime Armor Nova",
+  "120311063": "Souffraes the Defiant Soul",
+  "120311064": "Gaigust the Defiant Soul"
 }

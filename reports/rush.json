@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-28T12:19:04.603Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/40686710439",
+  "generatedAt": "2026-10-31T11:51:21.557Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41198520740",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "720aae8b23733f5cb4d22ae3ae5ceee3ad82c69c",
-      "previousCommit": "4f6b73215e5941694ad453def5d34f4b30e2f5f8",
+      "upstreamCommit": "5b9048fdbff61a9443f2aff63bc9d760225db484",
+      "previousCommit": "220c03222ee02bc3850560ea76a06cfd67b97937",
       "counts": {
         "en": {
           "datas": 4224,
@@ -44,40 +44,36 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310030",
-          "title": "Dimension Wharve"
+          "id": "120310053",
+          "title": "Mad Rare Heart"
         },
         {
-          "id": "120310031",
-          "title": "Copin the Dimensional Sworn Ally"
+          "id": "120311021",
+          "title": "Evil HERO Malicious Edge (Rush Duel)"
         },
         {
-          "id": "120310032",
-          "title": "Lumina the Dimensional Sworn Ally"
+          "id": "120311024",
+          "title": "Evil HERO Malicious Fiend (Rush Duel)"
         },
         {
-          "id": "120310043",
-          "title": "Saintick Lumina"
+          "id": "120311025",
+          "title": "Dark Calling (Rush Duel)"
         },
         {
-          "id": "120310044",
-          "title": "Saintick Linker"
+          "id": "120311060",
+          "title": "Card Trooper (Rush Duel)"
         },
         {
-          "id": "120310059",
-          "title": "Saintick Pilgrim"
+          "id": "120311063",
+          "title": "Souffraes the Defiant Soul"
         },
         {
-          "id": "120310064",
-          "title": "Saintick Crusade"
-        },
-        {
-          "id": "120310067",
-          "title": "Riel the Dimensional Sworn Ally"
+          "id": "120311064",
+          "title": "Gaigust the Defiant Soul"
         }
       ],
       "unresolved": {
-        "count": 118,
+        "count": 119,
         "sample": [
           "120181011",
           "120195004",
@@ -132,24 +128,20 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310030",
-        "120310031",
-        "120310032",
-        "120310043",
-        "120310044",
-        "120310059",
-        "120310064",
-        "120310067"
+        "120310053",
+        "120311021",
+        "120311024",
+        "120311025"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3441,
+      "entries": 3448,
       "coverage": {
-        "en": 3441,
-        "en_lore": 3434,
-        "en_req": 3005,
+        "en": 3448,
+        "en_lore": 3441,
+        "en_req": 3012,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -166,7 +158,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 110
+            "rows": 118
           },
           {
             "name": "RD Alternate.cdb",
@@ -174,21 +166,21 @@
           }
         ],
         "aliasRows": 726,
-        "total": 4338
+        "total": 4346
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4150,
+            "translations": 4157,
             "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 0
+            "zh": 1
           },
           "desc": {
-            "translations": 4141,
+            "translations": 4148,
             "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 11
+            "zh": 12
           }
         },
         "es": {
@@ -196,21 +188,21 @@
             "translations": 603,
             "base": 420,
             "mdpro4": 2149,
-            "alias.mdpro4": 72,
-            "en.translations": 1034,
+            "alias.mdpro4": 75,
+            "en.translations": 1038,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 0
+            "zh": 1
           },
           "desc": {
             "translations": 483,
             "base": 120,
             "mdpro4": 3608,
-            "alias.mdpro4": 106,
-            "en.translations": 10,
+            "alias.mdpro4": 109,
+            "en.translations": 14,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 11
+            "zh": 12
           },
           "telltales": {
             "count": 753,
@@ -238,27 +230,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5865,
+        "total": 5887,
         "en": {
-          "replaced": 4679,
-          "nonChinese": 5800,
+          "replaced": 4692,
+          "nonChinese": 5813,
           "sources": {
-            "dictionary": 3744,
+            "dictionary": 3757,
             "mdpro4": 935,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 65
+            "zh": 74
           }
         },
         "es": {
-          "replaced": 4733,
-          "nonChinese": 5854,
+          "replaced": 4752,
+          "nonChinese": 5873,
           "sources": {
-            "dictionary": 3731,
-            "mdpro4": 1002,
+            "dictionary": 3744,
+            "mdpro4": 1008,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 11
+            "zh": 14
           }
         }
       },
@@ -299,60 +291,60 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
-    "cardsRemoved": [],
-    "translationsAdded": [
+    "cardsAdded": [
       {
-        "id": "120310030",
-        "zh": "次元电波通讯器",
-        "en": "Dimension Wharve",
+        "id": "120310034",
+        "zh": "粉彩寻宝·比比",
+        "en": null,
         "es": null
       },
       {
-        "id": "120310031",
-        "zh": "次元的盟友 可频",
-        "en": "Copin the Dimensional Sworn Ally",
+        "id": "120310053",
+        "zh": "疯狂犯罪之心",
+        "en": "Mad Rare Heart",
         "es": null
       },
       {
-        "id": "120310032",
-        "zh": "次元的盟友 露米娜",
-        "en": "Lumina the Dimensional Sworn Ally",
+        "id": "120311021",
+        "zh": "邪心英雄 恶刃魔",
+        "en": "Evil HERO Malicious Edge",
         "es": null
       },
       {
-        "id": "120310043",
-        "zh": "圣洁人 露米娜",
-        "en": "Saintick Lumina",
+        "id": "120311024",
+        "zh": "邪心英雄 恶刃魔鬼",
+        "en": "Evil HERO Malicious Fiend",
         "es": null
       },
       {
-        "id": "120310044",
-        "zh": "圣洁人 连接者",
-        "en": "Saintick Linker",
+        "id": "120311025",
+        "zh": "暗黑神召",
+        "en": "Dark Calling",
         "es": null
       },
       {
-        "id": "120310059",
-        "zh": "圣洁人的朝圣",
-        "en": "Saintick Pilgrim",
+        "id": "120311060",
+        "zh": "卡片炮击士",
+        "en": "Card Trooper",
         "es": null
       },
       {
-        "id": "120310064",
-        "zh": "圣洁人的圣战",
-        "en": "Saintick Crusade",
+        "id": "120311063",
+        "zh": "叛骨之苏芙蕾思",
+        "en": "Souffraes the Defiant Soul",
         "es": null
       },
       {
-        "id": "120310067",
-        "zh": "次元的盟友 莉天使",
-        "en": "Riel the Dimensional Sworn Ally",
+        "id": "120311064",
+        "zh": "叛骨之盖加斯特",
+        "en": "Gaigust the Defiant Soul",
         "es": null
       }
     ],
+    "cardsRemoved": [],
+    "translationsAdded": [],
     "unresolved": {
-      "count": 118,
+      "count": 119,
       "sample": [
         "120181011",
         "120195004",
