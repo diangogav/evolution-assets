@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-10-31T11:51:21.557Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41198520740",
+  "generatedAt": "2026-11-01T12:50:17.539Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41308339431",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "5b9048fdbff61a9443f2aff63bc9d760225db484",
-      "previousCommit": "220c03222ee02bc3850560ea76a06cfd67b97937",
+      "upstreamCommit": "2cb3d50035ce9c0783d132397cc62af175328372",
+      "previousCommit": "5b9048fdbff61a9443f2aff63bc9d760225db484",
       "counts": {
         "en": {
           "datas": 4224,
@@ -44,32 +44,12 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310053",
-          "title": "Mad Rare Heart"
+          "id": "120310034",
+          "title": "Pastel Finder Vivi"
         },
         {
-          "id": "120311021",
-          "title": "Evil HERO Malicious Edge (Rush Duel)"
-        },
-        {
-          "id": "120311024",
-          "title": "Evil HERO Malicious Fiend (Rush Duel)"
-        },
-        {
-          "id": "120311025",
-          "title": "Dark Calling (Rush Duel)"
-        },
-        {
-          "id": "120311060",
-          "title": "Card Trooper (Rush Duel)"
-        },
-        {
-          "id": "120311063",
-          "title": "Souffraes the Defiant Soul"
-        },
-        {
-          "id": "120311064",
-          "title": "Gaigust the Defiant Soul"
+          "id": "120310035",
+          "title": "Micha the Cheerful Angel"
         }
       ],
       "unresolved": {
@@ -128,20 +108,18 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310053",
-        "120311021",
-        "120311024",
-        "120311025"
+        "120310034",
+        "120310035"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3448,
+      "entries": 3450,
       "coverage": {
-        "en": 3448,
-        "en_lore": 3441,
-        "en_req": 3012,
+        "en": 3450,
+        "en_lore": 3443,
+        "en_req": 3014,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -158,7 +136,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 118
+            "rows": 120
           },
           {
             "name": "RD Alternate.cdb",
@@ -166,18 +144,18 @@
           }
         ],
         "aliasRows": 726,
-        "total": 4346
+        "total": 4348
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4157,
+            "translations": 4159,
             "mdpro4": 93,
             "alias.mdpro4": 95,
             "zh": 1
           },
           "desc": {
-            "translations": 4148,
+            "translations": 4150,
             "mdpro4": 91,
             "alias.mdpro4": 95,
             "zh": 12
@@ -189,7 +167,7 @@
             "base": 420,
             "mdpro4": 2149,
             "alias.mdpro4": 75,
-            "en.translations": 1038,
+            "en.translations": 1040,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
             "zh": 1
@@ -199,7 +177,7 @@
             "base": 120,
             "mdpro4": 3608,
             "alias.mdpro4": 109,
-            "en.translations": 14,
+            "en.translations": 16,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
             "zh": 12
@@ -230,27 +208,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5887,
+        "total": 5890,
         "en": {
-          "replaced": 4692,
-          "nonChinese": 5813,
+          "replaced": 4693,
+          "nonChinese": 5814,
           "sources": {
-            "dictionary": 3757,
+            "dictionary": 3758,
             "mdpro4": 935,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 74
+            "zh": 76
           }
         },
         "es": {
-          "replaced": 4752,
-          "nonChinese": 5873,
+          "replaced": 4753,
+          "nonChinese": 5874,
           "sources": {
-            "dictionary": 3744,
+            "dictionary": 3745,
             "mdpro4": 1008,
             "mdpro4.en": 0,
             "original": 1121,
-            "zh": 14
+            "zh": 16
           }
         }
       },
@@ -293,56 +271,27 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120310034",
-        "zh": "粉彩寻宝·比比",
+        "id": "120310035",
+        "zh": "开朗的天使 米迦",
+        "en": "Micha the Cheerful Angel",
+        "es": null
+      },
+      {
+        "id": "120310065",
+        "zh": "跨越境界的疾风之门",
         "en": null,
-        "es": null
-      },
-      {
-        "id": "120310053",
-        "zh": "疯狂犯罪之心",
-        "en": "Mad Rare Heart",
-        "es": null
-      },
-      {
-        "id": "120311021",
-        "zh": "邪心英雄 恶刃魔",
-        "en": "Evil HERO Malicious Edge",
-        "es": null
-      },
-      {
-        "id": "120311024",
-        "zh": "邪心英雄 恶刃魔鬼",
-        "en": "Evil HERO Malicious Fiend",
-        "es": null
-      },
-      {
-        "id": "120311025",
-        "zh": "暗黑神召",
-        "en": "Dark Calling",
-        "es": null
-      },
-      {
-        "id": "120311060",
-        "zh": "卡片炮击士",
-        "en": "Card Trooper",
-        "es": null
-      },
-      {
-        "id": "120311063",
-        "zh": "叛骨之苏芙蕾思",
-        "en": "Souffraes the Defiant Soul",
-        "es": null
-      },
-      {
-        "id": "120311064",
-        "zh": "叛骨之盖加斯特",
-        "en": "Gaigust the Defiant Soul",
         "es": null
       }
     ],
     "cardsRemoved": [],
-    "translationsAdded": [],
+    "translationsAdded": [
+      {
+        "id": "120310034",
+        "zh": "粉彩寻宝·比比",
+        "en": "Pastel Finder Vivi",
+        "es": null
+      }
+    ],
     "unresolved": {
       "count": 119,
       "sample": [
