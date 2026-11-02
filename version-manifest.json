@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T14:59:48.642Z",
+  "generatedAt": "2026-11-02T17:16:02.253Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -54,33 +54,33 @@
     },
     "cdb:prerelease": {
       "path": "cdb/prerelease.cdb.gz",
-      "sha256": "9d16404e5d032ca7b8dee82d084dfd489238f284ccaf17846877a7feb4e8158f",
-      "bytes": 139264,
+      "sha256": "426469eb214938ac7872fb5d21bf596da15d696269d111068689c7d1264230c8",
+      "bytes": 143360,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-01T14:23:00.671Z",
+      "mirroredAt": "2026-11-02T17:16:02.253Z",
       "commitSha": "a9db3729bd8acafa090d706e119bfe8c8f0275f2",
       "commitDate": "2026-10-27T13:24:13Z"
     },
     "cdb:prerelease:en": {
       "path": "cdb/prerelease.en.cdb.gz",
-      "sha256": "6559e326d2a118af220ccb00554b8dc7477e1a72078dcaae778af34da97afebf",
-      "bytes": 147456,
+      "sha256": "3ad569b0ffac3aa6efdd051a32596b0098a57384438ac9ca63fbac2af885d7e9",
+      "bytes": 151552,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-01T14:23:00.671Z",
+      "mirroredAt": "2026-11-02T17:16:02.253Z",
       "commitSha": "cac0ca8db170e7c351f6d6d792b966530f9b5f7c",
       "commitDate": "2026-10-31T13:44:53Z"
     },
     "cdb:prerelease:es": {
       "path": "cdb/prerelease.es.cdb.gz",
-      "sha256": "17feccd1cb3bba662c1048fc1a9cb88c3c6fc2577dd8229c2e96dc4f5d44cae8",
-      "bytes": 159744,
+      "sha256": "c0f86dc879600ab85f313a19de4e90451395829d207830d6c7fc2b9b1e16ffaf",
+      "bytes": 167936,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-01T14:23:00.671Z",
-      "commitSha": "d64961b0e470085349aeeff9a6a7bbb469a4440d",
-      "commitDate": "2026-10-28T14:10:43Z"
+      "mirroredAt": "2026-11-02T17:16:02.253Z",
+      "commitSha": "d14758d3cef62c31953868e5b4697f7fa90a64b5",
+      "commitDate": "2026-11-01T14:23:00Z"
     },
     "lflist:evolution:genesys": {
       "path": "lflist/genesys.lflist.conf",
