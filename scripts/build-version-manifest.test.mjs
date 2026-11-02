@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { buildManifest, contentSignature, upsertAsset } from "./build-version-manifest.mjs";
+import { MIRRORED_ASSETS, buildManifest, contentSignature, upsertAsset } from "./build-version-manifest.mjs";
 
 const moecubeAsset = {
 	id: "cdb:base:en",
@@ -101,4 +101,14 @@ test("contentSignature changes when real content changes", () => {
 	const b = buildManifest([{ ...moecubeAsset, sha256: "different" }], "t");
 
 	assert.notEqual(contentSignature(a), contentSignature(b));
+});
+
+test("the base banlist is mirrored from moecube as a gzip next to the other lflists", () => {
+	const lflist = MIRRORED_ASSETS.find((asset) => asset.id === "lflist:base");
+	assert.ok(lflist, "lflist:base is published");
+	assert.equal(lflist.path, "lflist/base.lflist.conf.gz");
+	assert.equal(lflist.raw, "/tmp/base.lflist.conf");
+	assert.equal(lflist.upstreamUrl, "https://cdntx.moecube.com/ygopro-database/zh-CN/lflist.conf");
+	assert.equal(lflist.lastModifiedEnv, "MOECUBE_LFLIST_LAST_MODIFIED");
+	assert.equal(lflist.origin, "moecube");
 });

@@ -77,9 +77,10 @@ export function gitCommitInfo(path) {
 	}
 }
 
-// The cdb assets this repo publishes, mapped to the client's ResourceId keys.
-// `raw` is the uncompressed file we hash; `path` is the gzip the client downloads.
-const CDB_ASSETS = [
+// The mirrored assets this workflow publishes (card databases and the base
+// banlist), mapped to the client's ResourceId keys. `raw` is the uncompressed
+// file we hash; `path` is the gzip the client downloads.
+export const MIRRORED_ASSETS = [
 	{
 		id: "cdb:base:en",
 		raw: "/tmp/base.en.cdb",
@@ -99,11 +100,19 @@ const CDB_ASSETS = [
 	{ id: "cdb:classic", raw: "cdb/classic.cdb", path: "cdb/classic.cdb.gz", origin: "repo" },
 	{ id: "cdb:jtp:en", raw: "cdb/jtp.en.cdb", path: "cdb/jtp.en.cdb.gz", origin: "repo" },
 	{ id: "cdb:jtp:es", raw: "cdb/jtp.es.cdb", path: "cdb/jtp.es.cdb.gz", origin: "repo" },
+	{
+		id: "lflist:base",
+		raw: "/tmp/base.lflist.conf",
+		path: "lflist/base.lflist.conf.gz",
+		upstreamUrl: "https://cdntx.moecube.com/ygopro-database/zh-CN/lflist.conf",
+		lastModifiedEnv: "MOECUBE_LFLIST_LAST_MODIFIED",
+		origin: "moecube",
+	},
 ];
 
-function resolveCdbAssets(mirroredAt, env) {
+function resolveMirroredAssets(mirroredAt, env) {
 	const assets = [];
-	for (const def of CDB_ASSETS) {
+	for (const def of MIRRORED_ASSETS) {
 		if (!existsSync(def.raw)) {
 			continue; // a raw file may be absent on a partial run — skip, do not fail the whole manifest
 		}
@@ -127,13 +136,13 @@ function resolveCdbAssets(mirroredAt, env) {
 function main() {
 	const now = new Date().toISOString();
 	// Preserve entries written by other workflows (genesys, etc.): read the existing
-	// manifest and upsert only the cdb entries this run is responsible for.
+	// manifest and upsert only the mirrored entries this run is responsible for.
 	const existing = existsSync(MANIFEST_PATH)
 		? JSON.parse(readFileSync(MANIFEST_PATH, "utf8"))
 		: { schemaVersion: 1, generatedAt: now, assets: {} };
 
 	let manifest = { ...existing, generatedAt: now };
-	for (const asset of resolveCdbAssets(now, process.env)) {
+	for (const asset of resolveMirroredAssets(now, process.env)) {
 		manifest = upsertAsset(manifest, asset.id, toEntry(asset));
 	}
 
