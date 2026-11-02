@@ -27183,6 +27183,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120310065": {
+    "en": "Boundary-Crossing Blast Gate",
+    "en_lore": "Take control of that monster during this Main Phase (when control of that monster is returned, if there is no Monster Zone to return to, send it to the Graveyard).",
+    "en_req": "When your opponent Normal Summons an Effect Monster with 2000 or less ATK.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120310066": {
     "en": "Doomed by the Blackblight",
     "en_lore": "One day, the curse of the Blightblaze was unleashed. Some pray for the resurrection of the fallen king, while others pray to the Blightblaze itself. Will the land either know salvation or face Armageddon as a result of these various desires?",

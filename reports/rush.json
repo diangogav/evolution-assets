@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-11-01T12:50:17.539Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41308339431",
+  "generatedAt": "2026-11-02T14:59:48.731Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41467167083",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "2cb3d50035ce9c0783d132397cc62af175328372",
-      "previousCommit": "5b9048fdbff61a9443f2aff63bc9d760225db484",
+      "upstreamCommit": "16b8b902f73abf0477fa52a61c10c5f0fe134bd8",
+      "previousCommit": "2cb3d50035ce9c0783d132397cc62af175328372",
       "counts": {
         "en": {
           "datas": 4224,
@@ -44,16 +44,12 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310034",
-          "title": "Pastel Finder Vivi"
-        },
-        {
-          "id": "120310035",
-          "title": "Micha the Cheerful Angel"
+          "id": "120310065",
+          "title": "Boundary-Crossing Blast Gate"
         }
       ],
       "unresolved": {
-        "count": 119,
+        "count": 118,
         "sample": [
           "120181011",
           "120195004",
@@ -108,18 +104,17 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120310034",
-        "120310035"
+        "120310065"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3450,
+      "entries": 3451,
       "coverage": {
-        "en": 3450,
-        "en_lore": 3443,
-        "en_req": 3014,
+        "en": 3451,
+        "en_lore": 3444,
+        "en_req": 3015,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -149,16 +144,16 @@
       "variants": {
         "en": {
           "name": {
-            "translations": 4159,
+            "translations": 4160,
             "mdpro4": 93,
             "alias.mdpro4": 95,
-            "zh": 1
+            "zh": 0
           },
           "desc": {
-            "translations": 4150,
+            "translations": 4151,
             "mdpro4": 91,
             "alias.mdpro4": 95,
-            "zh": 12
+            "zh": 11
           }
         },
         "es": {
@@ -167,20 +162,20 @@
             "base": 420,
             "mdpro4": 2149,
             "alias.mdpro4": 75,
-            "en.translations": 1040,
+            "en.translations": 1041,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
-            "zh": 1
+            "zh": 0
           },
           "desc": {
             "translations": 483,
             "base": 120,
             "mdpro4": 3608,
             "alias.mdpro4": 109,
-            "en.translations": 16,
+            "en.translations": 17,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
-            "zh": 12
+            "zh": 11
           },
           "telltales": {
             "count": 753,
@@ -269,31 +264,18 @@
     }
   ],
   "events": {
-    "cardsAdded": [
-      {
-        "id": "120310035",
-        "zh": "开朗的天使 米迦",
-        "en": "Micha the Cheerful Angel",
-        "es": null
-      },
-      {
-        "id": "120310065",
-        "zh": "跨越境界的疾风之门",
-        "en": null,
-        "es": null
-      }
-    ],
+    "cardsAdded": [],
     "cardsRemoved": [],
     "translationsAdded": [
       {
-        "id": "120310034",
-        "zh": "粉彩寻宝·比比",
-        "en": "Pastel Finder Vivi",
+        "id": "120310065",
+        "zh": "跨越境界的疾风之门",
+        "en": "Boundary-Crossing Blast Gate",
         "es": null
       }
     ],
     "unresolved": {
-      "count": 119,
+      "count": 118,
       "sample": [
         "120181011",
         "120195004",
