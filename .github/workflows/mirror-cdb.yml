@@ -1,4 +1,4 @@
-name: Mirror and compress card databases
+name: Mirror and compress card databases and the base banlist
 
 on:
   schedule:
@@ -50,6 +50,22 @@ jobs:
           curl -sSL --fail --max-time 300 -D /tmp/base.es.headers \
             "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb" -o /tmp/base.es.cdb
 
+      - name: Mirror the moecube base banlist
+        # The web client used to fetch this straight from moecube, which served
+        # the 660 KB file in 8 to 43 s; the gzip mirror loads in well under 1 s.
+        run: |
+          set -euo pipefail
+          curl -sSL --fail --max-time 300 -D /tmp/base.lflist.headers \
+            "https://cdntx.moecube.com/ygopro-database/zh-CN/lflist.conf" -o /tmp/base.lflist.conf
+
+      - name: Validate the base banlist
+        # Never commit an upstream error page as a banlist: it starts with the
+        # "#[list][list]..." index line and declares each list with "!name".
+        run: |
+          set -euo pipefail
+          head -c 2 /tmp/base.lflist.conf | grep -q '^#\[' || { echo "Invalid lflist: missing #[ index line"; exit 1; }
+          grep -q '^!' /tmp/base.lflist.conf || { echo "Invalid lflist: no !list declarations"; exit 1; }
+
       - name: Validate SQLite magic bytes
         # Never commit an upstream error page or truncated file as a database.
         run: |
@@ -65,6 +81,7 @@ jobs:
           set -euo pipefail
           gzip -9 -n -c /tmp/base.en.cdb > cdb/base.en.cdb.gz
           gzip -9 -n -c /tmp/base.es.cdb > cdb/base.es.cdb.gz
+          gzip -9 -n -c /tmp/base.lflist.conf > lflist/base.lflist.conf.gz
           for f in cdb/*.cdb; do
             gzip -9 -n -c "$f" > "$f.gz"
           done
@@ -78,15 +95,16 @@ jobs:
           # (the script maps empty → null) instead of aborting the whole mirror.
           en_lm=$(grep -i '^last-modified:' /tmp/base.en.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r' || true)
           es_lm=$(grep -i '^last-modified:' /tmp/base.es.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r' || true)
-          MOECUBE_EN_LAST_MODIFIED="$en_lm" MOECUBE_ES_LAST_MODIFIED="$es_lm" \
+          lflist_lm=$(grep -i '^last-modified:' /tmp/base.lflist.headers | tail -1 | sed 's/^[^:]*:[[:space:]]*//I' | tr -d '\r' || true)
+          MOECUBE_EN_LAST_MODIFIED="$en_lm" MOECUBE_ES_LAST_MODIFIED="$es_lm" MOECUBE_LFLIST_LAST_MODIFIED="$lflist_lm" \
             node scripts/build-version-manifest.mjs
 
-      - name: Commit if any database or the manifest changed
+      - name: Commit if any database, the base banlist or the manifest changed
         run: |
-          if [ -n "$(git status --porcelain cdb version-manifest.json)" ]; then
+          if [ -n "$(git status --porcelain cdb lflist/base.lflist.conf.gz version-manifest.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add cdb version-manifest.json
+            git add cdb lflist/base.lflist.conf.gz version-manifest.json
             git commit -m "chore(cdb): refresh mirrored databases and version manifest"
             # Another workflow (genesys) may have pushed the manifest meanwhile.
             # Rebase against the branch that triggered us (defense in depth for
