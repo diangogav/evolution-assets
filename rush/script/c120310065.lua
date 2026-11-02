@@ -13,7 +13,7 @@ function cm.initial_effect(c)
 end
 --Activate
 function cm.confilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsLevelBelow(2000)
+	return c:GetSummonPlayer()==tp and c:IsAttackBelow(2000)
 end
 function cm.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(cm.confilter,1,nil,1-tp)
