@@ -158,5 +158,53 @@
   "name_es": "Segador del Espíritu",
   "desc_en": "This card is not destroyed as a result of battle. Destroy this card when it is targeted by the effect of a Spell, Trap, or Effect Monster. If this card successfully attacks your opponent's Life Points directly, your opponent discards 1 card randomly from his/her hand.",
   "desc_es": "Esta carta no es destruida como resultado de una batalla. Destruye esta carta cuando es seleccionada por el efecto de una Carta Mágica, de Trampa o de un Monstruo de Efecto. Si esta carta ataca con éxito directamente a los Life Points de tu adversario, tu adversario descarta 1 carta al azar de su mano."
+ },
+ {
+  "code": 16226796,
+  "alias": 16226786,
+  "name_en": "Night Assailant",
+  "name_es": "Asaltante Nocturno",
+  "desc_en": "FLIP: Target 1 monster your opponent controls; destroy that target. When this card is sent from the hand to the GY: Target 1 Flip monster in your GY, except this card; return that target to the hand.",
+  "desc_es": "VOLTEO: selecciona 1 monstruo que controle tu adversario; destruye ese objetivo. Cuando esta carta es mandada de la mano al Cementerio: selecciona 1 monstruo de Volteo en tu Cementerio, excepto esta carta; devuelve ese objetivo a la mano."
+ },
+ {
+  "code": 65240394,
+  "alias": 65240384,
+  "name_en": "Big Shield Gardna",
+  "name_es": "Gran Escudo Gardna",
+  "desc_en": "Negate the activation of any Spell Card that targets this 1 face-down monster. At that time, flip this card into face-up Defense Position. If this card is attacked, change it to Attack Position at the end of the Damage Step.",
+  "desc_es": "Niega la activación de cualquier Carta Mágica que seleccione a este monstruo boca abajo. En ese momento, voltea esta carta a Posición de Defensa boca arriba. Si esta carta es atacada, cámbiala a Posición de Ataque al final del Damage Step."
+ },
+ {
+  "code": 504700123,
+  "alias": 73915051,
+  "name_en": "Scapegoat",
+  "name_es": "Scapegoat",
+  "desc_en": "If you activate this card, you cannot Normal Summon, Flip Summon or Special Summon during this turn. Special Summon 4 \"Sheep Tokens\" (Beast-Type/EARTH/Level 1/ATK 0/DEF 0) in Defense Position to your side of the field. The \"Sheep Tokens\" cannot be used as a Tribute for a Tribute Summon (or Set).",
+  "desc_es": "Si activas esta carta, no puedes Invocar de Modo Normal, por Volteo ni de Modo Especial durante este turno. Invoca de Modo Especial 4 \"Fichas Oveja\" (Bestia/TIERRA/Nivel 1/ATK 0/DEF 0) en Posición de Defensa a tu lado del Campo. Las \"Fichas Oveja\" no pueden usarse como Sacrificio para una Invocación por Sacrificio (ni Colocar)."
+ },
+ {
+  "code": 504700188,
+  "alias": 34124316,
+  "name_en": "Cyber Jar",
+  "name_es": "Ciber Jarra",
+  "desc_en": "FLIP: Destroy all monsters on the field. Both players then pick up 5 cards from the top of their respective Decks and Special Summon all Level 4 or lower Monster Cards among them on the field in face-up Attack Position or face-down Defense Position. The rest of the cards picked up are added to their respective hands.",
+  "desc_es": "VOLTEO: destruye todos los monstruos en el Campo. Después, ambos jugadores toman 5 cartas de la parte superior de sus respectivos Decks e Invocan de Modo Especial al Campo todas las Cartas de Monstruo de Nivel 4 o menor entre ellas, en Posición de Ataque boca arriba o en Posición de Defensa boca abajo. El resto de las cartas tomadas se añaden a sus respectivas manos."
+ },
+ {
+  "code": 511002998,
+  "alias": 47355498,
+  "name_en": "Necrovalley",
+  "name_es": "Necrovalle",
+  "desc_en": "All \"Gravekeeper's\" monsters gain 500 ATK/DEF. Cards in the Graveyard cannot be banished. Negate any card effect that would move a card in the Graveyard, other than itself, to a different place.",
+  "desc_es": "Todos los monstruos \"Cuidador de Tumbas\" ganan 500 ATK/DEF. Las cartas en el Cementerio no pueden ser desterradas. Niega cualquier efecto de carta que fuera a mover una carta en el Cementerio, que no sea esta, a un lugar distinto."
+ },
+ {
+  "code": 504700118,
+  "alias": 72989439,
+  "name_en": "Black Luster Soldier - Envoy of the Beginning",
+  "name_es": "Soldado del Brillo Negro - Enviado del Principio",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned by removing from play 1 LIGHT and 1 DARK monster in your Graveyard. Once during each of your turns, you can select and activate 1 of the following effects:\n● Remove from play 1 monster on the field. If you activate this effect, this card cannot attack during this turn.\n● If this card destroyed your opponent's monster as a result of battle, it can attack once again in a row.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta solo puede ser Invocada de Modo Especial retirando del juego 1 monstruo de LUZ y 1 de OSCURIDAD en tu Cementerio. Una vez durante cada uno de tus turnos, puedes seleccionar y activar 1 de los siguientes efectos:\n● Retira del juego 1 monstruo en el Campo. Si activas este efecto, esta carta no puede atacar durante este turno.\n● Si esta carta destruyó un monstruo de tu adversario como resultado de una batalla, puede atacar una vez más seguida."
  }
 ]
