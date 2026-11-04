@@ -43,9 +43,8 @@ node scripts/apply-pre-errata-rows.mjs --rows cdb/pre-errata-goat.json --marker 
 
 The script copies the official `datas` row under the new code, sets the alias,
 and writes the era name (`<name> (GOAT)`) and 2005 text in each language. It is
-idempotent, so re-run it after editing the JSON. The scripts themselves live in
-the private pre-errata repository, which also holds the registry with each
-card's source, ruling and first-print date.
+idempotent, so re-run it after editing the JSON. The card scripts are not part
+of this repository (assets convention: cdb + lflist only).
 
 ## Genesys ban list
 
