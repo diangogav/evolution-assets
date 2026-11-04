@@ -26,6 +26,27 @@ same list. Then remove the bridge: this file, its `REPO_ASSETS` entry, the
 `paths` entry in `repo-assets-manifest.yml`, and the server's `formats/tcg`
 assembly entry and `runtime.ygopro.standard` member.
 
+## Goat Format list and pre-errata overlay
+
+`lflist/goat.lflist.conf` is the Goat Format whitelist (TCG April 2005 list,
+card pool legal on 2005-08-17 per goatformat.com), derived from ProjectIgnis'
+`GOAT.lflist.conf`. Pre-errata copies already ported to the pool keep EDOPro's
+`504700xxx` / `511*` codes (`alias` = official code); copies not yet ported are
+listed under their official code and play with modern text until they are.
+
+The copies' rows live in `cdb/pre-errata.{es,en}.cdb`, written from
+`cdb/pre-errata-goat.json` by:
+
+```
+node scripts/apply-pre-errata-rows.mjs --rows cdb/pre-errata-goat.json --marker GOAT
+```
+
+The script copies the official `datas` row under the new code, sets the alias,
+and writes the era name (`<name> (GOAT)`) and 2005 text in each language. It is
+idempotent, so re-run it after editing the JSON. The scripts themselves live in
+the private pre-errata repository, which also holds the registry with each
+card's source, ruling and first-print date.
+
 ## Genesys ban list
 
 `lflist/genesys.lflist.conf` is generated, not hand-edited. It encodes the

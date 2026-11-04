@@ -18,6 +18,7 @@ import { readFileSync } from "node:fs";
 
 const LFLISTS = [
 	"lflist/edison.lflist.conf",
+	"lflist/goat.lflist.conf",
 	"lflist/jtp.lflist.conf",
 	"lflist/jtp-advanced-marzo-2007.lflist.conf",
 	"lflist/tcg.lflist.conf",

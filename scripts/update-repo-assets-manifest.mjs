@@ -25,6 +25,7 @@ const MANIFEST_PATH = "version-manifest.json";
 // (no .gz), so the published sha256 is the hash of the file itself.
 export const REPO_ASSETS = [
 	{ id: "lflist:evolution:edison", path: "lflist/edison.lflist.conf" },
+	{ id: "lflist:evolution:goat", path: "lflist/goat.lflist.conf" },
 	{ id: "lflist:evolution:jtp", path: "lflist/jtp.lflist.conf" },
 	{ id: "lflist:evolution:jtp-adv-2007-03", path: "lflist/jtp-advanced-marzo-2007.lflist.conf" },
 	// Bridge for a TCG list the YGOPro database has not shipped yet; removed

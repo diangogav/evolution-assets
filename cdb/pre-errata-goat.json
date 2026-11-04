@@ -1,0 +1,162 @@
+[
+ {
+  "code": 504700052,
+  "alias": 29401950,
+  "name_en": "Bottomless Trap Hole",
+  "name_es": "Agujero Trampa Sin Fondo",
+  "desc_en": "When your opponent Normal Summons, Flip Summons, or Special Summons a monster(s) with an ATK of 1500 or more, destroy and remove from play the monster(s).",
+  "desc_es": "Cuando tu adversario Invoca de Modo Normal, Invoca por Volteo o Invoca de Modo Especial uno o más monstruos con 1500 o más ATK, destruye y retira del juego esos monstruos."
+ },
+ {
+  "code": 504700034,
+  "alias": 22873798,
+  "name_en": "Hyena",
+  "name_es": "Hiena",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon any \"Hyena\"(s) from the Deck to the field. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial cualquier cantidad de \"Hiena\" desde el Deck al Campo. Después, baraja tu Deck."
+ },
+ {
+  "code": 511000818,
+  "alias": 8131171,
+  "name_en": "Sinister Serpent",
+  "name_es": "Serpiente Siniestra",
+  "desc_en": "During your Standby Phase, if there is a \"Sinister Serpent\" in your Graveyard: you can add this card from your Graveyard to your hand.",
+  "desc_es": "Durante tu Standby Phase, si hay una \"Serpiente Siniestra\" en tu Cementerio: puedes añadir esta carta de tu Cementerio a tu mano."
+ },
+ {
+  "code": 511000824,
+  "alias": 83555666,
+  "name_en": "Ring of Destruction",
+  "name_es": "Anillo de Destrucción",
+  "desc_en": "Target 1 face-up monster; Destroy it, and if you do, inflict damage to both players equal to its ATK.",
+  "desc_es": "Selecciona 1 monstruo boca arriba; destrúyelo y, si lo haces, inflige daño a ambos jugadores igual a su ATK."
+ },
+ {
+  "code": 511000868,
+  "alias": 43586926,
+  "name_en": "Twin-Headed Behemoth",
+  "name_es": "Behemoth de Dos Cabezas",
+  "desc_en": "During the End Phase, if this card was destroyed on the field and sent to the Graveyard this turn: Special Summon it from the Graveyard, and if you do, its ATK/DEF become 1000. You can only use the effect of each \"Twin-Headed Behemoth\" once per Duel.",
+  "desc_es": "Durante la End Phase, si esta carta fue destruida en el Campo y mandada al Cementerio este turno: Invócala de Modo Especial desde el Cementerio y, si lo haces, su ATK/DEF se convierten en 1000. Solo puedes usar el efecto de cada \"Behemoth de Dos Cabezas\" una vez por Duelo."
+ },
+ {
+  "code": 511003006,
+  "alias": 45894482,
+  "name_en": "Gilasaurus",
+  "name_es": "Gilasaurio",
+  "desc_en": "You can Special Summon this card (from your hand). When you do: Your opponent can target 1 monster in their Graveyard; your opponent Special Summons that target to their side of the field.",
+  "desc_es": "Puedes Invocar esta carta de Modo Especial (desde tu mano). Cuando lo hagas: tu adversario puede seleccionar 1 monstruo en su Cementerio; tu adversario Invoca ese objetivo de Modo Especial a su lado del Campo."
+ },
+ {
+  "code": 511001039,
+  "alias": 40737112,
+  "name_en": "Dark Magician of Chaos",
+  "name_es": "Mago Oscuro del Caos",
+  "desc_en": "When this card is Normal or Special Summoned: You can target 1 Spell in your Graveyard; add it to your hand. Banish any monster this card destroys by battle, instead of sending it to the Graveyard. If this face-up card would leave the field, banish it instead.",
+  "desc_es": "Cuando esta carta es Invocada de Modo Normal o Especial: puedes seleccionar 1 Mágica en tu Cementerio; añádela a tu mano. Destierra cualquier monstruo que esta carta destruya en batalla, en vez de mandarlo al Cementerio. Si esta carta boca arriba fuera a dejar el Campo, destiérrala en su lugar."
+ },
+ {
+  "code": 511002982,
+  "alias": 16227556,
+  "name_en": "Inspection",
+  "name_es": "Inspección",
+  "desc_en": "During your opponent's Standby Phase: You can pay 500 LP; randomly choose 1 card in your opponent's hand and look at it.",
+  "desc_es": "Durante la Standby Phase de tu adversario: puedes pagar 500 LP; elige al azar 1 carta en la mano de tu adversario y mírala."
+ },
+ {
+  "code": 511002983,
+  "alias": 96316857,
+  "name_en": "Recycle",
+  "name_es": "Reciclar",
+  "desc_en": "During your Standby Phase: You can pay 300 LP, then target 1 non-monster in your Graveyard; return it to the bottom of your Deck.",
+  "desc_es": "Durante tu Standby Phase: puedes pagar 300 LP y después seleccionar 1 carta que no sea de monstruo en tu Cementerio; devuélvela al fondo de tu Deck."
+ },
+ {
+  "code": 511003027,
+  "alias": 75043725,
+  "name_en": "Emissary of the Afterlife",
+  "name_es": "Emisario del Más Allá",
+  "desc_en": "If this card is sent from the field to the Graveyard: Each player adds 1 Level 3 or lower Normal Monster from their Deck to their hand. Each player who didn't add a monster to their hand must reveal their Deck to their opponent.",
+  "desc_es": "Si esta carta es mandada del Campo al Cementerio: cada jugador añade 1 Monstruo Normal de Nivel 3 o menor de su Deck a su mano. Cada jugador que no haya añadido un monstruo a su mano debe mostrar su Deck a su adversario."
+ },
+ {
+  "code": 504700054,
+  "alias": 31786629,
+  "name_en": "Thunder Dragon",
+  "name_es": "Dragón de Trueno",
+  "desc_en": "Discard this card from your hand to the Graveyard to add up to 2 \"Thunder Dragon\" cards from your Deck to your hand. Then shuffle your deck. You can only use this effect during your Main Phase.",
+  "desc_es": "Descarta esta carta de tu mano al Cementerio para añadir hasta 2 cartas \"Dragón de Trueno\" de tu Deck a tu mano. Después, baraja tu Deck. Solo puedes usar este efecto durante tu Main Phase."
+ },
+ {
+  "code": 504700142,
+  "alias": 83011277,
+  "name_en": "Mystic Tomato",
+  "name_es": "Tomate Místico",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 DARK monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde tu Deck 1 monstruo de OSCURIDAD con 1500 o menos ATK en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700178,
+  "alias": 26202165,
+  "name_en": "Sangan",
+  "name_es": "Sangan",
+  "desc_en": "When this card is sent from the field to the Graveyard, select 1 monster with an ATK of 1500 or less from your Deck, show it to your opponent, and add it to your hand. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada del Campo al Cementerio, selecciona 1 monstruo con 1500 o menos ATK de tu Deck, muéstraselo a tu adversario y añádelo a tu mano. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700044,
+  "alias": 24317029,
+  "name_en": "Gravekeeper's Spy",
+  "name_es": "Espía del Cuidador de Tumbas",
+  "desc_en": "FLIP: Special Summon 1 Monster Card that includes \"Gravekeeper's\" in its card name with an ATK of 1500 or less from your Deck.",
+  "desc_es": "VOLTEO: Invoca de Modo Especial desde tu Deck 1 Carta de Monstruo que incluya \"Cuidador de Tumbas\" en su nombre con 1500 o menos ATK."
+ },
+ {
+  "code": 504700013,
+  "alias": 9156135,
+  "name_en": "Apprentice Magician",
+  "name_es": "Aprendiz de Mago",
+  "desc_en": "When this card is successfully Normal Summoned, Flip Summoned, or Special Summoned, put 1 Spell Counter on a face-up card on the field that you can put a Spell Counter on. If this card is destroyed as a result of battle, you can select 1 Spellcaster-Type monster Level 2 or lower from your deck and Special Summon it on the field in face-down Defense Position.",
+  "desc_es": "Cuando esta carta es Invocada de Modo Normal, por Volteo o de Modo Especial con éxito, pon 1 Contador Mágico en una carta boca arriba en el Campo en la que puedas poner un Contador Mágico. Si esta carta es destruida como resultado de una batalla, puedes seleccionar 1 monstruo de Tipo Lanzador de Conjuros de Nivel 2 o menor de tu Deck e Invocarlo de Modo Especial al Campo en Posición de Defensa boca abajo."
+ },
+ {
+  "code": 504700077,
+  "alias": 47507260,
+  "name_en": "Mystic Swordsman LV2",
+  "name_es": "Espadachín Místico LV2",
+  "desc_en": "If this card attacks a face-down Defense Position monster, destroy the monster immediately with this card's effect without flipping it face-up or applying damage calculation. During the End Phase of a turn that this card destroyed a monster as a result of battle, send this card to the Graveyard to Special Summon 1 \"Mystic Swordsman LV4\" from your hand or Deck.",
+  "desc_es": "Si esta carta ataca a un monstruo en Posición de Defensa boca abajo, destruye el monstruo inmediatamente con el efecto de esta carta sin voltearlo boca arriba ni aplicar el cálculo de daño. Durante la End Phase de un turno en el que esta carta destruyó un monstruo como resultado de una batalla, manda esta carta al Cementerio para Invocar de Modo Especial 1 \"Espadachín Místico LV4\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700122,
+  "alias": 73752131,
+  "name_en": "Skilled Dark Magician",
+  "name_es": "Mago Oscuro Hábil",
+  "desc_en": "Each time you or your opponent activates 1 Spell Card, put 1 Spell Counter on this card (max. 3). Tribute this card with 3 Spell Counters on it to Special Summon 1 \"Dark Magician\" from your hand, Deck, or Graveyard.",
+  "desc_es": "Cada vez que tú o tu adversario activan 1 Carta Mágica, pon 1 Contador Mágico en esta carta (máx. 3). Sacrifica esta carta con 3 Contadores Mágicos para Invocar de Modo Especial 1 \"Mago Oscuro\" desde tu mano, Deck o Cementerio."
+ },
+ {
+  "code": 504700074,
+  "alias": 46363422,
+  "name_en": "Skilled White Magician",
+  "name_es": "Mago Blanco Hábil",
+  "desc_en": "Each time you or your opponent activates 1 Spell Card, put 1 Spell Counter on this card (max. 3). Tribute this card with 3 Spell Counters on it to Special Summon 1 \"Buster Blader\" from your hand, Deck, or Graveyard.",
+  "desc_es": "Cada vez que tú o tu adversario activan 1 Carta Mágica, pon 1 Contador Mágico en esta carta (máx. 3). Sacrifica esta carta con 3 Contadores Mágicos para Invocar de Modo Especial 1 \"Buster Blader\" desde tu mano, Deck o Cementerio."
+ },
+ {
+  "code": 504700116,
+  "alias": 71044499,
+  "name_en": "Nobleman of Crossout",
+  "name_es": "Noble de Crossout",
+  "desc_en": "Destroy 1 face-down monster and remove it from play. If the monster is a Flip Effect Monster, both players check their respective Decks and remove all monsters of the same name from play. Then shuffle the Decks.",
+  "desc_es": "Destruye 1 monstruo boca abajo y retíralo del juego. Si el monstruo es un Monstruo de Efecto de Volteo, ambos jugadores revisan sus respectivos Decks y retiran del juego todos los monstruos con el mismo nombre. Después, barajan los Decks."
+ },
+ {
+  "code": 504700038,
+  "alias": 23205979,
+  "name_en": "Spirit Reaper",
+  "name_es": "Segador del Espíritu",
+  "desc_en": "This card is not destroyed as a result of battle. Destroy this card when it is targeted by the effect of a Spell, Trap, or Effect Monster. If this card successfully attacks your opponent's Life Points directly, your opponent discards 1 card randomly from his/her hand.",
+  "desc_es": "Esta carta no es destruida como resultado de una batalla. Destruye esta carta cuando es seleccionada por el efecto de una Carta Mágica, de Trampa o de un Monstruo de Efecto. Si esta carta ataca con éxito directamente a los Life Points de tu adversario, tu adversario descarta 1 carta al azar de su mano."
+ }
+]
