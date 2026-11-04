@@ -206,5 +206,133 @@
   "name_es": "Soldado del Brillo Negro - Enviado del Principio",
   "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned by removing from play 1 LIGHT and 1 DARK monster in your Graveyard. Once during each of your turns, you can select and activate 1 of the following effects:\n● Remove from play 1 monster on the field. If you activate this effect, this card cannot attack during this turn.\n● If this card destroyed your opponent's monster as a result of battle, it can attack once again in a row.",
   "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta solo puede ser Invocada de Modo Especial retirando del juego 1 monstruo de LUZ y 1 de OSCURIDAD en tu Cementerio. Una vez durante cada uno de tus turnos, puedes seleccionar y activar 1 de los siguientes efectos:\n● Retira del juego 1 monstruo en el Campo. Si activas este efecto, esta carta no puede atacar durante este turno.\n● Si esta carta destruyó un monstruo de tu adversario como resultado de una batalla, puede atacar una vez más seguida."
+ },
+ {
+  "code": 504700170,
+  "alias": 95956346,
+  "name_en": "Shining Angel",
+  "name_es": "Ángel Resplandeciente",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 LIGHT monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde tu Deck 1 monstruo de LUZ con 1500 ATK o menos en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700172,
+  "alias": 97017120,
+  "name_en": "Giant Rat",
+  "name_es": "Rata Gigante",
+  "desc_en": "When this card is destroyed as a result of battle and sent to the Graveyard, you can Special Summon 1 EARTH monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es destruida como resultado de una batalla y mandada al Cementerio, puedes Invocar de Modo Especial desde tu Deck 1 monstruo de TIERRA con 1500 ATK o menos en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700098,
+  "alias": 60806437,
+  "name_en": "UFO Turtle",
+  "name_es": "Tortuga OVNI",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 FIRE monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde tu Deck 1 monstruo de FUEGO con 1500 ATK o menos en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700093,
+  "alias": 57839750,
+  "name_en": "Mother Grizzly",
+  "name_es": "Madre Oso Pardo",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 WATER monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde tu Deck 1 monstruo de AGUA con 1500 ATK o menos en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700167,
+  "alias": 95178994,
+  "name_en": "Giant Germ",
+  "name_es": "Germen Gigante",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, inflict 500 points of damage to your opponent's Life Points. You can also Special Summon up to 2 \"Giant Germ\" cards from your Deck to your side of the field in face-up Attack Position. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, inflige 500 puntos de daño a los LP de tu adversario. Además, puedes Invocar de Modo Especial desde tu Deck hasta 2 cartas \"Germen Gigante\" a tu Campo en Posición de Ataque boca arriba. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700135,
+  "alias": 77044671,
+  "name_en": "Pyramid Turtle",
+  "name_es": "Tortuga Pirámide",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 Zombie-Type monster with a DEF 2000 or less from the Deck to the field. Then shuffle the Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde el Deck al Campo 1 monstruo de Tipo Zombi con 2000 DEF o menos. Después, baraja el Deck."
+ },
+ {
+  "code": 504700169,
+  "alias": 95492061,
+  "name_en": "Manju of the Ten Thousand Hands",
+  "name_es": "Manju de las Diezmil Manos",
+  "desc_en": "When this card is Normal Summoned or Flip Summoned, you can select 1 Ritual Monster Card or 1 Ritual Spell Card from your Deck and add it to your hand.",
+  "desc_es": "Cuando esta carta es Invocada de Modo Normal o Invocada por Volteo, puedes seleccionar 1 Carta de Monstruo de Ritual o 1 Carta Mágica de Ritual en tu Deck y añadirla a tu mano."
+ },
+ {
+  "code": 504700092,
+  "alias": 57617178,
+  "name_en": "Sonic Bird",
+  "name_es": "Pájaro Sónico",
+  "desc_en": "When this card is Normal Summoned or Flip Summoned, you can select 1 Ritual Spell Card from your Deck and add it to your hand. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es Invocada de Modo Normal o Invocada por Volteo, puedes seleccionar 1 Carta Mágica de Ritual en tu Deck y añadirla a tu mano. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700138,
+  "alias": 79575620,
+  "name_en": "Injection Fairy Lily",
+  "name_es": "Hada de la Inyección Lily",
+  "desc_en": "This card's effect can only be activated during the Damage Step of either player's turn when this card battles. Pay 2000 Life Points to increase the ATK of this monster by 3000 points during the Damage Step only.",
+  "desc_es": "El efecto de esta carta solo puede activarse durante el Damage Step del turno de cualquier jugador cuando esta carta batalla. Paga 2000 LP para aumentar el ATK de este monstruo en 3000 puntos solo durante el Damage Step."
+ },
+ {
+  "code": 504700147,
+  "alias": 85602018,
+  "name_en": "Last Will",
+  "name_es": "Última Voluntad",
+  "desc_en": "You can only use this card's effect once, and only during this turn. When a monster on your side of the field is sent to your Graveyard, you can Special Summon 1 monster with an ATK of 1500 points or less from your Deck. Then shuffle your Deck.",
+  "desc_es": "Solo puedes usar el efecto de esta carta una vez, y solo durante este turno. Cuando un monstruo en tu lado del Campo es mandado a tu Cementerio, puedes Invocar de Modo Especial desde tu Deck 1 monstruo con 1500 puntos de ATK o menos. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700087,
+  "alias": 53839837,
+  "name_en": "Vampire Lord",
+  "name_es": "Señor de los Vampiros",
+  "desc_en": "Each time this card inflicts Battle Damage to your opponent's Life Points, declare 1 card type (Monster, Spell, or Trap). Your opponent selects 1 card of that type from his/her Deck and sends it to the Graveyard. Also, if this card is destroyed and sent to your Graveyard by your opponent's card effect, it is Special Summoned to the field during your next Standby Phase.",
+  "desc_es": "Cada vez que esta carta inflija daño de batalla a los LP de tu adversario, declara 1 tipo de carta (Monstruo, Mágica o Trampa). Tu adversario selecciona 1 carta de ese tipo de su Deck y la manda al Cementerio. Además, si esta carta es destruida y mandada a tu Cementerio por el efecto de una carta de tu adversario, es Invocada de Modo Especial al Campo durante tu próxima Standby Phase."
+ },
+ {
+  "code": 504700182,
+  "alias": 423705,
+  "name_en": "Gearfried the Iron Knight",
+  "name_es": "Gearfried el Caballero de Hierro",
+  "desc_en": "When an Equip Spell Card is equipped to this card, destroy the Equip Spell Card.",
+  "desc_es": "Cuando una Carta Mágica de Equipo es equipada a esta carta, destruye la Carta Mágica de Equipo."
+ },
+ {
+  "code": 504700114,
+  "alias": 70046172,
+  "name_en": "Rush Recklessly",
+  "name_es": "Arremetida Imprudente",
+  "desc_en": "Increase 1 face-up monster's ATK by 700 points until the end of this turn.",
+  "desc_es": "Aumenta en 700 puntos el ATK de 1 monstruo boca arriba hasta el final de este turno."
+ },
+ {
+  "code": 504700094,
+  "alias": 57882509,
+  "name_en": "Mask of Weakness",
+  "name_es": "Máscara de la Debilidad",
+  "desc_en": "Decrease the ATK of 1 attacking monster by 700 points until the end of the turn.",
+  "desc_es": "Disminuye en 700 puntos el ATK de 1 monstruo atacante hasta el final del turno."
+ },
+ {
+  "code": 504700163,
+  "alias": 93920745,
+  "name_en": "Penguin Soldier",
+  "name_es": "Soldado Pingüino",
+  "desc_en": "FLIP: You can return up to 2 Monster Cards from the field to the owner's hand.",
+  "desc_es": "VOLTEO: puedes devolver a la mano de su propietario hasta 2 Cartas de Monstruo del Campo."
+ },
+ {
+  "code": 504700179,
+  "alias": 14878871,
+  "name_en": "Rescue Cat",
+  "name_es": "Gato Rescatador",
+  "desc_en": "Send this face-up card on your side of the field to the Graveyard to Special Summon 2 Level 3 or lower Beast-Type monsters from your Deck to the field. The monsters Special Summoned in this way are destroyed during the End Phase.",
+  "desc_es": "Manda al Cementerio esta carta boca arriba en tu lado del Campo para Invocar de Modo Especial al Campo desde tu Deck 2 monstruos de Tipo Bestia de Nivel 3 o menor. Los monstruos Invocados de Modo Especial de esta forma son destruidos durante la End Phase."
  }
 ]
