@@ -334,5 +334,125 @@
   "name_es": "Gato Rescatador",
   "desc_en": "Send this face-up card on your side of the field to the Graveyard to Special Summon 2 Level 3 or lower Beast-Type monsters from your Deck to the field. The monsters Special Summoned in this way are destroyed during the End Phase.",
   "desc_es": "Manda al Cementerio esta carta boca arriba en tu lado del Campo para Invocar de Modo Especial al Campo desde tu Deck 2 monstruos de Tipo Bestia de Nivel 3 o menor. Los monstruos Invocados de Modo Especial de esta forma son destruidos durante la End Phase."
+ },
+ {
+  "code": 504700136,
+  "alias": 78636495,
+  "name_en": "Slate Warrior",
+  "name_es": "Guerrero de Pizarra",
+  "desc_en": "FLIP: Increase the ATK and DEF of this monster by 500 points. The ATK and DEF of a monster that destroys this monster as a result of battle is decreased by 500 points.",
+  "desc_es": "VOLTEO: Aumenta en 500 puntos el ATK y la DEF de este monstruo. El ATK y la DEF de un monstruo que destruya a este monstruo como resultado de una batalla disminuyen en 500 puntos."
+ },
+ {
+  "code": 504700152,
+  "alias": 88472456,
+  "name_en": "Zombyra the Dark",
+  "name_es": "Zombyra el Oscuro",
+  "desc_en": "This card cannot attack a player directly. Each time this card destroys 1 monster as a result of battle, decrease the ATK of this card by 200 points.",
+  "desc_es": "Esta carta no puede atacar directamente a un jugador. Cada vez que esta carta destruya 1 monstruo como resultado de una batalla, disminuye en 200 puntos el ATK de esta carta."
+ },
+ {
+  "code": 504700143,
+  "alias": 83986578,
+  "name_en": "King Tiger Wanghu",
+  "name_es": "Rey Tigre Wanghu",
+  "desc_en": "As long as this card remains face-up on the field, destroy all monsters with an ATK equal to 1400 or less that are Normal Summoned or Special Summoned.",
+  "desc_es": "Mientras esta carta permanezca boca arriba en el Campo, destruye todos los monstruos con 1400 ATK o menos que sean Invocados de Modo Normal o de Modo Especial."
+ },
+ {
+  "code": 504700128,
+  "alias": 74591968,
+  "name_en": "Mystic Swordsman LV4",
+  "name_es": "Espadachín Místico LV4",
+  "desc_en": "If you Normal Summon this card, you must place it in face-down Defense Position. If this card attacks a face-down Defense Position monster, destroy the monster immediately with this card's effect without flipping it face-up or applying damage calculation. During the End Phase of a turn that this card destroyed a monster as a result of battle send this card to the Graveyard, Special Summon 1 \"Mystic Swordsman LV6\" from your hand or Deck.",
+  "desc_es": "Si Invocas esta carta de Modo Normal, debes ponerla en Posición de Defensa boca abajo. Si esta carta ataca a un monstruo en Posición de Defensa boca abajo, destruye el monstruo inmediatamente con el efecto de esta carta sin voltearlo boca arriba ni aplicar el cálculo de daño. Durante la End Phase de un turno en el que esta carta destruyó un monstruo como resultado de una batalla, manda esta carta al Cementerio e Invoca de Modo Especial 1 \"Espadachín Místico LV6\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700132,
+  "alias": 75830094,
+  "name_en": "Horus the Black Flame Dragon LV4",
+  "name_es": "Horus el Dragón de la Llama Negra LV4",
+  "desc_en": "As long as this card remains face-up on your side of the field, control of this card cannot switch. During the End Phase of a turn that this card destroyed a monster as a result of battle, send this card to the Graveyard to Special Summon 1 \"Horus the Black Flame Dragon LV6\" from your hand or Deck.",
+  "desc_es": "Mientras esta carta permanezca boca arriba en tu Campo, el control de esta carta no puede cambiar. Durante la End Phase de un turno en el que esta carta destruyó un monstruo como resultado de una batalla, manda esta carta al Cementerio para Invocar de Modo Especial 1 \"Horus el Dragón de la Llama Negra LV6\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700064,
+  "alias": 39191307,
+  "name_en": "Masked Dragon",
+  "name_es": "Dragón Enmascarado",
+  "desc_en": "When this card is destroyed and sent to the Graveyard as a result of battle, you can Special Summon 1 Dragon-Type monster with an ATK of 1500 or less to your side of the field from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es destruida y mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial desde tu Deck a tu Campo 1 monstruo de Tipo Dragón con 1500 ATK o menos. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700186,
+  "alias": 77121851,
+  "name_en": "Manticore of Darkness",
+  "name_es": "Mantícora de la Oscuridad",
+  "desc_en": "During the End Phase of the turn this card was sent to the Graveyard, you can send 1 Beast-Type, Beast-Warrior-Type or Winged Beast-Type monster from your hand or your side of the field to the Graveyard to Special Summon this card from the Graveyard.",
+  "desc_es": "Durante la End Phase del turno en el que esta carta fue mandada al Cementerio, puedes mandar al Cementerio 1 monstruo de Tipo Bestia, Guerrero-Bestia o Bestia Alada desde tu mano o tu lado del Campo para Invocar de Modo Especial esta carta desde el Cementerio."
+ },
+ {
+  "code": 504700117,
+  "alias": 71829750,
+  "name_en": "Serpentine Princess",
+  "name_es": "Princesa Serpentina",
+  "desc_en": "If this face-up card is returned from the field to your Deck, select and Special Summon 1 Level 3 or lower monster from your Deck to your side of the field. Then shuffle your Deck.",
+  "desc_es": "Si esta carta boca arriba es devuelta desde el Campo a tu Deck, selecciona e Invoca de Modo Especial desde tu Deck a tu Campo 1 monstruo de Nivel 3 o menor. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700104,
+  "alias": 63995093,
+  "name_en": "Machine Duplication",
+  "name_es": "Duplicación de Máquina",
+  "desc_en": "Select 1 Machine-Type monster with an ATK of 500 or less on your side of the field and activate this card. You can Special Summon up to 2 cards with the same name from your Deck.",
+  "desc_es": "Selecciona 1 monstruo de Tipo Máquina con 500 ATK o menos en tu lado del Campo y activa esta carta. Puedes Invocar de Modo Especial desde tu Deck hasta 2 cartas con el mismo nombre."
+ },
+ {
+  "code": 504700121,
+  "alias": 73628505,
+  "name_en": "Terraforming",
+  "name_es": "Terraformación",
+  "desc_en": "Add 1 Field Spell Card from your Deck to your hand.",
+  "desc_es": "Añade a tu mano 1 Carta Mágica de Campo desde tu Deck."
+ },
+ {
+  "code": 504700119,
+  "alias": 73398797,
+  "name_en": "Paladin of White Dragon",
+  "name_es": "Paladín del Dragón Blanco",
+  "desc_en": "This monster can only be Ritual Summoned with the Ritual Spell Card, \"White Dragon Ritual.\" You must also Tribute monsters whose total Levels equal 4 or more from the field or your hand. When this monster attacks a face-down Defense Position monster, destroy the face-down monster with this card's effect. You can Tribute this card to Special Summon 1 \"Blue-Eyes White Dragon\" from your hand or your Deck. (\"Blue-Eyes White Dragon\" cannot attack during that turn.)",
+  "desc_es": "Este monstruo sólo puede ser Invocado mediante un Ritual con la Carta Mágica de Ritual \"Ritual del Dragón Blanco\". También debes Sacrificar monstruos cuyos Niveles sumen 4 o más desde el Campo o tu mano. Cuando este monstruo ataca a un monstruo en Posición de Defensa boca abajo, destruye el monstruo boca abajo con el efecto de esta carta. Puedes Sacrificar esta carta para Invocar de Modo Especial 1 \"Dragón Blanco de Ojos Azules\" desde tu mano o tu Deck. (\"Dragón Blanco de Ojos Azules\" no puede atacar durante ese turno)."
+ },
+ {
+  "code": 504700082,
+  "alias": 49681811,
+  "name_en": "Freed the Matchless General",
+  "name_es": "Freed el General sin Igual",
+  "desc_en": "Negate the effect of any Spell Card that targets this card and destroy it. As long as this card remains face-up on the field, you can add 1 Level 4 or lower Warrior-Type monster from your Deck to your hand per turn instead of drawing 1 card from your Deck during your Draw Phase. Then shuffle your Deck.",
+  "desc_es": "Niega el efecto de cualquier Carta Mágica que seleccione esta carta como objetivo y destrúyela. Mientras esta carta permanezca boca arriba en el Campo, puedes añadir a tu mano 1 monstruo de Tipo Guerrero de Nivel 4 o menor desde tu Deck por turno en vez de robar 1 carta de tu Deck durante tu Draw Phase. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700075,
+  "alias": 46384672,
+  "name_en": "Armed Dragon LV5",
+  "name_es": "Dragón Armado LV5",
+  "desc_en": "Send 1 Monster Card from your hand to the Graveyard to destroy 1 face-up monster on your opponent's side of the field with an ATK equal to or less than the ATK of the sent monster. During the End Phase of a turn that this card destroyed a monster as a result of battle, send this card to the Graveyard to Special Summon 1 \"Armed Dragon LV7\" from your hand or Deck.",
+  "desc_es": "Manda al Cementerio 1 Carta de Monstruo desde tu mano para destruir 1 monstruo boca arriba en el lado del Campo de tu adversario con un ATK igual o menor que el ATK del monstruo mandado. Durante la End Phase de un turno en el que esta carta destruyó un monstruo como resultado de una batalla, manda esta carta al Cementerio para Invocar de Modo Especial 1 \"Dragón Armado LV7\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700126,
+  "alias": 74388798,
+  "name_en": "Silent Swordsman LV5",
+  "name_es": "Espadachín Silencioso LV5",
+  "desc_en": "This card is unaffected by your opponent's Spell Cards. If this card successfully attacks your opponent's Life Points directly, during your next Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Silent Swordsman LV7\" from your hand or Deck.",
+  "desc_es": "Esta carta no es afectada por las Cartas Mágicas de tu adversario. Si esta carta ataca con éxito directamente los Life Points de tu adversario, durante tu próxima Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Espadachín Silencioso LV7\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700109,
+  "alias": 65878864,
+  "name_en": "Nobleman-Eater Bug",
+  "name_es": "Insecto Comenobles",
+  "desc_en": "FLIP: Destroy 2 monsters on the field.",
+  "desc_es": "VOLTEO: Destruye 2 monstruos en el Campo."
  }
 ]
