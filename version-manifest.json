@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T11:05:57.173Z",
+  "generatedAt": "2026-11-05T14:12:20.593Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -148,11 +148,11 @@
       "bytes": 1871872,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-04T13:55:32.296Z",
-      "commitSha": "9c0fdb1a4ec9edd29fc73dcec46dc41cc637d0de",
-      "commitDate": "2026-11-01T12:50:17Z",
+      "mirroredAt": "2026-11-05T14:12:20.593Z",
+      "commitSha": "efd4a5bd7f3b19f45808d841b486b91b738e5740",
+      "commitDate": "2026-11-04T13:55:32Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "d6b555b70fbd03c51b0f7fcbee3b8f02938c98e1"
+        "ElderLich/MDPro4_Data": "0bdff2f20ceb715383a997174f3fad9f053d591f"
       }
     },
     "cdb:rush:en": {
@@ -161,11 +161,11 @@
       "bytes": 1884160,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-04T13:55:32.296Z",
-      "commitSha": "41850013bb17aef0b2de489a534ec2ebedd7e4f3",
-      "commitDate": "2026-11-02T14:59:48Z",
+      "mirroredAt": "2026-11-05T14:12:20.593Z",
+      "commitSha": "efd4a5bd7f3b19f45808d841b486b91b738e5740",
+      "commitDate": "2026-11-04T13:55:32Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "d6b555b70fbd03c51b0f7fcbee3b8f02938c98e1"
+        "ElderLich/MDPro4_Data": "0bdff2f20ceb715383a997174f3fad9f053d591f"
       }
     },
     "cdb:rush:es": {
@@ -174,11 +174,11 @@
       "bytes": 2215936,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-04T13:55:32.296Z",
-      "commitSha": "41850013bb17aef0b2de489a534ec2ebedd7e4f3",
-      "commitDate": "2026-11-02T14:59:48Z",
+      "mirroredAt": "2026-11-05T14:12:20.593Z",
+      "commitSha": "efd4a5bd7f3b19f45808d841b486b91b738e5740",
+      "commitDate": "2026-11-04T13:55:32Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "d6b555b70fbd03c51b0f7fcbee3b8f02938c98e1"
+        "ElderLich/MDPro4_Data": "0bdff2f20ceb715383a997174f3fad9f053d591f"
       }
     },
     "lflist:evolution:rush": {
