@@ -454,5 +454,133 @@
   "name_es": "Insecto Comenobles",
   "desc_en": "FLIP: Destroy 2 monsters on the field.",
   "desc_es": "VOLTEO: Destruye 2 monstruos en el Campo."
+ },
+ {
+  "code": 504700040,
+  "alias": 23401839,
+  "name_en": "Senju of the Thousand Hands",
+  "name_es": "Senju de las Mil Manos",
+  "desc_en": "When this card is Normal Summoned or Flip Summoned, you can select 1 Ritual Monster Card from your Deck and add it to your hand. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es Invocada de Modo Normal o Invocada por Volteo, puedes seleccionar 1 Carta de Monstruo de Ritual de tu Deck y añadirla a tu mano. Después baraja tu Deck."
+ },
+ {
+  "code": 504700033,
+  "alias": 22567609,
+  "name_en": "Nimble Momonga",
+  "name_es": "Momonga Ágil",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, increase your Life Points by 1000 points. You can also Special Summon up to 2 \"Nimble Momonga\" cards from your Deck to your side of the field in face-down Defense Position. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, aumenta tus Life Points en 1000 puntos. También puedes Invocar de Modo Especial hasta 2 cartas \"Momonga Ágil\" de tu Deck a tu lado del Campo en Posición de Defensa boca abajo. Después baraja tu Deck."
+ },
+ {
+  "code": 504700145,
+  "alias": 84834865,
+  "name_en": "Flying Kamakiri #1",
+  "name_es": "Kamakiri Volador #1",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can Special Summon 1 WIND monster with an ATK of 1500 or less in face-up Attack Position from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial 1 monstruo de VIENTO con un ATK de 1500 o menos en Posición de Ataque boca arriba desde tu Deck. Después baraja tu Deck."
+ },
+ {
+  "code": 504700162,
+  "alias": 93107608,
+  "name_en": "Howling Insect",
+  "name_es": "Insecto Aullador",
+  "desc_en": "When this card is destroyed and sent to the Graveyard as a result of battle, you can Special Summon 1 Insect-Type monster with an ATK of 1500 or less to your side of the field from your Deck. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es destruida y mandada al Cementerio como resultado de una batalla, puedes Invocar de Modo Especial 1 monstruo de Tipo Insecto con un ATK de 1500 o menos a tu lado del Campo desde tu Deck. Después baraja tu Deck."
+ },
+ {
+  "code": 504700003,
+  "alias": 980973,
+  "name_en": "Armed Dragon LV3",
+  "name_es": "Dragón Armado LV3",
+  "desc_en": "During your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Armed Dragon LV5\" from your hand or Deck.",
+  "desc_es": "Durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Dragón Armado LV5\" de tu mano o Deck."
+ },
+ {
+  "code": 504700006,
+  "alias": 1995985,
+  "name_en": "Silent Swordsman LV3",
+  "name_es": "Espadachín Silencioso LV3",
+  "desc_en": "Negate the effects of your opponent's Spell Cards that designate this card. During your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Silent Swordsman LV5\" from your hand or Deck. (You cannot activate this effect the turn that this card is Normal Summoned, Special Summoned, or flipped face-up.)",
+  "desc_es": "Niega los efectos de las Cartas Mágicas de tu adversario que designen esta carta. Durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Espadachín Silencioso LV5\" de tu mano o Deck. (No puedes activar este efecto el turno en que esta carta es Invocada de Modo Normal, Invocada de Modo Especial o volteada boca arriba.)"
+ },
+ {
+  "code": 504700015,
+  "alias": 11224103,
+  "name_en": "Horus the Black Flame Dragon LV6",
+  "name_es": "Horus el Dragón de la Llama Negra LV6",
+  "desc_en": "As long as this card remains face-up on your side of the field, it is unaffected by any Spell Cards. During the End Phase of a turn that this card destroyed a monster as a result of battle, send this card to the Graveyard, Special Summon 1 \"Horus the Black Flame Dragon LV8\" from your hand or Deck.",
+  "desc_es": "Mientras esta carta permanezca boca arriba en tu lado del Campo, no es afectada por ninguna Carta Mágica. Durante la End Phase de un turno en el que esta carta destruyó un monstruo como resultado de una batalla, manda esta carta al Cementerio, Invoca de Modo Especial 1 \"Horus el Dragón de la Llama Negra LV8\" de tu mano o Deck."
+ },
+ {
+  "code": 504700137,
+  "alias": 79109599,
+  "name_en": "King of the Swamp",
+  "name_es": "Rey del Pantano",
+  "desc_en": "You can substitute this card for any 1 Fusion Material Monster. When you do this, the other Fusion Material Monster(s) must be the correct one(s). Discard this card from your hand to the Graveyard to add a \"Polymerization\" from your Deck to your hand. The Deck is then shuffled.",
+  "desc_es": "Puedes sustituir con esta carta cualquier Monstruo Material de Fusión. Cuando lo hagas, el resto de Monstruos Material de Fusión deben ser los correctos. Descarta esta carta de tu mano al Cementerio para añadir una \"Polimerización\" de tu Deck a tu mano. Después se baraja el Deck."
+ },
+ {
+  "code": 504700055,
+  "alias": 32807846,
+  "name_en": "Reinforcement of the Army",
+  "name_es": "Refuerzo del Ejército",
+  "desc_en": "Add 1 Level 4 or lower Warrior-Type monster from your Deck to your hand. Then shuffle your Deck.",
+  "desc_es": "Añade a tu mano 1 monstruo de Tipo Guerrero de Nivel 4 o menor desde tu Deck. Después, baraja tu Deck."
+ },
+ {
+  "code": 504700025,
+  "alias": 17449108,
+  "name_en": "Nobleman of Extermination",
+  "name_es": "Noble de Exterminio",
+  "desc_en": "Destroy 1 face-down Spell or Trap Card and remove it from play. If the card is a Trap Card, both players must remove all Trap Cards of the same name from their respective Decks and remove them from play. The Decks are then shuffled.",
+  "desc_es": "Destruye 1 Carta Mágica o de Trampa boca abajo y retírala del juego. Si la carta es una Carta de Trampa, ambos jugadores deben retirar de sus respectivos Decks todas las Cartas de Trampa con el mismo nombre y retirarlas del juego. Después, se barajan los Decks."
+ },
+ {
+  "code": 504700027,
+  "alias": 17814387,
+  "name_en": "Reinforcements",
+  "name_es": "Refuerzos",
+  "desc_en": "Increase 1 selected monster's ATK by 500 points during the turn this card is activated.",
+  "desc_es": "Aumenta en 500 puntos el ATK de 1 monstruo seleccionado durante el turno en que esta carta es activada."
+ },
+ {
+  "code": 504700032,
+  "alias": 22359980,
+  "name_en": "Mirror Wall",
+  "name_es": "Muro de Espejo",
+  "desc_en": "Halve the ATK of all your opponent's attacking monsters. Pay 2000 Life Points during each of your Standby Phases. If you do not, destroy this card.",
+  "desc_es": "Divide a la mitad el ATK de todos los monstruos atacantes de tu adversario. Paga 2000 Life Points durante cada una de tus Standby Phases. Si no lo haces, destruye esta carta."
+ },
+ {
+  "code": 504700140,
+  "alias": 81210420,
+  "name_en": "Magical Hats",
+  "name_es": "Sombreros Mágicos",
+  "desc_en": "Select 2 non-Monster Cards from your Deck and 1 of your Monster Cards on the field, then shuffle your Deck. Shuffle the 3 selected cards and Set them on the field in face-down Defense Position. The 2 cards selected from your Deck are treated as monsters (ATK 0/DEF 0) and are destroyed at the end of the Battle Phase. You can only use this effect during your opponent's Battle Phase.",
+  "desc_es": "Selecciona 2 Cartas que no sean de Monstruo de tu Deck y 1 de tus Cartas de Monstruo en el Campo, y después baraja tu Deck. Baraja las 3 cartas seleccionadas y Colócalas en el Campo en Posición de Defensa boca abajo. Las 2 cartas seleccionadas de tu Deck se tratan como monstruos (ATK 0/DEF 0) y son destruidas al final de la Battle Phase. Sólo puedes usar este efecto durante la Battle Phase de tu adversario."
+ },
+ {
+  "code": 504700000,
+  "alias": 126218,
+  "name_en": "Skull Dice",
+  "name_es": "Dado de Cráneo",
+  "desc_en": "Roll 1 six-sided die. The result is multiplied by 100 points and subtracted from the ATK and DEF of all monsters in your opponent's control until the end of your turn. Monsters summoned after this card's activation are excluded.",
+  "desc_es": "Lanza 1 dado de seis caras. El resultado se multiplica por 100 puntos y se resta del ATK y la DEF de todos los monstruos bajo el control de tu adversario hasta el final de tu turno. Los monstruos Invocados después de la activación de esta carta quedan excluidos."
+ },
+ {
+  "code": 504700124,
+  "alias": 74137509,
+  "name_en": "Graceful Dice",
+  "name_es": "Dado Grácil",
+  "desc_en": "Roll 1 six-sided die. The result is multiplied by 100 points and added to the ATK and DEF of all monsters you control until the end of your turn. Monsters summoned after this card's activation are excluded.",
+  "desc_es": "Lanza 1 dado de seis caras. El resultado se multiplica por 100 puntos y se suma al ATK y la DEF de todos los monstruos que controles hasta el final de tu turno. Los monstruos Invocados después de la activación de esta carta quedan excluidos."
+ },
+ {
+  "code": 504700153,
+  "alias": 88789641,
+  "name_en": "Hallowed Life Barrier",
+  "name_es": "Barrera de Vida Mística",
+  "desc_en": "Discard 1 card from your hand. During this turn, any damage you take from your opponent becomes 0.",
+  "desc_es": "Descarta 1 carta de tu mano. Durante este turno, cualquier daño que recibas de tu adversario se convierte en 0."
  }
 ]
