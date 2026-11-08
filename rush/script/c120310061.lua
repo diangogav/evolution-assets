@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="接合科技弹射装置"
+cm.name="接合科技弹射器"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

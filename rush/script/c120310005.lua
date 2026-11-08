@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="接合科技B赛车"
+cm.name="接合科技勇气赛车手"
 function cm.initial_effect(c)
 	--Union
 	RD.RegisterUnionEffect(c,cm.filter)

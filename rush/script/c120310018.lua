@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="疯狂犯罪者·猴女"
+cm.name="疯狂犯罪者·妖猴女"
 function cm.initial_effect(c)
 	--Atk Up
 	local e1=Effect.CreateEffect(c)

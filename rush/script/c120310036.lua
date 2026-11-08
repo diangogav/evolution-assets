@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="岩角兽 鹿豚本我"
+cm.name="岩角兽 岩牙鹿豚"
 function cm.initial_effect(c)
 	--Position
 	local e1=Effect.CreateEffect(c)

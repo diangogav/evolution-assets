@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120225024,120310049,120310039}
-cm.name="Eα版燃龙兽"
+cm.name="抢先体验版燃龙兽"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Fusion Material

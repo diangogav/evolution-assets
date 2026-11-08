@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="迫击炮的石像"
+cm.name="迫击炮石像"
 function cm.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)

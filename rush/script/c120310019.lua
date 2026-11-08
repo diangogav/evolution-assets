@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310016}
-cm.name="疯狂犯罪者·华丽女士"
+cm.name="疯狂犯罪者·巫魅奶奶"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Cannot Special Summon

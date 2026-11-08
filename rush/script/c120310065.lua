@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="跨越境界的疾风之门"
+cm.name="横渡境界的阵风之门"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -13,7 +13,7 @@ function cm.initial_effect(c)
 end
 --Activate
 function cm.confilter(c,tp)
-	return c:GetSummonPlayer()==tp and c:IsAttackBelow(2000)
+	return c:GetSummonPlayer()==tp and c:IsType(TYPE_EFFECT) and c:IsAttackBelow(2000)
 end
 function cm.condition(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(cm.confilter,1,nil,1-tp)

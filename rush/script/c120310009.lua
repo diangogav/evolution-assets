@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310003}
-cm.name="α版SSD"
+cm.name="α版燃SSD龙兽"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Change Code

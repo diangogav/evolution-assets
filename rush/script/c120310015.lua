@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310014,120310015}
-cm.name="疯狂犯罪者·羊驼女"
+cm.name="疯狂犯罪者·B狗女"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Level Change

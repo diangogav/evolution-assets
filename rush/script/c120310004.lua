@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="接合科技P打孔机"
+cm.name="接合科技热情打孔拳手"
 function cm.initial_effect(c)
 	--Union
 	RD.RegisterUnionEffect(c,cm.filter)

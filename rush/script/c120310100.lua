@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310100}
-cm.name="墓地阴影"
+cm.name="坟墓之影"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--To Deck

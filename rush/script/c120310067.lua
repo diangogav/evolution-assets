@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310044,120299001}
-cm.name="次元的盟友 莉天使"
+cm.name="次元的盟友 列尔"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Fusion Summon

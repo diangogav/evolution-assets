@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="进行腐灼的恶果"
+cm.name="腐灼的堕变者"
 function cm.initial_effect(c)
 	RD.AddRitualProcedure(c)
 	--Special Summon Condition

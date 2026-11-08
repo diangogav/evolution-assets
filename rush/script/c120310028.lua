@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="灵敏的老虎斧战士"
+cm.name="俊敏的老虎斧战士"
 function cm.initial_effect(c)
 	--Destroy
 	local e1=Effect.CreateEffect(c)

@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="贯彻到底的千年原人"
+cm.name="硬干到底的千年原人"
 function cm.initial_effect(c)
 	RD.AddRitualProcedure(c)
 	--Double Damage

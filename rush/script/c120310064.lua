@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="圣洁人的圣战"
+cm.name="圣洁圣战"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

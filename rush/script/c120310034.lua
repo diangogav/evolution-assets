@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310034}
-cm.name="粉彩寻宝·比比"
+cm.name="色粉笔开拓者·薇薇"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Level Up

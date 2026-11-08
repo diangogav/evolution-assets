@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310049}
-cm.name="T·传输维护"
+cm.name="传输维护"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Change Code

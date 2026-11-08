@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="U·更新维护"
+cm.name="更新维护"
 function cm.initial_effect(c)
 	--Activate
 	local e1=RD.CreateFusionEffect(c,cm.matfilter,cm.spfilter,cm.exfilter,LOCATION_GRAVE,0,nil,RD.FusionToDeck,nil,nil,cm.limit)

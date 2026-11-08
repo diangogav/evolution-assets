@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310066}
-cm.name="黑刹的暗杀者"
+cm.name="黑刹之暗杀者"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--To Hand

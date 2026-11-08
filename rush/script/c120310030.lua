@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120299001,120310030}
-cm.name="次元电波通讯器"
+cm.name="次元万维网"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--To Grave

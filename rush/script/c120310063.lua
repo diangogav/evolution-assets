@@ -1,5 +1,5 @@
 local cm,m=GetID()
-cm.name="疯狂犯罪者骇入"
+cm.name="疯狂犯罪者入侵"
 function cm.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

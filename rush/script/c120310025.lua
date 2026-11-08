@@ -1,5 +1,5 @@
 local cm,m=GetID()
-local list={120000012}
+local list={CARD_CODE_ZeILuNoIBuTsu}
 cm.name="黑刹的骑士"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)

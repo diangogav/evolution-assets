@@ -1,6 +1,6 @@
 local cm,m=GetID()
 local list={120310060}
-cm.name="美丽的妖魔之森"
+cm.name="美丽妖魔的森林"
 function cm.initial_effect(c)
 	RD.AddCodeList(c,list)
 	--Activate
@@ -28,13 +28,8 @@ function cm.initial_effect(c)
 end
 --Event
 function cm.filter(c)
-	local ex=false
-	if c:IsPreviousLocation(LOCATION_HAND) then
-		ex=c:IsType(TYPE_SPELL+TYPE_TRAP)
-	elseif c:IsPreviousLocation(LOCATION_ONFIELD) then
-		ex=RD.IsPreviousType(c,TYPE_SPELL+TYPE_TRAP)
-	end
-	return c:IsReason(REASON_COST) and ex
+	return c:IsReason(REASON_COST) and c:IsLocation(LOCATION_HAND+LOCATION_ONFIELD)
+		and c:IsType(TYPE_SPELL+TYPE_TRAP)
 end
 function cm.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return re and re:IsActivated() and re:IsActiveType(TYPE_MONSTER)
