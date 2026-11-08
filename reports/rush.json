@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-11-02T14:59:48.731Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/41467167083",
+  "generatedAt": "2026-11-08T12:55:04.990Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/42482426861",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
-      "upstreamCommit": "16b8b902f73abf0477fa52a61c10c5f0fe134bd8",
-      "previousCommit": "2cb3d50035ce9c0783d132397cc62af175328372",
+      "upstreamCommit": "84f96ce830031fea12ca95f1b8deafe8c440940b",
+      "previousCommit": "ffac9b29e28b09fc145086f96f1cff5f840c3c3f",
       "counts": {
         "en": {
-          "datas": 4224,
-          "texts": 4224
+          "datas": 4264,
+          "texts": 4264
         },
         "es": {
-          "datas": 4224,
-          "texts": 4224
+          "datas": 4264,
+          "texts": 4264
         }
       },
       "idsAdded": {
@@ -44,8 +44,20 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120310065",
-          "title": "Boundary-Crossing Blast Gate"
+          "id": "120311003",
+          "title": "Mercissus the Planetairy"
+        },
+        {
+          "id": "120311005",
+          "title": "Yewearth the Planetairy"
+        },
+        {
+          "id": "120311009",
+          "title": "Uranulycoris the Planetairy"
+        },
+        {
+          "id": "120311014",
+          "title": "Cosmostar the White Hole Polairy"
         }
       ],
       "unresolved": {
@@ -81,6 +93,7 @@
           "120000002",
           "120000010",
           "120000011",
+          "120000012",
           "120112007",
           "120165001",
           "120218001",
@@ -94,8 +107,7 @@
           "120218009",
           "120218010",
           "120218011",
-          "120218012",
-          "120218013"
+          "120218012"
         ]
       },
       "ambiguous": []
@@ -103,18 +115,16 @@
     {
       "step": "fetch-translations",
       "status": "changed",
-      "gained": [
-        "120310065"
-      ],
+      "gained": [],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3451,
+      "entries": 3455,
       "coverage": {
-        "en": 3451,
-        "en_lore": 3444,
-        "en_req": 3015,
+        "en": 3455,
+        "en_lore": 3448,
+        "en_req": 3019,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -127,30 +137,30 @@
         "perSource": [
           {
             "name": "RD Standard.cdb",
-            "rows": 3417
+            "rows": 3489
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 120
+            "rows": 52
           },
           {
             "name": "RD Alternate.cdb",
             "rows": 85
           }
         ],
-        "aliasRows": 726,
-        "total": 4348
+        "aliasRows": 747,
+        "total": 4373
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4160,
+            "translations": 4185,
             "mdpro4": 93,
             "alias.mdpro4": 95,
             "zh": 0
           },
           "desc": {
-            "translations": 4151,
+            "translations": 4176,
             "mdpro4": 91,
             "alias.mdpro4": 95,
             "zh": 11
@@ -159,10 +169,10 @@
         "es": {
           "name": {
             "translations": 603,
-            "base": 420,
-            "mdpro4": 2149,
+            "base": 421,
+            "mdpro4": 2180,
             "alias.mdpro4": 75,
-            "en.translations": 1041,
+            "en.translations": 1034,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
             "zh": 0
@@ -170,15 +180,15 @@
           "desc": {
             "translations": 483,
             "base": 120,
-            "mdpro4": 3608,
-            "alias.mdpro4": 109,
-            "en.translations": 17,
+            "mdpro4": 3648,
+            "alias.mdpro4": 110,
+            "en.translations": 1,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
             "zh": 11
           },
           "telltales": {
-            "count": 753,
+            "count": 758,
             "sample": [
               120102002,
               120102010,
@@ -203,32 +213,32 @@
         ]
       },
       "effectStrings": {
-        "total": 5890,
+        "total": 5936,
         "en": {
-          "replaced": 4693,
-          "nonChinese": 5814,
+          "replaced": 4761,
+          "nonChinese": 5922,
           "sources": {
-            "dictionary": 3758,
-            "mdpro4": 935,
+            "dictionary": 3765,
+            "mdpro4": 996,
             "mdpro4.en": 0,
-            "original": 1121,
-            "zh": 76
+            "original": 1161,
+            "zh": 14
           }
         },
         "es": {
-          "replaced": 4753,
-          "nonChinese": 5874,
+          "replaced": 4775,
+          "nonChinese": 5936,
           "sources": {
-            "dictionary": 3745,
-            "mdpro4": 1008,
+            "dictionary": 3752,
+            "mdpro4": 1023,
             "mdpro4.en": 0,
-            "original": 1121,
-            "zh": 16
+            "original": 1161,
+            "zh": 0
           }
         }
       },
       "alternate": {
-        "rows": 726,
+        "rows": 747,
         "status": "unchanged"
       },
       "renumbered": {
@@ -264,16 +274,34 @@
     }
   ],
   "events": {
-    "cardsAdded": [],
-    "cardsRemoved": [],
-    "translationsAdded": [
+    "cardsAdded": [
       {
-        "id": "120310065",
-        "zh": "跨越境界的疾风之门",
-        "en": "Boundary-Crossing Blast Gate",
+        "id": "120311003",
+        "zh": "惑精 水仙水星",
+        "en": "Mercissus the Planetairy",
+        "es": null
+      },
+      {
+        "id": "120311005",
+        "zh": "惑精 大戟地球",
+        "en": "Yewearth the Planetairy",
+        "es": null
+      },
+      {
+        "id": "120311009",
+        "zh": "惑精 石蒜天王星",
+        "en": "Uranulycoris the Planetairy",
+        "es": null
+      },
+      {
+        "id": "120311014",
+        "zh": "夕极精 秋英宇宙星",
+        "en": "Cosmostar the White Hole Polairy",
         "es": null
       }
     ],
+    "cardsRemoved": [],
+    "translationsAdded": [],
     "unresolved": {
       "count": 118,
       "sample": [
@@ -307,6 +335,7 @@
         "120000002",
         "120000010",
         "120000011",
+        "120000012",
         "120112007",
         "120165001",
         "120218001",
@@ -320,8 +349,7 @@
         "120218009",
         "120218010",
         "120218011",
-        "120218012",
-        "120218013"
+        "120218012"
       ]
     },
     "ambiguous": []

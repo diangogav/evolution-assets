@@ -27239,10 +27239,26 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120311003": {
+    "en": "Mercissus the Planetairy",
+    "en_lore": "Excavate the top 4 cards of your Deck. You can add 1 excavated Level 6 or higher Galaxy Type monster with 900 ATK to your hand. Place the other cards on the bottom of your Deck in any order.",
+    "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120311004": {
     "en": "Dendrovenus the Planetairy",
     "en_lore": "Send the top 2 cards of your Deck to the Graveyard. Then, you can destroy this card on your field.",
     "en_req": "During the turn you Normal Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311005": {
+    "en": "Yewearth the Planetairy",
+    "en_lore": "Destroy 1 other card on your field. Then, you can draw 1 card. You cannot activate the effects of non-Galaxy Type monsters until the end of this turn.",
+    "en_req": "You have 10 or more cards in your Deck during the turn you Normal Summoned this card.",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -27267,6 +27283,14 @@
     "en": "Saturnchamomile the Planetairy",
     "en_lore": "Fusion Summon a Galaxy Type monster with 1900 or 2600 DEF by sending face-up Galaxy Type monsters from your field to the Graveyard as material.",
     "en_req": "During your Main Phase that you Normal or Special Summoned this card.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311009": {
+    "en": "Uranulycoris the Planetairy",
+    "en_lore": "Destroy 1 Spell/Trap Card on your opponent's field.",
+    "en_req": "During your Main Phase that a card on your field was destroyed by a card effect.",
     "es": "",
     "es_lore": "",
     "es_req": ""
@@ -27299,6 +27323,14 @@
     "en": "Cosmostar the Hypernova Polairy",
     "en_lore": "Until the end of your opponent's next turn, this card gains 400 ATK, and cannot be destroyed by card effects. Then, you can add 1 \"Mercissus the Planetairy\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Cosmostar the Hypernova Polairy\".",
     "en_req": "During your Main Phase that you Special Summoned this card, send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120311014": {
+    "en": "Cosmostar the White Hole Polairy",
+    "en_lore": "Special Summon 1 Galaxy Type Fusion Monster with 1900 or 2600 DEF from your Graveyard face-up to your field. Then, you can add 1 \"Princess Cosmos' Jest\" from your Graveyard to your hand. This turn, you cannot activate the effect of \"Cosmostar the White Hole Polairy\".",
+    "en_req": "During your Main Phase that you Fusion Summoned this card.",
     "es": "",
     "es_lore": "",
     "es_req": ""
