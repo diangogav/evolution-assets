@@ -27638,5 +27638,21 @@
     "es": "",
     "es_lore": "",
     "es_req": ""
+  },
+  "120312001": {
+    "en": "Paletta the Foot Painter",
+    "en_lore": "Take the bottom 3 cards of your Deck and show them. You can send 1 monster among the shown cards to the Graveyard. Shuffle the other cards into the Deck. Then, if you sent a monster to the Graveyard, you can make the Type and Attribute of 1 face-up monster on your opponent's field become the Type and Attribute of the monster sent to the Graveyard by this effect until the end of your opponent's next turn.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120312002": {
+    "en": "Genie of the Dead Tree",
+    "en_lore": "Equip this card to 1 face-up monster on your field that is not equipped with \"Genie of the Dead Tree\" as an Equip Spell Card with the following effect. Then, gain 500 LP. ● The equipped monster on your field and face-up monsters on your opponent's field lose ATK equal to [the equipped monster's original Level] x 100.",
+    "en_req": "Send the top card of your Deck to the Graveyard.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
   }
 }

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-11-08T12:55:04.990Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/42482426861",
+  "generatedAt": "2026-11-09T15:29:49.436Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/42645176582",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
       "upstreamCommit": "84f96ce830031fea12ca95f1b8deafe8c440940b",
-      "previousCommit": "ffac9b29e28b09fc145086f96f1cff5f840c3c3f",
+      "previousCommit": "84f96ce830031fea12ca95f1b8deafe8c440940b",
       "counts": {
         "en": {
           "datas": 4264,
@@ -44,20 +44,12 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120311003",
-          "title": "Mercissus the Planetairy"
+          "id": "120312001",
+          "title": "Paletta the Foot Painter"
         },
         {
-          "id": "120311005",
-          "title": "Yewearth the Planetairy"
-        },
-        {
-          "id": "120311009",
-          "title": "Uranulycoris the Planetairy"
-        },
-        {
-          "id": "120311014",
-          "title": "Cosmostar the White Hole Polairy"
+          "id": "120312002",
+          "title": "Genie of the Dead Tree"
         }
       ],
       "unresolved": {
@@ -115,16 +107,19 @@
     {
       "step": "fetch-translations",
       "status": "changed",
-      "gained": [],
+      "gained": [
+        "120312001",
+        "120312002"
+      ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3455,
+      "entries": 3457,
       "coverage": {
-        "en": 3455,
-        "en_lore": 3448,
-        "en_req": 3019,
+        "en": 3457,
+        "en_lore": 3450,
+        "en_req": 3021,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -141,7 +136,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 52
+            "rows": 54
           },
           {
             "name": "RD Alternate.cdb",
@@ -149,18 +144,18 @@
           }
         ],
         "aliasRows": 747,
-        "total": 4373
+        "total": 4375
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4185,
+            "translations": 4187,
             "mdpro4": 93,
             "alias.mdpro4": 95,
             "zh": 0
           },
           "desc": {
-            "translations": 4176,
+            "translations": 4178,
             "mdpro4": 91,
             "alias.mdpro4": 95,
             "zh": 11
@@ -172,7 +167,7 @@
             "base": 421,
             "mdpro4": 2180,
             "alias.mdpro4": 75,
-            "en.translations": 1034,
+            "en.translations": 1036,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
             "zh": 0
@@ -182,7 +177,7 @@
             "base": 120,
             "mdpro4": 3648,
             "alias.mdpro4": 110,
-            "en.translations": 1,
+            "en.translations": 3,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
             "zh": 11
@@ -213,27 +208,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5936,
+        "total": 5941,
         "en": {
-          "replaced": 4761,
-          "nonChinese": 5922,
+          "replaced": 4762,
+          "nonChinese": 5923,
           "sources": {
-            "dictionary": 3765,
+            "dictionary": 3766,
             "mdpro4": 996,
             "mdpro4.en": 0,
             "original": 1161,
-            "zh": 14
+            "zh": 18
           }
         },
         "es": {
-          "replaced": 4775,
-          "nonChinese": 5936,
+          "replaced": 4776,
+          "nonChinese": 5937,
           "sources": {
-            "dictionary": 3752,
+            "dictionary": 3753,
             "mdpro4": 1023,
             "mdpro4.en": 0,
             "original": 1161,
-            "zh": 0
+            "zh": 4
           }
         }
       },
@@ -276,27 +271,15 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120311003",
-        "zh": "惑精 水仙水星",
-        "en": "Mercissus the Planetairy",
+        "id": "120312001",
+        "zh": "涂足的调色少女",
+        "en": "Paletta the Foot Painter",
         "es": null
       },
       {
-        "id": "120311005",
-        "zh": "惑精 大戟地球",
-        "en": "Yewearth the Planetairy",
-        "es": null
-      },
-      {
-        "id": "120311009",
-        "zh": "惑精 石蒜天王星",
-        "en": "Uranulycoris the Planetairy",
-        "es": null
-      },
-      {
-        "id": "120311014",
-        "zh": "夕极精 秋英宇宙星",
-        "en": "Cosmostar the White Hole Polairy",
+        "id": "120312002",
+        "zh": "枯木的金尼",
+        "en": "Genie of the Dead Tree",
         "es": null
       }
     ],
