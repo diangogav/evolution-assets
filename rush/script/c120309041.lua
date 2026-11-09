@@ -1,7 +1,6 @@
 local cm,m=GetID()
 cm.name="云海龙 海牛龙"
 function cm.initial_effect(c)
-	RD.AddCodeList(c,list)
 	--Union
 	local e1=RD.RegisterUnionEffect(c,cm.filter,nil,cm.cost,cm.operation)
 	e1:SetCategory(e1:GetCategory()|CATEGORY_SPECIAL_SUMMON)
