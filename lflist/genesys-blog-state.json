@@ -4069,6 +4069,151 @@
           "code": 48905153
         }
       ]
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/magnificent-maestros-points-update/",
+      "status": "pending",
+      "publishedAt": "2026-11-10",
+      "deltas": [
+        {
+          "name": "Deep-Eyes White Dragon, the Blue Abyss",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 67886895
+        },
+        {
+          "name": "Crimson Dragon Quetzalcoatl",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 29053656
+        },
+        {
+          "name": "Red Nova Dragon – Burning Soul",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 65541655
+        },
+        {
+          "name": "Neo Galaxy-Eyes Photon Dragon – Photon Howling",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 28331069
+        },
+        {
+          "name": "Galaxy Defense Robot Orbital",
+          "oldPoints": 7,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "Dark Rebellion Xyz Dragon, Four Heavenly Dragons",
+          "oldPoints": null,
+          "newPoints": 80,
+          "code": 90091224
+        },
+        {
+          "name": "Triple Borrel Launch",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 89875646
+        },
+        {
+          "name": "Demiurge Ema",
+          "oldPoints": null,
+          "newPoints": 33,
+          "code": 26364381
+        },
+        {
+          "name": "Lightning Crash",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 89753095
+        },
+        {
+          "name": "Gatling Ogre",
+          "oldPoints": null,
+          "newPoints": 51,
+          "code": 88931417
+        },
+        {
+          "name": "Hyper Rank-Up-Magic Ultimate Force",
+          "oldPoints": null,
+          "newPoints": 1,
+          "code": 87818869
+        },
+        {
+          "name": "Funny Dark Rabbit",
+          "oldPoints": null,
+          "newPoints": 11,
+          "code": 45536531
+        },
+        {
+          "name": "Animimicat",
+          "oldPoints": null,
+          "newPoints": 11,
+          "code": 72921536
+        },
+        {
+          "name": "Blue-Eyes Toon Ultimate Dragon",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 71808988
+        },
+        {
+          "name": "Perfect Toon World",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 7293697
+        },
+        {
+          "name": "Mind Scan",
+          "oldPoints": null,
+          "newPoints": 50,
+          "code": 34298391
+        },
+        {
+          "name": "Witchcrafter Marka",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 6071005
+        },
+        {
+          "name": "Witchcrafter Pupils",
+          "oldPoints": null,
+          "newPoints": 15,
+          "code": 69964858
+        },
+        {
+          "name": "Witchcrafter Celebration",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": 6958567
+        },
+        {
+          "name": "Witchcrafter Walpurgis",
+          "oldPoints": null,
+          "newPoints": 8,
+          "code": 32353566
+        },
+        {
+          "name": "Witchcrafter Distortion",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 69748261
+        },
+        {
+          "name": "Unchained Oni of Shyma",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": 31531914
+        },
+        {
+          "name": "Reincarnation of the Unchained",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 67803035
+        }
+      ]
     }
   ]
 }
