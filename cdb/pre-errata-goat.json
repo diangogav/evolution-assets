@@ -582,5 +582,133 @@
   "name_es": "Barrera de Vida Mística",
   "desc_en": "Discard 1 card from your hand. During this turn, any damage you take from your opponent becomes 0.",
   "desc_es": "Descarta 1 carta de tu mano. Durante este turno, cualquier daño que recibas de tu adversario se convierte en 0."
+ },
+ {
+  "code": 504700060,
+  "alias": 37721209,
+  "name_en": "Levia-Dragon - Daedalus",
+  "name_es": "Levia-Dragón - Dédalo",
+  "desc_en": "By sending \"Umi\" on your side of the field to the Graveyard, destroy all cards on the field except this card.",
+  "desc_es": "Mandando al Cementerio \"Umi\" de tu lado del Campo, destruye todas las cartas en el Campo excepto esta carta."
+ },
+ {
+  "code": 504700061,
+  "alias": 37957847,
+  "name_en": "Insect Princess",
+  "name_es": "Princesa Insecto",
+  "desc_en": "While this card is face-up on the field, battle positions of all face-up Insect-Type monsters on your opponent's side of the field are changed into Attack Position. Each time this card destroys an Insect-Type monster as a result of battle, increase the ATK of this card by 500 points.",
+  "desc_es": "Mientras esta carta esté boca arriba en el Campo, todos los monstruos de Tipo Insecto boca arriba del lado del Campo de tu adversario se cambian a Posición de Ataque. Cada vez que esta carta destruya un monstruo de Tipo Insecto como resultado de una batalla, aumenta el ATK de esta carta en 500 puntos."
+ },
+ {
+  "code": 504700081,
+  "alias": 49441499,
+  "name_en": "Ultimate Insect LV1",
+  "name_es": "Insecto Definitivo LV1",
+  "desc_en": "As long as this card remains face-up on the field, it is unaffected by any Spell Cards. During your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Ultimate Insect LV3\" from your hand or Deck. (You cannot activate this effect the turn this card is Normal Summoned, Special Summoned, or flipped face-up.)",
+  "desc_es": "Mientras esta carta permanezca boca arriba en el Campo, no es afectada por ninguna Carta Mágica. Durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Insecto Definitivo LV3\" de tu mano o Deck. (No puedes activar este efecto el turno en que esta carta es Invocada de Modo Normal, Invocada de Modo Especial o volteada boca arriba.)"
+ },
+ {
+  "code": 504700057,
+  "alias": 34088136,
+  "name_en": "Ultimate Insect LV3",
+  "name_es": "Insecto Definitivo LV3",
+  "desc_en": "If this card was Special Summoned by the effect of \"Ultimate Insect LV1\", as long as this card remains face-up on the field, decrease the ATK of all your opponent's monsters by 300 points. During your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Ultimate Insect LV5\" from your hand or Deck. (You cannot activate this effect the turn this card is Normal Summoned, Special Summoned, or flipped face-up.)",
+  "desc_es": "Si esta carta fue Invocada de Modo Especial por el efecto de \"Insecto Definitivo LV1\", mientras esta carta permanezca boca arriba en el Campo, disminuye en 300 puntos el ATK de todos los monstruos de tu adversario. Durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Insecto Definitivo LV5\" de tu mano o Deck. (No puedes activar este efecto el turno en que esta carta es Invocada de Modo Normal, Invocada de Modo Especial o volteada boca arriba.)"
+ },
+ {
+  "code": 504700058,
+  "alias": 34830502,
+  "name_en": "Ultimate Insect LV5",
+  "name_es": "Insecto Definitivo LV5",
+  "desc_en": "If this card was Special Summoned by the effect of \"Ultimate Insect LV3\", as long as this card remains face-up on the field, decrease the ATK of all your opponent's monsters by 500 points. During your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Ultimate Insect LV7\" from your hand or Deck. (You cannot activate this effect the turn this card is Normal Summoned, Special Summoned or flipped face-up.)",
+  "desc_es": "Si esta carta fue Invocada de Modo Especial por el efecto de \"Insecto Definitivo LV3\", mientras esta carta permanezca boca arriba en el Campo, disminuye en 500 puntos el ATK de todos los monstruos de tu adversario. Durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Insecto Definitivo LV7\" de tu mano o Deck. (No puedes activar este efecto el turno en que esta carta es Invocada de Modo Normal, Invocada de Modo Especial o volteada boca arriba.)"
+ },
+ {
+  "code": 504700129,
+  "alias": 74713516,
+  "name_en": "Dark Mimic LV1",
+  "name_es": "Mimic Oscuro LV1",
+  "desc_en": "FLIP: Draw 1 card from your Deck. Also, during your Standby Phase, send this face-up card to the Graveyard to Special Summon 1 \"Dark Mimic LV3\" from your hand or Deck.",
+  "desc_es": "VOLTEO: Roba 1 carta de tu Deck. Además, durante tu Standby Phase, manda esta carta boca arriba al Cementerio para Invocar de Modo Especial 1 \"Mimic Oscuro LV3\" de tu mano o Deck."
+ },
+ {
+  "code": 504700088,
+  "alias": 54098121,
+  "name_en": "Mysterious Puppeteer",
+  "name_es": "Titiritero Misterioso",
+  "desc_en": "Each time you or your opponent Normal Summons or Flip Summons a monster, increase your Life Points by 500 points.",
+  "desc_es": "Cada vez que tú o tu adversario Invoquen de Modo Normal o Invoquen por Volteo un monstruo, aumenta tus Life Points en 500 puntos."
+ },
+ {
+  "code": 504700078,
+  "alias": 47829960,
+  "name_en": "Chaosrider Gustaph",
+  "name_es": "Jinete del Caos Gustaph",
+  "desc_en": "You can remove up to 2 Spell Cards in your Graveyard from play to increase the ATK of this monster by 300 points for each card removed from play until the end of your opponent's next turn. This effect can only be used once during your turn.",
+  "desc_es": "Puedes retirar del juego hasta 2 Cartas Mágicas de tu Cementerio para aumentar el ATK de este monstruo en 300 puntos por cada carta retirada del juego, hasta el final del siguiente turno de tu adversario. Este efecto sólo puede usarse una vez durante tu turno."
+ },
+ {
+  "code": 504700018,
+  "alias": 12923641,
+  "name_en": "Swords of Concealing Light",
+  "name_es": "Espadas de Luz Ocultadora",
+  "desc_en": "When you activate this card, change all monsters on your opponent's side of the field to face-down Defense Position. As long as this card remains face-up on the field, monsters on your opponent's side of the field cannot change their Battle Positions. Destroy this card during your 2nd Standby Phase after activation.",
+  "desc_es": "Cuando activas esta carta, cambia todos los monstruos en el lado del Campo de tu adversario a Posición de Defensa boca abajo. Mientras esta carta permanezca boca arriba en el Campo, los monstruos en el lado del Campo de tu adversario no pueden cambiar sus Posiciones de Batalla. Destruye esta carta durante tu 2da. Standby Phase después de la activación."
+ },
+ {
+  "code": 504700010,
+  "alias": 6850209,
+  "name_en": "A Deal with Dark Ruler",
+  "name_es": "Un Trato con el Señor Oscuro",
+  "desc_en": "You can only activate this card during a turn in which a Level 8 or higher monster on your side of the field was sent to the Graveyard. Special Summon 1 \"Berserk Dragon\" from your hand or Deck.",
+  "desc_es": "Sólo puedes activar esta carta durante un turno en el que un monstruo de Nivel 8 o mayor en tu lado del Campo fue mandado al Cementerio. Invoca de Modo Especial 1 \"Dragón Berserker\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700014,
+  "alias": 10035717,
+  "name_en": "Weapon Change",
+  "name_es": "Cambio de Arma",
+  "desc_en": "Only once during each of your Standby Phases, you can pay 700 Life Points to activate this card's effect. Switch the ATK and DEF of 1 Warrior-Type or Machine-Type monster on your side of the field until the end of your opponent's next End Phase. When this card is destroyed, the effect is negated.",
+  "desc_es": "Sólo una vez durante cada una de tus Standby Phases, puedes pagar 700 Life Points para activar el efecto de esta carta. Intercambia el ATK y la DEF de 1 monstruo de Tipo Guerrero o de Tipo Máquina en tu lado del Campo hasta el final de la próxima End Phase de tu adversario. Cuando esta carta es destruida, el efecto es negado."
+ },
+ {
+  "code": 504700028,
+  "alias": 18190572,
+  "name_en": "Micro Ray",
+  "name_es": "Micro Rayo",
+  "desc_en": "The DEF of 1 face-up monster on the field becomes 0 until the end of the End Phase.",
+  "desc_es": "La DEF de 1 monstruo boca arriba en el Campo se convierte en 0 hasta el final de la End Phase."
+ },
+ {
+  "code": 504700043,
+  "alias": 24294108,
+  "name_en": "Burning Land",
+  "name_es": "Tierra Ardiente",
+  "desc_en": "Destroy all Field Spell Cards on the field. Inflict 500 points of damage to each player's Life Points during his/her Standby Phase.",
+  "desc_es": "Destruye todas las Cartas Mágicas de Campo en el Campo. Inflige 500 puntos de daño a los Life Points de cada jugador durante su Standby Phase."
+ },
+ {
+  "code": 504700059,
+  "alias": 37580756,
+  "name_en": "Michizure",
+  "name_es": "Michizure",
+  "desc_en": "You can activate this card when a monster is sent from the field to your Graveyard. Destroy 1 monster on the field.",
+  "desc_es": "Puedes activar esta carta cuando un monstruo es mandado del Campo a tu Cementerio. Destruye 1 monstruo en el Campo."
+ },
+ {
+  "code": 504700133,
+  "alias": 2926176,
+  "name_en": "Curse of Royal",
+  "name_es": "Maldición Real",
+  "desc_en": "Negate the activation and the effect of a Spell or Trap Card that includes the effect of destroying 1 Spell or Trap Card and destroy it.",
+  "desc_es": "Niega la activación y el efecto de una Carta Mágica o de Trampa que incluya el efecto de destruir 1 Carta Mágica o de Trampa, y destrúyela."
+ },
+ {
+  "code": 504700127,
+  "alias": 74458486,
+  "name_en": "Covering Fire",
+  "name_es": "Fuego de Cobertura",
+  "desc_en": "If your opponent's monster attacks a monster on your side of the field, you can activate this card during the Damage Step. Increase the ATK of your attacked monster by the ATK of 1 other face-up monster on your side of the field during the Damage Step.",
+  "desc_es": "Si un monstruo de tu adversario ataca a un monstruo en tu lado del Campo, puedes activar esta carta durante el Damage Step. Aumenta el ATK de tu monstruo atacado en el ATK de otro monstruo boca arriba en tu lado del Campo durante el Damage Step."
  }
 ]
