@@ -1,6 +1,51 @@
 {
-  "$comment": "Home page news manifest for the Evolution client. Editing this file publishes announcements without redeploying the app. Fields: id (unique, stable — player dismissals key off it), date (ISO, drives ordering + display), tone (arcane | gold | blue), link (optional, internal route or https URL), image (optional thumbnail, same-origin path or https URL), expiresAt (optional ISO instant, hides the item after it), title/summary (per-locale, a missing locale falls back to the other). The home panel shows the 3 newest non-expired, non-dismissed items.",
+  "$comment": "Home page news manifest for the Evolution client. Editing this file publishes announcements without redeploying the app. Fields: id (unique, stable — player dismissals key off it), date (ISO, drives ordering + display), tone (arcane | gold | blue), link (optional, internal route or https URL), image (optional thumbnail, same-origin path or https URL), expiresAt (optional ISO instant, hides the item after it), kind (optional: shop | season | tournament, shows a tag and words the button by destination), eventAt (optional ISO instant, puts a shop or season item on the events calendar), title/summary (per-locale, a missing locale falls back to the other). The home panel shows the 3 newest non-expired, non-dismissed items.",
   "items": [
+    {
+      "id": "shop-emote-cara-de-enojo-2026-11",
+      "date": "2026-11-14",
+      "tone": "gold",
+      "kind": "shop",
+      "link": "/collection?wing=shop",
+      "title": {
+        "es-419": "Nuevo emote: Cara de Enojo",
+        "en": "New emote: Angry Face"
+      },
+      "summary": {
+        "es-419": "Hazle saber a tu rival cuánto te molestó esa trampa. El pack Cara de Enojo ya está en la tienda.",
+        "en": "Let your opponent know how much that trap annoyed you. The Angry Face pack is now in the shop."
+      }
+    },
+    {
+      "id": "shop-avatar-baby-frog-mage-2026-11",
+      "date": "2026-11-13",
+      "tone": "arcane",
+      "kind": "shop",
+      "link": "/collection?wing=shop",
+      "title": {
+        "es-419": "Nuevo avatar: Baby Frog Mage",
+        "en": "New avatar: Baby Frog Mage"
+      },
+      "summary": {
+        "es-419": "La ranita aprendió magia. El avatar Baby Frog Mage ya está en la tienda.",
+        "en": "The little frog learned magic. The Baby Frog Mage avatar is now in the shop."
+      }
+    },
+    {
+      "id": "shop-sleeve-bat-2026-11",
+      "date": "2026-11-13",
+      "tone": "arcane",
+      "kind": "shop",
+      "link": "/collection?wing=shop",
+      "title": {
+        "es-419": "Nueva funda: Murciélago",
+        "en": "New sleeve: Bat"
+      },
+      "summary": {
+        "es-419": "Viste tu deck de noche. La funda Murciélago ya está en la tienda.",
+        "en": "Dress your deck for the night. The Bat sleeve is now in the shop."
+      }
+    },
     {
       "id": "edison-pre-errata-rulings-2026-08",
       "date": "2026-08-28",
