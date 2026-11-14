@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T14:21:12.938Z",
+  "generatedAt": "2026-11-14T21:56:41.172Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
       "sha256": "7f57ae28bb1d0b5987c8159c193c18ff820b1119a513949b1bf3cb5aa36234ef",
       "bytes": 8076288,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/en-US/cards.cdb",
-      "upstreamLastModified": "Mon, 26 Oct 2026 16:00:30 GMT",
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "upstreamLastModified": "Sat, 14 Nov 2026 13:16:25 GMT",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -17,8 +17,8 @@
       "sha256": "d76cf431022b68ab9f4ea944a99822e853b2aa53a0d327e627b06bdaff01cb05",
       "bytes": 8482816,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/es-ES/cards.cdb",
-      "upstreamLastModified": "Mon, 26 Oct 2026 16:00:30 GMT",
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "upstreamLastModified": "Sat, 14 Nov 2026 13:16:26 GMT",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": null,
       "commitDate": null
     },
@@ -28,7 +28,7 @@
       "bytes": 6896640,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -38,7 +38,7 @@
       "bytes": 200704,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
@@ -48,7 +48,7 @@
       "bytes": 229376,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": "604a543bc4c4d82b70c1cdabec7d5c84ade1b45b",
       "commitDate": "2026-05-25T18:27:17-04:00"
     },
@@ -206,8 +206,8 @@
       "sha256": "e30363a3e2091cf13c158ffb747e28ac8babcc0e60af920aa516f42147432769",
       "bytes": 676679,
       "upstreamUrl": "https://cdntx.moecube.com/ygopro-database/zh-CN/lflist.conf",
-      "upstreamLastModified": "Mon, 26 Oct 2026 16:00:31 GMT",
-      "mirroredAt": "2026-11-02T01:19:50.393Z",
+      "upstreamLastModified": "Sat, 14 Nov 2026 13:16:27 GMT",
+      "mirroredAt": "2026-11-14T21:56:41.172Z",
       "commitSha": null,
       "commitDate": null
     },
