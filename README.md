@@ -35,11 +35,12 @@ number the prompts of a card independently, so the client needs EDOPro's own
 labels for the duration of that room:
 
 - `edopro/prompts.cdb` holds `texts (id, str1..str16)` for every card with at
-  least one prompt, and nothing else. Rebuild it when the server updates its
-  EDOPro databases, from the directory the server loads:
+  least one prompt, and nothing else. It is built from
+  [ProjectIgnis/BabelCDB](https://github.com/ProjectIgnis/BabelCDB), the
+  repository the server loads its EDOPro databases from:
 
   ```sh
-  node scripts/build-edopro-prompts.mjs --databases <server>/resources/edopro/databases
+  node scripts/build-edopro-prompts.mjs --databases <BabelCDB checkout>
   gzip -9 -n -k -f edopro/prompts.cdb
   ```
 
@@ -47,6 +48,9 @@ labels for the duration of that room:
   copy, taken unchanged from
   [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)
   (`config/strings.conf` and `config/languages/Español/strings.conf`, AGPL-3.0).
+
+`mirror-edopro-prompts.yml` refreshes the three daily and commits only when
+they change, so none of them is edited by hand.
 
 ## Goat Format list and pre-errata overlay
 

@@ -13,9 +13,10 @@
  * card that has at least one prompt. Names, lore and stats are left out: the
  * client keeps reading those from its own database.
  *
- * The input is the directory of .cdb files the server loads for EDOPro
- * rooms. They are merged the way the server merges them: in file name order,
- * a later file replacing the rows of an earlier one.
+ * The input is a directory of .cdb files: a checkout of ProjectIgnis/BabelCDB,
+ * which is what the server loads for EDOPro rooms. They are merged the way the
+ * server merges them: in file name order, a later file replacing the rows of
+ * an earlier one. mirror-edopro-prompts.yml runs this daily.
  *
  * Usage:
  *   node scripts/build-edopro-prompts.mjs --databases <dir> [--out edopro/prompts.cdb]

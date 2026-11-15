@@ -45,6 +45,8 @@ export const REPO_ASSETS = [
 	// Prompt strings for rooms run by the EDOPro core: the card prompts
 	// (build-edopro-prompts.mjs) and EDOPro's own strings.conf, copied from
 	// ProjectIgnis/Distribution (config/strings.conf and its Español copy).
+	// Refreshed by the daily mirror-edopro-prompts.yml, which runs this script
+	// itself for the reason given for the Rush list above.
 	{ id: "edopro:prompts", raw: "edopro/prompts.cdb", path: "edopro/prompts.cdb.gz" },
 	{ id: "edopro:strings:en", path: "edopro/strings.en.conf" },
 	{ id: "edopro:strings:es", path: "edopro/strings.es.conf" },
