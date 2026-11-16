@@ -783,6 +783,14 @@
     "es_lore": "",
     "es_req": ""
   },
+  "120109070": {
+    "en": "Enemy Controller",
+    "en_lore": "● Change the battle position of 1 face-up monster on your opponent's field. ● Send 1 monster from your field to the Graveyard. Then, take control of 1 face-up monster on your opponent's field that is not in Maximum Mode until the End Phase. This turn, that monster cannot attack.",
+    "en_req": "During a turn you have not activated \"Enemy Controller\".",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
   "120110001": {
     "en": "Multistrike Dragon Dragias",
     "en_lore": "This turn, if this card destroyed a monster by battle, it can make a second attack during that Battle Phase.",
