@@ -213,7 +213,7 @@ function RushDuel.CreateMultiChooseEffect(card, condition, cost, hint1, target1,
     card:RegisterEffect(e2)
     return e1, e2
 end
--- 创建效果: 选择效果
+-- 创建效果: 选择效果 (3项)
 function RushDuel.CreateMultiChooseEffect3(card, condition, cost, hint1, target1, operation1, hint2, target2, operation2, hint3, target3, operation3)
     local e1 = Effect.CreateEffect(card)
     e1:SetType(EFFECT_TYPE_IGNITION)
@@ -239,6 +239,28 @@ function RushDuel.CreateMultiChooseEffect3(card, condition, cost, hint1, target1
     card:RegisterEffect(e2)
     card:RegisterEffect(e3)
     return e1, e2, e3
+end
+-- 创建效果: 选择效果 (魔法)
+function RushDuel.CreateMultiChooseEffectSpell(card, condition, cost, hint1, target1, operation1, hint2, target2, operation2)
+    local e1 = Effect.CreateEffect(card)
+    e1:SetType(EFFECT_TYPE_ACTIVATE)
+	e1:SetCode(EVENT_FREE_CHAIN)
+    if condition ~= nil then
+        e1:SetCondition(condition)
+    end
+    if cost ~= nil then
+        e1:SetCost(cost)
+    end
+    local e2 = e1:Clone()
+    e1:SetDescription(hint1)
+    e2:SetDescription(hint2)
+    e1:SetTarget(RushDuel.MultiChooseEffectTarget(target1))
+    e2:SetTarget(RushDuel.MultiChooseEffectTarget(target2))
+    e1:SetOperation(operation1)
+    e2:SetOperation(operation2)
+    card:RegisterEffect(e1)
+    card:RegisterEffect(e2)
+    return e1, e2
 end
 function RushDuel.MultiChooseEffectTarget(target)
     if target ~= nil then
