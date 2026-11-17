@@ -27,12 +27,14 @@ same list. Then remove the bridge: this file, its `REPO_ASSETS` entry, the
 `paths` entry in `repo-assets-manifest.yml`, and the server's `formats/tcg`
 assembly entry and `runtime.ygopro.standard` member.
 
-## EDOPro prompt strings
+## EDOPro prompt strings and cards
 
 A client of the YGOPro server can sit in a room run by the EDOPro core. The
 scripts of that core name their prompts by position, and the two card databases
 number the prompts of a card independently, so the client needs EDOPro's own
-labels for the duration of that room:
+labels for the duration of that room. The room also puts EDOPro's card codes on
+the wire, and some of them (pre-errata copies, alternate artworks, unreleased
+cards under a temporary number) are not in the client's database:
 
 - `edopro/prompts.cdb` holds `texts (id, str1..str16)` for every card with at
   least one prompt, and nothing else. It is built from
@@ -44,12 +46,21 @@ labels for the duration of that room:
   gzip -9 -n -k -f edopro/prompts.cdb
   ```
 
+- `edopro/cards.cdb` holds the cards of those same databases that
+  `cdb/base.en.cdb.gz` lacks, in the layout of any card database, with the
+  prompts left empty. Names and text are English only:
+
+  ```sh
+  node scripts/build-edopro-cards.mjs --databases <BabelCDB checkout>
+  gzip -9 -n -k -f edopro/cards.cdb
+  ```
+
 - `edopro/strings.{en,es}.conf` are EDOPro's `strings.conf` and its Spanish
   copy, taken unchanged from
   [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)
   (`config/strings.conf` and `config/languages/Español/strings.conf`, AGPL-3.0).
 
-`mirror-edopro-prompts.yml` refreshes the three daily and commits only when
+`mirror-edopro-prompts.yml` refreshes all of them daily and commits only when
 they change, so none of them is edited by hand.
 
 ## Goat Format list and pre-errata overlay
