@@ -30,7 +30,7 @@ jobs:
 
       - name: Clone the EDOPro card databases
         # The same repository and branch the server loads its EDOPro databases
-        # from, so the prompts follow what its rooms run.
+        # from, so what is built here follows what its rooms run.
         run: |
           set -euo pipefail
           rm -rf /tmp/babelcdb
@@ -46,6 +46,15 @@ jobs:
           cp /tmp/prompts.cdb edopro/prompts.cdb
           # -n omits the mtime so identical content produces identical bytes.
           gzip -9 -n -c /tmp/prompts.cdb > edopro/prompts.cdb.gz
+
+      - name: Build the database of the cards the client lacks
+        # Subtracts the client's base database, so this follows both upstreams.
+        run: |
+          set -euo pipefail
+          node scripts/build-edopro-cards.mjs --databases /tmp/babelcdb --known cdb/base.en.cdb.gz --out /tmp/cards.cdb
+          head -c 15 /tmp/cards.cdb | grep -q "SQLite format 3" || { echo "built file is not a SQLite db"; exit 1; }
+          cp /tmp/cards.cdb edopro/cards.cdb
+          gzip -9 -n -c /tmp/cards.cdb > edopro/cards.cdb.gz
 
       - name: Fetch EDOPro's strings.conf files
         # A file that fails to download, or comes back without a single system
@@ -72,17 +81,17 @@ jobs:
         # repo-assets-manifest.yml, so its `paths:` filter would not pick this up.
         run: node scripts/update-repo-assets-manifest.mjs
 
-      - name: Commit if the prompt strings changed
+      - name: Commit if the mirrored files changed
         run: |
           if [ -n "$(git status --porcelain edopro version-manifest.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add edopro version-manifest.json
-            git commit -m "chore(edopro): refresh prompt strings"
+            git commit -m "chore(edopro): refresh prompt strings and cards"
             git pull --rebase --autostash origin main || true
             git push
           else
-            echo "No prompt string changes."
+            echo "No changes."
           fi
 
       - name: Fail if a strings file was skipped

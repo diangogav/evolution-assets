@@ -48,6 +48,9 @@ export const REPO_ASSETS = [
 	// Refreshed by the daily mirror-edopro-prompts.yml, which runs this script
 	// itself for the reason given for the Rush list above.
 	{ id: "edopro:prompts", raw: "edopro/prompts.cdb", path: "edopro/prompts.cdb.gz" },
+	// The cards of the EDOPro databases the client's base one lacks
+	// (build-edopro-cards.mjs), refreshed by the same workflow.
+	{ id: "edopro:cards", raw: "edopro/cards.cdb", path: "edopro/cards.cdb.gz" },
 	{ id: "edopro:strings:en", path: "edopro/strings.en.conf" },
 	{ id: "edopro:strings:es", path: "edopro/strings.es.conf" },
 ];

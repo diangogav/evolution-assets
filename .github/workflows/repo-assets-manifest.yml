@@ -17,6 +17,8 @@ on:
       - "cdb/pre-errata.es.cdb"
       - "edopro/prompts.cdb"
       - "edopro/prompts.cdb.gz"
+      - "edopro/cards.cdb"
+      - "edopro/cards.cdb.gz"
       - "edopro/strings.en.conf"
       - "edopro/strings.es.conf"
       - "rush/lflist.conf"
