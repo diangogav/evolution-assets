@@ -51,6 +51,10 @@ export const REPO_ASSETS = [
 	// The cards of the EDOPro databases the client's base one lacks
 	// (build-edopro-cards.mjs), refreshed by the same workflow.
 	{ id: "edopro:cards", raw: "edopro/cards.cdb", path: "edopro/cards.cdb.gz" },
+	// The EDOPro code of each unreleased card of the YGOPro pool
+	// (build-edopro-prerelease-ids.mjs). The server reads it to seat a deck
+	// built against that pool in a room run by the EDOPro core.
+	{ id: "edopro:prerelease-ids", path: "edopro/prerelease-ids.json" },
 	{ id: "edopro:strings:en", path: "edopro/strings.en.conf" },
 	{ id: "edopro:strings:es", path: "edopro/strings.es.conf" },
 ];

@@ -55,6 +55,17 @@ cards under a temporary number) are not in the client's database:
   gzip -9 -n -k -f edopro/cards.cdb
   ```
 
+- `edopro/prerelease-ids.json` gives, for each unreleased card of
+  `cdb/prerelease.en.cdb.gz`, the code the same card has in EDOPro: the two
+  ecosystems number a card with no passcode independently. A pair is made only
+  when the English name, type, ATK and DEF are equal and exactly one EDOPro
+  card printed in the OCG or the TCG qualifies; any other card is left out.
+  The server reads it to seat a deck built against the YGOPro pool:
+
+  ```sh
+  node scripts/build-edopro-prerelease-ids.mjs --databases <BabelCDB checkout>
+  ```
+
 - `edopro/strings.{en,es}.conf` are EDOPro's `strings.conf` and its Spanish
   copy, taken unchanged from
   [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)
