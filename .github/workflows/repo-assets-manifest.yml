@@ -15,6 +15,10 @@ on:
       - "lflist/tcg.lflist.conf"
       - "cdb/pre-errata.en.cdb"
       - "cdb/pre-errata.es.cdb"
+      - "edopro/prompts.cdb"
+      - "edopro/prompts.cdb.gz"
+      - "edopro/strings.en.conf"
+      - "edopro/strings.es.conf"
       - "rush/lflist.conf"
       - "scripts/update-repo-assets-manifest.mjs"
   workflow_dispatch: {}

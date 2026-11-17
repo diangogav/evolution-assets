@@ -1,0 +1,92 @@
+name: Mirror EDOPro prompt strings
+
+on:
+  schedule:
+    # Daily at 08:15 UTC, clear of the other mirrors. Only commits when the
+    # built files actually change.
+    - cron: "15 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Serialize with the other workflows that commit version-manifest.json.
+concurrency:
+  group: version-manifest
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        # Full history so the manifest's commit date reflects the real last edit.
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Clone the EDOPro card databases
+        # The same repository and branch the server loads its EDOPro databases
+        # from, so the prompts follow what its rooms run.
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/babelcdb
+          git clone --depth=1 --single-branch --branch master \
+            https://github.com/ProjectIgnis/BabelCDB.git /tmp/babelcdb
+
+      - name: Build the prompts database
+        run: |
+          set -euo pipefail
+          node scripts/build-edopro-prompts.mjs --databases /tmp/babelcdb --out /tmp/prompts.cdb
+          # Fail loudly if the build produced a non-SQLite file.
+          head -c 15 /tmp/prompts.cdb | grep -q "SQLite format 3" || { echo "built file is not a SQLite db"; exit 1; }
+          cp /tmp/prompts.cdb edopro/prompts.cdb
+          # -n omits the mtime so identical content produces identical bytes.
+          gzip -9 -n -c /tmp/prompts.cdb > edopro/prompts.cdb.gz
+
+      - name: Fetch EDOPro's strings.conf files
+        # A file that fails to download, or comes back without a single system
+        # string, is left as it is and the run is failed at the end.
+        run: |
+          set -euo pipefail
+          base="https://raw.githubusercontent.com/ProjectIgnis/Distribution/master/config"
+          missing=""
+          fetch() {
+            if curl -sSL --fail --max-time 120 "$2" -o "/tmp/strings.$1.conf" \
+               && grep -q '^!system ' "/tmp/strings.$1.conf"; then
+              cp "/tmp/strings.$1.conf" "edopro/strings.$1.conf"
+            else
+              echo "::warning::EDOPro strings.conf ($1) unavailable — keeping the current file"
+              missing="${missing} $1"
+            fi
+          }
+          fetch en "${base}/strings.conf"
+          fetch es "${base}/languages/Espa%C3%B1ol/strings.conf"
+          echo "MISSING_STRINGS=${missing# }" >> "$GITHUB_ENV"
+
+      - name: Update version manifest
+        # Run here: a push made with GITHUB_TOKEN never triggers
+        # repo-assets-manifest.yml, so its `paths:` filter would not pick this up.
+        run: node scripts/update-repo-assets-manifest.mjs
+
+      - name: Commit if the prompt strings changed
+        run: |
+          if [ -n "$(git status --porcelain edopro version-manifest.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add edopro version-manifest.json
+            git commit -m "chore(edopro): refresh prompt strings"
+            git pull --rebase --autostash origin main || true
+            git push
+          else
+            echo "No prompt string changes."
+          fi
+
+      - name: Fail if a strings file was skipped
+        if: env.MISSING_STRINGS != ''
+        run: |
+          echo "::error::EDOPro strings.conf not refreshed for: ${MISSING_STRINGS}"
+          exit 1

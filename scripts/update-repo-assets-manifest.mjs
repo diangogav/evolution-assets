@@ -21,8 +21,10 @@ const MANIFEST_PATH = "version-manifest.json";
 
 // Keys match the client's ResourceId strings (evolution-card-game
 // sources.config.ts); paths are the exact repo paths the client downloads, so
-// its ManifestProbe can match entries by path. All of these are served raw
-// (no .gz), so the published sha256 is the hash of the file itself.
+// its ManifestProbe can match entries by path. Most are served raw (no .gz),
+// so the published sha256 is the hash of the file itself. An asset served as
+// gzip names the uncompressed file in `raw`: the hash is taken over that one,
+// because the client hashes the bytes it has after decompressing.
 export const REPO_ASSETS = [
 	{ id: "lflist:evolution:edison", path: "lflist/edison.lflist.conf" },
 	{ id: "lflist:evolution:goat", path: "lflist/goat.lflist.conf" },
@@ -40,6 +42,14 @@ export const REPO_ASSETS = [
 	{ id: "lflist:evolution:rush", path: "rush/lflist.conf" },
 	{ id: "cdb:pre-errata:en", path: "cdb/pre-errata.en.cdb" },
 	{ id: "cdb:pre-errata:es", path: "cdb/pre-errata.es.cdb" },
+	// Prompt strings for rooms run by the EDOPro core: the card prompts
+	// (build-edopro-prompts.mjs) and EDOPro's own strings.conf, copied from
+	// ProjectIgnis/Distribution (config/strings.conf and its Español copy).
+	// Refreshed by the daily mirror-edopro-prompts.yml, which runs this script
+	// itself for the reason given for the Rush list above.
+	{ id: "edopro:prompts", raw: "edopro/prompts.cdb", path: "edopro/prompts.cdb.gz" },
+	{ id: "edopro:strings:en", path: "edopro/strings.en.conf" },
+	{ id: "edopro:strings:es", path: "edopro/strings.es.conf" },
 ];
 
 function main() {
@@ -50,16 +60,17 @@ function main() {
 
 	let updated = { ...manifest, generatedAt: now };
 	for (const asset of REPO_ASSETS) {
-		if (!existsSync(asset.path)) {
+		const hashed = asset.raw ?? asset.path;
+		for (const file of new Set([asset.path, hashed])) {
 			// A missing file means a rename this script was not updated for — fail
 			// loudly instead of silently dropping the asset from freshness checks.
-			throw new Error(`asset file not found: ${asset.path} (${asset.id})`);
+			if (!existsSync(file)) throw new Error(`asset file not found: ${file} (${asset.id})`);
 		}
-		const commit = gitCommitInfo(asset.path);
+		const commit = gitCommitInfo(hashed);
 		updated = upsertAsset(updated, asset.id, {
 			path: asset.path,
-			sha256: sha256File(asset.path),
-			bytes: readFileSync(asset.path).length,
+			sha256: sha256File(hashed),
+			bytes: readFileSync(hashed).length,
 			upstreamUrl: null,
 			upstreamLastModified: null,
 			mirroredAt: now,

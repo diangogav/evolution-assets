@@ -7,6 +7,7 @@ ban lists), plus the generators that produce them.
 
 ```
 cdb/        card databases (.cdb)
+edopro/     prompt strings for rooms run by the EDOPro core
 decks/      sample decks (.ydk) and index.json, the template list the client reads
 lflist/     ban lists (.lflist.conf) — including the generated genesys list
 scripts/    generators that produce assets
@@ -25,6 +26,31 @@ the room's list.
 same list. Then remove the bridge: this file, its `REPO_ASSETS` entry, the
 `paths` entry in `repo-assets-manifest.yml`, and the server's `formats/tcg`
 assembly entry and `runtime.ygopro.standard` member.
+
+## EDOPro prompt strings
+
+A client of the YGOPro server can sit in a room run by the EDOPro core. The
+scripts of that core name their prompts by position, and the two card databases
+number the prompts of a card independently, so the client needs EDOPro's own
+labels for the duration of that room:
+
+- `edopro/prompts.cdb` holds `texts (id, str1..str16)` for every card with at
+  least one prompt, and nothing else. It is built from
+  [ProjectIgnis/BabelCDB](https://github.com/ProjectIgnis/BabelCDB), the
+  repository the server loads its EDOPro databases from:
+
+  ```sh
+  node scripts/build-edopro-prompts.mjs --databases <BabelCDB checkout>
+  gzip -9 -n -k -f edopro/prompts.cdb
+  ```
+
+- `edopro/strings.{en,es}.conf` are EDOPro's `strings.conf` and its Spanish
+  copy, taken unchanged from
+  [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)
+  (`config/strings.conf` and `config/languages/Español/strings.conf`, AGPL-3.0).
+
+`mirror-edopro-prompts.yml` refreshes the three daily and commits only when
+they change, so none of them is edited by hand.
 
 ## Goat Format list and pre-errata overlay
 
