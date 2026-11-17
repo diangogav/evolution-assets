@@ -56,6 +56,14 @@ jobs:
           cp /tmp/cards.cdb edopro/cards.cdb
           gzip -9 -n -c /tmp/cards.cdb > edopro/cards.cdb.gz
 
+      - name: Pair the unreleased cards of both card pools
+        # An unreleased card has one temporary code here and another in EDOPro.
+        run: |
+          set -euo pipefail
+          node scripts/build-edopro-prerelease-ids.mjs --databases /tmp/babelcdb --prerelease cdb/prerelease.en.cdb.gz --out /tmp/prerelease-ids.json
+          node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/prerelease-ids.json", "utf8")); if (m.version !== 1 || typeof m.ids !== "object") process.exit(1)'
+          cp /tmp/prerelease-ids.json edopro/prerelease-ids.json
+
       - name: Fetch EDOPro's strings.conf files
         # A file that fails to download, or comes back without a single system
         # string, is left as it is and the run is failed at the end.
@@ -87,7 +95,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add edopro version-manifest.json
-            git commit -m "chore(edopro): refresh prompt strings and cards"
+            git commit -m "chore(edopro): refresh prompt strings, cards and prerelease ids"
             git pull --rebase --autostash origin main || true
             git push
           else
