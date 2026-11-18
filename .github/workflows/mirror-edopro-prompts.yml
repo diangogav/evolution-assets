@@ -56,11 +56,12 @@ jobs:
           cp /tmp/cards.cdb edopro/cards.cdb
           gzip -9 -n -c /tmp/cards.cdb > edopro/cards.cdb.gz
 
-      - name: Pair the unreleased cards of both card pools
-        # An unreleased card has one temporary code here and another in EDOPro.
+      - name: Pair the cards EDOPro files under another code
+        # An unreleased card has one temporary code here and another in EDOPro,
+        # and a released one can still carry a temporary code there.
         run: |
           set -euo pipefail
-          node scripts/build-edopro-prerelease-ids.mjs --databases /tmp/babelcdb --prerelease cdb/prerelease.en.cdb.gz --out /tmp/prerelease-ids.json
+          node scripts/build-edopro-prerelease-ids.mjs --databases /tmp/babelcdb --prerelease cdb/prerelease.en.cdb.gz --base cdb/base.en.cdb.gz --out /tmp/prerelease-ids.json
           node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/prerelease-ids.json", "utf8")); if (m.version !== 1 || typeof m.ids !== "object") process.exit(1)'
           cp /tmp/prerelease-ids.json edopro/prerelease-ids.json
 

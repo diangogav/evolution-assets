@@ -17,6 +17,7 @@ test("parseArgs requires the databases directory and defaults the rest", () => {
 	assert.deepEqual(parseArgs(["--databases", "dbs"]), {
 		databases: "dbs",
 		prerelease: "cdb/prerelease.en.cdb.gz",
+		base: "cdb/base.en.cdb.gz",
 		out: "edopro/prerelease-ids.json",
 	});
 });
@@ -62,4 +63,12 @@ test("never pairs with an alternate artwork, nor with an anime or skill card", (
 test("renders the pairs in code order as stable JSON", () => {
 	const pairs = pairPrereleaseIds([card(20, "B"), card(10, "A")], pool(card(11, "A"), card(21, "B")));
 	assert.equal(renderPrereleaseIds(pairs), '{\n\t"version": 1,\n\t"ids": {\n\t\t"10": 11,\n\t\t"20": 21\n\t}\n}\n');
+});
+
+test("pairs a card the YGOPro pool holds under its passcode with EDOPro's temporary code for it", () => {
+	const pairs = pairsOf(
+		[card(86457955, "Angelechy Opposition", { ot: 0x2 })],
+		pool(card(101402094, "Angelechy Opposition")),
+	);
+	assert.deepEqual(pairs, [[86457955, 101402094]]);
 });

@@ -1,12 +1,17 @@
 #!/usr/bin/env node
 /**
- * Builds edopro/prerelease-ids.json: for each unreleased card of the YGOPro
- * card pool, the code the same card has in the EDOPro card databases.
+ * Builds edopro/prerelease-ids.json: for each card of the YGOPro card pool
+ * that EDOPro files under another code, the code it has in the EDOPro card
+ * databases.
  *
  * A card that has no passcode yet gets a temporary number, and the two
- * ecosystems number it independently. A deck built against the YGOPro pool
- * holds a code a room run by the EDOPro core has never seen, so the room
- * rejects the deck. This file tells the server which EDOPro card is meant.
+ * ecosystems number it independently. They also adopt its passcode at
+ * different times, so a card the YGOPro pool already holds under its passcode
+ * can still carry a temporary number in EDOPro. Either way a deck built
+ * against the YGOPro pool holds a code a room run by the EDOPro core has
+ * never seen, so the room rejects the deck. This file tells the server which
+ * EDOPro card is meant. Both the unreleased and the released cards of the
+ * YGOPro pool are paired.
  *
  * Nothing but the card itself links the two numbers, so a pair is made only
  * when it is unmistakable: the English names are equal, the type, ATK and DEF
@@ -20,7 +25,8 @@
  * the rows of an earlier one. mirror-edopro-prompts.yml runs this daily.
  *
  * Usage:
- *   node scripts/build-edopro-prerelease-ids.mjs --databases <dir> [--prerelease cdb/prerelease.en.cdb.gz] [--out edopro/prerelease-ids.json]
+ *   node scripts/build-edopro-prerelease-ids.mjs --databases <dir> [--prerelease cdb/prerelease.en.cdb.gz] \
+ *     [--base cdb/base.en.cdb.gz] [--out edopro/prerelease-ids.json]
  */
 import { existsSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -30,8 +36,13 @@ import { withPlainDatabase } from "./build-edopro-cards.mjs";
 import { listDatabases } from "./build-edopro-prompts.mjs";
 
 export function parseArgs(argv) {
-	const opts = { databases: null, prerelease: "cdb/prerelease.en.cdb.gz", out: "edopro/prerelease-ids.json" };
-	const keys = { "--databases": "databases", "--prerelease": "prerelease", "--out": "out" };
+	const opts = {
+		databases: null,
+		prerelease: "cdb/prerelease.en.cdb.gz",
+		base: "cdb/base.en.cdb.gz",
+		out: "edopro/prerelease-ids.json",
+	};
+	const keys = { "--databases": "databases", "--prerelease": "prerelease", "--base": "base", "--out": "out" };
 	for (let i = 0; i < argv.length; i += 2) {
 		const key = keys[argv[i]];
 		if (!key || argv[i + 1] === undefined) throw new Error(`unknown or incomplete option: ${argv[i]}`);
@@ -112,11 +123,20 @@ function main() {
 	const opts = parseArgs(process.argv.slice(2));
 	const paths = listDatabases(opts.databases);
 	if (paths.length === 0) throw new Error(`no .cdb files in ${opts.databases}`);
-	if (!existsSync(opts.prerelease)) throw new Error(`prerelease database not found: ${opts.prerelease}`);
+	for (const pool of [opts.prerelease, opts.base]) {
+		if (!existsSync(pool)) throw new Error(`card database not found: ${pool}`);
+	}
 	const prerelease = withPlainDatabase(opts.prerelease, readCards);
-	const pairs = pairPrereleaseIds(prerelease, readEdoproCards(paths));
+	const base = withPlainDatabase(opts.base, readCards);
+	const edoproCards = readEdoproCards(paths);
+	// A released card is paired like an unreleased one. Its copies are left to
+	// the server, which already plays a copy as its original.
+	const released = base.filter((card) => card.alias === 0 && !edoproCards.has(card.id));
+	const pairs = pairPrereleaseIds([...prerelease, ...released], edoproCards);
 	writeFileSync(opts.out, renderPrereleaseIds(pairs));
-	process.stdout.write(`${opts.out}: ${pairs.size} of ${prerelease.length} prerelease cards paired\n`);
+	process.stdout.write(
+		`${opts.out}: ${pairs.size} cards paired, of ${prerelease.length} unreleased and ${released.length} released ones EDOPro lacks\n`,
+	);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) main();
