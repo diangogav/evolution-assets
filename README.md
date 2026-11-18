@@ -67,9 +67,15 @@ cards under a temporary number) are not in the client's database:
   ```
 
 - `edopro/strings.{en,es}.conf` are EDOPro's `strings.conf` and its Spanish
-  copy, taken unchanged from
+  copy, from
   [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)
   (`config/strings.conf` and `config/languages/Español/strings.conf`, AGPL-3.0).
+  The English file is unchanged. The Spanish one leaves many entries
+  untranslated, so `scripts/fill-edopro-strings.mjs` appends the ones it lacks
+  from the community translation
+  [josevdr95new/cdbespa-alternativo](https://github.com/josevdr95new/cdbespa-alternativo).
+  An entry is taken only when the English file defines it with the same
+  placeholders.
 
 `mirror-edopro-prompts.yml` refreshes all of them daily and commits only when
 they change, so none of them is edited by hand.

@@ -67,21 +67,33 @@ jobs:
       - name: Fetch EDOPro's strings.conf files
         # A file that fails to download, or comes back without a single system
         # string, is left as it is and the run is failed at the end.
+        #
+        # EDOPro's Spanish file leaves many entries untranslated, so its gaps
+        # are filled from a community translation. The Spanish file is only
+        # replaced when both downloads succeed: publishing the base alone
+        # would drop every filled entry back to English.
         run: |
           set -euo pipefail
           base="https://raw.githubusercontent.com/ProjectIgnis/Distribution/master/config"
+          fill="https://raw.githubusercontent.com/josevdr95new/cdbespa-alternativo/main/strings.conf"
           missing=""
           fetch() {
-            if curl -sSL --fail --max-time 120 "$2" -o "/tmp/strings.$1.conf" \
-               && grep -q '^!system ' "/tmp/strings.$1.conf"; then
-              cp "/tmp/strings.$1.conf" "edopro/strings.$1.conf"
-            else
-              echo "::warning::EDOPro strings.conf ($1) unavailable — keeping the current file"
-              missing="${missing} $1"
-            fi
+            curl -sSL --fail --max-time 120 "$2" -o "/tmp/strings.$1.conf" \
+              && grep -q '^!system ' "/tmp/strings.$1.conf"
           }
-          fetch en "${base}/strings.conf"
-          fetch es "${base}/languages/Espa%C3%B1ol/strings.conf"
+          if fetch en "${base}/strings.conf"; then
+            cp /tmp/strings.en.conf edopro/strings.en.conf
+          else
+            echo "::warning::EDOPro strings.conf (en) unavailable — keeping the current file"
+            missing="${missing} en"
+          fi
+          if fetch es "${base}/languages/Espa%C3%B1ol/strings.conf" && fetch es-fill "${fill}"; then
+            node scripts/fill-edopro-strings.mjs --base /tmp/strings.es.conf --fill /tmp/strings.es-fill.conf \
+              --reference edopro/strings.en.conf --out edopro/strings.es.conf
+          else
+            echo "::warning::EDOPro strings.conf (es) or its fill unavailable — keeping the current file"
+            missing="${missing} es"
+          fi
           echo "MISSING_STRINGS=${missing# }" >> "$GITHUB_ENV"
 
       - name: Update version manifest
