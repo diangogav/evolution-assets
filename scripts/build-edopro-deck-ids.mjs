@@ -24,13 +24,20 @@
  * differently; tokens; and Rush Duel cards, whose pool the client numbers
  * separately. A code the client's released pool already has needs no entry.
  *
+ * Neither does a code any other pool of the client has (`--pools`). The
+ * client's pre-errata overlay and its format databases reuse EDOPro's own
+ * codes for the copies they carry (511002995 is "Brain Control (Pre-Errata)"
+ * in both), and a deck of one of those formats holds that code on purpose.
+ * Giving it an entry would turn the copy the format plays into the official
+ * card the format does not allow.
+ *
  * The EDOPro databases are a directory of .cdb files, a checkout of
  * ProjectIgnis/BabelCDB, merged in file name order with a later file replacing
  * the rows of an earlier one. mirror-edopro-prompts.yml runs this daily.
  *
  * Usage:
  *   node scripts/build-edopro-deck-ids.mjs --databases <dir> [--base cdb/base.en.cdb.gz] \
- *     [--prerelease cdb/prerelease.en.cdb.gz] [--out edopro/deck-ids.json]
+ *     [--prerelease cdb/prerelease.en.cdb.gz] [--pools <a.cdb,b.cdb.gz,…>] [--out edopro/deck-ids.json]
  */
 import { existsSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -39,14 +46,27 @@ import { withPlainDatabase } from "./build-edopro-cards.mjs";
 import { readCards, readEdoproCards } from "./build-edopro-prerelease-ids.mjs";
 import { listDatabases } from "./build-edopro-prompts.mjs";
 
+/**
+ * The client's other card pools: the pre-errata overlay every duel loads and
+ * the databases of its formats. The unreleased pool is always one of them.
+ */
+export const DEFAULT_POOLS = ["cdb/pre-errata.en.cdb", "cdb/edison-pre-errata.cdb", "cdb/classic.cdb", "cdb/jtp.en.cdb"];
+
 export function parseArgs(argv) {
 	const opts = {
 		databases: null,
 		base: "cdb/base.en.cdb.gz",
 		prerelease: "cdb/prerelease.en.cdb.gz",
+		pools: DEFAULT_POOLS.join(","),
 		out: "edopro/deck-ids.json",
 	};
-	const keys = { "--databases": "databases", "--base": "base", "--prerelease": "prerelease", "--out": "out" };
+	const keys = {
+		"--databases": "databases",
+		"--base": "base",
+		"--prerelease": "prerelease",
+		"--pools": "pools",
+		"--out": "out",
+	};
 	for (let i = 0; i < argv.length; i += 2) {
 		const key = keys[argv[i]];
 		if (!key || argv[i + 1] === undefined) throw new Error(`unknown or incomplete option: ${argv[i]}`);
@@ -89,10 +109,13 @@ function sameCard(card, byName) {
 /**
  * Maps each EDOPro code the client's released pool lacks to the client's code
  * for the same card. `base` and `prerelease` are the client's released and
- * unreleased cards. Returns a Map of EDOPro code to client code, in code order.
+ * unreleased cards; `ownIds` are the codes of its other pools, which get no
+ * entry. Returns a Map of EDOPro code to client code, in code order.
  */
-export function mapDeckIds(edoproCards, base, prerelease) {
+export function mapDeckIds(edoproCards, base, prerelease, ownIds = new Set()) {
 	const baseIds = new Set(base.map((card) => card.id));
+	const prereleaseIds = new Set(prerelease.map((card) => card.id));
+	const isOwn = (id) => baseIds.has(id) || prereleaseIds.has(id) || ownIds.has(id);
 	const baseByName = originalsByName(base);
 	const prereleaseByName = originalsByName(prerelease);
 
@@ -110,7 +133,7 @@ export function mapDeckIds(edoproCards, base, prerelease) {
 
 	const ids = new Map();
 	for (const card of [...edoproCards.values()].sort((a, b) => a.id - b.id)) {
-		if (baseIds.has(card.id)) continue;
+		if (isOwn(card.id)) continue;
 		const ours = resolve(card, 0);
 		if (ours !== null && ours !== card.id) ids.set(card.id, ours);
 	}
@@ -132,7 +155,12 @@ function main() {
 	}
 	const base = withPlainDatabase(opts.base, readCards);
 	const prerelease = withPlainDatabase(opts.prerelease, readCards);
-	const ids = mapDeckIds(readEdoproCards(paths), base, prerelease);
+	const ownIds = new Set();
+	for (const pool of opts.pools.split(",").filter(Boolean)) {
+		if (!existsSync(pool)) throw new Error(`card database not found: ${pool}`);
+		for (const card of withPlainDatabase(pool, readCards)) ownIds.add(card.id);
+	}
+	const ids = mapDeckIds(readEdoproCards(paths), base, prerelease, ownIds);
 	writeFileSync(opts.out, renderDeckIds(ids));
 	process.stdout.write(`${opts.out}: ${ids.size} EDOPro codes mapped to the client's card pool\n`);
 }

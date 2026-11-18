@@ -74,7 +74,9 @@ cards under a temporary number) are not in the client's database:
   anime version) becomes the card it copies. An unreleased card under
   EDOPro's temporary number is paired like above, with the client's released
   cards first and its unreleased ones second. Anime cards that copy nothing,
-  tokens and Rush Duel cards get no entry:
+  tokens and Rush Duel cards get no entry. Neither does a code another pool
+  of the client has: the pre-errata overlay and the format databases reuse
+  EDOPro's codes for their copies, and a deck holds those on purpose:
 
   ```sh
   node scripts/build-edopro-deck-ids.mjs --databases <BabelCDB checkout>

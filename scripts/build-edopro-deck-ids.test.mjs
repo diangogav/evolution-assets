@@ -21,6 +21,7 @@ test("parseArgs requires the databases directory and defaults the rest", () => {
 		databases: "dbs",
 		base: "cdb/base.en.cdb.gz",
 		prerelease: "cdb/prerelease.en.cdb.gz",
+		pools: "cdb/pre-errata.en.cdb,cdb/edison-pre-errata.cdb,cdb/classic.cdb,cdb/jtp.en.cdb",
 		out: "edopro/deck-ids.json",
 	});
 });
@@ -131,4 +132,21 @@ test("leaves out anime cards that copy nothing, tokens and Rush Duel cards", () 
 
 test("renderDeckIds writes the codes in code order under a version", () => {
 	assert.equal(renderDeckIds(new Map([[2, 20], [1, 10]])), '{\n\t"version": 1,\n\t"ids": {\n\t\t"1": 10,\n\t\t"2": 20\n\t}\n}\n');
+});
+
+test("gives no entry to a code another pool of the client uses for the same copy", () => {
+	const edopro = pool(
+		card(511002995, "Brain Control (Pre-Errata)", { alias: 87910978 }),
+		card(511002631, "Sangan (Pre-Errata)", { alias: 26202165 }),
+		card(3784444, "Rampaging Rhynos (Pre-Errata)", { alias: 3784434 }),
+	);
+	const base = [card(87910978, "Brain Control"), card(26202165, "Sangan"), card(3784434, "Rampaging Rhynos")];
+	const ids = [...mapDeckIds(edopro, base, [], new Set([511002995, 511002631]))];
+	assert.deepEqual(ids, [[3784444, 3784434]]);
+});
+
+test("gives no entry to a code the client's unreleased pool has", () => {
+	const edopro = pool(card(100200298, "Counter Spell", { ot: UNRELEASED }));
+	const ids = [...mapDeckIds(edopro, [card(88421252, "Counter Spell")], [card(100200298, "Counter Spell", { ot: UNRELEASED })])];
+	assert.deepEqual(ids, []);
 });
