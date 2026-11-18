@@ -47,7 +47,7 @@ const CARD_QUERY = "SELECT datas.id AS id, ot, alias, type, atk, def, name FROM 
 const SCOPE_OFFICIAL = 0x3;
 
 /** The cards of one database as { id, ot, alias, type, atk, def, name }. */
-function readCards(path) {
+export function readCards(path) {
 	const db = new DatabaseSync(path, { readOnly: true });
 	try {
 		return db.prepare(CARD_QUERY).all().map((row) => ({

@@ -55,6 +55,10 @@ export const REPO_ASSETS = [
 	// (build-edopro-prerelease-ids.mjs). The server reads it to seat a deck
 	// built against that pool in a room run by the EDOPro core.
 	{ id: "edopro:prerelease-ids", path: "edopro/prerelease-ids.json" },
+	// The other direction, for the client: the code of its own pool for each
+	// code only EDOPro uses (build-edopro-deck-ids.mjs). It converts a deck
+	// built in EDOPro with it.
+	{ id: "edopro:deck-ids", path: "edopro/deck-ids.json" },
 	{ id: "edopro:strings:en", path: "edopro/strings.en.conf" },
 	{ id: "edopro:strings:es", path: "edopro/strings.es.conf" },
 ];

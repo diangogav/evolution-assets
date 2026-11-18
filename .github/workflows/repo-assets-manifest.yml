@@ -20,6 +20,7 @@ on:
       - "edopro/cards.cdb"
       - "edopro/cards.cdb.gz"
       - "edopro/prerelease-ids.json"
+      - "edopro/deck-ids.json"
       - "edopro/strings.en.conf"
       - "edopro/strings.es.conf"
       - "rush/lflist.conf"

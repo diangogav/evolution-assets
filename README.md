@@ -66,6 +66,18 @@ cards under a temporary number) are not in the client's database:
   node scripts/build-edopro-prerelease-ids.mjs --databases <BabelCDB checkout>
   ```
 
+- `edopro/deck-ids.json` is the other direction, for the client: for each code
+  only EDOPro uses, the code the same card has in the client's pool, so a deck
+  built in EDOPro can be converted. A copy (alternate artwork, pre-errata or
+  anime version) becomes the card it copies. An unreleased card under
+  EDOPro's temporary number is paired like above, with the client's released
+  cards first and its unreleased ones second. Anime cards that copy nothing,
+  tokens and Rush Duel cards get no entry:
+
+  ```sh
+  node scripts/build-edopro-deck-ids.mjs --databases <BabelCDB checkout>
+  ```
+
 - `edopro/strings.{en,es}.conf` are EDOPro's `strings.conf` and its Spanish
   copy, from
   [ProjectIgnis/Distribution](https://github.com/ProjectIgnis/Distribution)

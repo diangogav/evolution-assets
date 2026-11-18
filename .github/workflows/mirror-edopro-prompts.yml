@@ -64,6 +64,14 @@ jobs:
           node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/prerelease-ids.json", "utf8")); if (m.version !== 1 || typeof m.ids !== "object") process.exit(1)'
           cp /tmp/prerelease-ids.json edopro/prerelease-ids.json
 
+      - name: Map the codes only EDOPro uses to the client's own
+        # A deck built in EDOPro holds them; the client converts it with this.
+        run: |
+          set -euo pipefail
+          node scripts/build-edopro-deck-ids.mjs --databases /tmp/babelcdb --base cdb/base.en.cdb.gz --prerelease cdb/prerelease.en.cdb.gz --out /tmp/deck-ids.json
+          node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/deck-ids.json", "utf8")); if (m.version !== 1 || typeof m.ids !== "object") process.exit(1)'
+          cp /tmp/deck-ids.json edopro/deck-ids.json
+
       - name: Fetch EDOPro's strings.conf files
         # A file that fails to download, or comes back without a single system
         # string, is left as it is and the run is failed at the end.
