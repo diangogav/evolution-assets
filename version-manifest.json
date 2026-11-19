@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-19T15:24:17.423Z",
+  "generatedAt": "2026-11-19T15:29:40.379Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -88,9 +88,9 @@
       "bytes": 30941,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-11T03:57:09.516Z",
-      "commitSha": "6d83e14d83e78960319f90050173cf5a11cce792",
-      "commitDate": "2026-10-22T21:44:03Z"
+      "mirroredAt": "2026-11-19T15:29:40.379Z",
+      "commitSha": "b0a39ddc9aea3b2e51ac902be8730bf5eca785ac",
+      "commitDate": "2026-11-11T03:57:09Z"
     },
     "lflist:evolution:edison": {
       "path": "lflist/edison.lflist.conf",
