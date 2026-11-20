@@ -12,6 +12,7 @@ on:
       - "lflist/goat.lflist.conf"
       - "lflist/jtp.lflist.conf"
       - "lflist/jtp-advanced-marzo-2007.lflist.conf"
+      - "lflist/speed.lflist.conf"
       - "lflist/tcg.lflist.conf"
       - "cdb/pre-errata.en.cdb"
       - "cdb/pre-errata.es.cdb"
