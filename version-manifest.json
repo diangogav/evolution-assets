@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-19T17:23:06.767Z",
+  "generatedAt": "2026-11-20T15:00:28.109Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -98,7 +98,7 @@
       "bytes": 113019,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -108,7 +108,7 @@
       "bytes": 12121,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "f41474d92df913e54a198a8526b4d8756f14ad6e",
       "commitDate": "2026-05-25T18:33:30-04:00"
     },
@@ -118,7 +118,7 @@
       "bytes": 12458,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "2eb86ebcde58624ab408d74e6e484c404df4bd46",
       "commitDate": "2026-07-28T14:25:06-04:00"
     },
@@ -128,7 +128,7 @@
       "bytes": 65536,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "4dd70ce6495997dfc59e90e17cf523b500e7105a",
       "commitDate": "2026-11-11T22:38:32-04:00"
     },
@@ -138,7 +138,7 @@
       "bytes": 73728,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "4dd70ce6495997dfc59e90e17cf523b500e7105a",
       "commitDate": "2026-11-11T22:38:32-04:00"
     },
@@ -187,7 +187,7 @@
       "bytes": 7879,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "bb1c1c5e8102410d2a0e3e71e88e478a8d023a40",
       "commitDate": "2026-10-20T11:04:30Z"
     },
@@ -197,7 +197,7 @@
       "bytes": 8627,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "ff0f84fa613d6ad21cb343eaa6d6205711ca507f",
       "commitDate": "2026-10-31T08:27:04-04:00"
     },
@@ -217,7 +217,7 @@
       "bytes": 51698,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "4dd70ce6495997dfc59e90e17cf523b500e7105a",
       "commitDate": "2026-11-11T22:38:32-04:00"
     },
@@ -227,9 +227,9 @@
       "bytes": 1421312,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
-      "commitSha": "49d9f77f891e67f1e3799e69c7386f97d22fed02",
-      "commitDate": "2026-11-18T13:15:34Z"
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
+      "commitSha": "9871cbe40df2052a7d9395c542568915de34432c",
+      "commitDate": "2026-11-19T17:23:07Z"
     },
     "edopro:strings:en": {
       "path": "edopro/strings.en.conf",
@@ -237,7 +237,7 @@
       "bytes": 54252,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "3a1ca5d71e40f78a174203a8b63e5e76414148d0",
       "commitDate": "2026-11-17T11:04:11-04:00"
     },
@@ -247,7 +247,7 @@
       "bytes": 57474,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "77ad55ed09d45cb41ab9dad1a52b8de1db110ab7",
       "commitDate": "2026-11-18T09:08:33-04:00"
     },
@@ -257,9 +257,9 @@
       "bytes": 3477504,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
-      "commitSha": "b0881a1f4a100d5edbb842c6a9eda02e0a3f7d73",
-      "commitDate": "2026-11-18T17:15:23Z"
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
+      "commitSha": "9871cbe40df2052a7d9395c542568915de34432c",
+      "commitDate": "2026-11-19T17:23:07Z"
     },
     "edopro:prerelease-ids": {
       "path": "edopro/prerelease-ids.json",
@@ -267,7 +267,7 @@
       "bytes": 6549,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "b0881a1f4a100d5edbb842c6a9eda02e0a3f7d73",
       "commitDate": "2026-11-18T17:15:23Z"
     },
@@ -277,7 +277,7 @@
       "bytes": 61688,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-19T17:23:06.767Z",
+      "mirroredAt": "2026-11-20T15:00:28.109Z",
       "commitSha": "b0881a1f4a100d5edbb842c6a9eda02e0a3f7d73",
       "commitDate": "2026-11-18T17:15:23Z"
     }
