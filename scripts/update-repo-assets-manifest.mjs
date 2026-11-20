@@ -30,6 +30,10 @@ export const REPO_ASSETS = [
 	{ id: "lflist:evolution:goat", path: "lflist/goat.lflist.conf" },
 	{ id: "lflist:evolution:jtp", path: "lflist/jtp.lflist.conf" },
 	{ id: "lflist:evolution:jtp-adv-2007-03", path: "lflist/jtp-advanced-marzo-2007.lflist.conf" },
+	// ProjectIgnis' Speed Duel list, copied as published: a whitelist that also
+	// names the Skill Cards. The client reads it to build and check Speed Duel
+	// decks; rooms run by the EDOPro core announce the same list by its hash.
+	{ id: "lflist:evolution:speed", path: "lflist/speed.lflist.conf" },
 	// Bridge for a TCG list the YGOPro database has not shipped yet; removed
 	// once check-tcg-bridge.mjs reports that MoeCube carries it.
 	{ id: "lflist:evolution:tcg", path: "lflist/tcg.lflist.conf" },
