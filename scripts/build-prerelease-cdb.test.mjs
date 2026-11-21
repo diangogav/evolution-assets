@@ -5,7 +5,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { applyTranslations, buildPrereleaseCdb, selectSourceCdbs } from "./build-prerelease-cdb.mjs";
+import {
+	applyTranslations,
+	buildPrereleaseCdb,
+	dropReleasedCards,
+	selectSourceCdbs,
+} from "./build-prerelease-cdb.mjs";
 
 const SCHEMA =
 	"CREATE TABLE datas(id integer primary key,ot integer,alias integer,setcode integer," +
@@ -124,6 +129,51 @@ test("applyTranslations replaces matched texts, keeps unmatched, never adds extr
 			.trim()
 			.split("\n");
 		assert.deepEqual(datas, ["1001|257", "1002|257"]);
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("dropReleasedCards removes the cards the released pool already has, data and text", () => {
+	const dir = mkdtempSync(join(tmpdir(), "pre-released-"));
+	try {
+		makeCdb(join(dir, "SET1.cdb"), [
+			{ id: 81797573, ot: 2, name: "中文一" },
+			{ id: 101306094, ot: 2, name: "中文二" },
+		]);
+		const out = join(dir, "prerelease.cdb");
+		buildPrereleaseCdb(dir, out);
+		const released = join(dir, "base.cdb");
+		makeCdb(released, [
+			{ id: 81797573, ot: 2, name: "Angelechy Enlisted" },
+			{ id: 46986414, ot: 3, name: "Dark Magician" },
+		]);
+
+		const dropped = dropReleasedCards(out, released);
+
+		assert.equal(dropped, 1);
+		const query = (sql) => execFileSync("sqlite3", [out, sql], { encoding: "utf8" }).trim();
+		assert.equal(query("SELECT group_concat(id) FROM datas;"), "101306094");
+		assert.equal(query("SELECT group_concat(id) FROM texts;"), "101306094");
+	} finally {
+		rmSync(dir, { recursive: true, force: true });
+	}
+});
+
+test("dropReleasedCards leaves the database alone when no card was released", () => {
+	const dir = mkdtempSync(join(tmpdir(), "pre-released-none-"));
+	try {
+		makeCdb(join(dir, "SET1.cdb"), [{ id: 101306094, ot: 2, name: "中文二" }]);
+		const out = join(dir, "prerelease.cdb");
+		buildPrereleaseCdb(dir, out);
+		const released = join(dir, "base.cdb");
+		makeCdb(released, [{ id: 46986414, ot: 3, name: "Dark Magician" }]);
+
+		assert.equal(dropReleasedCards(out, released), 0);
+		assert.equal(
+			execFileSync("sqlite3", [out, "SELECT count(*) FROM datas;"], { encoding: "utf8" }).trim(),
+			"1",
+		);
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}
