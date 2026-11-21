@@ -91,14 +91,48 @@ export function applyTranslations(cdbPath, translationCdbPath) {
 	return Number(overlap);
 }
 
+/**
+ * Removes from `cdbPath` every card `releasedCdbPath` (the base card pool)
+ * already has, and returns how many were removed.
+ *
+ * The upstream packs go on carrying a card after it is released, and the client
+ * lays this database over the base pool. A card left in both would be shown
+ * from here: marked as a pre-release and, once the translation bundle stops
+ * covering it, in the zh-CN text of the pack. The base pool is the authority
+ * for a released card, so the row here has to go.
+ */
+export function dropReleasedCards(cdbPath, releasedCdbPath) {
+	const released = execFileSync(
+		"sqlite3",
+		[
+			cdbPath,
+			`ATTACH '${releasedCdbPath}' AS released; SELECT count(*) FROM datas WHERE id IN (SELECT id FROM released.datas);`,
+		],
+		{ encoding: "utf8" },
+	).trim();
+
+	sqlite(
+		cdbPath,
+		`ATTACH '${releasedCdbPath}' AS released;` +
+			"DELETE FROM texts WHERE id IN (SELECT id FROM released.datas);" +
+			"DELETE FROM datas WHERE id IN (SELECT id FROM released.datas);" +
+			"DETACH released;",
+	);
+	return Number(released);
+}
+
 function main() {
-	const [srcDir, outPath] = process.argv.slice(2);
+	const [srcDir, outPath, releasedCdbPath] = process.argv.slice(2);
 	if (!srcDir || !outPath) {
-		console.error("usage: node scripts/build-prerelease-cdb.mjs <srcDir> <outCdb>");
+		console.error("usage: node scripts/build-prerelease-cdb.mjs <srcDir> <outCdb> [releasedCdb]");
 		process.exit(1);
 	}
 	const { sources, cards } = buildPrereleaseCdb(srcDir, outPath);
 	console.log(`Merged ${sources.length} cdbs (${sources.join(", ")}) → ${cards} cards in ${outPath}`);
+	if (releasedCdbPath) {
+		const dropped = dropReleasedCards(outPath, releasedCdbPath);
+		console.log(`Dropped ${dropped} cards ${releasedCdbPath} already has`);
+	}
 }
 
 if (process.argv[1]?.endsWith("build-prerelease-cdb.mjs")) {

@@ -38,7 +38,10 @@ jobs:
       - name: Merge per-set cdbs into one prerelease.cdb
         run: |
           set -euo pipefail
-          node scripts/build-prerelease-cdb.mjs /tmp/prerelease-src /tmp/prerelease.cdb
+          # A card the base pool already has is no longer a pre-release: left in
+          # this overlay it would hide the base card behind the pack's zh-CN text.
+          gunzip -c cdb/base.en.cdb.gz > /tmp/base.cdb
+          node scripts/build-prerelease-cdb.mjs /tmp/prerelease-src /tmp/prerelease.cdb /tmp/base.cdb
           # Fail loudly if the merge produced a non-SQLite file.
           head -c 15 /tmp/prerelease.cdb | grep -q "SQLite format 3" || { echo "merged file is not a SQLite db"; exit 1; }
 
