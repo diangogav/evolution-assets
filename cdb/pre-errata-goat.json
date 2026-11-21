@@ -710,5 +710,133 @@
   "name_es": "Fuego de Cobertura",
   "desc_en": "If your opponent's monster attacks a monster on your side of the field, you can activate this card during the Damage Step. Increase the ATK of your attacked monster by the ATK of 1 other face-up monster on your side of the field during the Damage Step.",
   "desc_es": "Si un monstruo de tu adversario ataca a un monstruo en tu lado del Campo, puedes activar esta carta durante el Damage Step. Aumenta el ATK de tu monstruo atacado en el ATK de otro monstruo boca arriba en tu lado del Campo durante el Damage Step."
+ },
+ {
+  "code": 504700101,
+  "alias": 62340868,
+  "name_en": "Kazejin",
+  "name_es": "Kazejin",
+  "desc_en": "You can only activate this card's effect during your opponent's damage calculation. Make the ATK of a monster attacking this card 0 during damage calculation. This effect can only be used once as long as this card remains face-up on the field.",
+  "desc_es": "Sólo puedes activar el efecto de esta carta durante el cálculo de daño de tu adversario. Haz que el ATK de un monstruo que ataque a esta carta sea 0 durante el cálculo de daño. Este efecto sólo puede usarse una vez mientras esta carta permanezca boca arriba en el Campo."
+ },
+ {
+  "code": 504700174,
+  "alias": 98434877,
+  "name_en": "Suijin",
+  "name_es": "Suijin",
+  "desc_en": "You can only activate this card's effect during your opponent's damage calculation. Make the ATK of a monster attacking this card 0 during damage calculation. This effect can only be used once as long as this card remains face-up on the field.",
+  "desc_es": "Sólo puedes activar el efecto de esta carta durante el cálculo de daño de tu adversario. Haz que el ATK de un monstruo que ataque a esta carta sea 0 durante el cálculo de daño. Este efecto sólo puede usarse una vez mientras esta carta permanezca boca arriba en el Campo."
+ },
+ {
+  "code": 504700080,
+  "alias": 49217579,
+  "name_en": "Mirage Knight",
+  "name_es": "Caballero del Espejismo",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card cannot be Special Summoned except by the effect of \"Dark Flare Knight\". When this card battles another monster, during damage calculation increase the ATK of this card by the original ATK of the opponent's monster. During the End Phase after this card was involved in battle, remove this card from play.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta no puede ser Invocada de Modo Especial excepto por el efecto de \"Caballero de la Llamarada Oscura\". Cuando esta carta batalle con otro monstruo, durante el cálculo de daño aumenta el ATK de esta carta en el ATK original del monstruo de tu adversario. Durante la End Phase después de que esta carta haya participado en una batalla, retira esta carta del juego."
+ },
+ {
+  "code": 504700073,
+  "alias": 45547649,
+  "name_en": "Birdface",
+  "name_es": "Carapájaro",
+  "desc_en": "When this card is sent to the Graveyard as a result of battle, you can add 1 \"Harpie Lady\" from your Deck to your hand. Then shuffle your Deck.",
+  "desc_es": "Cuando esta carta es mandada al Cementerio como resultado de una batalla, puedes añadir a tu mano 1 \"Dama Arpía\" de tu Deck. Después baraja tu Deck."
+ },
+ {
+  "code": 504700097,
+  "alias": 60102563,
+  "name_en": "Maji-Gire Panda",
+  "name_es": "Panda Maji-Gire",
+  "desc_en": "As long as this card remains face-up on the field, each time a Beast-Type monster(s) on the field is destroyed, increase the ATK of this card by 500 points.",
+  "desc_es": "Mientras esta carta permanezca boca arriba en el Campo, cada vez que uno o más monstruos de Tipo Bestia en el Campo sean destruidos, aumenta el ATK de esta carta en 500 puntos."
+ },
+ {
+  "code": 504700120,
+  "alias": 73431236,
+  "name_en": "Iron Blacksmith Kotetsu",
+  "name_es": "Herrero Kotetsu",
+  "desc_en": "FLIP: Select 1 Equip Spell Card from your Deck and add it to your hand.",
+  "desc_es": "VOLTEO: Selecciona 1 Carta Mágica de Equipo de tu Deck y añádela a tu mano."
+ },
+ {
+  "code": 504700125,
+  "alias": 74153887,
+  "name_en": "Dark Scorpion - Meanae the Thorn",
+  "name_es": "Escorpión Oscuro - Meanae la Espina",
+  "desc_en": "When this card inflicts Battle Damage to your opponent's Life Points, you can select and activate 1 of the following effects:",
+  "desc_es": "Cuando esta carta inflige Daño de Batalla a los Life Points de tu adversario, puedes seleccionar y activar 1 de los siguientes efectos:"
+ },
+ {
+  "code": 504700139,
+  "alias": 79853073,
+  "name_en": "Cipher Soldier",
+  "name_es": "Soldado Cifrado",
+  "desc_en": "When this card battles with a Warrior-Type monster, increase the ATK and DEF of this monster by 2000 points only during damage calculation.",
+  "desc_es": "Cuando esta carta batalla con un monstruo de Tipo Guerrero, aumenta el ATK y la DEF de este monstruo en 2000 puntos sólo durante el cálculo de daño."
+ },
+ {
+  "code": 504700009,
+  "alias": 6390406,
+  "name_en": "Emblem of Dragon Destroyer",
+  "name_es": "Emblema de Destructor de Dragones",
+  "desc_en": "Add 1 \"Buster Blader\" from your Deck or your Graveyard to your hand.",
+  "desc_es": "Añade a tu mano 1 \"Buster Blader\" de tu Deck o de tu Cementerio."
+ },
+ {
+  "code": 504700031,
+  "alias": 22020907,
+  "name_en": "Hero Signal",
+  "name_es": "Señal de Héroe",
+  "desc_en": "You can only activate this card when a monster on your side of the field is destroyed and sent to the Graveyard as a result of battle. Special Summon 1 Level 4 or lower monster from your hand or Deck that includes \"Elemental Hero\" in its card name.",
+  "desc_es": "Solo puedes activar esta carta cuando un monstruo de tu lado del Campo es destruido y mandado al Cementerio como resultado de una batalla. Invoca de Modo Especial 1 monstruo de Nivel 4 o menor de tu mano o Deck que incluya \"Elemental Hero\" en su nombre de carta."
+ },
+ {
+  "code": 504700039,
+  "alias": 23265313,
+  "name_en": "Cost Down",
+  "name_es": "Coste Abajo",
+  "desc_en": "Discard 1 card from your hand. Downgrade all Monster Cards in your hand by 2 Levels until the End Phase of the turn this card is activated.",
+  "desc_es": "Descarta 1 carta de tu mano. Reduce en 2 Niveles todas las Cartas de Monstruo en tu mano hasta la End Phase del turno en que esta carta es activada."
+ },
+ {
+  "code": 504700049,
+  "alias": 27770341,
+  "name_en": "Super Rejuvenation",
+  "name_es": "Súper Rejuvenecimiento",
+  "desc_en": "During the End Phase of the turn this card is activated, draw 1 card from your Deck for each Dragon-Type monster discarded from your hand and/or Tributed during this turn.",
+  "desc_es": "Durante la End Phase del turno en que esta carta es activada, roba 1 carta de tu Deck por cada monstruo de Tipo Dragón descartado de tu mano y/o Sacrificado durante este turno."
+ },
+ {
+  "code": 504700051,
+  "alias": 29389368,
+  "name_en": "Nutrient Z",
+  "name_es": "Nutriente Z",
+  "desc_en": "This card can only be activated during your opponent's Damage Step. During this turn, if you take Battle Damage of 2000 points or more, increase your Life Points by 4000 points before the damage is subtracted from your Life Points.",
+  "desc_es": "Esta carta solo puede ser activada durante el Damage Step de tu adversario. Durante este turno, si recibes 2000 puntos o más de Daño de Batalla, aumenta tus Life Points en 4000 puntos antes de que el daño sea restado de tus Life Points."
+ },
+ {
+  "code": 504700069,
+  "alias": 41398771,
+  "name_en": "Curse of Aging",
+  "name_es": "Maldición del Envejecimiento",
+  "desc_en": "Discard 1 card from your hand. Decrease the ATK and DEF of all monsters on your opponent's side of the field by 500 points until the end of the turn this card is activated.",
+  "desc_es": "Descarta 1 carta de tu mano. Reduce en 500 puntos el ATK y la DEF de todos los monstruos del lado del Campo de tu adversario hasta el final del turno en que esta carta es activada."
+ },
+ {
+  "code": 504700070,
+  "alias": 41925941,
+  "name_en": "Bark of Dark Ruler",
+  "name_es": "Ladrido del Gobernante Oscuro",
+  "desc_en": "You can only activate this card during the Damage Step of a Battle Phase if a Fiend-Type monster on your side of the field battles. Pay Life Points (in multiples of 100 points) to decrease 1 of your opponent's monster's ATK and DEF by the same amount of points until End Phase of that turn.",
+  "desc_es": "Solo puedes activar esta carta durante el Damage Step de una Battle Phase si un monstruo de Tipo Demonio de tu lado del Campo batalla. Paga Life Points (en múltiplos de 100 puntos) para reducir el ATK y la DEF de 1 monstruo de tu adversario en esa misma cantidad de puntos hasta la End Phase de ese turno."
+ },
+ {
+  "code": 504700090,
+  "alias": 56916805,
+  "name_en": "Energy Drain",
+  "name_es": "Drenaje de Energía",
+  "desc_en": "Select 1 face-up monster on your side of the field. Increase the ATK and DEF of the monster by an amount equal to the number of cards in your opponent's hand x 200 points until the End Phase.",
+  "desc_es": "Selecciona 1 monstruo boca arriba de tu lado del Campo. Aumenta el ATK y la DEF del monstruo en una cantidad igual al número de cartas en la mano de tu adversario x 200 puntos hasta la End Phase."
  }
 ]
