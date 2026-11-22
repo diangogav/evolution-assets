@@ -1,6 +1,82 @@
 {
-  "$comment": "Home page news manifest for the Evolution client. Editing this file publishes announcements without redeploying the app. Fields: id (unique, stable — player dismissals key off it), date (ISO, drives ordering + display), tone (arcane | gold | blue), link (optional, internal route or https URL), image (optional thumbnail, same-origin path or https URL), expiresAt (optional ISO instant, hides the item after it), kind (optional: shop | season | tournament, shows a tag and words the button by destination), eventAt (optional ISO instant, puts a shop or season item on the events calendar), eventEndAt (optional ISO instant after eventAt, for something that runs for several days: the calendar shows it on each of them), title/summary (per-locale, a missing locale falls back to the other). The home panel shows the 3 newest non-expired, non-dismissed items.",
+  "$comment": "Home page news manifest for the Evolution client. Editing this file publishes announcements without redeploying the app. Fields: id (unique, stable — player dismissals key off it), date (ISO, drives ordering + display), tone (arcane | gold | blue), link (optional, internal route or https URL), image (optional thumbnail, same-origin path or https URL), banner (optional https URL of a wide 3:1 image, 2172x724, for the news carousel of the ranking website; that site shows only items that have one, and the client ignores it), expiresAt (optional ISO instant, hides the item after it), kind (optional: shop | season | tournament, shows a tag and words the button by destination), eventAt (optional ISO instant, puts a shop or season item on the events calendar), eventEndAt (optional ISO instant after eventAt, for something that runs for several days: the calendar shows it on each of them), title/summary (per-locale, a missing locale falls back to the other). The home panel shows the 3 newest non-expired, non-dismissed items.",
   "items": [
+    {
+      "id": "season-8-2026-12",
+      "date": "2026-11-22",
+      "tone": "gold",
+      "kind": "season",
+      "eventAt": "2026-12-01T00:00:00-04:00",
+      "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/season-8.webp",
+      "title": {
+        "es-419": "La Temporada 8 empieza el 1 de diciembre",
+        "en": "Season 8 starts December 1"
+      },
+      "summary": {
+        "es-419": "Una nueva temporada arranca el 1 de diciembre: los rankings vuelven a cero y la carrera a la cima queda abierta otra vez.",
+        "en": "A new season begins on December 1: the rankings reset and the race to the top is wide open again."
+      }
+    },
+    {
+      "id": "edison-stable-2026-11",
+      "date": "2026-11-22",
+      "tone": "blue",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/60800381.jpg",
+      "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/edison-stable.webp",
+      "title": {
+        "es-419": "Edison ya es estable",
+        "en": "Edison is now stable"
+      },
+      "summary": {
+        "es-419": "Edison deja la beta: el formato de 2010 con sus textos y rulings de época, listo para jugar en serio.",
+        "en": "Edison leaves beta: the 2010 format with its era-correct texts and rulings, ready for serious play."
+      }
+    },
+    {
+      "id": "goat-beta-2026-11",
+      "date": "2026-11-22",
+      "tone": "gold",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/73915051.jpg",
+      "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/goat-beta.webp",
+      "title": {
+        "es-419": "Goat Format, en beta",
+        "en": "Goat Format, in beta"
+      },
+      "summary": {
+        "es-419": "El formato de 2005 llega en beta con sus cartas pre-errata. Juégalo y cuéntanos en Discord qué encuentras.",
+        "en": "The 2005 format arrives in beta with its pre-errata cards. Play it and tell us on Discord what you find."
+      }
+    },
+    {
+      "id": "rush-stable-2026-11",
+      "date": "2026-11-22",
+      "tone": "blue",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/120105001.jpg",
+      "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/rush-stable.webp",
+      "title": {
+        "es-419": "Rush Duel ya es estable",
+        "en": "Rush Duel is now stable"
+      },
+      "summary": {
+        "es-419": "Rush Duel sale de la beta: duelos rápidos, cinco cartas en mano y un turno que nunca se detiene.",
+        "en": "Rush Duel is out of beta: fast duels, five cards in hand and turns that never slow down."
+      }
+    },
+    {
+      "id": "speed-duel-beta-2026-11",
+      "date": "2026-11-22",
+      "tone": "arcane",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/46986414.jpg",
+      "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/speed-duel-beta.webp",
+      "title": {
+        "es-419": "Speed Duel, en beta",
+        "en": "Speed Duel, in beta"
+      },
+      "summary": {
+        "es-419": "Duelos rápidos con zonas reducidas y Skills. Pruébalo en beta y cuéntanos en Discord qué encuentras.",
+        "en": "Quick duels with fewer zones and Skills. Try it in beta and tell us on Discord what you find."
+      }
+    },
     {
       "id": "season-advent-calendar-2026-12",
       "date": "2026-11-19",
@@ -76,20 +152,6 @@
       "summary": {
         "es-419": "Las cartas de Edison ya funcionan con sus textos y rulings pre-errata, tal como se jugaba en 2010.",
         "en": "Edison cards now play with their pre-errata texts and rulings, just as the format played in 2010."
-      }
-    },
-    {
-      "id": "rush-duel-beta-2026-08",
-      "date": "2026-08-28",
-      "tone": "blue",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/120105001.jpg",
-      "title": {
-        "es-419": "Rush Duel entra en beta",
-        "en": "Rush Duel enters beta"
-      },
-      "summary": {
-        "es-419": "El formato Rush Duel llega en fase beta: pruébalo y cuéntanos en Discord qué encuentras.",
-        "en": "The Rush Duel format lands in beta: try it out and tell us on Discord what you find."
       }
     }
   ]
