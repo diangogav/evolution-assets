@@ -1350,5 +1350,149 @@
   "name_es": "Imitación de Insecto",
   "desc_en": "Tribute 1 monster on your side of the field. Select 1 Insect-Type monster from your Deck that is 1 Level higher than the Tributed monster and Special Summon it on your side of the field in face-up Attack Position or face-down Defense Position. Then shuffle your Deck.",
   "desc_es": "Ofrece como Tributo 1 monstruo de tu lado del Campo. Selecciona 1 monstruo de Tipo Insecto de tu Deck que tenga 1 Nivel más que el monstruo Ofrecido como Tributo e Invócalo de Modo Especial a tu lado del Campo en Posición de Ataque boca arriba o en Posición de Defensa boca abajo. Después baraja tu Deck."
+ },
+ {
+  "code": 504700011,
+  "alias": 7512044,
+  "name_en": "Gather Your Mind",
+  "name_es": "Une tu Mente",
+  "desc_en": "Add 1 \"Gather Your Mind\" card from your Deck to your hand. Your Deck is then shuffled. You can only use 1 \"Gather Your Mind\" per turn.",
+  "desc_es": "Añade 1 carta \"Une tu Mente\" de tu Deck a tu mano. Luego baraja tu Deck. Solo puedes usar 1 \"Une tu Mente\" por turno."
+ },
+ {
+  "code": 504700047,
+  "alias": 26902560,
+  "name_en": "Fusion Sage",
+  "name_es": "Sabio de la Fusión",
+  "desc_en": "Add 1 \"Polymerization\" from your Deck to your hand.",
+  "desc_es": "Añade a tu mano 1 \"Polimerización\" en tu Deck."
+ },
+ {
+  "code": 504700008,
+  "alias": 6104968,
+  "name_en": "Bubonic Vermin",
+  "name_es": "Alimaña Bubónica",
+  "desc_en": "FLIP: You can Special Summon 1 \"Bubonic Vermin\" from your Deck in face-down Defense Position. Then shuffle your Deck.",
+  "desc_es": "VOLTEO: Puedes Invocar mediante una Invocación Especial 1 \"Alimaña Bubónica\" de tu Deck boca abajo en Posición de Defensa. Luego baraja tu Deck."
+ },
+ {
+  "code": 504700041,
+  "alias": 23927567,
+  "name_en": "An Owl of Luck",
+  "name_es": "Un Buho de Suerte",
+  "desc_en": "FLIP: Select 1 Field Spell Card from your Deck and place it on top of your Deck. If \"Necrovalley\" is on the field, you can add the selected Field Spell Card to your hand instead.",
+  "desc_es": "VOLTEO: Selecciona 1 Carta Mágica de Campo de tu Deck y ponla en la parte superior de tu Deck. Si \"Necrovalle\" está boca arriba en el Campo, puedes añadir la carta seleccionada a tu mano."
+ },
+ {
+  "code": 504700089,
+  "alias": 55348096,
+  "name_en": "Arsenal Robber",
+  "name_es": "Ladrón del Arsenal",
+  "desc_en": "Your opponent selects 1 Equip Spell Card from his/her Deck and sends it to the Graveyard.",
+  "desc_es": "Tu adversario selecciona 1 Carta Mágica de Equipo de su Deck y la manda al Cementerio."
+ },
+ {
+  "code": 504700168,
+  "alias": 95214051,
+  "name_en": "Jade Insect Whistle",
+  "name_es": "Silbato de Jade de Insectos",
+  "desc_en": "Your opponent selects 1 Insect-Type Monster from their Deck. After shuffling the Deck, place the card on top of the Deck.",
+  "desc_es": "Tu adversario selecciona 1 monstruo de Tipo Insecto de su Deck, baraja el Deck y coloca la carta en la parte superior del Deck."
+ },
+ {
+  "code": 504700022,
+  "alias": 15653824,
+  "name_en": "Skull Knight #2",
+  "name_es": "Caballero Cráneo #2",
+  "desc_en": "If you Tribute Summon a Fiend-Type monster by Tributing this monster, Special Summon 1 \"Skull Knight #2\" from your Deck. Then shuffle your Deck.",
+  "desc_es": "Si Invocas mediante una Invocación de Sacrificio un monstruo de Tipo Demonio Sacrificando esta carta, Invoca mediante una Invocación Especial 1 \"Caballero Cráneo #2\" de tu Deck. Luego baraja tu Deck."
+ },
+ {
+  "code": 504700063,
+  "alias": 38552107,
+  "name_en": "Horn of Light",
+  "name_es": "Cuerno de Luz",
+  "desc_en": "Increase the DEF of a monster equipped with this card by 800 points. When this card is sent from the field to the Graveyard, if you pay 500 Life Points, this card returns to the top of your Deck.",
+  "desc_es": "Aumenta la DEF de un monstruo equipado con esta carta en 800 puntos. Cuando esta carta es mandada del Campo al Cementerio, si pagas 500 Life Points, esta carta vuelve a la parte superior de tu Deck."
+ },
+ {
+  "code": 504700180,
+  "alias": 21070956,
+  "name_en": "Altar for Tribute",
+  "name_es": "Altar de Tributo",
+  "desc_en": "Select 1 monster on your side of the field and send it to the Graveyard. Increase your Life Points by an amount equal to the original ATK of the monster.",
+  "desc_es": "Selecciona 1 monstruo en tu Campo y mandalo al Cementerio. Aumenta tus Life Points en una cantidad igual a la del ATK original del monstruo."
+ },
+ {
+  "code": 504700012,
+  "alias": 8964854,
+  "name_en": "Combination Attack",
+  "name_es": "Ataque Combinado",
+  "desc_en": "During a Battle Phase, you can use this effect on 1 monster that has attacked this turn and is equipped with a Union Monster. Change the Union Monster back to a monster in face-up Attack or Defense Position. Also, the monster that was equipped with the Union Monster may attack again this turn.",
+  "desc_es": "Durante una Battle Phase, puedes usar este efecto en 1 monstruo que haya atacado este turno y que tenga equipado un Monstruo de Unión. Separa la Unión del monstruo equipado y puedes atacar con el monstruo otra vez este turno."
+ },
+ {
+  "code": 504700016,
+  "alias": 11760174,
+  "name_en": "Sasuke Samurai #2",
+  "name_es": "Samurai Sasuke #2",
+  "desc_en": "Once per turn, during your Main Phase, you can pay 800 Life Points. If you do this, until the End Phase, Spell and Trap Cards cannot be activated.",
+  "desc_es": "Una vez por turno, durante tu Main Phase, puedes pagar 800 Life Points. Si lo haces, hasta la End Phase, las Cartas Mágicas y de Trampa no se pueden activar."
+ },
+ {
+  "code": 504700019,
+  "alias": 13026402,
+  "name_en": "A-Team: Trap Disposal Unit",
+  "name_es": "Equipo A: Unidad de Desactivación de Trampas",
+  "desc_en": "This effect can be used during either player's turn. When your opponent activates a Trap Card, Tribute this face-up card to negate the activation of the Trap Card and destroy it.",
+  "desc_es": "Este efecto puede ser usado incluso durante el turno de tu adversario. Cuando tu adversario activa una Carta de Trampa, ofrece esta carta boca arriba como Sacrificio para negar la activación de la Carta de Trampa y destruirla."
+ },
+ {
+  "code": 504700029,
+  "alias": 19612721,
+  "name_en": "Disc Fighter",
+  "name_es": "Luchador del Disco",
+  "desc_en": "If this card attacks a Defense Position monster with DEF 2000 or more, destroy the monster with this card's effect without applying Damage Calculation.",
+  "desc_es": "Si esta carta ataca a un monstruo en Posición de Defensa con DEF 2000 o más, destruye el monstruo por el efecto de esta carta sin cálculo de daño."
+ },
+ {
+  "code": 504700066,
+  "alias": 40172183,
+  "name_en": "Narrow Pass",
+  "name_es": "Paso Estrecho",
+  "desc_en": "This card can only be activated when both players have 2 monsters or less on their respective sides of the field. Both players can only Normal Summon up to 2 additional monsters on their sides of the field.",
+  "desc_es": "Esta carta solo puede ser activada cuando ambos jugadores tienen 2 monstruos o menos en cada lado del Campo. Ambos jugadores solo pueden Invocar mediante una Invocación Normal hasta 2 monstruos adicionales."
+ },
+ {
+  "code": 504700100,
+  "alias": 61622107,
+  "name_en": "Bubble Crash",
+  "name_es": "Ruptura de la Burbuja",
+  "desc_en": "This card can only be activated when any player has 6 or more cards on the field and/or in their hand. The player(s) then select and send cards to their respective Graveyards until the amount remaining on the field and in their hand is 5.",
+  "desc_es": "Esta carta sólo puede ser activada cuando cualquier jugador tiene 6 o más cartas en el Campo y/o en su mano. El jugador (o jugadores) seleccionan y mandan cartas a sus respectivos Cementerios hasta que las cartas en el Campo y en su mano sean 5."
+ },
+ {
+  "code": 504700103,
+  "alias": 63689843,
+  "name_en": "Attack and Receive",
+  "name_es": "Atacar y Recibir",
+  "desc_en": "You can only activate this card when you take damage to your Life Points. Inflict 700 points of damage to your opponent's Life Points. Also, inflict 300 points of damage to your opponent's Life Points for each \"Attack and Receive\" card in your Graveyard.",
+  "desc_es": "Solo puedes activar esta carta cuando recibes daño a tus Life Points. Inflige 700 puntos de daño a los Life Points de tu adversario. Además, inflige 300 puntos de daño a los Life Points de tu adversario por cada carta \"Atacar y Recibir\" en tu Cementerio."
+ },
+ {
+  "code": 504700110,
+  "alias": 68057622,
+  "name_en": "Continuous Destruction Punch",
+  "name_es": "Puño Destructivo Continuo",
+  "desc_en": "If the DEF of the attacked Defense Position monster on your side of the field is higher than the ATK of the attacking monster on your opponent's side of the field, destroy the attacking monster. Damage calculation is applied normally.",
+  "desc_es": "Cuando el ATK de un monstruo atacante en el Campo de tu adversario es menor que la DEF del monstruo atacado en Posición de Defensa en tu Campo, destruye el monstruo atacante. El cálculo de daño se aplica normalmente."
+ },
+ {
+  "code": 504700187,
+  "alias": 28358902,
+  "name_en": "Crimson Sentry",
+  "name_es": "Centinela Escarlata",
+  "desc_en": "Offer this face-up card as a Tribute to return 1 of your monsters destroyed in battle during this turn to the bottom of your Deck.",
+  "desc_es": "Ofrece esta carta boca arriba como Sacrificio para devolver a la parte inferior de tu Deck 1 monstruo destruido como resultado de una batalla y mandado a tu Cementerio durante este turno."
  }
 ]
