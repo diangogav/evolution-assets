@@ -4220,6 +4220,85 @@
       "status": "no-deltas",
       "publishedAt": "2026-11-19",
       "deltas": []
+    },
+    {
+      "url": "https://yugiohblog.konami.com/2026/genesys/glorious-victors-points-update/",
+      "status": "pending",
+      "publishedAt": "2026-11-22",
+      "deltas": [
+        {
+          "name": "Zenet Revelator Nefertari",
+          "oldPoints": null,
+          "newPoints": 5,
+          "code": null
+        },
+        {
+          "name": "Zenet Revelator Amenhotep",
+          "oldPoints": null,
+          "newPoints": 3,
+          "code": null
+        },
+        {
+          "name": "Zenet-Nakhte Sphinx",
+          "oldPoints": null,
+          "newPoints": 25,
+          "code": 47095439
+        },
+        {
+          "name": "Zenet Per Aarkh",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": null
+        },
+        {
+          "name": "Zenet Cataract",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": 12555008
+        },
+        {
+          "name": "Cielo, the Veil of Raise Moon",
+          "oldPoints": null,
+          "newPoints": 7,
+          "code": 75934716
+        },
+        {
+          "name": "Sharna, the Blade of Raise Moon",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": null
+        },
+        {
+          "name": "Kulshe, the Beacon of Raise Moon",
+          "oldPoints": null,
+          "newPoints": 4,
+          "code": null
+        },
+        {
+          "name": "Squeeze, the New Moon of Raise Moon",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "The Bright Lights of Raise Moon",
+          "oldPoints": null,
+          "newPoints": 10,
+          "code": null
+        },
+        {
+          "name": "Trirealm Rift Vilvortex",
+          "oldPoints": null,
+          "newPoints": 20,
+          "code": null
+        },
+        {
+          "name": "Trirealm Rift Delectation",
+          "oldPoints": null,
+          "newPoints": 13,
+          "code": null
+        }
+      ]
     }
   ]
 }
