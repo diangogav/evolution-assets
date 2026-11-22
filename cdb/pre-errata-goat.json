@@ -1206,5 +1206,149 @@
   "name_es": "Máscara de los Malditos",
   "desc_en": "The monster equipped with this card cannot attack. The controller of the equipped monster takes 500 points of damage during each of your Standby Phases.",
   "desc_es": "El monstruo equipado con esta carta no puede atacar. El controlador del monstruo equipado recibe 500 puntos de daño durante cada una de tus Standby Phases."
+ },
+ {
+  "code": 504700062,
+  "alias": 38369349,
+  "name_en": "Manga Ryu-Ran",
+  "name_es": "Ryu-Ran Manga",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned while \"Toon World\" is on your side the field. You can Special Summon this monster from your hand, but Tributes are required for monsters Level 5 or more. This card cannot attack in the turn that it is Summoned. Unless you pay 500 Life Points, this monster cannot attack. When \"Toon World\" on the field is destroyed, this card is also destroyed. If your opponent doesn't control a Toon Monster, this card can attack your opponent's Life Points directly. If a face-up Toon Monster is on your opponent's side of the field, you must select the Toon Monster as an attack target.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta sólo puede ser Invocada de Modo Especial mientras \"Mundo Toon\" esté en tu lado del Campo. Puedes Invocar de Modo Especial este monstruo desde tu mano, pero se requieren Sacrificios para monstruos de Nivel 5 o más. Esta carta no puede atacar en el turno en que es Invocada. A menos que pagues 500 LP, este monstruo no puede atacar. Cuando \"Mundo Toon\" en el Campo sea destruido, esta carta también es destruida. Si tu adversario no controla un Monstruo Toon, esta carta puede atacar directamente a los LP de tu adversario. Si hay un Monstruo Toon boca arriba en el lado del Campo de tu adversario, debes seleccionar ese Monstruo Toon como objetivo de ataque."
+ },
+ {
+  "code": 504700086,
+  "alias": 53183600,
+  "name_en": "Blue-Eyes Toon Dragon",
+  "name_es": "Dragón Toon de Ojos Azules",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned while \"Toon World\" is on your side the field. You can Special Summon this monster from your hand, but Tributes are required for monsters Level 5 or more. This card cannot attack in the turn that it is Summoned. Unless you pay 500 Life Points, this monster cannot attack. When \"Toon World\" on the field is destroyed, this card is also destroyed. If your opponent doesn't control a Toon Monster, this card can attack your opponent's Life Points directly. If a face-up Toon Monster is on your opponent's side of the field, you must select the Toon Monster as an attack target.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta sólo puede ser Invocada de Modo Especial mientras \"Mundo Toon\" esté en tu lado del Campo. Puedes Invocar de Modo Especial este monstruo desde tu mano, pero se requieren Sacrificios para monstruos de Nivel 5 o más. Esta carta no puede atacar en el turno en que es Invocada. A menos que pagues 500 LP, este monstruo no puede atacar. Cuando \"Mundo Toon\" en el Campo sea destruido, esta carta también es destruida. Si tu adversario no controla un Monstruo Toon, esta carta puede atacar directamente a los LP de tu adversario. Si hay un Monstruo Toon boca arriba en el lado del Campo de tu adversario, debes seleccionar ese Monstruo Toon como objetivo de ataque."
+ },
+ {
+  "code": 504700108,
+  "alias": 65458948,
+  "name_en": "Toon Mermaid",
+  "name_es": "Sirena Toon",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned while \"Toon World\" is on your side the field. You can Special Summon this monster from your hand, but Tributes are required for monsters Level 5 or more. This card cannot attack in the turn that it is Summoned. Unless you pay 500 Life Points, this monster cannot attack. When \"Toon World\" on the field is destroyed, this card is also destroyed. If your opponent doesn't control a Toon Monster, this card can attack your opponent's Life Points directly. If a face-up Toon Monster is on your opponent's side of the field, you must select the Toon Monster as an attack target.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta sólo puede ser Invocada de Modo Especial mientras \"Mundo Toon\" esté en tu lado del Campo. Puedes Invocar de Modo Especial este monstruo desde tu mano, pero se requieren Sacrificios para monstruos de Nivel 5 o más. Esta carta no puede atacar en el turno en que es Invocada. A menos que pagues 500 LP, este monstruo no puede atacar. Cuando \"Mundo Toon\" en el Campo sea destruido, esta carta también es destruida. Si tu adversario no controla un Monstruo Toon, esta carta puede atacar directamente a los LP de tu adversario. Si hay un Monstruo Toon boca arriba en el lado del Campo de tu adversario, debes seleccionar ese Monstruo Toon como objetivo de ataque."
+ },
+ {
+  "code": 504700160,
+  "alias": 91842653,
+  "name_en": "Toon Summoned Skull",
+  "name_es": "Cráneo Invocado Toon",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned while \"Toon World\" is on your side the field. You can Special Summon this monster from your hand, but Tributes are required for monsters Level 5 or more. This card cannot attack in the turn that it is Summoned. Unless you pay 500 Life Points, this monster cannot attack. When \"Toon World\" on the field is destroyed, this card is also destroyed. If your opponent doesn't control a Toon Monster, this card can attack your opponent's Life Points directly. If a face-up Toon Monster is on your opponent's side of the field, you must select the Toon Monster as an attack target.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta sólo puede ser Invocada de Modo Especial mientras \"Mundo Toon\" esté en tu lado del Campo. Puedes Invocar de Modo Especial este monstruo desde tu mano, pero se requieren Sacrificios para monstruos de Nivel 5 o más. Esta carta no puede atacar en el turno en que es Invocada. A menos que pagues 500 LP, este monstruo no puede atacar. Cuando \"Mundo Toon\" en el Campo sea destruido, esta carta también es destruida. Si tu adversario no controla un Monstruo Toon, esta carta puede atacar directamente a los LP de tu adversario. Si hay un Monstruo Toon boca arriba en el lado del Campo de tu adversario, debes seleccionar ese Monstruo Toon como objetivo de ataque."
+ },
+ {
+  "code": 504700131,
+  "alias": 75745607,
+  "name_en": "Hino-Kagu-Tsuchi",
+  "name_es": "Hino-Kagu-Tsuchi",
+  "desc_en": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. If this card inflicts Battle Damage to your opponent's Life Points, your opponent discards all cards in their hand during the next Draw Phase, before they draw.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Especial. Esta carta regresa a la mano de su propietario durante la End Phase del turno en que es Invocada de Modo Normal o volteada boca arriba. Si esta carta inflige Daño de Batalla a los LP de tu adversario, tu adversario descarta todas las cartas de su mano durante su siguiente Draw Phase, antes de robar."
+ },
+ {
+  "code": 504700036,
+  "alias": 23118924,
+  "name_en": "Element Doom",
+  "name_es": "Demonio Elemental",
+  "desc_en": "This monster gets the following effect(s) while there is a monster(s) with the following Attribute(s) on the field:\n●EARTH: Negate the effect of an Effect Monster that is destroyed by this monster as a result of battle.\n●WIND: If this card destroyed your opponent's monster as a result of battle, it can attack once again in a row.",
+  "desc_es": "Este monstruo obtiene el o los siguientes efectos mientras haya uno o más monstruos con el o los siguientes Atributos en el Campo:\n●TIERRA: Niega el efecto de un Monstruo de Efecto que sea destruido por este monstruo como resultado de una batalla.\n●VIENTO: Si esta carta destruyó un monstruo de tu adversario como resultado de una batalla, puede atacar una vez más de forma consecutiva."
+ },
+ {
+  "code": 504700149,
+  "alias": 87210505,
+  "name_en": "Knight's Title",
+  "name_es": "Título de Caballero",
+  "desc_en": "Activate this card by offering 1 face-up \"Dark Magician\" on your side of the field as a Tribute. Special Summon 1 \"Dark Magician Knight\" from your hand, Deck or Graveyard.",
+  "desc_es": "Activa esta carta ofreciendo como Sacrificio 1 \"Mago Oscuro\" boca arriba de tu lado del Campo. Invoca de Modo Especial 1 \"Caballero Mago Oscuro\" desde tu mano, Deck o Cementerio."
+ },
+ {
+  "code": 504700130,
+  "alias": 75417459,
+  "name_en": "Release Restraint",
+  "name_es": "Desatado",
+  "desc_en": "Tribute 1 \"Gearfried the Iron Knight\" on your side of the field to Special Summon 1 \"Gearfried the Swordmaster\" from your hand or Deck.",
+  "desc_es": "Sacrifica 1 \"Gearfried el Caballero de Hierro\" de tu lado del Campo para Invocar de Modo Especial 1 \"Gearfried el Maestro de la Espada\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700113,
+  "alias": 69542930,
+  "name_en": "Dedication through Light and Darkness",
+  "name_es": "Dedicación a través de Luz y Oscuridad",
+  "desc_en": "You can only activate this card by Tributing \"Dark Magician\" on your side of the field. Select 1 \"Dark Magician of Chaos\" from your hand, your Graveyard or your Deck and Special Summon it.",
+  "desc_es": "Sólo puedes activar esta carta Sacrificando \"Mago Oscuro\" de tu lado del Campo. Selecciona 1 \"Mago Oscuro del Caos\" de tu mano, tu Cementerio o tu Deck e Invócalo de Modo Especial."
+ },
+ {
+  "code": 504700004,
+  "alias": 1689516,
+  "name_en": "The Big March of Animals",
+  "name_es": "La Gran Marcha de los Animales",
+  "desc_en": "Until the End Phase, increase the ATK of all face-up Beast-Type monsters on your side of the field by 200 points for each Beast-Type monster on your side of the field.",
+  "desc_es": "Hasta la End Phase, aumenta el ATK de todos los monstruos de Tipo Bestia boca arriba de tu lado del Campo en 200 puntos por cada monstruo de Tipo Bestia de tu lado del Campo."
+ },
+ {
+  "code": 504700005,
+  "alias": 1965724,
+  "name_en": "Mokey Mokey Smackdown",
+  "name_es": "Mokey Mokey Enfurecido",
+  "desc_en": "While a face-up \"Mokey Mokey\" is on your side of the field, if a Fairy-Type monster on your side of the field is destroyed, the ATK of all \"Mokey Mokey\" on your side of the field becomes 3000 until the End Phase of this turn.",
+  "desc_es": "Mientras haya un \"Mokey Mokey\" boca arriba de tu lado del Campo, si un monstruo de Tipo Hada de tu lado del Campo es destruido, el ATK de todos los \"Mokey Mokey\" de tu lado del Campo pasa a ser 3000 hasta la End Phase de este turno."
+ },
+ {
+  "code": 504700020,
+  "alias": 13604200,
+  "name_en": "Sage's Stone",
+  "name_es": "La Piedra del Sabio",
+  "desc_en": "You can only activate this card when there is a face-up \"Dark Magician Girl\" on your side of the field. Special Summon 1 \"Dark Magician\" from your hand or Deck.",
+  "desc_es": "Sólo puedes activar esta carta cuando haya una \"Chica Maga Oscura\" boca arriba de tu lado del Campo. Invoca de Modo Especial 1 \"Mago Oscuro\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700056,
+  "alias": 32919136,
+  "name_en": "Falling Down",
+  "name_es": "Cayendo",
+  "desc_en": "Destroy this card if there is no Archfiend card on your side of the field. Take control of 1 of your opponent's monsters that is equipped with this card. You take 800 points of damage during each of your opponent's Standby Phases.",
+  "desc_es": "Destruye esta carta si no hay ninguna carta \"Archidemonio\" de tu lado del Campo. Toma el control de 1 monstruo de tu adversario equipado con esta carta. Recibes 800 puntos de daño durante cada una de las Standby Phases de tu adversario."
+ },
+ {
+  "code": 504700105,
+  "alias": 64389297,
+  "name_en": "Magical Labyrinth",
+  "name_es": "Laberinto Mágico",
+  "desc_en": "Equip \"Labyrinth Wall\" with this card. If you Tribute \"Labyrinth Wall\" equipped with this card, you can Special Summon \"Wall Shadow\" from your Deck.",
+  "desc_es": "Equipa esta carta a un \"Muro Laberinto\". Si Ofreces como Tributo el \"Muro Laberinto\" equipado con esta carta, puedes Invocar de Modo Especial un \"Muro de Sombra\" desde tu Deck."
+ },
+ {
+  "code": 504700115,
+  "alias": 70861343,
+  "name_en": "Ninjitsu Art of Transformation",
+  "name_es": "Ninjitsu Arte de la Transformación",
+  "desc_en": "Activate this card by Tributing 1 face-up monster on your side of the field that includes \"Ninja\" in its card name. Special Summon 1 Beast-Type, Winged Beast-Type, or Insect-Type monster with a Level equal to or less than the Level of the Tributed card + 3 from your hand or Deck to your side of the field. When this card is removed from your side of the field, destroy the monster.",
+  "desc_es": "Activa esta carta Ofreciendo como Tributo 1 monstruo boca arriba de tu lado del Campo que incluya \"Ninja\" en su nombre. Invoca de Modo Especial a tu lado del Campo, desde tu mano o Deck, 1 monstruo de Tipo Bestia, Tipo Bestia Alada o Tipo Insecto con un Nivel igual o menor que el Nivel de la carta Ofrecida como Tributo + 3. Cuando esta carta sea retirada de tu lado del Campo, destruye ese monstruo."
+ },
+ {
+  "code": 504700165,
+  "alias": 94585852,
+  "name_en": "Pandemonium",
+  "name_es": "Pandemonium",
+  "desc_en": "Neither player has to pay Life Points during the Standby Phase for Archfiend monsters. Each time a player's Archfiend Monster Card(s) are destroyed and sent to the Graveyard, except as a result of battle, that player can select 1 Archfiend Monster Card from his/her Deck that has a lower Level than the destroyed card and add it to his/her hand.",
+  "desc_es": "Ningún jugador tiene que pagar LP durante la Standby Phase por monstruos \"Archidemonio\". Cada vez que una o más Cartas de Monstruo \"Archidemonio\" de un jugador sean destruidas y mandadas al Cementerio, excepto como resultado de una batalla, ese jugador puede seleccionar 1 Carta de Monstruo \"Archidemonio\" de su Deck con un Nivel menor que el de la carta destruida y añadirla a su mano."
+ },
+ {
+  "code": 504700166,
+  "alias": 95132338,
+  "name_en": "Aqua Chorus",
+  "name_es": "Coro de Aqua",
+  "desc_en": "If there are monsters with the same name on the field, increase the ATK and DEF of all of those monsters with the same name by 500 points.",
+  "desc_es": "Si hay monstruos con el mismo nombre en el Campo, aumenta en 500 puntos el ATK y la DEF de todos esos monstruos con el mismo nombre."
+ },
+ {
+  "code": 504700171,
+  "alias": 96965364,
+  "name_en": "Insect Imitation",
+  "name_es": "Imitación de Insecto",
+  "desc_en": "Tribute 1 monster on your side of the field. Select 1 Insect-Type monster from your Deck that is 1 Level higher than the Tributed monster and Special Summon it on your side of the field in face-up Attack Position or face-down Defense Position. Then shuffle your Deck.",
+  "desc_es": "Ofrece como Tributo 1 monstruo de tu lado del Campo. Selecciona 1 monstruo de Tipo Insecto de tu Deck que tenga 1 Nivel más que el monstruo Ofrecido como Tributo e Invócalo de Modo Especial a tu lado del Campo en Posición de Ataque boca arriba o en Posición de Defensa boca abajo. Después baraja tu Deck."
  }
 ]
