@@ -1094,5 +1094,117 @@
   "name_es": "Mi Cuerpo como Escudo",
   "desc_en": "When your opponent activates a card that has an effect which destroys 1 or more monster(s) on the field, pay 1500 Life Points to negate the activation of that card and destroy it.",
   "desc_es": "Cuando tu adversario active una carta que tenga un efecto que destruya 1 o más monstruos en el Campo, paga 1500 Life Points para negar la activación de esa carta y destruirla."
+ },
+ {
+  "code": 504700007,
+  "alias": 2111707,
+  "name_en": "XY-Dragon Cannon",
+  "name_es": "XY-Dragón Cañón",
+  "desc_en": "\"X-Head Cannon\" + \"Y-Dragon Head\"\nThis card cannot be Special Summoned except by removing from play the above cards on your side of the field; then you can Special Summon this card from your Fusion Deck (You do not use \"Polymerization\"). Discard 1 card from your hand to destroy 1 face-up Spell or Trap Card on your opponent's side of the field.",
+  "desc_es": "\"X-Cabeza Cañón\" + \"Y-Dragón Cabeza\"\nEsta carta no puede ser Invocada de Modo Especial excepto retirando del juego las cartas mencionadas arriba de tu lado del Campo; después puedes Invocar de Modo Especial esta carta desde tu Deck de Fusión (No usas \"Polimerización\"). Descarta 1 carta de tu mano para destruir 1 Carta Mágica o de Trampa boca arriba del lado del Campo de tu adversario."
+ },
+ {
+  "code": 504700045,
+  "alias": 25119460,
+  "name_en": "YZ-Tank Dragon",
+  "name_es": "YZ-Tanque Dragón",
+  "desc_en": "\"Y-Dragon Head\" + \"Z-Metal Tank\"\nThis card cannot be Special Summoned except by removing from play the above cards on your side of the field; then you can Special Summon this card from your Fusion Deck (You do not use \"Polymerization\"). Discard 1 card from your hand to destroy 1 face-down Monster Card on your opponent's side of the field.",
+  "desc_es": "\"Y-Dragón Cabeza\" + \"Z-Metal Tanque\"\nEsta carta no puede ser Invocada de Modo Especial excepto retirando del juego las cartas mencionadas arriba de tu lado del Campo; después puedes Invocar de Modo Especial esta carta desde tu Deck de Fusión (No usas \"Polimerización\"). Descarta 1 carta de tu mano para destruir 1 Carta de Monstruo boca abajo del lado del Campo de tu adversario."
+ },
+ {
+  "code": 504700177,
+  "alias": 99724761,
+  "name_en": "XZ-Tank Cannon",
+  "name_es": "XZ-Tanque Cañón",
+  "desc_en": "\"X-Head Cannon\" + \"Z-Metal Tank\"\nThis card cannot be Special Summoned except by removing from play the above cards on your side of the field; then you can Special Summon this card from your Fusion Deck (You do not use \"Polymerization\"). Discard 1 card from your hand to destroy 1 face-down Spell or Trap Card on your opponent's side of the field.",
+  "desc_es": "\"X-Cabeza Cañón\" + \"Z-Metal Tanque\"\nEsta carta no puede ser Invocada de Modo Especial excepto retirando del juego las cartas mencionadas arriba de tu lado del Campo; después puedes Invocar de Modo Especial esta carta desde tu Deck de Fusión (No usas \"Polimerización\"). Descarta 1 carta de tu mano para destruir 1 Carta Mágica o de Trampa boca abajo del lado del Campo de tu adversario."
+ },
+ {
+  "code": 504700161,
+  "alias": 91998119,
+  "name_en": "XYZ-Dragon Cannon",
+  "name_es": "XYZ-Dragón Cañón",
+  "desc_en": "\"X-Head Cannon\" + \"Y-Dragon Head\" + \"Z-Metal Tank\"\nThis card cannot be Special Summoned except by removing from play the above cards on your side of the field; then you can Special Summon this card from your Fusion Deck (You do not use \"Polymerization\"). Discard 1 card from your hand to destroy 1 card on your opponent's side of the field.",
+  "desc_es": "\"X-Cabeza Cañón\" + \"Y-Dragón Cabeza\" + \"Z-Metal Tanque\"\nEsta carta no puede ser Invocada de Modo Especial excepto retirando del juego las cartas mencionadas arriba de tu lado del Campo; después puedes Invocar de Modo Especial esta carta desde tu Deck de Fusión (No usas \"Polimerización\"). Descarta 1 carta de tu mano para destruir 1 carta del lado del Campo de tu adversario."
+ },
+ {
+  "code": 511002851,
+  "alias": 23265594,
+  "name_en": "Heavy Mech Support Platform",
+  "name_es": "Plataforma de Apoyo de Mechs Pesados",
+  "desc_en": "Once per turn, you can either: Target 1 Machine-Type monster you control, equip this card to that target, OR: Unequip this card and Special Summon it in Attack Position. While equipped by this effect, the equipped monster gains 500 ATK/DEF. (A monster can only be equipped with 1 Union monster at a time. If the equipped monster would be destroyed, destroy this card instead.)",
+  "desc_es": "Una vez por turno, puedes: seleccionar 1 monstruo de Tipo Máquina que controles y equipar esta carta a ese objetivo; o desequipar esta carta e Invocarla de Modo Especial en Posición de Ataque. Mientras esté equipada por este efecto, el monstruo equipado gana 500 ATK/DEF. (A un monstruo sólo se le puede equipar 1 monstruo de Unión a la vez. Si el monstruo equipado fuese a ser destruido, destruye esta carta en su lugar.)"
+ },
+ {
+  "code": 504700095,
+  "alias": 58551308,
+  "name_en": "Spear Cretin",
+  "name_es": "Cretino de la Lanza",
+  "desc_en": "FLIP: After this card is flipped, when it is sent to the Graveyard, both you and your opponent select 1 monster from your respective Graveyards and Special Summon it on the field in face-up Attack Position or face-down Defense Position (no Tribute is required for monsters of Level 5 or more).",
+  "desc_es": "VOLTEO: Después de que esta carta sea volteada, cuando sea mandada al Cementerio, tú y tu adversario seleccionan cada uno 1 monstruo de sus respectivos Cementerios y lo Invocan de Modo Especial en el Campo en Posición de Ataque boca arriba o en Posición de Defensa boca abajo (no se requiere Sacrificio para monstruos de Nivel 5 o más)."
+ },
+ {
+  "code": 504700053,
+  "alias": 30314994,
+  "name_en": "Element Dragon",
+  "name_es": "Dragón Elemental",
+  "desc_en": "This monster gets the following effect(s) while there is a monster(s) with the following Attribute(s) on the field:\n● FIRE: Increase the ATK of this card by 500 points.\n● WIND: If this card destroyed your opponent's monster as a result of battle, it can attack once again in a row.",
+  "desc_es": "Este monstruo obtiene el o los siguientes efectos mientras haya en el Campo uno o más monstruos con el o los siguientes Atributos:\n● FUEGO: Aumenta en 500 puntos el ATK de esta carta.\n● VIENTO: Si esta carta destruyó un monstruo de tu adversario como resultado de una batalla, puede atacar una vez más seguida."
+ },
+ {
+  "code": 504700107,
+  "alias": 65260293,
+  "name_en": "Element Magician",
+  "name_es": "Maga Elemental",
+  "desc_en": "This monster gets the following effect(s) while there is a monster(s) with the following Attribute(s) on the field:\n●WATER: Control of this card cannot switch.\n●WIND: If this card destroyed your opponent's monster as a result of battle, it can attack once again in a row.",
+  "desc_es": "Este monstruo obtiene el o los siguientes efectos mientras haya en el Campo uno o más monstruos con el o los siguientes Atributos:\n●AGUA: El control de esta carta no puede cambiar.\n●VIENTO: Si esta carta destruyó un monstruo de tu adversario como resultado de una batalla, puede atacar una vez más seguida."
+ },
+ {
+  "code": 504700175,
+  "alias": 98446407,
+  "name_en": "Hand of Nephthys",
+  "name_es": "Mayordoma de Nephtys",
+  "desc_en": "Tribute 2 monsters on your side of the field, including this card, to Special Summon 1 \"Sacred Phoenix of Nephthys\" from your hand or Deck.",
+  "desc_es": "Ofrece como Tributo 2 monstruos en tu lado del Campo, incluyendo esta carta, para Invocar de Modo Especial 1 \"Fénix Sagrado de Nephtys\" desde tu mano o Deck."
+ },
+ {
+  "code": 504700184,
+  "alias": 14644902,
+  "name_en": "Summoner of Illusions",
+  "name_es": "Invocador de Ilusiones",
+  "desc_en": "FLIP: Offer 1 monster on your side of the field as a Tribute (excluding this monster). Special Summon 1 Fusion Monster Card from your Fusion Deck. The Fusion Monster is destroyed at the end of the turn this card is activated.",
+  "desc_es": "VOLTEO: Ofrece como Tributo 1 monstruo en tu lado del Campo (excepto este monstruo). Invoca de Modo Especial 1 Carta de Monstruo de Fusión desde tu Deck de Fusión. El Monstruo de Fusión es destruido al final del turno en que se activa esta carta."
+ },
+ {
+  "code": 504700026,
+  "alias": 17655904,
+  "name_en": "Burst Stream of Destruction",
+  "name_es": "Rayo Explosivo de Destrucción",
+  "desc_en": "You can only activate this card while there is a face-up \"Blue-Eyes White Dragon\" on your side of the field. Destroy all monsters on your opponent's side of the field. No \"Blue-Eyes White Dragon\" can attack during the turn you activate this card.",
+  "desc_es": "Sólo puedes activar esta carta mientras haya un \"Dragón Blanco de Ojos Azules\" boca arriba en tu lado del Campo. Destruye todos los monstruos en el lado del Campo de tu adversario. Ningún \"Dragón Blanco de Ojos Azules\" puede atacar durante el turno en que actives esta carta."
+ },
+ {
+  "code": 504700017,
+  "alias": 12503902,
+  "name_en": "Rare Metalmorph",
+  "name_es": "Metalmorfo Raro",
+  "desc_en": "Increase the ATK of 1 Machine-Type monster on the field by 500 points. Only once, negate the effect of a Spell Card that designates the monster. When the selected monster is removed from the field, destroy this card.",
+  "desc_es": "Aumenta en 500 puntos el ATK de 1 monstruo de Tipo Máquina en el Campo. Sólo una vez, niega el efecto de una Carta Mágica que designe a ese monstruo. Cuando el monstruo seleccionado sea retirado del Campo, destruye esta carta."
+ },
+ {
+  "code": 504700173,
+  "alias": 98239899,
+  "name_en": "Blast with Chain",
+  "name_es": "Estallido en Cadena",
+  "desc_en": "After activation, this card is treated as an Equip Card that increases the ATK of the equipped monster by 500 points. Equip a monster on your side of the field with this card. If this card is destroyed by the effect of another card while it is an Equip Card, select 1 card on the field and destroy it.",
+  "desc_es": "Después de su activación, esta carta se trata como una Carta de Equipo que aumenta en 500 puntos el ATK del monstruo equipado. Equipa con esta carta un monstruo en tu lado del Campo. Si esta carta es destruida por el efecto de otra carta mientras es una Carta de Equipo, selecciona 1 carta en el Campo y destrúyela."
+ },
+ {
+  "code": 504700091,
+  "alias": 56948373,
+  "name_en": "Mask of the Accursed",
+  "name_es": "Máscara de los Malditos",
+  "desc_en": "The monster equipped with this card cannot attack. The controller of the equipped monster takes 500 points of damage during each of your Standby Phases.",
+  "desc_es": "El monstruo equipado con esta carta no puede atacar. El controlador del monstruo equipado recibe 500 puntos de daño durante cada una de tus Standby Phases."
  }
 ]

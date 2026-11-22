@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-22T18:57:49.834Z",
+  "generatedAt": "2026-11-22T19:27:54.140Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -98,7 +98,7 @@
       "bytes": 113019,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "51636b3f87e8280dbe4f4968d013b307d7d76264",
       "commitDate": "2026-08-05T17:04:17-04:00"
     },
@@ -108,7 +108,7 @@
       "bytes": 12121,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "f41474d92df913e54a198a8526b4d8756f14ad6e",
       "commitDate": "2026-05-25T18:33:30-04:00"
     },
@@ -118,27 +118,27 @@
       "bytes": 12458,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "2eb86ebcde58624ab408d74e6e484c404df4bd46",
       "commitDate": "2026-07-28T14:25:06-04:00"
     },
     "cdb:pre-errata:en": {
       "path": "cdb/pre-errata.en.cdb",
-      "sha256": "a0af9346b2e2546b467c1ca246f126292a77cac1047d40459ef567fa70c9a533",
-      "bytes": 81920,
+      "sha256": "c2d568d9fbc0fda97fbb382850c47773bc1cde21e7a5c7ec00a614c94c7f1b07",
+      "bytes": 90112,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "0b1940c7cb66fde7f62bc79d20ea227b3f9c7664",
       "commitDate": "2026-11-22T14:57:33-04:00"
     },
     "cdb:pre-errata:es": {
       "path": "cdb/pre-errata.es.cdb",
-      "sha256": "9d7c0f4c13d4d0248f7233e89ad6a6b8f692af26e194c6e0f32f61c390487d90",
-      "bytes": 98304,
+      "sha256": "0123fd60c7b4b9fb2d8e821b0ae030ac0468cef14da1317dcb22ab86150c8138",
+      "bytes": 106496,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "0b1940c7cb66fde7f62bc79d20ea227b3f9c7664",
       "commitDate": "2026-11-22T14:57:33-04:00"
     },
@@ -187,7 +187,7 @@
       "bytes": 7879,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "bb1c1c5e8102410d2a0e3e71e88e478a8d023a40",
       "commitDate": "2026-10-20T11:04:30Z"
     },
@@ -197,7 +197,7 @@
       "bytes": 8627,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "ff0f84fa613d6ad21cb343eaa6d6205711ca507f",
       "commitDate": "2026-10-31T08:27:04-04:00"
     },
@@ -213,11 +213,11 @@
     },
     "lflist:evolution:goat": {
       "path": "lflist/goat.lflist.conf",
-      "sha256": "3eb819e497648cf040d06031ae2a9632da123f9cb88b359f71b2bb185ff95d6a",
-      "bytes": 51749,
+      "sha256": "e365df62bc8656bcf5110084eec85600ef683ea14e354407ebf2431daabb2542",
+      "bytes": 51764,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "0b1940c7cb66fde7f62bc79d20ea227b3f9c7664",
       "commitDate": "2026-11-22T14:57:33-04:00"
     },
@@ -227,7 +227,7 @@
       "bytes": 1421312,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "915c44266729b9e5801c99a9772599406e29ac0e",
       "commitDate": "2026-11-21T16:08:34Z"
     },
@@ -237,7 +237,7 @@
       "bytes": 54252,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "3a1ca5d71e40f78a174203a8b63e5e76414148d0",
       "commitDate": "2026-11-17T11:04:11-04:00"
     },
@@ -247,7 +247,7 @@
       "bytes": 57474,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "77ad55ed09d45cb41ab9dad1a52b8de1db110ab7",
       "commitDate": "2026-11-18T09:08:33-04:00"
     },
@@ -257,7 +257,7 @@
       "bytes": 3477504,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "915c44266729b9e5801c99a9772599406e29ac0e",
       "commitDate": "2026-11-21T16:08:34Z"
     },
@@ -267,7 +267,7 @@
       "bytes": 6549,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "b0881a1f4a100d5edbb842c6a9eda02e0a3f7d73",
       "commitDate": "2026-11-18T17:15:23Z"
     },
@@ -277,7 +277,7 @@
       "bytes": 61289,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "915c44266729b9e5801c99a9772599406e29ac0e",
       "commitDate": "2026-11-21T16:08:34Z"
     },
@@ -287,7 +287,7 @@
       "bytes": 47528,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-22T18:57:49.834Z",
+      "mirroredAt": "2026-11-22T19:27:54.140Z",
       "commitSha": "c0033ce77e9f5b60e707c5886b3debb1183a8adf",
       "commitDate": "2026-11-20T14:41:52-04:00"
     }
