@@ -838,5 +838,133 @@
   "name_es": "Drenaje de Energía",
   "desc_en": "Select 1 face-up monster on your side of the field. Increase the ATK and DEF of the monster by an amount equal to the number of cards in your opponent's hand x 200 points until the End Phase.",
   "desc_es": "Selecciona 1 monstruo boca arriba de tu lado del Campo. Aumenta el ATK y la DEF del monstruo en una cantidad igual al número de cartas en la mano de tu adversario x 200 puntos hasta la End Phase."
+ },
+ {
+  "code": 504700067,
+  "alias": 40240595,
+  "name_en": "Cocoon of Evolution",
+  "name_es": "Capullo Evolutivo",
+  "desc_en": "You can equip this card from your hand as an Equip Spell Card to a face-up \"Petit Moth\" on the field. If equipped, the ATK and DEF of \"Cocoon of Evolution\" is applied to \"Petit Moth\".",
+  "desc_es": "Puedes equipar esta carta desde tu mano como Carta Mágica de Equipo a un \"Petit Moth\" boca arriba en el Campo. Si está equipada, el ATK y la DEF de \"Capullo Evolutivo\" se aplican a \"Petit Moth\"."
+ },
+ {
+  "code": 504700076,
+  "alias": 47025270,
+  "name_en": "Helping Robo for Combat",
+  "name_es": "Robot de Ayuda para el Combate",
+  "desc_en": "Each time this card destroys your opponent's monster as a result of battle, draw 1 card, then select and return 1 card from your hand to the bottom of your Deck.",
+  "desc_es": "Cada vez que esta carta destruya un monstruo de tu adversario como resultado de una batalla, roba 1 carta, y después selecciona 1 carta de tu mano y devuélvela al fondo de tu Deck."
+ },
+ {
+  "code": 504700146,
+  "alias": 85489096,
+  "name_en": "Arsenal Summoner",
+  "name_es": "Invocador del Arsenal",
+  "desc_en": "FLIP: Add 1 card that includes \"Guardian\" in its card name from your Deck to your hand. You cannot add \"Celtic Guardian\", \"Winged Dragon, Guardian of the Fortress #1\", \"Winged Dragon, Guardian of the Fortress #2\", \"Guardian of the Labyrinth\", or \"The Reliable Guardian\".",
+  "desc_es": "VOLTEO: Añade a tu mano, desde tu Deck, 1 carta que incluya \"Guardián\" en su nombre. No puedes añadir \"Guardián Celta\", \"Dragón Alado, Guardián de la Fortaleza #1\", \"Dragón Alado, Guardián de la Fortaleza #2\", \"Guardián del Laberinto\" ni \"El Guardián Fiable\"."
+ },
+ {
+  "code": 504700151,
+  "alias": 87473172,
+  "name_en": "Firebird",
+  "name_es": "Pájaro de Fuego",
+  "desc_en": "As long as this card remains face-up on the field, each time a Winged Beast-Type monster(s) on your side of the field is destroyed, increase the ATK of this card by 500 points.",
+  "desc_es": "Mientras esta carta permanezca boca arriba en el Campo, cada vez que uno o más monstruos de Tipo Bestia Alada en tu lado del Campo sean destruidos, aumenta el ATK de esta carta en 500 puntos."
+ },
+ {
+  "code": 504700154,
+  "alias": 88989706,
+  "name_en": "Great Dezard",
+  "name_es": "Gran Dezard",
+  "desc_en": "When this monster destroys the following number of monsters as a result of battle, the following effects are activated in order:\nOne: As long as this card remains face-up on the field, negate the activation and effects of all Spell and Trap Cards that target this card and destroy them.\nTwo: You can Special Summon 1 \"Fushioh Richie\" from your hand or your Deck by Tributing this card during your Main Phase.",
+  "desc_es": "Cuando este monstruo destruya el siguiente número de monstruos como resultado de una batalla, se activan los siguientes efectos en orden:\nUno: Mientras esta carta permanezca boca arriba en el Campo, niega la activación y los efectos de todas las Cartas Mágicas y de Trampa que designen esta carta como objetivo y destrúyelas.\nDos: Puedes Invocar de Modo Especial 1 \"Fushioh Richie\" de tu mano o de tu Deck Sacrificando esta carta durante tu Main Phase."
+ },
+ {
+  "code": 504700159,
+  "alias": 90980792,
+  "name_en": "Dark Jeroid",
+  "name_es": "Jeroid Oscuro",
+  "desc_en": "When this card is Normal Summoned, Flip Summoned, or Special Summoned successfully, select 1 face-up monster on the field. As long as the monster remains face-up on the field, decrease its ATK by 800 points.",
+  "desc_es": "Cuando esta carta sea Invocada de Modo Normal, Invocada por Volteo o Invocada de Modo Especial con éxito, selecciona 1 monstruo boca arriba en el Campo. Mientras ese monstruo permanezca boca arriba en el Campo, reduce su ATK en 800 puntos."
+ },
+ {
+  "code": 504700181,
+  "alias": 99414168,
+  "name_en": "Elemental Mistress Doriado",
+  "name_es": "Ama Elemental Doriado",
+  "desc_en": "This card can only be Ritual Summoned with the Ritual Spell Card, \"Doriado's Blessing\". The Attribute of this card is also treated as WIND, WATER, FIRE, and EARTH.",
+  "desc_es": "Esta carta sólo puede ser Invocada mediante una Invocación de Ritual con la Carta Mágica de Ritual \"Bendición de Doriado\". El Atributo de esta carta también se trata como VIENTO, AGUA, FUEGO y TIERRA."
+ },
+ {
+  "code": 504700183,
+  "alias": 42386471,
+  "name_en": "Toon Gemini Elf",
+  "name_es": "Elfo Géminis Toon",
+  "desc_en": "Cannot attack the turn it is Summoned. If \"Toon World\" on the field is destroyed, destroy this card. While you control \"Toon World\" and your opponent controls no Toon monsters, this card can attack your opponent directly. If this card inflicts battle damage to your opponent: Discard 1 random card from your opponent's hand.",
+  "desc_es": "No puede atacar en el turno en el que es Invocada. Si \"Mundo Toon\" en el Campo es destruido, destruye esta carta. Mientras controles \"Mundo Toon\" y tu adversario no controle monstruos Toon, esta carta puede atacar a tu adversario directamente. Si esta carta inflige daño de batalla a tu adversario: descarta 1 carta al azar de la mano de tu adversario."
+ },
+ {
+  "code": 504700185,
+  "alias": 67957315,
+  "name_en": "Spirit Ryu",
+  "name_es": "Ryu Espíritu",
+  "desc_en": "You can only activate this effect during your Battle Step, if this card battles during your turn. Discard 1 Dragon-Type monster from your hand to the Graveyard to increase the ATK and DEF of this card by 1000 points until the End Step.",
+  "desc_es": "Sólo puedes activar este efecto durante tu Battle Step, si esta carta batalla durante tu turno. Descarta al Cementerio 1 monstruo de Tipo Dragón de tu mano para aumentar el ATK y la DEF de esta carta en 1000 puntos hasta el End Step."
+ },
+ {
+  "code": 504700048,
+  "alias": 26931058,
+  "name_en": "Formation Union",
+  "name_es": "Formación de Unión",
+  "desc_en": "Select and activate 1 of the following effects:\n● Equip 1 Union Monster on your side of the field to an appropriate monster on your side of the field as an Equip Spell Card.\n● Unequip 1 of your equipped Union Monsters and Special Summon it to your side of the field in face-up Attack Position.",
+  "desc_es": "Selecciona y activa 1 de los siguientes efectos:\n● Equipa 1 Monstruo de Unión de tu lado del Campo a un monstruo apropiado de tu lado del Campo como Carta Mágica de Equipo.\n● Desequipa 1 de tus Monstruos de Unión equipados e Invócalo de Modo Especial a tu lado del Campo en Posición de Ataque boca arriba."
+ },
+ {
+  "code": 504700085,
+  "alias": 52684508,
+  "name_en": "Inferno Fire Blast",
+  "name_es": "Descarga de Fuego Infernal",
+  "desc_en": "Select 1 face-up \"Red-Eyes Black Dragon\" on your side of the field to activate this card. Inflict damage to your opponent's Life Points equal to the original ATK of the selected \"Red-Eyes Black Dragon\". \"Red-Eyes Black Dragon\" cannot attack during the turn you use this card.",
+  "desc_es": "Selecciona 1 \"Dragón Negro de Ojos Rojos\" boca arriba de tu lado del Campo para activar esta carta. Inflige a los Life Points de tu adversario daño igual al ATK original del \"Dragón Negro de Ojos Rojos\" seleccionado. \"Dragón Negro de Ojos Rojos\" no puede atacar durante el turno en que uses esta carta."
+ },
+ {
+  "code": 504700134,
+  "alias": 76754619,
+  "name_en": "Pyramid Energy",
+  "name_es": "Energía de Pirámide",
+  "desc_en": "You can select and activate 1 of the following effects:\n●Increase the ATK of all face-up monsters on your side of the field by 200 points until the End Phase of the turn this card is activated.\n●Increase the DEF of all face-up monsters on your side of the field by 500 points until the End Phase of the turn this card is activated.",
+  "desc_es": "Puedes seleccionar y activar 1 de los siguientes efectos:\n●Aumenta el ATK de todos los monstruos boca arriba de tu lado del Campo en 200 puntos hasta la End Phase del turno en que se active esta carta.\n●Aumenta la DEF de todos los monstruos boca arriba de tu lado del Campo en 500 puntos hasta la End Phase del turno en que se active esta carta."
+ },
+ {
+  "code": 504700155,
+  "alias": 89801755,
+  "name_en": "Abyssal Designator",
+  "name_es": "Designador del Abismo",
+  "desc_en": "Pay 1000 Life Points. Declare a Type and an Attribute. Your opponent must send 1 monster with both the Type and Attribute declared from his/her hand or Deck to the Graveyard.",
+  "desc_es": "Paga 1000 Life Points. Declara un Tipo y un Atributo. Tu adversario debe mandar al Cementerio 1 monstruo de su mano o de su Deck que tenga tanto el Tipo como el Atributo declarados."
+ },
+ {
+  "code": 504700156,
+  "alias": 89997728,
+  "name_en": "Toon Table of Contents",
+  "name_es": "Tabla de Contenidos Toon",
+  "desc_en": "Add 1 card from your Deck to your hand that includes \"Toon\" in its card name, or is named \"Manga Ryu-Ran\".",
+  "desc_es": "Añade a tu mano 1 carta de tu Deck que incluya \"Toon\" en su nombre, o que se llame \"Manga Ryu-Ran\"."
+ },
+ {
+  "code": 504700157,
+  "alias": 90219263,
+  "name_en": "Elegant Egotist",
+  "name_es": "Egotista Elegante",
+  "desc_en": "You can only activate this card when there are 1 or more \"Harpie Lady\" on the field. Special Summon 1 \"Harpie Lady\" or \"Harpie Lady Sisters\" from your hand or your Deck.",
+  "desc_es": "Sólo puedes activar esta carta cuando haya 1 o más \"Dama Arpía\" en el Campo. Invoca de Modo Especial 1 \"Dama Arpía\" o \"Hermanas de la Dama Arpía\" de tu mano o de tu Deck."
+ },
+ {
+  "code": 504700158,
+  "alias": 90846359,
+  "name_en": "Rivalry of Warlords",
+  "name_es": "Rivalidad de los Señores de la Guerra",
+  "desc_en": "Each player sends monsters from his/her side of the field to the Graveyard so that he/she only controls 1 Type of monster. As long as this card remains on the field, each player can only have 1 Type of monster on the field.",
+  "desc_es": "Cada jugador manda monstruos de su lado del Campo al Cementerio de modo que sólo controle 1 Tipo de monstruo. Mientras esta carta permanezca en el Campo, cada jugador sólo puede tener 1 Tipo de monstruo en el Campo."
  }
 ]
