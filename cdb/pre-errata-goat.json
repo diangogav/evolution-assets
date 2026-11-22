@@ -1494,5 +1494,13 @@
   "name_es": "Centinela Escarlata",
   "desc_en": "Offer this face-up card as a Tribute to return 1 of your monsters destroyed in battle during this turn to the bottom of your Deck.",
   "desc_es": "Ofrece esta carta boca arriba como Sacrificio para devolver a la parte inferior de tu Deck 1 monstruo destruido como resultado de una batalla y mandado a tu Cementerio durante este turno."
+ },
+ {
+  "code": 504700035,
+  "alias": 22996376,
+  "name_en": "Behemoth the King of All Animals",
+  "name_es": "Behemoth el Rey de Todos los Animales",
+  "desc_en": "This card can be Normal Summoned or Set with 1 Tribute Monster. In that case, the original ATK of this card becomes 2000. When this card is Tribute Summoned successfully, you can return from your Graveyard to the owner's hand a number of Beast-Type monsters equal to the number of Tributed monsters.",
+  "desc_es": "Esta carta puede ser Invocada de Modo Normal o Colocada con 1 Monstruo Sacrificado. En ese caso, el ATK original de esta carta se convierte en 2000. Cuando esta carta es Invocada por Sacrificio con éxito, puedes devolver desde tu Cementerio a la mano de su dueño una cantidad de monstruos de Tipo Bestia igual a la cantidad de monstruos Sacrificados."
  }
 ]
