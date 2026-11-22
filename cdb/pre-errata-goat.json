@@ -966,5 +966,133 @@
   "name_es": "Rivalidad de los Señores de la Guerra",
   "desc_en": "Each player sends monsters from his/her side of the field to the Graveyard so that he/she only controls 1 Type of monster. As long as this card remains on the field, each player can only have 1 Type of monster on the field.",
   "desc_es": "Cada jugador manda monstruos de su lado del Campo al Cementerio de modo que sólo controle 1 Tipo de monstruo. Mientras esta carta permanezca en el Campo, cada jugador sólo puede tener 1 Tipo de monstruo en el Campo."
+ },
+ {
+  "code": 504700001,
+  "alias": 218704,
+  "name_en": "Fenrir",
+  "name_es": "Fenrir",
+  "desc_en": "This card cannot be Normal Summoned or Set. This card can only be Special Summoned by removing from play 2 WATER monsters in your Graveyard. When this card destroys an opponent's monster as a result of battle, your opponent skips their next Draw Phase.",
+  "desc_es": "Esta carta no puede ser Invocada de Modo Normal ni Colocada. Esta carta sólo puede ser Invocada de Modo Especial retirando del juego 2 monstruos de AGUA en tu Cementerio. Cuando esta carta destruya un monstruo de tu adversario como resultado de una batalla, tu adversario se salta su siguiente Draw Phase."
+ },
+ {
+  "code": 504700042,
+  "alias": 24140059,
+  "name_en": "A Cat of Ill Omen",
+  "name_es": "Un Gato de Mal Agüero",
+  "desc_en": "FLIP: Select 1 Trap Card from your Deck and place it on top of your Deck. If \"Necrovalley\" is on the field, you can add the selected Trap Card to your hand instead.",
+  "desc_es": "VOLTEO: Selecciona 1 Carta de Trampa de tu Deck y colócala en la parte superior de tu Deck. Si \"Necrovalle\" está en el Campo, puedes añadir a tu mano la Carta de Trampa seleccionada en su lugar."
+ },
+ {
+  "code": 504700084,
+  "alias": 52624755,
+  "name_en": "Peten the Dark Clown",
+  "name_es": "Peten el Payaso Oscuro",
+  "desc_en": "When this card is sent to your Graveyard, you can remove this card from the Graveyard to Special Summon 1 \"Peten the Dark Clown\" from your hand or Deck.",
+  "desc_es": "Cuando esta carta sea mandada a tu Cementerio, puedes retirar del juego esta carta desde el Cementerio para Invocar de Modo Especial 1 \"Peten el Payaso Oscuro\" de tu mano o Deck."
+ },
+ {
+  "code": 504700099,
+  "alias": 61441708,
+  "name_en": "Sacred Phoenix of Nephthys",
+  "name_es": "Fénix Sagrado de Nephtys",
+  "desc_en": "If this card is destroyed by a card effect, Special Summon this card during your next Standby Phase. If you Special Summon this card successfully in this way, destroy all Spell and Trap Cards on the field.",
+  "desc_es": "Si esta carta es destruida por el efecto de una carta, Invoca de Modo Especial esta carta durante tu siguiente Standby Phase. Si Invocas de Modo Especial esta carta con éxito de esta manera, destruye todas las Cartas Mágicas y de Trampa en el Campo."
+ },
+ {
+  "code": 504700102,
+  "alias": 63519819,
+  "name_en": "Thousand-Eyes Restrict",
+  "name_es": "Límite de los Mil Ojos",
+  "desc_en": "\"Relinquished\" + \"Thousand-Eyes Idol\"\nAs long as this card remains face-up on the field, other monsters cannot change their Battle Positions or attack. Select 1 monster on your opponent's side of the field and equip it to this card (this effect can only be used once per turn and you can only equip 1 monster at a time to this card). The ATK and DEF of this card become the same amounts as the monster equipped to this card. If this card is destroyed as a result of battle, the equipped monster is destroyed instead.",
+  "desc_es": "\"Renunciado\" + \"Ídolo de los Mil Ojos\"\nMientras esta carta permanezca boca arriba en el Campo, los demás monstruos no pueden cambiar sus Posiciones de Batalla ni atacar. Selecciona 1 monstruo en el lado del Campo de tu adversario y equípalo a esta carta (este efecto sólo puede usarse una vez por turno y sólo puedes equipar 1 monstruo a la vez a esta carta). El ATK y la DEF de esta carta pasan a ser iguales a los del monstruo equipado a esta carta. Si esta carta fuera destruida como resultado de una batalla, el monstruo equipado es destruido en su lugar."
+ },
+ {
+  "code": 504700106,
+  "alias": 64631466,
+  "name_en": "Relinquished",
+  "name_es": "Renunciado",
+  "desc_en": "Select 1 monster on your opponent's side of the field and equip it to this card (this effect can only be used once per turn and you can only equip 1 monster at a time to this card). The ATK and DEF of this card become the same amounts as the monster equipped to this card. If this card is destroyed as a result of battle, the equipped monster is destroyed instead, and any battle damage you received from the battle is also inflicted to your opponent's Life Points.",
+  "desc_es": "Selecciona 1 monstruo en el lado del Campo de tu adversario y equípalo a esta carta (este efecto sólo puede usarse una vez por turno y sólo puedes equipar 1 monstruo a la vez a esta carta). El ATK y la DEF de esta carta pasan a ser iguales a los del monstruo equipado a esta carta. Si esta carta fuera destruida como resultado de una batalla, el monstruo equipado es destruido en su lugar, y cualquier daño de batalla que hayas recibido en esa batalla también se inflige a los Life Points de tu adversario."
+ },
+ {
+  "code": 504700164,
+  "alias": 94568601,
+  "name_en": "Tyrant Dragon",
+  "name_es": "Dragón Tirano",
+  "desc_en": "When there is a monster on your opponent's side of the field after this monster's first attack of your Battle Phase, this monster can attack once again during the same Battle Phase. In addition, negate the effect of a Trap Card that targets this card and destroy it. If this card is Special Summoned from the Graveyard by another card's effect, you must Tribute 1 Dragon-Type monster on your side of the field.",
+  "desc_es": "Si hay un monstruo en el lado del Campo de tu adversario después del primer ataque de este monstruo en tu Battle Phase, este monstruo puede atacar una vez más durante la misma Battle Phase. Además, niega el efecto de una Carta de Trampa que seleccione esta carta como objetivo y destrúyela. Si esta carta es Invocada de Modo Especial desde el Cementerio por el efecto de otra carta, debes Sacrificar 1 monstruo de Tipo Dragón en tu lado del Campo."
+ },
+ {
+  "code": 504700190,
+  "alias": 94773007,
+  "name_en": "Jirai Gumo",
+  "name_es": "Jirai Gumo",
+  "desc_en": "When you declare an attack with this card, toss a coin and call it. If you call it right, attack normally. If you call it wrong, lose half your Life Points before attacking.",
+  "desc_es": "Cuando declares un ataque con esta carta, lanza una moneda y elige cara o cruz. Si aciertas, ataca normalmente. Si fallas, pierde la mitad de tus Life Points antes de atacar."
+ },
+ {
+  "code": 504700037,
+  "alias": 23171610,
+  "name_en": "Limiter Removal",
+  "name_es": "Quitar el Limitador",
+  "desc_en": "Double the ATK of all face-up Machine-Type monsters that are on your side of the field when you activate this card. During the End Phase, destroy all Monster Cards that were affected by this effect.",
+  "desc_es": "Duplica el ATK de todos los monstruos de Tipo Máquina boca arriba que haya en tu lado del Campo cuando actives esta carta. Durante la End Phase, destruye todas las Cartas de Monstruo que hayan sido afectadas por este efecto."
+ },
+ {
+  "code": 504700111,
+  "alias": 68540058,
+  "name_en": "Metalmorph",
+  "name_es": "Metalmorph",
+  "desc_en": "After activation, this card is used to equip a face-up monster. The monster equipped with this card increases its ATK and DEF by 300 points. When attacking with a monster equipped with this card, you can further increase its ATK by an amount equal to half the ATK of your target.",
+  "desc_es": "Después de su activación, esta carta se usa para equipar a un monstruo boca arriba. El monstruo equipado con esta carta aumenta su ATK y DEF en 300 puntos. Cuando ataques con un monstruo equipado con esta carta, puedes aumentar además su ATK en una cantidad igual a la mitad del ATK de tu objetivo."
+ },
+ {
+  "code": 504700050,
+  "alias": 29267084,
+  "name_en": "Shadow Spell",
+  "name_es": "Hechizo de Sombra",
+  "desc_en": "Select 1 face-up monster on your opponent's side of the field. Decrease the ATK of the selected monster by 700 points. The monster cannot attack or change its battle position. When the selected monster is destroyed or removed from the field, this card is also destroyed.",
+  "desc_es": "Selecciona 1 monstruo boca arriba en el lado del Campo de tu adversario. Reduce el ATK del monstruo seleccionado en 700 puntos. El monstruo no puede atacar ni cambiar su posición de batalla. Cuando el monstruo seleccionado sea destruido o retirado del Campo, esta carta también se destruye."
+ },
+ {
+  "code": 504700068,
+  "alias": 40619825,
+  "name_en": "Axe of Despair",
+  "name_es": "Hacha del Desespero",
+  "desc_en": "Increase the ATK of a monster equipped with this card by 1000 points. When this card is sent from the field to the Graveyard, if you Tribute 1 monster on your side of the field, this card returns to the top of your Deck.",
+  "desc_es": "Aumenta en 1000 puntos el ATK de un monstruo equipado con esta carta. Cuando esta carta sea enviada desde el Campo al Cementerio, si Sacrificas 1 monstruo en tu lado del Campo, esta carta regresa a la parte superior de tu Deck."
+ },
+ {
+  "code": 504700176,
+  "alias": 99597615,
+  "name_en": "Malevolent Nuzzler",
+  "name_es": "Nuzzler Malévolo",
+  "desc_en": "Increase the ATK of a monster equipped with this card by 700 points. When this card is sent from the field to the Graveyard, if you pay 500 Life Points, this card returns to the top of your Deck.",
+  "desc_es": "Aumenta en 700 puntos el ATK de un monstruo equipado con esta carta. Cuando esta carta sea enviada desde el Campo al Cementerio, si pagas 500 Life Points, esta carta regresa a la parte superior de tu Deck."
+ },
+ {
+  "code": 504700096,
+  "alias": 58577036,
+  "name_en": "Reasoning",
+  "name_es": "Razonamiento",
+  "desc_en": "Your opponent declares a monster Level. Then pick up cards from the top of your Deck until a monster that can be Normal Summoned is picked up. If that monster is the same Level as the one declared by your opponent, send all picked up cards to the Graveyard. If not, Special Summon the picked up monster and send the remaining cards to the Graveyard.",
+  "desc_es": "Tu adversario declara un Nivel de monstruo. Después, toma cartas de la parte superior de tu Deck hasta tomar un monstruo que pueda ser Invocado de Modo Normal. Si ese monstruo es del mismo Nivel que el declarado por tu adversario, manda al Cementerio todas las cartas tomadas. Si no, Invoca de Modo Especial el monstruo tomado y manda al Cementerio las cartas restantes."
+ },
+ {
+  "code": 504700071,
+  "alias": 43040603,
+  "name_en": "Monster Gate",
+  "name_es": "Puerta de Monstruo",
+  "desc_en": "Offer 1 monster on your side of the field as a Tribute. Pick up cards from your Deck until you pick up a monster than can be Normal Summoned, and Special Summon it. Send any other cards picked up to the Graveyard.",
+  "desc_es": "Ofrece como Sacrificio 1 monstruo en tu lado del Campo. Toma cartas de tu Deck hasta tomar un monstruo que pueda ser Invocado de Modo Normal, e Invócalo de Modo Especial. Manda al Cementerio cualquier otra carta tomada."
+ },
+ {
+  "code": 504700189,
+  "alias": 69279219,
+  "name_en": "My Body as a Shield",
+  "name_es": "Mi Cuerpo como Escudo",
+  "desc_en": "When your opponent activates a card that has an effect which destroys 1 or more monster(s) on the field, pay 1500 Life Points to negate the activation of that card and destroy it.",
+  "desc_es": "Cuando tu adversario active una carta que tenga un efecto que destruya 1 o más monstruos en el Campo, paga 1500 Life Points para negar la activación de esa carta y destruirla."
  }
 ]
