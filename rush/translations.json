@@ -27662,5 +27662,37 @@
     "es": "",
     "es_lore": "",
     "es_req": ""
+  },
+  "120313001": {
+    "en": "Elemental HERO Prisma",
+    "en_lore": "This turn, this card's name becomes the name declared to meet the requirement.",
+    "en_req": "Reveal 1 Fusion Monster in your Extra Deck, and declare 1 card name listed as material on that monster.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120313019": {
+    "en": "Vampire Lord",
+    "en_lore": "Send the top card of either player's Deck to the Graveyard. Then, you can place that card on top of the owner's Deck. This turn, you cannot activate the effect of \"Vampire Lord\". At the end of the Draw Phase of your next turn, you can Special Summon 1 \"Vampire Lord\" from your Graveyard face-up to your field.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120313021": {
+    "en": "Vampire Genesis",
+    "en_lore": "Special Summon 1 Zombie Type monster from your Graveyard face-up to your field. Then, send 1 card from your hand to the Graveyard. This turn, you cannot activate the effect of \"Vampire Genesis\".",
+    "en_req": "You have a card in your hand.",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
+  },
+  "120313067": {
+    "en": "Vampire Lady",
+    "en_lore": "Send the top card of either player's Deck to the Graveyard. Then, you can place that card on top of the owner's Deck.",
+    "en_req": "None",
+    "es": "",
+    "es_lore": "",
+    "es_req": ""
   }
 }

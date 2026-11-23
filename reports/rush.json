@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "pipeline": "rush",
-  "generatedAt": "2026-11-16T15:07:39.989Z",
-  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/43892924201",
+  "generatedAt": "2026-11-23T17:36:49.149Z",
+  "runUrl": "https://github.com/diangogav/evolution-assets/actions/runs/45229488464",
   "steps": [
     {
       "step": "check-mdpro4",
       "status": "unchanged",
       "upstreamCommit": "02019d6b686b348dff1a25d9cec375af8c08ed58",
-      "previousCommit": "73127ec01c0b1eeb501827c9fef03f0058f3c16c",
+      "previousCommit": "02019d6b686b348dff1a25d9cec375af8c08ed58",
       "counts": {
         "en": {
           "datas": 4264,
@@ -30,13 +30,13 @@
     },
     {
       "step": "build-lflist",
-      "status": "unchanged",
+      "status": "changed",
       "regulation": "2026.10 Rush Duel",
       "counts": {
         "forbidden": 3,
         "limited": 15,
         "semiLimited": 18,
-        "legend": 125
+        "legend": 126
       }
     },
     {
@@ -44,8 +44,20 @@
       "status": "changed",
       "mapped": [
         {
-          "id": "120109070",
-          "title": "Enemy Controller (Rush Duel)"
+          "id": "120313001",
+          "title": "Elemental HERO Prisma (Rush Duel)"
+        },
+        {
+          "id": "120313019",
+          "title": "Vampire Lord (Rush Duel)"
+        },
+        {
+          "id": "120313021",
+          "title": "Vampire Genesis (Rush Duel)"
+        },
+        {
+          "id": "120313067",
+          "title": "Vampire Lady (Rush Duel)"
         }
       ],
       "unresolved": {
@@ -104,17 +116,19 @@
       "step": "fetch-translations",
       "status": "changed",
       "gained": [
-        "120109070"
+        "120313019",
+        "120313021",
+        "120313067"
       ],
       "missing": [
         "Dynamight Dino Dynamix",
         "Dynamail Dino Dynamix"
       ],
-      "entries": 3458,
+      "entries": 3462,
       "coverage": {
-        "en": 3458,
-        "en_lore": 3451,
-        "en_req": 3022,
+        "en": 3462,
+        "en_lore": 3455,
+        "en_req": 3026,
         "es": 529,
         "es_lore": 419,
         "es_req": 302
@@ -131,7 +145,7 @@
           },
           {
             "name": "RD Patch.cdb",
-            "rows": 55
+            "rows": 59
           },
           {
             "name": "RD Alternate.cdb",
@@ -139,18 +153,18 @@
           }
         ],
         "aliasRows": 747,
-        "total": 4376
+        "total": 4380
       },
       "variants": {
         "en": {
           "name": {
-            "translations": 4188,
+            "translations": 4192,
             "mdpro4": 93,
             "alias.mdpro4": 95,
             "zh": 0
           },
           "desc": {
-            "translations": 4179,
+            "translations": 4183,
             "mdpro4": 91,
             "alias.mdpro4": 95,
             "zh": 11
@@ -161,8 +175,8 @@
             "translations": 603,
             "base": 421,
             "mdpro4": 2180,
-            "alias.mdpro4": 75,
-            "en.translations": 1037,
+            "alias.mdpro4": 76,
+            "en.translations": 1040,
             "en.mdpro4": 29,
             "en.alias.mdpro4": 31,
             "zh": 0
@@ -171,8 +185,8 @@
             "translations": 483,
             "base": 120,
             "mdpro4": 3648,
-            "alias.mdpro4": 110,
-            "en.translations": 4,
+            "alias.mdpro4": 111,
+            "en.translations": 7,
             "en.mdpro4": 0,
             "en.alias.mdpro4": 0,
             "zh": 11
@@ -203,27 +217,27 @@
         ]
       },
       "effectStrings": {
-        "total": 5944,
+        "total": 5959,
         "en": {
-          "replaced": 4772,
-          "nonChinese": 5938,
+          "replaced": 4776,
+          "nonChinese": 5942,
           "sources": {
-            "dictionary": 3767,
+            "dictionary": 3771,
             "mdpro4": 1005,
             "mdpro4.en": 0,
             "original": 1166,
-            "zh": 6
+            "zh": 17
           }
         },
         "es": {
-          "replaced": 4772,
-          "nonChinese": 5938,
+          "replaced": 4776,
+          "nonChinese": 5942,
           "sources": {
-            "dictionary": 3754,
+            "dictionary": 3758,
             "mdpro4": 1018,
             "mdpro4.en": 0,
             "original": 1166,
-            "zh": 6
+            "zh": 17
           }
         }
       },
@@ -266,9 +280,27 @@
   "events": {
     "cardsAdded": [
       {
-        "id": "120109070",
-        "zh": "敌人操纵器",
-        "en": "Enemy Controller",
+        "id": "120313001",
+        "zh": "元素英雄 棱镜侠",
+        "en": "Elemental HERO Prisma",
+        "es": null
+      },
+      {
+        "id": "120313019",
+        "zh": "吸血鬼领主",
+        "en": "Vampire Lord",
+        "es": null
+      },
+      {
+        "id": "120313021",
+        "zh": "吸血鬼创世主",
+        "en": "Vampire Genesis",
+        "es": null
+      },
+      {
+        "id": "120313067",
+        "zh": "吸血鬼女郎",
+        "en": "Vampire Lady",
         "es": null
       }
     ],
