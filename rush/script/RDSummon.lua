@@ -480,3 +480,40 @@ function RushDuel.HandToGraveSpecialSummonOperation(e, tp, eg, ep, ev, re, r, rp
 	Duel.SendtoGrave(g, REASON_SPSUMMON)
 	g:DeleteGroup()
 end
+
+-- 添加手卡特殊召唤手续: 把场上的卡送去墓地
+function RushDuel.AddFieldToGraveSpecialSummonProcedure(card, desc, filter, location, count, value, position)
+    local con = RushDuel.FieldToGraveSpecialSummonCondition(filter, count, location)
+    local tg = RushDuel.FieldToGraveSpecialSummonTarget(filter, count, location)
+    local op = RushDuel.FieldToGraveSpecialSummonOperation
+    local e1 = RD.AddHandSpecialSummonProcedure(card, desc, con, tg, op, value, position)
+    return e1
+end
+function RushDuel.FieldToGraveSpecialSummonCondition(filter, count, location)
+    return function(e, c)
+        if c == nil then
+            return true
+        end
+        local tp = c:GetControler()
+        local mg = Duel.GetMatchingGroup(filter, tp, location, 0, nil, e, tp)
+        return mg:CheckSubGroup(Auxiliary.mzctcheck, count, count, tp)
+    end
+end
+function RushDuel.FieldToGraveSpecialSummonTarget(filter, count, location)
+    return function(e, tp, eg, ep, ev, re, r, rp, chk, c)
+        local mg = Duel.GetMatchingGroup(filter, tp, location, 0, nil, e, tp)
+        local sg = RushDuel.Select(HINTMSG_TOGRAVE, tp, mg, Auxiliary.mzctcheck, true, count, count, tp)
+        if sg and sg:GetCount() == count then
+            sg:KeepAlive()
+            e:SetLabelObject(sg)
+            return true
+        else
+            return false
+        end
+    end
+end
+function RushDuel.FieldToGraveSpecialSummonOperation(e, tp, eg, ep, ev, re, r, rp, c)
+    local g = e:GetLabelObject()
+	Duel.SendtoGrave(g, REASON_SPSUMMON)
+	g:DeleteGroup()
+end

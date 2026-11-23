@@ -622,3 +622,21 @@ function RushDuel.CanDamage(desc, player, damage, break_effect)
     end
     return 0
 end
+
+-- 下次自己的抽卡阶段结束时追加处理
+function RushDuel.ActionOnNextSelfDrawPhaseEnd(hint, e, player, operation)
+    RushDuel.CreateHintEffect(e, hint, player, 1, 0, RESET_PHASE + PHASE_DRAW + RESET_SELF_TURN)
+    local e1 = Effect.CreateEffect(e:GetHandler())
+    e1:SetType(EFFECT_TYPE_FIELD + EFFECT_TYPE_CONTINUOUS)
+    e1:SetCode(EVENT_PHASE + PHASE_DRAW)
+    e1:SetCountLimit(1)
+    e1:SetCondition(function (e, tp, eg, ep, ev, re, r, rp)
+        return Duel.GetTurnPlayer() == tp
+    end)
+    e1:SetOperation(function (e, tp, eg, ep, ev, re, r, rp)
+        operation(e, tp, eg, ep, ev, re, r, rp)
+        e:Reset()
+    end)
+    e1:SetReset(RESET_PHASE + PHASE_DRAW + RESET_SELF_TURN)
+    Duel.RegisterEffect(e1, player)
+end
