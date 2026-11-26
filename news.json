@@ -21,7 +21,7 @@
       "id": "edison-stable-2026-11",
       "date": "2026-11-22",
       "tone": "blue",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/60800381.jpg",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics/arts/60800381.jpg",
       "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/edison-stable.webp",
       "title": {
         "es-419": "Edison ya es estable",
@@ -36,7 +36,7 @@
       "id": "goat-beta-2026-11",
       "date": "2026-11-22",
       "tone": "gold",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/73915051.jpg",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics/arts/73915051.jpg",
       "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/goat-beta.webp",
       "title": {
         "es-419": "Goat Format, en beta",
@@ -51,7 +51,7 @@
       "id": "rush-stable-2026-11",
       "date": "2026-11-22",
       "tone": "blue",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/120105001.jpg",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics/arts/120105001.jpg",
       "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/rush-stable.webp",
       "title": {
         "es-419": "Rush Duel ya es estable",
@@ -66,7 +66,7 @@
       "id": "speed-duel-beta-2026-11",
       "date": "2026-11-22",
       "tone": "arcane",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/46986414.jpg",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics/arts/46986414.jpg",
       "banner": "https://raw.githubusercontent.com/diangogav/evolution-assets/main/banners/speed-duel-beta.webp",
       "title": {
         "es-419": "Speed Duel, en beta",
@@ -144,7 +144,7 @@
       "date": "2026-08-28",
       "tone": "gold",
       "link": "/releases",
-      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics-small/44508094.jpg",
+      "image": "https://evolution-card-cdn.evolution-game-engine.workers.dev/pics/arts/44508094.jpg",
       "title": {
         "es-419": "Edison con rulings de época",
         "en": "Edison with era-correct rulings"
