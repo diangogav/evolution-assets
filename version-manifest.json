@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-28T15:12:29.067Z",
+  "generatedAt": "2026-11-28T15:12:36.675Z",
   "assets": {
     "cdb:base:en": {
       "path": "cdb/base.en.cdb.gz",
@@ -148,11 +148,11 @@
       "bytes": 1880064,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-27T16:19:15.132Z",
+      "mirroredAt": "2026-11-28T15:12:36.675Z",
       "commitSha": "9e5117a0ddae35fcdac95a765bba8edee95f6a08",
       "commitDate": "2026-11-23T17:36:49Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "328d6323cecee738aef443801f5b29ea79a454a4"
+        "ElderLich/MDPro4_Data": "fd8f8d686336309bc12b06b98c0acf12569164c3"
       }
     },
     "cdb:rush:en": {
@@ -161,11 +161,11 @@
       "bytes": 1888256,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-27T16:19:15.132Z",
+      "mirroredAt": "2026-11-28T15:12:36.675Z",
       "commitSha": "9e5117a0ddae35fcdac95a765bba8edee95f6a08",
       "commitDate": "2026-11-23T17:36:49Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "328d6323cecee738aef443801f5b29ea79a454a4"
+        "ElderLich/MDPro4_Data": "fd8f8d686336309bc12b06b98c0acf12569164c3"
       }
     },
     "cdb:rush:es": {
@@ -174,11 +174,11 @@
       "bytes": 2220032,
       "upstreamUrl": null,
       "upstreamLastModified": null,
-      "mirroredAt": "2026-11-27T16:19:15.132Z",
+      "mirroredAt": "2026-11-28T15:12:36.675Z",
       "commitSha": "9e5117a0ddae35fcdac95a765bba8edee95f6a08",
       "commitDate": "2026-11-23T17:36:49Z",
       "upstreamCommits": {
-        "ElderLich/MDPro4_Data": "328d6323cecee738aef443801f5b29ea79a454a4"
+        "ElderLich/MDPro4_Data": "fd8f8d686336309bc12b06b98c0acf12569164c3"
       }
     },
     "lflist:evolution:rush": {
